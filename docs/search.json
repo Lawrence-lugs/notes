@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#general-frequency-response",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#general-frequency-response",
+    "title": "Transistor Capacitances",
+    "section": "General Frequency Response",
+    "text": "General Frequency Response\nMost amplifiers have a frequency response that looks like the following:"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#everything-is-a-capacitor",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#everything-is-a-capacitor",
+    "title": "Transistor Capacitances",
+    "section": "Everything is a capacitor",
+    "text": "Everything is a capacitor\n\nIf something holds charge, it is a capacitor.\n\\[C = \\frac{dQ}{dV} \\]\n\n\nHence, everywhere in semiconductor devices where there are holes and electrons moving in and out there is capacitance."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-1",
+    "title": "Transistor Capacitances",
+    "section": "BJT Parasitics",
+    "text": "BJT Parasitics\n\n\nThere are two main parasitic capacitances in a BJT:\n\n\nBase-Emitter Capacitance \\(C_{\\pi} = C_b + C_{je}\\) (Base Charging Capacitance + Base-Emitter Junction Capacitance)\nBase-Collector Capacitance \\(C_{\\mu}\\)"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b",
+    "title": "Transistor Capacitances",
+    "section": "The base charging capacitance \\(C_b\\)",
+    "text": "The base charging capacitance \\(C_b\\)\n\nBefore we start using the BJT, there is effectively “no charge” in the base region.\n\n\nHowever, as we turn the BJT on, the emitter starts to inject carriers (charge) into the base."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b-1",
+    "title": "Transistor Capacitances",
+    "section": "The base charging capacitance \\(C_b\\)",
+    "text": "The base charging capacitance \\(C_b\\)\n\nThe amount of carrier charge entering/exiting the base per second is \\(I_{C}\\)\n\n\nIf the amount of time a carrier spends in the base is \\(\\tau_F\\), then the total charge stored in the base is: \\[ Q_B =  I_C \\tau_F \\]\n\n\nSo then a change in \\(V_{BE}\\) can cause a change in \\(Q_B\\) through \\(I_C\\):\n\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} \\]\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} = \\frac{d(I_C \\tau_F)}{dV_{BE}} \\]\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} = \\frac{d(I_C \\tau_F)}{dV_{BE}} = \\tau_F \\frac{dI_C}{dV_{BE}} \\]\n\n\n\nHence,\n\\[ C_b = \\tau_F g_m \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\n\nA depletion region is a region with charges.\n\n\n\n\n\n\nAs we discussed before, the width of the depletion region changes with applied voltage. It is known that \\(W_{dep} \\propto \\sqrt{V_{bi} - V_{BE}}\\)."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-1",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\nHence, since \\(Q_{dep} \\propto W_{dep}\\), we have that some constant of proportionality \\(\\alpha\\) exists such that:\n\n\n\\[ Q_{dep} = \\alpha \\sqrt{V_{bi} - V_{BE}} \\]\n\n\n\\[ C_{je} = \\left|\\frac{dQ_{dep}}{dV_{BE}}\\right| = \\left|\\alpha \\frac{d(\\sqrt{V_{bi} - V_{BE}})}{dV_{BE}}\\right| = \\left|-\\frac{\\alpha}{2\\sqrt{V_{bi} - V_{BE}}}\\right|  = \\frac{\\alpha}{2\\sqrt{V_{bi}}\\sqrt{1 - V_{BE}/V_{bi}}}\\]\n\n\nWe can treat \\(\\frac{\\alpha}{2\\sqrt{V_{bi}}}\\) as a constant \\(C_{je0}\\):\n\\[ C_{je} = \\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{bi}}} = \\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}} \\]\n\n\nand we see that \\(C_{je0}\\) is base-emitter junction capacitance measured at \\(V_{BE} = 0\\) V. We also typically refer to \\(V_{bi}\\) for the BE junction as \\(V_{j,BE}\\)."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-2",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\\[\\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-bc-junction-capacitance-c_mu",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-bc-junction-capacitance-c_mu",
+    "title": "Transistor Capacitances",
+    "section": "The BC Junction Capacitance \\(C_{\\mu}\\)",
+    "text": "The BC Junction Capacitance \\(C_{\\mu}\\)\nLikewise, the BC junction’s depletion region also has a capacitance. We call this \\(C_{\\mu}\\).\nSince it’s usually reverse biased, we replace \\(V_{BE}\\) with \\(V_{CB}\\) and negate the sign in the denominator:\n\\[ C_{\\mu} = \\frac{C_{\\mu0}}{\\sqrt{1 + V_{CB}/V_{j,CB}}} \\]\n\n\n\n\n\n\n\nNote\n\n\nWe call it \\(C_\\mu\\) and not \\(C_{jc}\\) because of its position in the small-signal equivalent. \\(\\mu\\) is traditionally used to represent voltage feedback from output to input in the hybrid-pi model."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-summary",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-summary",
+    "title": "Transistor Capacitances",
+    "section": "BJT Parasitics Summary",
+    "text": "BJT Parasitics Summary\n\n\n\n\n\\(C\\mu\\) - Junction capacitance between B and C\n\\(C_\\pi = C_b + C_{je}\\)\n\n\\(C_b\\) - Capacitance from carriers crossing the base\n\\(C_{je}\\) - Junction capacitance between B and E\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\\(C_\\mu\\) and is typically around 5fF-10fF.\n\\(C_{je}\\) is a little higher, about \\(&gt;10fF\\).\n\\(C_b\\) is typically around hundreds of fF."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-small-signal-model-with-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-small-signal-model-with-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "BJT Small Signal Model with Capacitances",
+    "text": "BJT Small Signal Model with Capacitances\n\n\n\n\\[C\\pi=C_b+C_{je}\\] \\[C_b=\\tau_Fg_m\\]\n\n\\[\\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}}\\]\n\n\\[ C_{\\mu} = \\frac{C_{\\mu0}}{\\sqrt{1 + V_{CB}/V_{j,CB}}} \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-1",
+    "title": "Transistor Capacitances",
+    "section": "MOS Parasitics",
+    "text": "MOS Parasitics\n\n\nThe MOS has three sources of parasitics:\n\nDrain/Source to Bulk Junction Capacitance \\(C_{db}\\),\\(C_{sb}\\)  - Same as earlier.\nGate-bulk capacitance \\(C_{gb}\\) - The MOS Capacitor. Remember this?\nGate-overlap capacitance \\(C_{gs}\\)  - MOS Capacitor but we accidentally do it to S/D."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-2",
+    "title": "Transistor Capacitances",
+    "section": "MOS Parasitics",
+    "text": "MOS Parasitics"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#overlap-capacitances-c_gs-and-c_gd",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#overlap-capacitances-c_gs-and-c_gd",
+    "title": "Transistor Capacitances",
+    "section": "Overlap Capacitances \\(C_{GS}\\) and \\(C_{GD}\\)",
+    "text": "Overlap Capacitances \\(C_{GS}\\) and \\(C_{GD}\\)\n\n\n\n\n\\(C_{GS}\\) and \\(C_{GD}\\) are overlap capacitances caused by an effective MOS capacitor on the overlap of the G region to the S and D regions.\n\n\n\\[C_{GS} = C_{GD} = \\frac{\\epsilon_{ox} x_d W}{t_{ox}}\\]\n\n\nBut if you may remember…\n\n\n\\[C_{ox}=\\frac{\\epsilon_{ox}}{t_{ox}}\\]\n\n\n\\[C_{GS} = C_{GD} = C_{ox}x_dW\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-gate-bulk-capacitance-c_gb",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-gate-bulk-capacitance-c_gb",
+    "title": "Transistor Capacitances",
+    "section": "The Gate-bulk Capacitance \\(C_{gb}\\)",
+    "text": "The Gate-bulk Capacitance \\(C_{gb}\\)\n\n\n\nAs we discussed before, the main physical device behind the MOSFET is a MOS capacitor.\n\n\n\\[ C_{gb} = \\frac{\\epsilon_{ox}}{t_{ox}}WL \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-drain-bulk-and-source-bulk-capacitances-c_dbc_sb",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-drain-bulk-and-source-bulk-capacitances-c_dbc_sb",
+    "title": "Transistor Capacitances",
+    "section": "The Drain-bulk and Source-bulk Capacitances \\(C_{db}\\),\\(C_{sb}\\)",
+    "text": "The Drain-bulk and Source-bulk Capacitances \\(C_{db}\\),\\(C_{sb}\\)\n\\(C_{db}\\) and \\(C_{sb}\\) come from junction capacitances of the PN junction formed by the opposite-type semiconductors of the drain/source and the bulk."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mosfet-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mosfet-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "MOSFET Capacitances",
+    "text": "MOSFET Capacitances\n\n\nMOS Parallel Plate Capacitances\n\n\\(C_{gs}\\)\n\\(C_{gd}\\)\n\\(C_{gb}\\)\n\nS/D-Bulk Junction Capacitances\n\n\\(C_{sb}\\)\n\\(C_{db}\\)"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#effective-mos-small-signal-with-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#effective-mos-small-signal-with-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "Effective MOS Small-signal with Capacitances",
+    "text": "Effective MOS Small-signal with Capacitances\n\n\nThe bulk is typically connected to the source meaning:\n\n\n\n\\(C_{gs}\\) typically also accounts for \\(C_{gb}\\).\n\n\n\n\n\\(C_{sb}\\) is shorted.\n\n\n\nSo, only \\(C_{gs}\\), \\(C_{gd}\\) and \\(C_{db}\\) survive."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-fundamental-gains",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-fundamental-gains",
+    "title": "Transistor Capacitances",
+    "section": "The fundamental gains",
+    "text": "The fundamental gains\nLet’s see what happens to the fundamental gains due to the capacitances:\n\n\n\nVoltage gain:\n\n\n\\[ \\frac{v_o}{r_o || 1/sC\\mu} + v_i (g_m + sC\\mu) = 0 \\]\n\n\n\\[ \\frac{v_o}{v_i} = - (g_m + sC\\mu)(\\frac{r_o}{1+sC\\mu r_o}) \\]\n\n\n\\[ \\frac{v_o}{v_i} = - g_mr_o \\frac{(1 + sC\\mu/g_m)}{(1+sC\\mu r_o)} \\]\n\n\n\n\n\n\nCurrent gain:\n\n\n\\[ i_o = v_i (g_m - sC\\mu) \\]\n\n\n\\[ i_i = v_i (sC\\pi + sC\\mu + 1/r_{\\pi}) \\]\n\n\n\\[ \\frac{i_o}{i_i} = \\frac{g_m-sC\\mu}{1/r_{\\pi} + sC_\\pi+sC_\\mu}\\]\n\n\n\\[ \\frac{i_o}{i_i} = g_mr_{\\pi} \\frac{1-sC\\mu/g_m}{1+sr_{\\pi}(C_\\pi+C_\\mu)}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\nYou’ll notice that the current gain reaches 1 (0 dB), but the voltage gain doesn’t.\n\n\nHence, people measure the “speed of the transistor” or the transition frequency as \\[ \\left| \\frac{i_o}{i_i} \\right|_{f_T} = 1\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-1",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\\[ \\frac{i_o}{i_i} = g_mr_\\pi \\frac{1-sC\\mu/g_m}{s(C_\\pi+C_\\mu)}\\]\n\n\n\\[ \\frac{i_o}{i_i} = \\frac{g_m-sC\\mu}{1/r_\\pi + s(C_\\pi+C_\\mu)}\\]\n\n\n\\[ \\left| \\frac{i_o}{i_i} \\right| = \\frac{\\sqrt{g_m^2 + \\omega_T^2C_\\mu^2}}{\\sqrt{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2}} = 1\\]\n\n\n\\[ \\frac{g_m^2 + \\omega_T^2C_\\mu^2}{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2} = 1\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-2",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\\[ \\frac{g_m^2 + \\omega_T^2C_\\mu^2}{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2} = 1\\]\n\n\n\\[ \\omega_T^2 = \\frac{g_m^2 - (1/r_\\pi)^2}{(C_\\pi+C_\\mu)^2 - C_\\mu^2}\\]\n\n\nSince \\(g_m^2 \\gg 1/r_\\pi^2\\) and \\((C_\\pi+C_\\mu)^2 \\gg C_\\mu^2\\)\n\n\n\n\n\n\nDefinition\n\n\n\\[\\omega_T \\approx \\frac{g_m}{C_\\pi + C_\\mu}, f_T \\approx \\frac{g_m}{2\\pi(C_\\pi + C_\\mu)}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-3",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-3",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\nFor a MOSFET, everything is the same.\nSet \\(r_\\pi \\rightarrow \\infty\\)\n\n\n\nDefinition\n\n\n\\[\\omega_T \\approx \\frac{g_m}{C_{gd} + C_{gs}}, f_T \\approx \\frac{g_m}{2\\pi(C_{gd} + C_{gs})}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-4",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-4",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\n\nTransistor Capacitances"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Notes Center",
+    "section": "",
+    "text": "Aaaah!\nYou’re not supposed to be here. Please go find a leaf page.\n\n\nLog\ntransistorCapacitances"
+  },
+  {
+    "objectID": "index.html#today",
+    "href": "index.html#today",
+    "title": "Notes Center",
+    "section": "@Today",
+    "text": "@Today\ntransistorCapacitances"
+  },
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "Notes Center",
+    "section": "?meta:date",
+    "text": "?meta:date\ntransistorCapacitances"
+  },
+  {
+    "objectID": "index.html#nov-24-2025",
+    "href": "index.html#nov-24-2025",
+    "title": "Notes Center",
+    "section": "Nov 24, 2025",
+    "text": "Nov 24, 2025\nPushed the website\ntransistorCapacitances"
+  }
+]
