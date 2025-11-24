@@ -1,0 +1,230 @@
+/*-- scss:defaults --*/
+
+$motif-color: #fbe7c9;
+$background-color: #1a1a1a; /* Dark background so the light motif pops */
+$text-color: #000000;
+$presentation-title-slide-text-align: left;
+
+/* Import base Reveal theme settings (using 'night' as a base for contrast) */
+
+/*-- scss:rules --*/
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.plotly-graph-div {
+  margin: auto;
+  display: block;
+}
+
+
+.reveal {
+  // font-family: 'Inter', sans-serif;
+  color: $text-color;
+}
+
+/* --- 1. Slide Title Styling (Bar Below) --- */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color: $text-color;
+  text-transform: none;
+}
+
+/* Target the main slide title for the bottom border */
+.reveal .slides section > h2 {
+  border-bottom: 4px solid $motif-color;
+  padding-bottom: 0.5em;
+//   margin-bottom: 1em;
+  text-align: left; /* Professional alignment */
+}
+
+.reveal .footer {
+  border-top: 4px solid $motif-color;
+  padding-top: 0.6rem; /* increase space between border and text */
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.plotlygraph {
+  transform: scale(3); 
+  transform-origin: center top; 
+  margin-top:-2em; 
+  z-index: 0; 
+  position: relative;
+}
+
+.callout-note {
+  font-size: 32pt;
+}
+
+.callout-tip {
+  font-size: 32pt;
+}
+
+/* --- 2. Footer Styling (Bar Above + 3 Columns) --- */
+
+/* We hide the default reveal page number to use our custom one */
+.reveal .slide-number {
+  display: none;
+}
+
+/* The custom footer container */
+#custom-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3em;
+  z-index: 20; /* Above slide content */
+  
+  /* The 2pt Bar between slide and footer */
+  border-top: 2px solid $motif-color;
+  
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  
+  /* Typography */
+  font-size: 0.6em;
+  background-color: $background-color;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#custom-footer .footer-left {
+  text-align: left;
+  flex: 1;
+  color: $motif-color;
+  font-weight: bold;
+}
+
+#custom-footer .footer-center {
+  text-align: center;
+  flex: 1;
+}
+
+.columns {
+  display: flex !important;
+}
+
+.column.vcentered {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
+
+#custom-footer .footer-right {
+  text-align: right;
+  flex: 1;
+}
+
+/* 1. When the fragment is the CURRENT active step */
+.reveal .fragment.red-in-then-semi-out.current-fragment {
+  color: #E01B24; /* Bright Red */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 2. When the fragment is visible but NO LONGER active (Previous step) */
+.reveal .fragment.red-in-then-semi-out.visible:not(.current-fragment) {
+  color: #8f8f8f; /* Keeps the red color */
+  opacity: 0.3;   /* Fades out to 30% */
+}
+
+// Draw border fragment
+
+/* Base container settings */
+.reveal .fragment.draw-border {
+  --border-color: #E01B24;
+  --border-width: 3px;
+  --draw-speed: 0.25s; /* Time for ONE side. Total box = 1s */
+  
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 15px 20px;
+  
+  position: relative;
+  box-sizing: border-box;
+  
+  /* Override opacity so the content is visible immediately */
+  opacity: 1 !important;
+  visibility: inherit !important;
+}
+
+/* 1. Initial State: 
+   Width/Height 0, Transparent borders to prevent dot artifacts */
+.reveal .fragment.draw-border::before,
+.reveal .fragment.draw-border::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  box-sizing: border-box;
+  border: 0 solid transparent;
+}
+
+/* Positioning */
+.reveal .fragment.draw-border::before { top: 0; left: 0; }
+.reveal .fragment.draw-border::after  { bottom: 0; right: 0; }
+
+/* 2. Active State (The Animation) */
+
+/* ::before = Top & Right Lines */
+.reveal .fragment.draw-border.current-fragment::before {
+  width: 100%;
+  height: 100%;
+  
+  border-top: var(--border-width) solid var(--border-color);
+  border-right: var(--border-width) solid var(--border-color);
+  
+  /* STRICT SEQUENCE: 
+     1. Width (Top) runs from 0s to 0.25s
+     2. Height (Right) runs from 0.25s to 0.5s */
+  transition: width  var(--draw-speed) linear 0s, 
+              height var(--draw-speed) linear var(--draw-speed); 
+}
+
+/* ::after = Bottom & Left Lines */
+.reveal .fragment.draw-border.current-fragment::after {
+  width: 100%;
+  height: 100%;
+  
+  border-bottom: var(--border-width) solid var(--border-color);
+  border-left: var(--border-width) solid var(--border-color);
+  
+  /* STRICT SEQUENCE:
+     1. Width (Bottom) runs from 0.5s to 0.75s
+     2. Height (Left) runs from 0.75s to 1.0s */
+  transition: width  var(--draw-speed) linear calc(var(--draw-speed) * 2), 
+              height var(--draw-speed) linear calc(var(--draw-speed) * 3);
+}
+
+/* 3. Persistence (Keep box visible after leaving current step) */
+.reveal .fragment.draw-border.visible:not(.current-fragment)::before,
+.reveal .fragment.draw-border.visible:not(.current-fragment)::after {
+  width: 100%;
+  height: 100%;
+  border: var(--border-width) solid var(--border-color);
+  transition: none; /* Lock it in place */
+}
+
+/* 1. Fix the Width and Alignment */
+/* We use 'div.callout' to beat Quarto's default specificity */
+div.callout.definition {
+    width: fit-content !important; /* Force it to respect content width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2. Fix the Font Size */
+/* We target the body/title to ensure they reset to the main size */
+div.callout.definition .callout-header,
+div.callout.definition .callout-body {
+    /* Uses the global Reveal.js font size variable */
+    font-size: var(--r-main-font-size, 24pt); 
+}

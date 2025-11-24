@@ -1,0 +1,455 @@
+---
+title: "Transistor Capacitances"
+subtitle: "EEE 131 THX2/Y"
+author: "Lawrence Quizon"
+institute:  
+    Electrical and Electronics Engineering Institute<br>
+    University of the Philippines <br>
+    Diliman
+title-slide-attributes:
+    align: left
+format:
+  revealjs: 
+    slide-number: true
+    # chalkboard: 
+      # buttons: false
+    preview-links: auto
+    theme:
+        - default
+        - ../law.scss
+    footer: "Transistor Capacitances"
+    fontsize: 24pt
+    menu: false 
+    width: 1280
+    height: 720
+    filters:
+      - scripts/auto-fragment.lua
+    # slide-tone: true
+    # embed-resources: true
+    # self-contained-math: true
+    # html-math-method: katex
+mainfont: Trebuchet MS
+sansfont: Trebuchet MS
+---
+
+## General Frequency Response
+
+Most amplifiers have a frequency response that looks like the following:
+![](figures/midband.png)
+
+<!-- ## General Frequency Response
+
+Most amplifiers have a frequency response that looks like the following:
+
+![](figures/midband.svg) -->
+
+## Everything is a capacitor
+
+:::{.fragment .fade-in-then-semi-out}
+
+If something holds charge, it is a capacitor.
+
+$$C = \frac{dQ}{dV} $$
+:::
+
+. . .
+
+Hence, everywhere in semiconductor devices where there are holes and electrons moving in and out there is [capacitance]{.fragment .highlight-blue}.
+
+::::{.columns}
+
+:::{.column width=".47" .fragment .fade-up}
+![](figures/bjtcarriercon.png)
+:::
+:::{.column width=".47" .fragment .fade-up}
+![](figures/mos.png)
+:::
+
+::::
+
+
+# BJT Parasitics
+
+## BJT Parasitics
+
+:::: {.columns}
+
+::: {.column width=".70"}
+There are two main parasitic capacitances in a BJT:
+
+::: {.incremental}
+- Base-Emitter Capacitance $C_{\pi} = C_b + C_{je}$ (Base Charging Capacitance + Base-Emitter Junction Capacitance)
+- Base-Collector Capacitance $C_{\mu}$
+:::
+
+:::
+
+::: {.column width=".30"}
+
+![](figures/bjt_schem_par.png){width=60% fig-align="center"}
+
+:::
+
+::::
+
+## The base charging capacitance $C_b$   {auto-animate="true"}
+
+:::{.fragment }
+Before we start using the BJT, there is effectively "no charge" in the base region.
+:::
+
+:::{.fragment}
+However, as we turn the BJT on, the emitter starts to inject carriers ([charge]{data-id="base"}) into the base.
+:::
+
+![](figures/bjtactiveconcentration.png){width=100% fig-align="center"}
+
+## The base charging capacitance $C_b$   {auto-animate="true"}
+
+:::{.fragment .fade-in-then-semi-out}
+The amount of carrier [charge]{data-id="base"} entering/exiting the base per second is $I_{C}$
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+If the amount of time a carrier spends in the base is $\tau_F$, then the total charge stored in the base is:
+$$ Q_B =  I_C \tau_F $$ 
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+So then a change in $V_{BE}$ can cause a change in $Q_B$ through $I_C$:
+:::
+
+::: r-stack
+::: {.fragment .fade-in-then-out}
+$$ C_b = \frac{dQ_B}{dV_{BE}} $$
+:::
+::: {.fragment .fade-in-then-out}
+$$ C_b = \frac{dQ_B}{dV_{BE}} = \frac{d(I_C \tau_F)}{dV_{BE}} $$ 
+:::
+::: {.fragment .fade-in-then-semi-out}
+$$ C_b = \frac{dQ_B}{dV_{BE}} = \frac{d(I_C \tau_F)}{dV_{BE}} = \tau_F \frac{dI_C}{dV_{BE}} $$ 
+:::
+::: 
+
+:::{.fragment .fade-in-then-semi-out}
+Hence,
+
+$$ C_b = \tau_F g_m $$ 
+:::
+
+## The BE Junction Capacitance $C_{je}$
+
+::::{.columns .fragment .fade-up}
+:::{.column width=".47"}
+A depletion region **is a region with charges**. 
+:::
+:::{.column width=".47"}
+
+![](figures/image.png)
+:::
+::::
+
+::::{.columns .fragment .fade-up}
+:::{.column width=".47"}
+
+As we discussed before, the width of the depletion region changes with applied voltage. It is known that $W_{dep} \propto \sqrt{V_{bi} - V_{BE}}$. 
+:::
+:::{.column width=".47"}
+
+![](figures/depWidth.png)
+:::
+::::
+
+## The BE Junction Capacitance $C_{je}$ {style="font-size:20pt;"}
+
+:::{.fragment .fade-in-then-semi-out}
+Hence, since $Q_{dep} \propto W_{dep}$, we have that some constant of proportionality $\alpha$ exists such that:
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$ Q_{dep} = \alpha \sqrt{V_{bi} - V_{BE}} $$ 
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$ C_{je} = \left|\frac{dQ_{dep}}{dV_{BE}}\right| = \left|\alpha \frac{d(\sqrt{V_{bi} - V_{BE}})}{dV_{BE}}\right| = \left|-\frac{\alpha}{2\sqrt{V_{bi} - V_{BE}}}\right|  = \frac{\alpha}{2\sqrt{V_{bi}}\sqrt{1 - V_{BE}/V_{bi}}}$$ 
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+We can treat $\frac{\alpha}{2\sqrt{V_{bi}}}$ as a constant $C_{je0}$:
+
+$$ C_{je} = \frac{C_{je0}}{\sqrt{1 - V_{BE}/V_{bi}}} = \frac{C_{je0}}{\sqrt{1 - V_{BE}/V_{j,BE}}} $$ 
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+and we see that $C_{je0}$ is base-emitter junction capacitance measured at $V_{BE} = 0$ V. We also typically refer to $V_{bi}$ for the BE junction as $V_{j,BE}$.
+:::
+
+## The BE Junction Capacitance $C_{je}$ 
+
+$$\frac{C_{je0}}{\sqrt{1 - V_{BE}/V_{j,BE}}}$$
+
+![](figures/cje.svg "$C_{je} vs V_{BE}$"){width=150% fig-align="center" style="margin-top:-1em;"}
+
+## The BC Junction Capacitance $C_{\mu}$
+
+[Likewise, the BC junction's depletion region also has a capacitance. We call this $C_{\mu}$.
+]{.fragment .fade-in-then-semi-out}
+
+[Since it's usually reverse biased, we replace $V_{BE}$ with $V_{CB}$ and negate the sign in the denominator:
+]{.fragment .fade-in-then-semi-out}
+
+[$$ C_{\mu} = \frac{C_{\mu0}}{\sqrt{1 + V_{CB}/V_{j,CB}}} $$
+]{.fragment .fade-in-then-semi-out}
+
+:::{.callout-note .fragment .fade-up style="font-size:32pt;"}
+We call it $C_\mu$ and not $C_{jc}$ because of its position in the _small-signal equivalent_.
+$\mu$ is traditionally used to represent voltage feedback from output to input in the hybrid-pi model.
+:::
+
+## BJT Parasitics Summary
+
+::::{.columns}
+:::{.column width="70%"}
+
+::: {.incremental}
+- $C\mu$ - Junction capacitance between B and C
+- $C_\pi = C_b + C_{je}$ 
+    - $C_b$ - Capacitance from carriers crossing the base
+    - $C_{je}$ - Junction capacitance between B and E
+:::
+
+::: {.callout-tip .fragment style="font-size:30pt;"}
+$C_\mu$ and is typically around 5fF-10fF.
+
+$C_{je}$ is a little higher, about $>10fF$.
+
+$C_b$ is typically around hundreds of fF.
+:::
+
+:::
+:::{.column width="30%"}
+![](figures/bjt_schem_par.png){fig-align="center"}
+:::
+::::
+
+## BJT Small Signal Model with Capacitances {auto-animate=True}
+
+![](figures/bjtparasitics.png){fig-align="center"}
+
+::: {.columns}
+::: {.column width=33%}
+$$C\pi=C_b+C_{je}$$
+$$C_b=\tau_Fg_m$$
+:::
+::: {.column width=33%}
+$$\frac{C_{je0}}{\sqrt{1 - V_{BE}/V_{j,BE}}}$$
+:::
+::: {.column width=33%}
+$$ C_{\mu} = \frac{C_{\mu0}}{\sqrt{1 + V_{CB}/V_{j,CB}}} $$
+:::
+:::
+
+# MOS Parasitics
+
+## MOS Parasitics
+
+:::::{.columns}
+:::{.column width="50%"}
+
+The MOS has three sources of parasitics:
+
+- Drain/Source to Bulk Junction Capacitance $C_{db}$,$C_{sb}$ <br>
+    [- Same as earlier.]{.fragment .red-in-then-semi-out}
+
+- Gate-bulk capacitance $C_{gb}$<br>
+    [- The MOS Capacitor. Remember this?]{.fragment .red-in-then-semi-out}
+
+- Gate-overlap capacitance $C_{gs}$ <br>
+    [- MOS Capacitor but we accidentally do it to S/D.]{.fragment .red-in-then-semi-out}
+:::
+:::{.column .vcentered width="50%"}
+
+![](figures/mosparasitics.png)
+:::
+::::
+
+## MOS Parasitics
+
+![](figures/mosparasitics.png){.nostretch width=200vw fig-align="center"}
+
+
+## Overlap Capacitances $C_{GS}$ and $C_{GD}$
+
+::::{.columns}
+:::{.column width="50%"}
+
+::: {.auto-fragment-children style="fade-in-then-semi-out"}
+$C_{GS}$ and $C_{GD}$ are overlap capacitances caused by an effective MOS capacitor on the overlap of the G region to the S and D regions.
+
+$$C_{GS} = C_{GD} = \frac{\epsilon_{ox} x_d W}{t_{ox}}$$
+
+But if you may remember... 
+
+$$C_{ox}=\frac{\epsilon_{ox}}{t_{ox}}$$
+
+$$C_{GS} = C_{GD} = C_{ox}x_dW$$
+:::
+
+:::
+:::{.column width="50%" .vcentered}
+
+![](figures/image%20copy.png)
+:::
+::::
+
+## The Gate-bulk Capacitance $C_{gb}$
+
+![](figures/image%20copy%203.png){fig-align="center"}
+
+::: {.auto-fragment-children style="fade-in-then-semi-out"}
+As we discussed before, the main physical device behind the MOSFET is a MOS capacitor.
+
+$$ C_{gb} = \frac{\epsilon_{ox}}{t_{ox}}WL $$
+:::
+
+## The Drain-bulk and Source-bulk Capacitances $C_{db}$,$C_{sb}$
+
+$C_{db}$ and $C_{sb}$ come from [junction capacitances]{.fragment .highlight-blue}
+ of the PN junction formed by the [opposite-type semiconductors]{.fragment .highlight-blue}
+  of the drain/source and the bulk.
+
+![](figures/image%20copy%203.png){fig-align="center"}
+
+## MOSFET Capacitances
+
+::::{.columns}
+:::{.column width="40%"}
+MOS Parallel Plate Capacitances
+
+- $C_{gs}$
+- $C_{gd}$
+- $C_{gb}$
+
+S/D-Bulk Junction Capacitances
+
+- $C_{sb}$
+- $C_{db}$
+
+:::
+:::{.column width="60%"}
+![](figures/mosCapSchem.png)
+:::
+::::
+
+## Effective MOS Small-signal with Capacitances
+
+:::{.auto-fragment-children style="fade-in-then-semi-out"}
+The bulk is typically connected to the source meaning:
+
+> $C_{gs}$ typically also accounts for $C_{gb}$.
+
+> $C_{sb}$ is shorted.
+
+So, only $C_{gs}$, $C_{gd}$ and $C_{db}$ survive.
+
+:::
+![](figures/mosSsNoBulk.png){fig-align="center"}
+
+# Special Properties
+
+## The fundamental gains
+
+Let's see what happens to the fundamental gains due to the capacitances:
+
+::::{.columns}
+:::{.column width="50%" .auto-fragment-children style="fade-in-then-semi-out"}
+
+Voltage gain:
+
+$$ \frac{v_o}{r_o || 1/sC\mu} + v_i (g_m + sC\mu) = 0 $$
+
+$$ \frac{v_o}{v_i} = - (g_m + sC\mu)(\frac{r_o}{1+sC\mu r_o}) $$
+
+$$ \frac{v_o}{v_i} = - g_mr_o \frac{(1 + sC\mu/g_m)}{(1+sC\mu r_o)} $$
+
+<!-- - Zero at $g_m/C_\mu$
+- Pole at $r_oC_\mu$ -->
+
+:::
+:::{.column width="50%" .auto-fragment-children style="fade-in-then-semi-out"}
+Current gain: 
+
+$$ i_o = v_i (g_m - sC\mu) $$
+
+$$ i_i = v_i (sC\pi + sC\mu + 1/r_{\pi}) $$
+
+$$ \frac{i_o}{i_i} = \frac{g_m-sC\mu}{1/r_{\pi} + sC_\pi+sC_\mu}$$
+
+$$ \frac{i_o}{i_i} = g_mr_{\pi} \frac{1-sC\mu/g_m}{1+sr_{\pi}(C_\pi+C_\mu)}$$
+
+<!-- - Zero at -$g_m/C_\mu$
+- Pole at zero -->
+
+:::
+::::
+
+## The Transition Frequency $f_T$
+
+::::{.columns}
+:::{.column width="35%" .auto-fragment-children style="fade-in-then-semi-out"}
+You'll notice that the **current gain** reaches 1 (0 dB), but the voltage gain doesn't.
+
+:::{}
+Hence, people measure the "speed of the transistor" or the **transition frequency** as 
+$$ \left| \frac{i_o}{i_i} \right|_{f_T} = 1$$
+:::
+:::
+:::{.column width="65%"}
+![](figures/ft.svg){fig-align="center"}
+:::
+:::: 
+
+## The Transition Frequency $f_T$ {auto-animate="true"}
+
+::: {.auto-fragment-children style="fade-in-then-semi-out"}
+
+$$ \frac{i_o}{i_i} = g_mr_\pi \frac{1-sC\mu/g_m}{s(C_\pi+C_\mu)}$$
+
+$$ \frac{i_o}{i_i} = \frac{g_m-sC\mu}{1/r_\pi + s(C_\pi+C_\mu)}$$
+
+$$ \left| \frac{i_o}{i_i} \right| = \frac{\sqrt{g_m^2 + \omega_T^2C_\mu^2}}{\sqrt{(1/r_\pi)^2 + \omega_T^2(C_\pi+C_\mu)^2}} = 1$$
+
+$$ \frac{g_m^2 + \omega_T^2C_\mu^2}{(1/r_\pi)^2 + \omega_T^2(C_\pi+C_\mu)^2} = 1$$
+:::
+
+## The Transition Frequency $f_T$
+
+::: {.auto-fragment-children style="fade-in-then-semi-out"}
+$$ \frac{g_m^2 + \omega_T^2C_\mu^2}{(1/r_\pi)^2 + \omega_T^2(C_\pi+C_\mu)^2} = 1$$
+
+$$ \omega_T^2 = \frac{g_m^2 - (1/r_\pi)^2}{(C_\pi+C_\mu)^2 - C_\mu^2}$$
+
+Since $g_m^2 \gg 1/r_\pi^2$ and $(C_\pi+C_\mu)^2 \gg C_\mu^2$
+:::
+
+::: {.callout-note icon=false .fragment}
+## Definition
+[$$\omega_T \approx \frac{g_m}{C_\pi + C_\mu}, f_T \approx \frac{g_m}{2\pi(C_\pi + C_\mu)}$$
+]{style="font-size:24pt"}
+:::
+
+## The Transition Frequency $f_T$
+
+For a MOSFET, everything is the same.
+
+Set $r_\pi \rightarrow \infty$
+
+::: {.callout-note icon=false}
+## Definition
+[$$\omega_T \approx \frac{g_m}{C_{gd} + C_{gs}}, f_T \approx \frac{g_m}{2\pi(C_{gd} + C_{gs})}$$
+]{style="font-size:24pt"}
+:::
+
+## The Transition Frequency $f_T$
+
+![](figures/ft.svg){fig-align="center"}
