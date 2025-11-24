@@ -1,0 +1,15 @@
+---
+title: "Notes Center"
+---
+
+<hr>
+
+# Aaaah!
+You're not supposed to be here.
+Please go find a leaf page.
+
+## Nov 24, 2025
+
+Pushed the website
+
+[transistorCapacitances](slides/transistorCapacitances/transistorCapacitances.qmd)
