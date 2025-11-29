@@ -23,9 +23,9 @@ format:
     width: 1280
     height: 720
     filters:
-      - ../scripts/auto-fragment.lua
-    #   - reveal-header
-    # sc-sb-title: true
+      - scripts/auto-fragment.lua
+      - reveal-header
+    sc-sb-title: true
     # slide-tone: true
     # embed-resources: true
     # self-contained-math: true
@@ -138,7 +138,6 @@ Hence,
 
 $$ C_b = \tau_F g_m $$ 
 :::
-
 
 ## The BE Junction Capacitance $C_{je}$
 

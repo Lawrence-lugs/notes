@@ -168,31 +168,416 @@
     "text": "The Transition Frequency \\(f_T\\)\n\n\n\n\nTransistor Capacitances"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Notes Center",
-    "section": "",
-    "text": "Aaaah!\nYou’re not supposed to be here. Please go find a leaf page.\n\n\nLog\ntransistorCapacitances"
-  },
-  {
-    "objectID": "index.html#today",
-    "href": "index.html#today",
-    "title": "Notes Center",
-    "section": "@Today",
-    "text": "@Today\ntransistorCapacitances"
-  },
-  {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
-    "title": "Notes Center",
-    "section": "?meta:date",
-    "text": "?meta:date\ntransistorCapacitances"
-  },
-  {
     "objectID": "index.html#nov-24-2025",
     "href": "index.html#nov-24-2025",
     "title": "Notes Center",
     "section": "Nov 24, 2025",
     "text": "Nov 24, 2025\nPushed the website\ntransistorCapacitances"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#coverage",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#coverage",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Coverage",
+    "text": "Coverage\n\n\nFrequency Response of CS/CE Amplifiers\nCE Amplifier with an Output Pole\nCE Amplifier with an Input Pole"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#the-common-emitter-amplifier-with-an-output-pole",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#the-common-emitter-amplifier-with-an-output-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "The Common Emitter Amplifier with an Output Pole",
+    "text": "The Common Emitter Amplifier with an Output Pole\n\n\nWe begin by analyzing the CE amplifier frequency response.\nAssumptions: ::: {.incremental} - Ignore BJT parasitic capacitances (for now). - Assume \\(r_o \\rightarrow \\infty\\). - An external load capacitance \\(C_L\\) dominates the output.\n\n\n\n\n\n::::"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-gain-a_v",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-gain-a_v",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Gain (\\(A_v\\))",
+    "text": "Deriving the Gain (\\(A_v\\))\n\nBy performing KCL at the output node \\(v_o\\):\n\n\n\\[\\frac{v_o}{R_C || \\frac{1}{sC_L}} + g_m v_{be} = 0\\]\n\n\nSince \\(v_{be} = v_i\\), we can rearrange for the transfer function:\n\n\n\n\\[A_v(s) = \\frac{v_o}{v_i} = -g_m \\left( R_C \\parallel \\frac{1}{sC_L} \\right)\\]\n\n\n\\[A_v(s) = -g_m \\left( \\frac{R_C \\cdot \\frac{1}{sC_L}}{R_C + \\frac{1}{sC_L}} \\right)\\]\n\n\n\\[A_v(s) = -g_m \\left( \\frac{R_C}{1 + sR_C C_L} \\right)\\]\n\n\n\nThis gives us the form: \\[A_v(s) = \\frac{A_0}{1 + s/\\omega_p}\\] where \\(A_0 = -g_m R_C\\) and \\(\\omega_p = \\frac{1}{R_C C_L}\\)."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#magnitude-and-phase-response",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#magnitude-and-phase-response",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Magnitude and Phase Response",
+    "text": "Magnitude and Phase Response\n\n\nMagnitude: \\[|A_v(\\omega)| = \\frac{|A_0|}{\\sqrt{1 + (\\frac{\\omega}{\\omega_p})^2}}\\]\nPhase: \\[\\angle A_v(\\omega) = \\pi - \\tan^{-1}(\\omega R_C C_L)\\]  Note: The \\(\\pi\\) (\\(180^\\circ\\)) shift is due to the negative DC gain (\\(A_0\\))."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-output-impedance-z_o",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-output-impedance-z_o",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Output Impedance \\(Z_o\\)",
+    "text": "CE Output Impedance \\(Z_o\\)\n\n\nTo find \\(Z_o\\), set independent sources to zero (\\(v_i = 0\\)).\n\n\nSince \\(v_i = 0\\), then \\(v_{be} = 0\\).\nConsequently, the dependent source \\(g_m v_{be} = 0\\) (Open Circuit).\n\n\n\n\n\n\n\n\\[Z_o = R_C \\parallel \\frac{1}{j\\omega C_L} = \\frac{R_C}{1 + j\\omega R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-transconductance-g_m",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-transconductance-g_m",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Transconductance \\(G_m\\)",
+    "text": "CE Transconductance \\(G_m\\)\n\nRecalling that \\(A_v = -G_m Z_o\\), we can solve for the effective transconductance:\n\n\n\\[G_m = \\frac{-A_v}{Z_o}\\]\n\n\n\\[G_m = \\frac{-\\left[ \\frac{-g_m R_C}{1 + j\\omega R_C C_L} \\right]}{\\frac{R_C}{1 + j\\omega R_C C_L}}\\]\n\n\n\\[G_m = g_m\\]\n\n\nIn this simplified model, the transconductance is frequency independent."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-input-impedance-z_i",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-input-impedance-z_i",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Input Impedance \\(Z_i\\)",
+    "text": "CE Input Impedance \\(Z_i\\)\n\n\n\\[Z_i = \\frac{v_i}{i_i} \\bigg|_{v_o=0}\\]\nBy simple inspection of the small signal model: \\[Z_i = r_\\pi\\]\nThe input impedance is purely resistive and constant across frequency (in this specific configuration)."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-two-port-equivalent-output-pole-only",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#ce-two-port-equivalent-output-pole-only",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Two-Port Equivalent (Output Pole Only)",
+    "text": "CE Two-Port Equivalent (Output Pole Only)\nWe can construct a two-port network representing the amplifier so far:\n\n\n\n\\[Z_i = r_\\pi\\]\n\n\\[G_m = g_m\\]\n\n\\[Z_o = \\frac{R_C}{1 + sR_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#the-ce-amplifier-with-an-input-pole",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#the-ce-amplifier-with-an-input-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "The CE Amplifier with an Input Pole",
+    "text": "The CE Amplifier with an Input Pole\nNow we add a source resistance \\(R_S\\) and a base-emitter capacitance \\(C_\\pi\\).\n\nWe must determine how \\(v_{be}\\) relates to \\(v_i\\) considering the frequency dependent voltage divider at the input."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-input-transfer-function",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-input-transfer-function",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Input Transfer Function",
+    "text": "Deriving the Input Transfer Function\n\nApplying voltage division at the input loop:\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{Z_\\pi}{Z_\\pi + R_S}\\] where \\(Z_\\pi = r_\\pi \\parallel \\frac{1}{sC_\\pi}\\).\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{\\frac{r_\\pi}{1 + s r_\\pi C_\\pi}}{\\frac{r_\\pi}{1 + s r_\\pi C_\\pi} + R_S}\\]\n\n\nMultiplying numerator and denominator by \\((1 + s r_\\pi C_\\pi)\\): \\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S + s r_\\pi R_S C_\\pi}\\]"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-input-transfer-function-1",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#deriving-the-input-transfer-function-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Input Transfer Function",
+    "text": "Deriving the Input Transfer Function\n\n\\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S + s r_\\pi R_S C_\\pi}\\]\n\n\nWe factor out \\((r_\\pi + R_S)\\) from the denominator to normalize the DC term:\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S} \\left( \\frac{1}{1 + s C_\\pi \\frac{r_\\pi R_S}{r_\\pi + R_S}} \\right)\\]\n\n\nThis results in an input attenuation factor \\(A_{i}\\) and an input pole \\(\\omega_{p1}\\): \\[\\frac{v_{be}}{v_i} = A_i \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p1}}}\\] where \\(A_i = \\frac{r_\\pi}{r_\\pi + R_S}\\) and \\(\\omega_{p1} = \\frac{1}{C_\\pi (r_\\pi \\parallel R_S)}\\)."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#total-transfer-function",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#total-transfer-function",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Total Transfer Function",
+    "text": "Total Transfer Function\nWe combine the input section response (\\(A_1\\)) with the output section response (\\(A_2\\)).\n\\[A_v(s) = \\underbrace{\\left( \\frac{v_{be}}{v_i} \\right)}_{\\text{Input Section}} \\cdot \\underbrace{\\left( \\frac{v_o}{v_{be}} \\right)}_{\\text{Output Section}}\\]\n\n\\[A_v(s) = \\left[ \\frac{r_\\pi}{r_\\pi + R_S} \\cdot \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p1}}} \\right] \\cdot \\left[ -g_m R_C \\cdot \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p2}}} \\right]\\]\n\n\n\n\n\n\n\n\nTotal Gain\n\n\n\\[A_v(s) = A_{mid} \\frac{1}{(1 + j\\frac{\\omega}{\\omega_{p1}})(1 + j\\frac{\\omega}{\\omega_{p2}})}\\] \\[\\omega_{p1} = \\frac{1}{C_\\pi (r_\\pi \\parallel R_S)}, \\quad \\omega_{p2} = \\frac{1}{R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#magnitude-response-two-poles",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#magnitude-response-two-poles",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Magnitude Response (Two Poles)",
+    "text": "Magnitude Response (Two Poles)\nTypically, the output pole \\(\\omega_{p2}\\) is lower frequency than the input pole \\(\\omega_{p1}\\).\n\n\n\nFlat gain up to \\(\\omega_{p2}\\).\nSlope of \\(-20\\) dB/dec between \\(\\omega_{p2}\\) and \\(\\omega_{p1}\\).\nSlope of \\(-40\\) dB/dec after \\(\\omega_{p1}\\)."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#phase-response",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#phase-response",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Phase Response",
+    "text": "Phase Response\nThe phase response depends on the separation of the poles.\n\\[\\angle A_v(\\omega) = 180^\\circ - \\tan^{-1}\\left(\\frac{\\omega}{\\omega_{p1}}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{\\omega_{p2}}\\right)\\]\n\n\nWidely Separated If poles are far apart, the phase drops in distinct steps. \n\nClose Proximity If poles are close, the phase shifts merge, creating a steeper descent."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#frequency-dependent-parameters",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#frequency-dependent-parameters",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Frequency Dependent Parameters",
+    "text": "Frequency Dependent Parameters\nWe can generalize the two-port parameters to include frequency effects:\n\n\nInput Impedance \\(Z_i(\\omega)\\) \\[Z_i(\\omega) = R_S + \\frac{r_\\pi}{1 + j\\omega r_\\pi C_\\pi}\\] Derivation involves simple series/parallel combination of \\(R_S, r_\\pi, C_\\pi\\).\n\nTransconductance \\(G_m(\\omega)\\) \\[G_m(\\omega) = \\frac{g_m}{1 + j\\omega (R_S \\parallel r_\\pi) C_\\pi} \\cdot \\frac{r_\\pi}{r_\\pi + R_S}\\] Effective transconductance rolls off due to the input pole."
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#next-lecture",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#next-lecture",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Next Lecture",
+    "text": "Next Lecture\n\n\nMiller Capacitance\n\nWhat happens when a capacitor connects Input and Output?\n\nBypass and Coupling Capacitors\n\nEffect on Low Frequency Response"
+  },
+  {
+    "objectID": "slides/ceFrequencyResponse/ceFrequencyResponse.html#end-of-part-1",
+    "href": "slides/ceFrequencyResponse/ceFrequencyResponse.html#end-of-part-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "End of Part 1",
+    "text": "End of Part 1\n\n\n\nFrequency Response of CE Amplifier"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#coverage",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#coverage",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Coverage",
+    "text": "Coverage\n\n\nFrequency Response of CS/CE Amplifiers\nCE Amplifier with an Output Pole\nCE Amplifier with an Input Pole"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#the-common-emitter-amplifier-with-an-output-pole",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#the-common-emitter-amplifier-with-an-output-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "The Common Emitter Amplifier with an Output Pole",
+    "text": "The Common Emitter Amplifier with an Output Pole\n\n\nWe begin by analyzing the CE amplifier frequency response.\nAssumptions:\n\n\nIgnore BJT parasitic capacitances (for now).\nAssume \\(r_o \\rightarrow \\infty\\).\nAn external load capacitance \\(C_L\\) dominates the output."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-gain-a_v",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-gain-a_v",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Gain (\\(A_v\\))",
+    "text": "Deriving the Gain (\\(A_v\\))\n\nKCL @ \\(v_o\\):\n\n\n\\[\\frac{v_o}{R_C || \\frac{1}{sC_L}} + g_m v_i = 0\\]\n\n\nThen, rearranging, \\[A_v(s) = -g_mR_C \\left( \\frac{1}{1 + sR_C C_L} \\right)\\]\n\n\nand we have the form\n\\[A_v(s) = A_0 \\left( \\frac{1}{1 + s/p_1} \\right) \\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#magnitude-and-phase-response",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#magnitude-and-phase-response",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Magnitude and Phase Response",
+    "text": "Magnitude and Phase Response\n\n\nMagnitude: \\[|A_v(\\omega)| = \\frac{|A_0|}{\\sqrt{1 + (\\frac{\\omega}{\\omega_p})^2}}\\]\nPhase: \\[\\angle A_v(\\omega) = \\pi - \\tan^{-1}(\\omega R_C C_L)\\]  Note: The \\(\\pi\\) (\\(180^\\circ\\)) shift is due to the negative DC gain (\\(A_0\\))."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-output-impedance-z_o",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-output-impedance-z_o",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Output Impedance \\(Z_o\\)",
+    "text": "CE Output Impedance \\(Z_o\\)\n\n\nTo find \\(Z_o\\), set independent sources to zero (\\(v_i = 0\\)).\n\n\nSince \\(v_i = 0\\), then \\(v_{be} = 0\\).\nConsequently, the dependent source \\(g_m v_{be} = 0\\) (Open Circuit).\n\n\n\n\n\n\n\n\\[Z_o = R_C \\parallel \\frac{1}{j\\omega C_L} = \\frac{R_C}{1 + j\\omega R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-transconductance-g_m",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-transconductance-g_m",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Transconductance \\(G_m\\)",
+    "text": "CE Transconductance \\(G_m\\)\n\nRecalling that \\(A_v = -G_m Z_o\\), we can solve for the effective transconductance:\n\n\n\\[G_m = \\frac{-A_v}{Z_o}\\]\n\n\n\\[G_m = \\frac{-\\left[ \\frac{-g_m R_C}{1 + j\\omega R_C C_L} \\right]}{\\frac{R_C}{1 + j\\omega R_C C_L}}\\]\n\n\n\\[G_m = g_m\\]\n\n\nIn this simplified model, the transconductance is frequency independent."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-input-impedance-z_i",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-input-impedance-z_i",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Input Impedance \\(Z_i\\)",
+    "text": "CE Input Impedance \\(Z_i\\)\n\n\n\\[Z_i = \\frac{v_i}{i_i} \\bigg|_{v_o=0}\\]\nBy simple inspection of the small signal model: \\[Z_i = r_\\pi\\]\nThe input impedance is purely resistive and constant across frequency (in this specific configuration)."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-two-port-equivalent-output-pole-only",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-two-port-equivalent-output-pole-only",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Two-Port Equivalent (Output Pole Only)",
+    "text": "CE Two-Port Equivalent (Output Pole Only)\nWe can construct a two-port network representing the amplifier so far:\n\n\n\n\\[Z_i = r_\\pi\\]\n\n\\[G_m = g_m\\]\n\n\\[Z_o = \\frac{R_C}{1 + sR_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#the-ce-amplifier-with-an-input-pole",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#the-ce-amplifier-with-an-input-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "The CE Amplifier with an Input Pole",
+    "text": "The CE Amplifier with an Input Pole\nNow we add a source resistance \\(R_S\\) and a base-emitter capacitance \\(C_\\pi\\).\n\nWe must determine how \\(v_{be}\\) relates to \\(v_i\\) considering the frequency dependent voltage divider at the input."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-input-transfer-function",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-input-transfer-function",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Input Transfer Function",
+    "text": "Deriving the Input Transfer Function\n\nApplying voltage division at the input loop:\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{Z_\\pi}{Z_\\pi + R_S}\\] where \\(Z_\\pi = r_\\pi \\parallel \\frac{1}{sC_\\pi}\\).\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{\\frac{r_\\pi}{1 + s r_\\pi C_\\pi}}{\\frac{r_\\pi}{1 + s r_\\pi C_\\pi} + R_S}\\]\n\n\nMultiplying numerator and denominator by \\((1 + s r_\\pi C_\\pi)\\): \\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S + s r_\\pi R_S C_\\pi}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-input-transfer-function-1",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#deriving-the-input-transfer-function-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Deriving the Input Transfer Function",
+    "text": "Deriving the Input Transfer Function\n\n\\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S + s r_\\pi R_S C_\\pi}\\]\n\n\nWe factor out \\((r_\\pi + R_S)\\) from the denominator to normalize the DC term:\n\n\n\\[\\frac{v_{be}}{v_i} = \\frac{r_\\pi}{r_\\pi + R_S} \\left( \\frac{1}{1 + s C_\\pi \\frac{r_\\pi R_S}{r_\\pi + R_S}} \\right)\\]\n\n\nThis results in an input attenuation factor \\(A_{i}\\) and an input pole \\(\\omega_{p1}\\): \\[\\frac{v_{be}}{v_i} = A_i \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p1}}}\\] where \\(A_i = \\frac{r_\\pi}{r_\\pi + R_S}\\) and \\(\\omega_{p1} = \\frac{1}{C_\\pi (r_\\pi \\parallel R_S)}\\)."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#total-transfer-function",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#total-transfer-function",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Total Transfer Function",
+    "text": "Total Transfer Function\nWe combine the input section response (\\(A_1\\)) with the output section response (\\(A_2\\)).\n\\[A_v(s) = \\underbrace{\\left( \\frac{v_{be}}{v_i} \\right)}_{\\text{Input Section}} \\cdot \\underbrace{\\left( \\frac{v_o}{v_{be}} \\right)}_{\\text{Output Section}}\\]\n\n\\[A_v(s) = \\left[ \\frac{r_\\pi}{r_\\pi + R_S} \\cdot \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p1}}} \\right] \\cdot \\left[ -g_m R_C \\cdot \\frac{1}{1 + j\\frac{\\omega}{\\omega_{p2}}} \\right]\\]\n\n\n\n\n\n\n\n\nTotal Gain\n\n\n\\[A_v(s) = A_{mid} \\frac{1}{(1 + j\\frac{\\omega}{\\omega_{p1}})(1 + j\\frac{\\omega}{\\omega_{p2}})}\\] \\[\\omega_{p1} = \\frac{1}{C_\\pi (r_\\pi \\parallel R_S)}, \\quad \\omega_{p2} = \\frac{1}{R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#magnitude-response-two-poles",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#magnitude-response-two-poles",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Magnitude Response (Two Poles)",
+    "text": "Magnitude Response (Two Poles)\nTypically, the output pole \\(\\omega_{p2}\\) is lower frequency than the input pole \\(\\omega_{p1}\\).\n\n\n\nFlat gain up to \\(\\omega_{p2}\\).\nSlope of \\(-20\\) dB/dec between \\(\\omega_{p2}\\) and \\(\\omega_{p1}\\).\nSlope of \\(-40\\) dB/dec after \\(\\omega_{p1}\\)."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#phase-response",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#phase-response",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Phase Response",
+    "text": "Phase Response\nThe phase response depends on the separation of the poles.\n\\[\\angle A_v(\\omega) = 180^\\circ - \\tan^{-1}\\left(\\frac{\\omega}{\\omega_{p1}}\\right) - \\tan^{-1}\\left(\\frac{\\omega}{\\omega_{p2}}\\right)\\]\n\n\nWidely Separated If poles are far apart, the phase drops in distinct steps. \n\nClose Proximity If poles are close, the phase shifts merge, creating a steeper descent."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#frequency-dependent-parameters",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#frequency-dependent-parameters",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Frequency Dependent Parameters",
+    "text": "Frequency Dependent Parameters\nWe can generalize the two-port parameters to include frequency effects:\n\n\nInput Impedance \\(Z_i(\\omega)\\) \\[Z_i(\\omega) = R_S + \\frac{r_\\pi}{1 + j\\omega r_\\pi C_\\pi}\\] Derivation involves simple series/parallel combination of \\(R_S, r_\\pi, C_\\pi\\).\n\nTransconductance \\(G_m(\\omega)\\) \\[G_m(\\omega) = \\frac{g_m}{1 + j\\omega (R_S \\parallel r_\\pi) C_\\pi} \\cdot \\frac{r_\\pi}{r_\\pi + R_S}\\] Effective transconductance rolls off due to the input pole."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#next-lecture",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#next-lecture",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Next Lecture",
+    "text": "Next Lecture\n\n\nMiller Capacitance\n\nWhat happens when a capacitor connects Input and Output?\n\nBypass and Coupling Capacitors\n\nEffect on Low Frequency Response"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#end-of-part-1",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#end-of-part-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "End of Part 1",
+    "text": "End of Part 1\n\n\n\nFrequency Response of CE Amplifier"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-amplifier-with-an-output-pole",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-amplifier-with-an-output-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Amplifier with an Output Pole",
+    "text": "CE Amplifier with an Output Pole\n\n\nWe begin by analyzing the CE amplifier frequency response.\nAssumptions:\n\n\nIgnore BJT parasitic capacitances (for now).\nAssume \\(r_o \\rightarrow \\infty\\).\nAn external load capacitance \\(C_L\\) dominates the output."
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-amplifier-with-an-output-pole-1",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-amplifier-with-an-output-pole-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE Amplifier with an Output Pole",
+    "text": "CE Amplifier with an Output Pole\n\nKCL @ \\(v_o\\):\n\n\n\\[\\frac{v_o}{R_C || \\frac{1}{sC_L}} + g_m v_i = 0\\]\n\n\nThen, rearranging, \\[A_v(s) = -g_mR_C \\left( \\frac{1}{1 + sR_C C_L} \\right)\\]\n\n\nand we have the form\n\\[A_v(s) = A_0 \\left( \\frac{1}{1 + s/p_1} \\right) \\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Pole",
+    "text": "CE with Output Pole"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#frequency-response-simulation",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#frequency-response-simulation",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Frequency Response Simulation",
+    "text": "Frequency Response Simulation"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poless",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poless",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Poless",
+    "text": "CE with Output Poless"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Poles",
+    "text": "CE with Output Poles\n\\[A_v(s) = -g_mR_C \\left( \\frac{1}{1 + sR_C C_L} \\right)\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#interactive-frequency-response",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#interactive-frequency-response",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Interactive Frequency Response",
+    "text": "Interactive Frequency Response\n::: {.columns}\n\n\nviewof gm_val = Inputs.range([1, 100], {value: 40, step: 1, label: \"gm (mS)\"})\nviewof ro_exp = Inputs.range([3, 6], {value: 5, step: 0.1, label: \"ro (10^x Ω)\"})\nviewof CL_exp = Inputs.range([-13, -10], {value: -11.4, step: 0.1, label: \"CL (10^x F)\"})\n\n// 2. REACTIVE VARIABLES\ngm = gm_val / 1000\nro = Math.pow(10, ro_exp)\nCL = Math.pow(10, CL_exp)\n\nmd`\n**Values:**\n- $g_m$: ${gm_val.toFixed(1)} mS\n- $r_o$: ${ro.toExponential(2)} $\\Omega$\n- $C_L$: ${CL.toExponential(2)} F\n- **DC Gain**: ${(20 * Math.log10(gm * ro)).toFixed(1)} dB\n`"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#interactive-frequency-responses",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#interactive-frequency-responses",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "Interactive Frequency Responses",
+    "text": "Interactive Frequency Responses"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-gain",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-gain",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Poles: \\(Gain\\)",
+    "text": "CE with Output Poles: \\(Gain\\)\n\\[A_v(s) = -g_mR_C \\left( \\frac{1}{1 + sR_C C_L} \\right)\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-gain-1",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-gain-1",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Poles: Gain",
+    "text": "CE with Output Poles: Gain\n\n\nTo find \\(Z_o\\), set independent sources to zero (\\(v_i = 0\\)).\n\n\nSince \\(v_i = 0\\), then \\(v_{be} = 0\\).\nConsequently, the dependent source \\(g_m v_{be} = 0\\) (Open Circuit).\n\n\n\n\n\n\n\n\\[Z_o = R_C \\parallel \\frac{1}{j\\omega C_L} = \\frac{R_C}{1 + j\\omega R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-r_o",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-r_o",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Pole: \\(R_o\\)",
+    "text": "CE with Output Pole: \\(R_o\\)"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-r_o4",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-r_o4",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Pole: $R_o4",
+    "text": "CE with Output Pole: $R_o4\n\n\nTo find \\(Z_o\\), set independent sources to zero (\\(v_i = 0\\)).\n\n\nSince \\(v_i = 0\\), then \\(v_{be} = 0\\).\nConsequently, the dependent source \\(g_m v_{be} = 0\\) (Open Circuit).\n\n\n\n\n\n\n\n\\[Z_o = R_C \\parallel \\frac{1}{j\\omega C_L} = \\frac{R_C}{1 + j\\omega R_C C_L}\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-a_v",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-poles-a_v",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Poles: \\(A_V\\)",
+    "text": "CE with Output Poles: \\(A_V\\)\n\\[A_v(s) = -g_mR_C \\left( \\frac{1}{1 + sR_C C_L} \\right)\\]"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-g_m",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-g_m",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Pole: \\(G_m\\)",
+    "text": "CE with Output Pole: \\(G_m\\)"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with",
+    "text": "CE with"
+  },
+  {
+    "objectID": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-z_i",
+    "href": "slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html#ce-with-output-pole-z_i",
+    "title": "Frequency Response of CE Amplifier",
+    "section": "CE with Output Pole: \\(Z_i\\)",
+    "text": "CE with Output Pole: \\(Z_i\\)"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-1",
+    "href": "slides/patentingBad/patentingBad.html#slide-1",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 1",
+    "text": "Slide 1\nThe Problem with “Patent-First” Policies\n\nPolicy & funding often equate patent count with innovation output\n\nBut does this reflect real technological capacity, economic value, or research strength?\n\nWe examine empirical evidence for a more robust alternative: research → publications → quality patents"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-2",
+    "href": "slides/patentingBad/patentingBad.html#slide-2",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 2",
+    "text": "Slide 2\nKey Insight from Recent Studies\n\nHigh-quality scientific research underpins commercially valuable patents. :contentReferenceoaicite:9\n\nIn weak or emerging research ecosystems, most innovations never produce patents. :contentReferenceoaicite:10\n\nEarly explosion in patent filings does not guarantee high-impact or licensable patents. :contentReferenceoaicite:11"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-3",
+    "href": "slides/patentingBad/patentingBad.html#slide-3",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 3",
+    "text": "Slide 3\nCase Study: U.S. University Patenting Post-Bayh–Dole\n\nPatenting rose—but began even before the law’s 1980 passage. :contentReferenceoaicite:12\n\nNewly patenting universities produced patents with fewer citations → lower “value.” :contentReferenceoaicite:13\n\nConclusion: Incentives alone don’t equal quality or success :contentReferenceoaicite:14"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-4",
+    "href": "slides/patentingBad/patentingBad.html#slide-4",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 4",
+    "text": "Slide 4\nFirm-Level & SME Evidence: Patents vs Profitability\n\nAmong tech-firms: patents that survive &gt;6 yrs and with many claims → better profitability. :contentReferenceoaicite:15\n\nBut heavy R&D spending with weak patents reduces that benefit → “over-patenting” is counterproductive. :contentReferenceoaicite:16\n\nFor SMEs: patents boost sales but often not profitability — patents ≠ sustainable business success. :contentReferenceoaicite:17"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-5",
+    "href": "slides/patentingBad/patentingBad.html#slide-5",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 5",
+    "text": "Slide 5\nWhat This Means for Emerging-R&D Nations / Universities\n\nRushing to file patents without a strong research base → many low-value patents\n\nPatent-first policies can drain resources (filing costs, maintenance fees) with little return\n\nReal innovation requires: talent + funding + open research + publications + prototypes + industry collaboration — patents come after"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-6",
+    "href": "slides/patentingBad/patentingBad.html#slide-6",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 6",
+    "text": "Slide 6\nRecommended “Pipeline-First” Innovation Strategy\n\nFund and build strong graduate & research programs\n\nPrioritize academic publications, open tools, and open-source designs\n\nDevelop labs, prototyping capability, and industry collaborations\n\nOnly patent when there is verified scientific output + demonstrated technical viability + potential industrial value"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-7",
+    "href": "slides/patentingBad/patentingBad.html#slide-7",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 7",
+    "text": "Slide 7\nConclusion: Patents are outputs, not starting points\n\nPatent counts by themselves are a misleading metric\n\nEvidence shows that quality of research and depth of ecosystem matter more than sheer patent numbers\n\nFor a developing-nation context like ours, the real goal should be building research capacity — not chasing patent counts"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#slide-8",
+    "href": "slides/patentingBad/patentingBad.html#slide-8",
+    "title": "Why Patents Alone Are a Poor Innovation Metric — and What Works Better",
+    "section": "Slide 8",
+    "text": "Slide 8\nReferences\n\nPoege, Harhoff, Gaessler, Baruffaldi, 2019 — Science Quality and the Value of Inventions :contentReferenceoaicite:18\n\nTaalbi, 2022 — Innovation with and without patents :contentReferenceoaicite:19\n\nMowery, Nelson, Sampat & Ziedonis, 2001 — The growth of patenting and licensing by U.S. universities :contentReferenceoaicite:20\n\nRecent firm-level study 2025 — Patent quality, R&D investment, and the profitability of technology-based firms :contentReferenceoaicite:21\n\nSME longitudinal study 2023/2024 — SMEs and patents: Is it worth it? :contentReferenceoaicite:22"
   }
 ]
