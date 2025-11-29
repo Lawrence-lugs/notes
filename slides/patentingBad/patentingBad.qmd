@@ -61,6 +61,10 @@ format: revealjs
 
 ---
 
+## On Innovation vs the Policy
+
+![](innovation_timeseries_by_country.png)
+
 ## Slide 8  
 ### References  
 - Poege, Harhoff, Gaessler, Baruffaldi, 2019 — *Science Quality and the Value of Inventions* :contentReference[oaicite:18]{index=18}  
