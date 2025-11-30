@@ -3,7 +3,7 @@ function Div(el)
     
     -- 1. Check for a custom style attribute
     -- Default to 'fade-in-then-semi-out' if not provided
-    local anim_style = el.attributes['style'] or 'fade-in'
+    local anim_style = el.attributes['style'] or 'fade-in-then-semi-out'
     
     -- 2. Remove the 'style' attribute from the parent 
     -- (so it doesn't render as invalid CSS in the final HTML)

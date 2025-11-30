@@ -1,75 +1,91 @@
 ---
-title: "Why Patents Alone Are a Poor Innovation Metric — and What Works Better"
-author: "Your Name"
-format: revealjs
+title: "Patents Are a Poor Innovation Metric"
+author: "Lawrence Quizon"
+format: 
+    revealjs:
+        theme: 
+        - ../law.scss
+        filters:
+        - ../scripts/auto-fragment.lua
 ---
 
-## Slide 1  
-### The Problem with “Patent-First” Policies  
-- Policy & funding often equate **patent count** with **innovation output**  
-- But does this reflect real technological capacity, economic value, or research strength?  
-- We examine empirical evidence for a more robust alternative: **research → publications → quality patents**
+## The Problem with “Patent-First” Policies  
+Misconception:
+- **patent count** with **real innovation output**
 
----
+While it is true that there is correlation between **patents** and **innovation**, this is not causation.
+Are we really supposed to prioritize the creation of patents?
 
-## Slide 2  
-### Key Insight from Recent Studies  
-- High-quality scientific research underpins commercially valuable patents. :contentReference[oaicite:9]{index=9}  
-- In weak or emerging research ecosystems, most innovations never produce patents. :contentReference[oaicite:10]{index=10}  
-- Early explosion in patent filings does **not** guarantee high-impact or licensable patents. :contentReference[oaicite:11]{index=11}  
+## What Patents are
 
----
+A protection of the rights of the inventor over their work.
+As objects that protect intellectual property, these are:
 
-## Slide 3  
-### Case Study: U.S. University Patenting Post-Bayh–Dole  
-- Patenting rose—but began even *before* the law’s 1980 passage. :contentReference[oaicite:12]{index=12}  
-- Newly patenting universities produced patents with fewer citations → lower “value.” :contentReference[oaicite:13]{index=13}  
-- Conclusion: **Incentives alone don’t equal quality or success** :contentReference[oaicite:14]{index=14}  
+- Long-winded, full of legal jargon
+- Expensive to file due to being a law construct
+- Barriers to collaboration and knowledge dissemination
 
----
+No student would read a patent. Neither would I- very little knowledge value can be found in patents.
+In fact, most patents do not become useful.
 
-## Slide 4  
-### Firm-Level & SME Evidence: Patents vs Profitability  
-- Among tech-firms: patents that survive >6 yrs and with many claims → better profitability. :contentReference[oaicite:15]{index=15}  
-- But heavy R&D spending with weak patents reduces that benefit → “over-patenting” is counterproductive. :contentReference[oaicite:16]{index=16}  
-- For SMEs: patents boost sales but often not profitability — patents ≠ sustainable business success. :contentReference[oaicite:17]{index=17}  
+## Patents are the result, not the cause
 
----
+:::{.auto-fragment-children}
+After a strong research foundation has already been created, patents start to appear due to the commercializability of the new knowledge being produced.
 
-## Slide 5  
-### What This Means for Emerging-R&D Nations / Universities  
+The Bayh-Dole Act is a US law that incentivized the filing of patents by Universities. **Mowery et al.** found that the Bayh-Dole Act:
+
+- caused an increase in commercially useless patents
+- did not significantly increase the patent output of top universities as these were already producing patents even before it was incentivized.
+:::
+
+## Case Study: U.S. University Patenting Post-Bayh–Dole  
+- Patenting rose—but began even *before* the law’s 1980 passage.   
+- Newly patenting universities produced patents with fewer citations → lower “value.”   
+- Conclusion: **Incentives alone don’t equal quality or success**   
+
+## Firm-Level & SME Evidence: Patents vs Profitability  
+SME longitudinal study 2023/2024
+- Among tech-firms: patents that survive >6 yrs and with many claims → better profitability.   
+- But heavy R&D spending with weak patents reduces that benefit → “over-patenting” is counterproductive.   
+- For SMEs: patents boost sales but often not profitability — patents ≠ sustainable business success.   
+
+## What this means  
+Bayh-Dole
 - Rushing to file patents without a strong research base → many low-value patents  
+SME Evidence
 - Patent-first policies can drain resources (filing costs, maintenance fees) with little return  
 - Real innovation requires: **talent + funding + open research + publications + prototypes + industry collaboration** — patents come *after*  
 
----
+## Innovation Strategy  
+Fund and build strong research programs 
+    
+> These in turn create good graduate programs that produce innovation power.
 
-## Slide 6  
-### Recommended “Pipeline-First” Innovation Strategy  
-1. Fund and build strong graduate & research programs  
-2. Prioritize academic publications, open tools, and open-source designs  
-3. Develop labs, prototyping capability, and industry collaborations  
-4. Only patent when there is **verified scientific output + demonstrated technical viability + potential industrial value**  
+Prioritize academic publications, open tools, and open-source designs. 
 
----
+> Allows a strong knowledge base for students and future researchers
 
-## Slide 7  
-### Conclusion: Patents are *outputs*, not *starting points*  
+<!-- Develop labs, prototyping capability, and industry collaborations  
+
+> Allows the testing of newer and newer ideas and incubate **important long-term useful ideas** to maturity. These can then be patented. -->
+
+## Conclusion
+
+Patents are *outputs*, not *starting points*
+
 - Patent counts by themselves are a misleading metric  
 - Evidence shows that **quality of research** and **depth of ecosystem** matter more than sheer patent numbers  
 - For a developing-nation context like ours, the real goal should be **building research capacity** — not chasing patent counts  
 
----
+## Numbers
 
-## On Innovation vs the Policy
+![](innovation_timeseries_by_country.png){.lightbox}
 
-![](innovation_timeseries_by_country.png)
-
-## Slide 8  
-### References  
-- Poege, Harhoff, Gaessler, Baruffaldi, 2019 — *Science Quality and the Value of Inventions* :contentReference[oaicite:18]{index=18}  
-- Taalbi, 2022 — *Innovation with and without patents* :contentReference[oaicite:19]{index=19}  
-- Mowery, Nelson, Sampat & Ziedonis, 2001 — *The growth of patenting and licensing by U.S. universities* :contentReference[oaicite:20]{index=20}  
-- Recent firm-level study 2025 — *Patent quality, R&D investment, and the profitability of technology-based firms* :contentReference[oaicite:21]{index=21}  
-- SME longitudinal study 2023/2024 — *SMEs and patents: Is it worth it?* :contentReference[oaicite:22]{index=22}  
+## References  
+- Poege, Harhoff, Gaessler, Baruffaldi, 2019 — *Science Quality and the Value of Inventions*   
+- Taalbi, 2022 — *Innovation with and without patents*   
+- Mowery, Nelson, Sampat & Ziedonis, 2001 — *The growth of patenting and licensing by U.S. universities*   
+- Recent firm-level study 2025 — *Patent quality, R&D investment, and the profitability of technology-based firms*   
+- SME longitudinal study 2023/2024 — *SMEs and patents: Is it worth it?*   
 

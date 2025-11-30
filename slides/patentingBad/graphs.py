@@ -19,7 +19,7 @@ countries = {
     "Japan": "JPN",
     "China": "CHN",
 }
-start_year = 1990
+start_year = 1800
 end_year = 2021
 
 # Our World in Data grapher CSV endpoints (derived from World Bank / WDI)
@@ -126,16 +126,43 @@ combined['value'] = pd.to_numeric(combined['value'], errors='coerce')
 # Prepare country-order for facet grid
 country_order = list(countries.keys())
 
+# Normalize values per country and indicator
+def normalize_per_country_indicator(df):
+    df = df.copy()
+    for country in df['country'].unique():
+        for indicator in df['indicator'].unique():
+            mask = (df['country'] == country) & (df['indicator'] == indicator)
+            max_val = df.loc[mask, 'value'].max()
+            if max_val > 0:
+                df.loc[mask, 'value'] = df.loc[mask, 'value'] / max_val
+    return df
+
+combined = normalize_per_country_indicator(combined)
+
 # Plotting
-g = sns.FacetGrid(combined, row='country', hue='indicator', sharey=False,
-                  aspect=3, height=2.5, row_order=country_order,
-                  palette={'patent_applications':'tab:green','publications':'tab:blue','rd_gdp_pct':'tab:red'})
+g = sns.FacetGrid(
+    combined, 
+    col='country', 
+    hue='indicator', 
+    sharey=False,              
+    # aspect=3, 
+    height=5,
+    # dpi=300, 
+    row_order=country_order,              
+    palette={'patent_applications':'tab:green','publications':'tab:blue','rd_gdp_pct':'tab:red'}
+)
 
-def plot_line(data, color, label, **kwargs):
-    sns.lineplot(data=data, x='year', y='value', hue='indicator', legend=False, **kwargs)
+# def plot_line(data, color, label, indicator, **kwargs):
+#     sns.lineplot(data=data, x='year', y='value', hue='indicator', legend=False, **kwargs)
 
-g.map_dataframe(sns.lineplot, 'year', 'value')
-g.add_legend(title='Indicator', labels=['Patents','Publications','R&D % GDP'])
+g.map_dataframe(
+    sns.lineplot, 
+    x = 'year', 
+    y = 'value'
+)
+g.add_legend(
+    title='Indicator'
+)
 
 # Add vertical lines for policy years
 for ax, country in zip(g.axes.flatten(), country_order):
@@ -149,6 +176,7 @@ for ax, country in zip(g.axes.flatten(), country_order):
 for ax in g.axes.flatten():
     ax.set_xlabel('Year')
     ax.set_ylabel('')
+
 g.set_titles(row_template='{row_name}')
 plt.subplots_adjust(hspace=0.6)
 plt.suptitle('Patents, Publications, and R&D (% GDP) — 1990–2021', y=1.02, fontsize=16)
