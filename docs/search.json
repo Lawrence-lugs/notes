@@ -305,7 +305,7 @@
     "href": "index.html",
     "title": "Notes Center",
     "section": "",
-    "text": "Aaaah!\nYou’re not supposed to be here. Please go find a leaf page.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nPatents Are a Poor Innovation Metric\n\n\n\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nTransistor Capacitances\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\nNo matching items"
+    "text": "Aaaah!\nYou’re not supposed to be here. Please go find a leaf page.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nPatents Are a Poor Innovation Metric\n\n\n\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nSetting up an OS PDK\n\n\nFOSSI\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nTransistor Capacitances\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/patentingBad/patentingBad.html#the-problem-with-patent-first-policies",
@@ -376,5 +376,152 @@
     "title": "Patents Are a Poor Innovation Metric",
     "section": "References",
     "text": "References\n\nPoege, Harhoff, Gaessler, Baruffaldi, 2019 — Science Quality and the Value of Inventions\n\nTaalbi, 2022 — Innovation with and without patents\n\nMowery, Nelson, Sampat & Ziedonis, 2001 — The growth of patenting and licensing by U.S. universities\n\nRecent firm-level study 2025 — Patent quality, R&D investment, and the profitability of technology-based firms\n\nSME longitudinal study 2023/2024 — SMEs and patents: Is it worth it?"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#steps-overview",
+    "href": "slides/settingOsPdk/settingOsPdk.html#steps-overview",
+    "title": "Setting up an OS PDK",
+    "section": "Steps Overview",
+    "text": "Steps Overview\nThe following tools require setup for a new PDK:\n\nYosys Synthesis\nOpenROAD (place_opt, global_route, detailed_route, cts)\nMAGIC setup (sets up DRC)\nNETGEN setup (LVS)\nOpenSTA settings\nOpenRCX settings\nXSchem (Symbol creation and spice attachment)\n\nPDK_HOME/libs.tech/xschem"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#resources",
+    "href": "slides/settingOsPdk/settingOsPdk.html#resources",
+    "title": "Setting up an OS PDK",
+    "section": "Resources",
+    "text": "Resources\nOpenLane Discussions Issue on the original repo discussing PDK setup: https://github.com/The-OpenROAD-Project/OpenLane/discussions/2133\nPDK Configuration Official documentation on setting up a configuration: https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-configuration",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-configuration",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Configuration",
+    "text": "XSchem Configuration\nYou must create your own symbols (using XSchem).\n\nReference: XSchem Manual\nKey Construct: format (accessible by double-clicking the instance).\nPurpose: Represents the device in the SPICE netlist for simulation."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-format-example",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-format-example",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Format Example",
+    "text": "XSchem Format Example\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#setting-up-librelane",
+    "href": "slides/settingOsPdk/settingOsPdk.html#setting-up-librelane",
+    "title": "Setting up an OS PDK",
+    "section": "Setting up LibreLane",
+    "text": "Setting up LibreLane\nRun with --manual-pdk if building without ciel (the package manager).\nRequired Files:\n\nPDK Config: {pdk_root}/{pdk}/libs.tech/librelane/config.tcl\n\nSCL Config: {pdk_root}/{pdk}/libs.tech/librelane/{scl}/config.tcl"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#tech-lef-declaration",
+    "href": "slides/settingOsPdk/settingOsPdk.html#tech-lef-declaration",
+    "title": "Setting up an OS PDK",
+    "section": "Tech LEF Declaration",
+    "text": "Tech LEF Declaration\nThe configuration file is where you declare the tech lef.\n# Technology LEF\nset ::env(TECH_LEF) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__nom.tlef\"\nset ::env(TECH_LEF_MIN) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__min.tlef\"\nset ::env(TECH_LEF_MAX) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__max.tlef\"\nset ::env(CELLS_LEF) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lef/*.lef\"]\nset ::env(GDS_FILES) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/gds/*.gds\"]\nset ::env(STD_CELL_LIBRARY_CDL) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/cdl/$::env(STD_CELL_LIBRARY).cdl\"\n\nNote: Except for libs.ref (which is standard), everything else is handled by this config file."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#configuration-files-detail",
+    "href": "slides/settingOsPdk/settingOsPdk.html#configuration-files-detail",
+    "title": "Setting up an OS PDK",
+    "section": "Configuration Files Detail",
+    "text": "Configuration Files Detail\nSource: OpenLane Docs\n\nconfig.tcl: Common info for all SCLs under this PDK. Example\ncommon_pdn.tcl: PDN configuration.\n&lt;scl&gt;/config.tcl: SCL specific info (overrides PDK config). Example\n&lt;scl&gt;/tracks.info: Metal layer offsets and pitches (extracted from tech lef). Example\n\nFormat: &lt;layer name&gt; X|Y &lt;offset&gt; &lt;pitch&gt;\n\n&lt;scl&gt;/synth_exclude.cells: Newline-separated cell names to trim during synthesis. Example\nrcx_patterns.rules: Rules for OpenSTA. Example"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#folder-structure",
+    "href": "slides/settingOsPdk/settingOsPdk.html#folder-structure",
+    "title": "Setting up an OS PDK",
+    "section": "Folder Structure",
+    "text": "Folder Structure\n\n\n&lt;pdk_name&gt;\n\nlibs.tech\n\nopenlane\n\nconfig.tcl\ncommon_pdn.tcl (Default PDN script)\n&lt;standard cell library&gt;\n\nconfig.tcl\ntracks.info\nno_synth.cells\ndrc_exclude.cells\n\n\n\nlibs.ref\n\nskyxxx_fd_xx_xx\n\nlef (Can contain techlef declarations)\ntechlef (Doesn’t have to be a folder)\nlib\n…"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem",
+    "href": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem",
+    "title": "Setting up an OS PDK",
+    "section": "Execution: Setting up XSchem",
+    "text": "Execution: Setting up XSchem\n\nNote: The most basic way to start is skipping XSchem and using ngspice directly.\n\nChecklist:\n\nWrite libs.tech/xschemrc\nCreate symbols for relevant elements\n\nSuggest starting with nfet and pfet to try a flow.\nInvestigate sky130 symbols (open with XSchem) for reference."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-magic",
+    "href": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-magic",
+    "title": "Setting up an OS PDK",
+    "section": "Execution: Setting up MAGIC",
+    "text": "Execution: Setting up MAGIC\nThis step also sets up DRC.\nChecklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#whats-a-tlef",
+    "href": "slides/settingOsPdk/settingOsPdk.html#whats-a-tlef",
+    "title": "Setting up an OS PDK",
+    "section": "What’s a TLEF?",
+    "text": "What’s a TLEF?\nYou don’t actually need it! The configuration file is where you declare the tech lef.\n# Technology LEF\nset ::env(TECH_LEF) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__nom.tlef\"\nset ::env(TECH_LEF_MIN) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__min.tlef\"\nset ::env(TECH_LEF_MAX) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__max.tlef\"\nset ::env(CELLS_LEF) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lef/*.lef\"]\nset ::env(GDS_FILES) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/gds/*.gds\"]\nset ::env(STD_CELL_LIBRARY_CDL) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/cdl/$::env(STD_CELL_LIBRARY).cdl\"\n\nNote: Except for libs.ref (which is standard), everything else is handled by this config file."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem-1",
+    "href": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem-1",
+    "title": "Setting up an OS PDK",
+    "section": "Execution: Setting up XSchem",
+    "text": "Execution: Setting up XSchem\nFormat example:\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-as-the-virtuoso-equivalent",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-as-the-virtuoso-equivalent",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem as the virtuoso equivalent",
+    "text": "XSchem as the virtuoso equivalent\n\nNote: The most basic way to start is skipping XSchem and using ngspice directly.\n\nChecklist:\n\nWrite libs.tech/xschem/xschemrc\nCreate symbols for relevant elements\n\nSuggest starting with nfet and pfet to try a flow.\nInvestigate sky130 symbols (open with XSchem) for reference."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem-2",
+    "href": "slides/settingOsPdk/settingOsPdk.html#execution-setting-up-xschem-2",
+    "title": "Setting up an OS PDK",
+    "section": "Execution: Setting up XSchem",
+    "text": "Execution: Setting up XSchem\nFormat example:\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-symbols-like-the-cadence-symbol-view",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-symbols-like-the-cadence-symbol-view",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Symbols (like the Cadence symbol view)",
+    "text": "XSchem Symbols (like the Cadence symbol view)\n\n\nYou must create your own symbols (using XSchem).\nYou need to set global attributes for XSchem symbols for them to be parsed into a spice netlist properly.\nGlobal attribute example () is shown on the right (model name: nfet_1v8)\n\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-symbol-metadata",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-symbol-metadata",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Symbol Metadata",
+    "text": "XSchem Symbol Metadata\nFormat example:\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-symbol-global-attributes",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-symbol-global-attributes",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Symbol Global Attributes",
+    "text": "XSchem Symbol Global Attributes\n\n\nYou need to set global attributes for XSchem symbols for them to be parsed into a spice netlist properly.\nGlobal attribute example () is shown on the right (model name: nfet_1v8)\n\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#overal",
+    "href": "slides/settingOsPdk/settingOsPdk.html#overal",
+    "title": "Setting up an OS PDK",
+    "section": "Overal",
+    "text": "Overal\nRun with --manual-pdk if building without ciel (the package manager).\nRequired Files:\n\nPDK Config: {pdk_root}/{pdk}/libs.tech/librelane/config.tcl\n\nSCL Config: {pdk_root}/{pdk}/libs.tech/librelane/{scl}/config.tcl"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#most-important-requirement-config-files",
+    "href": "slides/settingOsPdk/settingOsPdk.html#most-important-requirement-config-files",
+    "title": "Setting up an OS PDK",
+    "section": "Most important requirement: Config files",
+    "text": "Most important requirement: Config files\nIn fact, little else matters because these config files point to everything that’s needed. If they’re not there, you have to make them.\n\nRequired Files:\n\nPDK Config: {pdk_root}/{pdk}/libs.tech/librelane/config.tcl\n\nSCL Config: {pdk_root}/{pdk}/libs.tech/librelane/{scl}/config.tcl"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#magic",
+    "href": "slides/settingOsPdk/settingOsPdk.html#magic",
+    "title": "Setting up an OS PDK",
+    "section": "MAGIC",
+    "text": "MAGIC\nThis step also sets up DRC.\nChecklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#magic-setup-checklist",
+    "href": "slides/settingOsPdk/settingOsPdk.html#magic-setup-checklist",
+    "title": "Setting up an OS PDK",
+    "section": "MAGIC setup checklist",
+    "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
   }
 ]
