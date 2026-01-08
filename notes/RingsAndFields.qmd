@@ -1,18 +1,22 @@
 ---
 title: "Rings and Fields"
 category: note
+date: "01-03-2026"
 toc: true
 ---
 
 Abstract algebra is apparently the study of rings and fields plus groups...
 
+# Groups
+
+Groups are sets with ONE operation satisfying closure (must stay within the group), associativity, identity and inverses.
 # Rings
 
 ::: {.callout-note title="Rings"}
 Ring (German: Zahlring). A cycle of return. Sets that close back onto themselves on their operations.
 :::
 
-Rings are a set with addition and multiplication.
+Rings are a set with addition and multiplication. So like, a group + another operation.
 
 It's less restrictive than an algebra.
 A ring only has to be closed over itself. 
@@ -24,9 +28,15 @@ Rings only care about "primeness" and factorization.
 
 ## Why rings?
 
-Rings were first invented to solve Diophantine Equations.
-**commutative algebra** is the study of rings.
-Rings were invented as the concept of **ideals**.
+**Commutative algebra** is the study of rings.
+Rings were first delineated when the concept of **ideals** came about.
+
+Rings have important common properties we take advantage of like unique factorization domains (a type of ring), and a bunch of other mouthful theorems like
+
+- Maximal Ideals are one-to-one with Fields (see later section) ($M \text{ maximal} \iff R/M \text{ is a field}$)
+- $R/\text{ker}(\phi)\cong \text{im}(\phi)$.
+
+Tl;DR, things close to rings (groups, commutative rings, rings with unique factorization, fields) are useful. Theorems that apply ONLY to rings themselves are a little abstract (heh, pun intended).
 
 Ideals are subsets of rings (technically called a sublattice, probably because it's a "discrete vector field" because it's a linear combination of the ring elements)
 
@@ -56,14 +66,17 @@ Linking Ideals and Geometry forms the power of abstract algebra
 :::
 
 > TODO: Fill in later.
+
 ### Quotient Notation 
 
 $$R = \frac{\mathbb{R}[x,y]}{(y^2 - x^3)}$$
 $$\text{Cotangent Space} = \frac{\mathfrak{m}}{\mathfrak{m}^2}$$
+
 # Vector spaces
 
 ::: {.callout-note}
 Vector spaces are
+
 - Abelian Groups - sets closed under one operation that is associative, commutative, has an identity and inverses.
 - Scalable by a Field - must be multipliable by some field that still keeps it closed.
 :::
@@ -76,12 +89,14 @@ $ax=b$ would be a diophantine equation if it's on the ring $\Bbb{Z}$, and can ha
 
 # Difference between Ring, Field and Algebra.
 
-A ring is a set with addition and multiplication closed over itself.
+A ring is a set with addition and multiplication closed over itself. It must also have additive inverses.
 
-A field is a commutative ring (ring with commutative multiplication) with an inverse defined for every non-zero element.
+A field is a commutative ring (ring with commutative multiplication) with an inverse defined for every non-zero element. That is, it also has multiplicative inverses as opposed to just additive inverses.
+
 All fields are rings.
 
 An algebra can be defined over a field or a ring. You need:
+
 - To be "Over something" - Over a set with multiplication and addition (So at least a ring)
 - Scalars that when multiplied to the elements, stays within the set.
 - The scalars need not come from the "over" set.
@@ -96,3 +111,71 @@ Nomenclature:
 A few interesting things:
 
 - A ring can be an algebra over itself. So is a field an algebra over itself. These are trivial though.
+
+# Example: Finding all the Pythagorean Triples of Primitive Triples
+
+$$ a^2 + b^2  = c^2$$
+$$ (a + ib)(a - ib) = c^2$$
+
+We are now in the complex integer domain.
+Ring concept: $\mathbb{Z[i]}$ (Gaussian integers- complex numbers of the form $a + bi; a,b \in \mathbb{R}$) is a unique factorization ring meaning there are prime elements and every non-prime element can be factorized into prime elements.
+This is the equivalent of the fundamental theorem of algebra for rings. 
+
+That is, they are either prime or composite. If the set of factors isn't all prime yet, you can still decompose them.
+
+This allows us to use factoring concepts for complex numbers.
+
+Let $x=(a+ib)$ and $y=(a-ib)$
+
+Let's assume that $x$ and $y$ are coprime. Then, they must necessarily also be squares.
+
+::: {.callout-note title="Proof"}
+
+... apparently this proof is more complex than I thought. It's not a first principles proof...
+
+[If $\gcd(a,b)=1$ and $ab=n^2$, then $a,b$ are also perfect squares requires some GCD properties](https://math.stackexchange.com/questions/286101/show-if-a-product-of-coprime-numbers-is-a-perfect-square-so-are-the-numbers-w)
+
+[$\gcd(a,b)^2 = \gcd(a^2,b^2,ab)$ requires Bezout's Identity](https://math.stackexchange.com/questions/1286904/show-that-gcda2-b2-gcda-b2)
+:::
+
+Anyway with that we can do
+$$(a+ib)=(t+iv)^2$$
+then
+$$t^2-v^2+i2vt=a+ib$$
+then we equate real and imaginary (simple addition reduction)
+$$t^2-v^2=a$$
+$$b=2vt$$
+then for any integer $v,t$, $a$ and $b$ will form a pythagorean triple.
+
+Lastly, we assumed that $x$ and $y$ are coprime. Are they?
+
+::: {.callout-note title="$x$ and $y$ are coprime"}
+
+Assume that $x$ and $y$ are not coprime. Then with some $\delta$ which is the common divisor of $x$ and $y$:
+
+- $\delta$ divides $x+y = (a+bi)+(a-bi) = 2a$
+- $\delta$ divides $x-y = (a+bi)-(a-bi) = 2ib$
+
+$c$ is always odd in a primitive triple which means $c^2$ is odd and so $x$ or $y$ is odd. This means $\delta$ cannot have a factor of 2.
+
+So then $\delta$ must be a common factor of $a$ and $b$. But it's a primitive triple $a^2+b^2=c^2$, so they can't have a common factor.
+
+:::
+
+This example didn't actually require rings- just the unique factorization theorem from rings which applies to the Gaussian Integers. In this next one, we actually need rings.
+
+# Example: Dual numbers in AutoGrad
+
+Dual numbers in the ring $\mathbb{R}[\epsilon]/(\epsilon)^2$ are used for first-order approximation of gradients. As we know, this is useful for backpropagation.
+
+![](attachments/wipguy_small.png)
+
+# Example: Binary Numbers as Galois Fields
+
+The polynomial ring $\mathbb{F}_2[x] / (x^8 + x^4 + x^3 + x + 1)$ with coefficients in binary:
+
+- Allows division!!!! !!!!!! I cannot emphasize this enough WE HAVE CAN INVERT MULTIPLICATION IN BINARY. 
+	- ***Fun fact: Because of this, the ring gets promoted to a field hence Galois Field***
+- So then hence this can be used for encryption because it has a decryption step -> AES encryption.
+
+![](attachments/wipguy_small.png)

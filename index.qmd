@@ -2,7 +2,8 @@
 title: "Lawrence Quizon"
 subtitle: "Researcher"
 listing: 
-    type: grid
+    type: table
+    fields: [title, date]
 about:
     id: about-section
     template: solana

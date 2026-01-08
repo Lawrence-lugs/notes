@@ -4,10 +4,10 @@
 - [Rings](#rings)
   - [Why rings?](#why-rings)
   - [Function Ideals and Cotangent
-    space](#function-ideals-and-cotangent-space)
+space](#function-ideals-and-cotangent-space)
 - [Fields](#fields)
 - [Difference between Ring, Field and
-  Algebra.](#difference-between-ring-field-and-algebra)
+Algebra.](#difference-between-ring-field-and-algebra)
 
 Abstract algebra is apparently the study of rings and fields plus
 groups…

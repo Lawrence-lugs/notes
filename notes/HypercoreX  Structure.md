@@ -1,0 +1,172 @@
+---
+title: "HyperCoreX Code Structure"
+date: "2025-03-18"
+toc: true
+---
+
+![asd](attachments/wipguy_small.png)
+
+::: {.callout-note}
+
+HyperCoreX is Sir Ry's General-purpose accelerator for Hyperdimensional Computing. We'd wanted to do something like this before.
+:::
+
+# CSRs
+`CORE_SET_ADDR_REG` contains the core set of registers, including `W0 Start Core` and `W0 Core Clear`
+
+```verilog
+CORE_SET_REG_ADDR: begin
+  csr_rd_data = {
+                                                           // verilog_lint: waive-start line-length
+                                 {(CsrDataWidth-5){1'b0}}, // [31:5] -- Unused
+                                                     1'b0, //    [6] WO Core clear (generates pulse)
+  csr_set[CORE_SET_REG_ADDR][  CORE_SET_IMB_MUX_BIT_ADDR], //    [5] RW IMB MUX
+  csr_set[CORE_SET_REG_ADDR][4:CORE_SET_IMA_MUX_BIT_ADDR], //    [4:3] RW IMA MUX
+  csr_set[CORE_SET_REG_ADDR][ CORE_SET_SEQ_TEST_BIT_ADDR], //    [2] RW Sequential test
+                                               csr_busy_i, //    [1] RO Busy
+                                                     1'b0  //    [0] WO Start Core (generates pulse)
+                                                           // verilog_lint: waive-stop line-length
+  };
+```
+
+To actually start the accelerator, the start output is derived like so:
+
+```verilog
+    csr_start_o                = csr_write_req &&
+                                (csr_req_addr_i == CORE_SET_REG_ADDR) &&
+                                 csr_req_data_i[CORE_SET_START_CORE_BIT_ADDR];
+```
+
+Where `csr_write_req =  csr_req_success & csr_req_write_i` indicates a **write request with a successful ready valid handshake**
+
+and `csr_req_success = csr_req_valid_i & csr_req_ready_o` indicates a valid ready handshake
+
+> *In the above, csr_req_data_i is read directly to find the trigger signal, not the CSR. Hence, the actual location in the CSR gets written the trigger bit, but it never actually gets used.*
+
+> *That means in the first trigger after nrst, it gets written to 1 and stays 1 forever.*
+
+Where does start go after that?
+
+# Overall Architecture
+
+> *Where does start go?*
+
+Top level blocks:
+
+1. `inst_decode`
+2. `inst_control`
+3. `csr`
+4. `update_counter` s — 2 of them
+5. `data_slicer`
+6. `item_memory_top`
+7. `hv_encoder`
+8. `assoc_mem`
+
+The overall architecture seems to be an HDC vector processor with an instruction memory and instructions. The instructions don’t seem to come from outside, since there are no entrances for that.
+
+# Instruction Handling
+
+`inst_control` contains the PC and a `reg_file_1w1r` (some replaceable IP, probably) which is the actual instruction memory
+
+```verilog
+module inst_control # (
+  parameter int unsigned RegAddrWidth       = 32,
+  parameter int unsigned InstMemDepth       = 128,
+  // Don't touch!
+  parameter int unsigned LoopNumStates      = 4,
+  parameter int unsigned InstLoopCountWidth = 10,
+  parameter int unsigned LoopNumWidth       = $clog2(LoopNumStates),
+  parameter int unsigned InstMemAddrWidth   = $clog2(InstMemDepth)
+)(
+  // Clocks and reset
+  input  logic                        clk_i,
+  input  logic                        rst_ni,
+  // Control signals
+  input  logic                        clr_i,
+  input  logic                        start_i,
+  input  logic                        stall_i,
+  output logic                        enable_o,
+  // Instruction update signals
+  input  logic                        inst_pc_reset_i,
+  input  logic                        inst_wr_mode_i,
+  input  logic [InstMemAddrWidth-1:0] inst_wr_addr_i,
+  input  logic                        inst_wr_addr_en_i,
+  input  logic [RegAddrWidth-1:0]     inst_wr_data_i,
+  input  logic                        inst_wr_data_en_i,
+  output logic [InstMemAddrWidth-1:0] inst_pc_o,
+  output logic [RegAddrWidth-1:0]     inst_rd_o,
+  // CSR control for loop control
+  input  logic [LoopNumWidth-1:0]     inst_loop_mode_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_jump_addr1_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_jump_addr2_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_jump_addr3_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_end_addr1_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_end_addr2_i,
+  input  logic [InstMemAddrWidth-1:0] inst_loop_end_addr3_i,
+  input  logic [InstLoopCountWidth-1:0] inst_loop_count_addr1_i,
+  input  logic [InstLoopCountWidth-1:0] inst_loop_count_addr2_i,
+  input  logic [InstLoopCountWidth-1:0] inst_loop_count_addr3_i,
+  // Debug control signals
+  input  logic                        dbg_en_i,
+  input  logic [InstMemAddrWidth-1:0] dbg_addr_i
+);
+
+```
+
+instructions are written in via a passthrough the `csr` module (these outputs are received by `inst_control`
+
+```verilog
+    //---------------------------
+    // Instruction control settings
+    //---------------------------
+    csr_inst_ctrl_write_mode_o = csr_set[INST_CTRL_REG_ADDR][INST_CTRL_WRITE_MODE_BIT_ADDR];
+    csr_inst_ctrl_dbg_o        = csr_set[INST_CTRL_REG_ADDR][  INST_CTRL_DBG_MODE_BIT_ADDR];
+    csr_inst_ctrl_clr_o        =  csr_write_req &&
+                                 (csr_req_addr_i == INST_CTRL_REG_ADDR) &&
+                                  csr_req_data_i[INST_CTRL_INST_CLR_BIT_ADDR];
+    csr_inst_wr_addr_o         = csr_req_data_i[InstMemAddrWidth-1:0];
+    csr_inst_wr_addr_en_o      = csr_write_req && (csr_req_addr_i == INST_WRITE_ADDR_REG_ADDR);
+    csr_inst_wr_data_o         = csr_req_data_i;
+    csr_inst_wr_data_en_o      = csr_write_req && (csr_req_addr_i == INST_WRITE_DATA_REG_ADDR);
+    csr_inst_rddbg_addr_o      = csr_set[INST_RDDBG_ADDR_REG_ADDR];
+```
+
+Inside `inst_control` , `start_i` triggers the `enable_core` signal, which decides if things are done or not.
+
+```verilog
+  //---------------------------
+  // Enable core register
+  //---------------------------
+  always_ff @ (posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
+      enable_core <= 1'b0;
+    end else begin
+      if(start_i) begin
+        enable_core <= 1'b1;
+      end else if (inst_loop_done) begin
+        enable_core <= 1'b0;
+      end else begin
+        enable_core <= enable_core;
+      end
+    end
+  end
+```
+
+> *This is genius. Who needs FSMs if you have a microcode loop????*
+
+### The Stalls
+
+> *Very important: There is a ****hardware stall ****streaming into the controller from top, which allows the microcode loop to wait for ready valid handshakes and external flags*
+
+```verilog
+
+  //---------------------------
+  // Stall Signal
+  //---------------------------
+  logic stall;
+  logic im_stall;
+  logic am_stall;
+  logic qhv_stall;
+
+  assign stall = im_stall || qhv_stall || am_stall;
+```

@@ -77,9 +77,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -213,89 +213,123 @@ window.Quarto = {
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1767863809997" data-listing-reading-time-sort="4" data-listing-word-count-sort="639">
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Frequency Response of CE Amplifier
-</h5>
-<div class="card-text listing-description">
-
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1767872800611" data-listing-reading-time-sort="3" data-listing-word-count-sort="568">
-<a href="./notes/RingsAndFields.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Rings and Fields
-</h5>
-<div class="card-text listing-description">
-Abstract algebra is apparently the study of rings and fields plus groups…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1767863810011" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Setting up an OS PDK
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1766244232264" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005">
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transistor Capacitances
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1767657600000" data-listing-file-modified-sort="1767883025237" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="316" data-listing-title-sort="Derivation of the Lorentz Transformation" data-listing-filename-sort="derivationOfTheLorentzTransformation.qmd">
+<td>
+<a href="./notes/derivationOfTheLorentzTransformation.html" class="title listing-title">Derivation of the Lorentz Transformation</a>
+</td>
+<td>
+<span class="listing-date">Jan 6, 2026</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1767863809997" data-listing-reading-time-sort="4" data-listing-word-count-sort="639" data-listing-title-sort="Frequency Response of CE Amplifier" data-listing-filename-sort="ceCsFrequencyResponse.qmd">
+<td>
+<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="title listing-title">Frequency Response of CE Amplifier</a>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1767885342870" data-listing-reading-time-sort="2" data-listing-word-count-sort="230" data-listing-title-sort="Interesting Quantization Observations" data-listing-filename-sort="Interesting Quantization Observations.md">
+<td>
+<a href="./notes/Interesting Quantization Observations.html" class="title listing-title">Interesting Quantization Observations</a>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1767885233281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="Lagrangians, Hamiltonians" data-listing-filename-sort="Lagrangians, Hamiltonians.qmd">
+<td>
+<a href="./notes/Lagrangians, Hamiltonians.html" class="title listing-title">Lagrangians, Hamiltonians</a>
+</td>
+<td>
+<span class="listing-date">Oct 1, 2025</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1767883934284" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="772" data-listing-title-sort="Metrics and Manifolds" data-listing-filename-sort="Metrics and Manifolds.qmd">
+<td>
+<a href="./notes/Metrics and Manifolds.html" class="title listing-title">Metrics and Manifolds</a>
+</td>
+<td>
+<span class="listing-date">Dec 26, 2025</span>
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1766016000000" data-listing-file-modified-sort="1767883852384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242" data-listing-title-sort="Observer falls into the black hole, becomes Nostradamus" data-listing-filename-sort="Observer falls into the black hole, becomes Nostradamus.qmd">
+<td>
+<a href="./notes/Observer falls into the black hole, becomes Nostradamus.html" class="title listing-title">Observer falls into the black hole, becomes Nostradamus</a>
+</td>
+<td>
+<span class="listing-date">Dec 18, 2025</span>
+</td>
+</tr>
+<tr data-index="6" data-listing-file-modified-sort="1767884098818" data-listing-reading-time-sort="5" data-listing-word-count-sort="986" data-listing-title-sort="Rings and Fields" data-listing-filename-sort="RingsAndFields.qmd">
+<td>
+<a href="./notes/RingsAndFields.html" class="title listing-title">Rings and Fields</a>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="7" data-listing-file-modified-sort="1767863810011" data-listing-reading-time-sort="4" data-listing-word-count-sort="712" data-listing-title-sort="Setting up an OS PDK" data-listing-filename-sort="settingOsPdk.qmd">
+<td>
+<a href="./slides/settingOsPdk/settingOsPdk.html" class="title listing-title">Setting up an OS PDK</a>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="8" data-listing-file-modified-sort="1767883658415" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005" data-listing-title-sort="Transistor Capacitances" data-listing-filename-sort="transistorCapacitances.qmd">
+<td>
+<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="title listing-title">Transistor Capacitances</a>
+</td>
+<td>
+<span class="listing-date">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1764806400000" data-listing-file-modified-sort="1767883722346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594" data-listing-title-sort="Wavefunctions, Bras, Kets" data-listing-filename-sort="wavefunctionsBrasKets.qmd">
+<td>
+<a href="./notes/wavefunctionsBrasKets.html" class="title listing-title">Wavefunctions, Bras, Kets</a>
+</td>
+<td>
+<span class="listing-date">Dec 4, 2025</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

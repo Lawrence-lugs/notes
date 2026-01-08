@@ -2,10 +2,16 @@
   {
     "listing": "/index.html",
     "items": [
+      "/notes/derivationOfTheLorentzTransformation.html",
       "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
+      "/notes/Interesting Quantization Observations.html",
+      "/notes/Lagrangians, Hamiltonians.html",
+      "/notes/Metrics and Manifolds.html",
+      "/notes/Observer falls into the black hole, becomes Nostradamus.html",
       "/notes/RingsAndFields.html",
       "/slides/settingOsPdk/settingOsPdk.html",
-      "/slides/transistorCapacitances/transistorCapacitances.html"
+      "/slides/transistorCapacitances/transistorCapacitances.html",
+      "/notes/wavefunctionsBrasKets.html"
     ]
   }
 ]

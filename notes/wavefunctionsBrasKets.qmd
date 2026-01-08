@@ -1,0 +1,127 @@
+---
+title: "Wavefunctions, Bras, Kets"
+date: "2025-12-4"
+toc: true
+---
+
+::: {.callout-note title="References"}
+- Allan Adams MIT 8.04
+- Lancaster, Tom, and Stephen J. Blundell. _Quantum field theory for the gifted amateur_. OUP Oxford, 2014.
+:::
+# Hermitian Operators, Traces, Quantum Mechanics
+
+::: {.callout-note title="Questions"}
+- The trace function is a softmax?
+- Instead of using $\ket{n}$, why not just have $\psi_n \in C$ in the complex numbers and say that $\hat{x}\psi_n$ gives back measurements of the position in the reals? i.e. $\braket{x|n}=\hat{x}\psi_n$
+- So then, when we apply the state to the operator $\bra{n}\hat{A}$ we get the trace which measures the probability of measuring specific values of the observable $\hat{A}$ .
+- If $\ket{n}$ allows measurement of the statistics, what is $\hat{A}\ket{n}$ good for? The operator is supposed to already give you some measurable no? And quantum observables are always statistical. 
+- All this seems to imply that the observables are always $\bra{n}\hat{A}\ket{n}$
+:::
+
+
+# In fact, yes.
+
+I found that the wikipedia page for [position operator](https://en.wikipedia.org/wiki/Position_operator) nicely shows this.
+
+Take that a normalized wavefunction $\psi$'s square modulus
+$$
+|\psi|^2=\psi^*\psi
+$$
+represents the probability density of finding a particle at some position x.
+So then,
+$$
+\int_{-\infty}^{+\infty}|\psi|^2dx=1
+$$
+and the probability of finding the particle in a range is
+$$
+\pi_X(\psi)([a,b])=\int^{b}_{a}dx|\psi|^2
+$$
+The expected value of measurement of the position would be
+$$
+\braket{X}_\psi=\int_\Bbb{R}x|\psi|^2dx=\int_\Bbb{R}\psi^*(x\psi)dx=\braket{\psi|X(\psi)}
+$$
+::: {.callout-note}
+Why is $x|\psi|^2=\psi^*(x\psi)$?
+*This is simply a commutative + associative property, because $x$ is not an operator here.*
+:::
+
+::: {.callout-note}
+Is $x\psi=X(\psi)?$
+:::
+
+::: {.callout-note}
+Observe that $\int_\Bbb{R}x|\psi|^2dx$ is just a first moment integral. We're taking the "center of mass" of the probability distribution.
+:::
+
+
+
+# Bra Kets
+
+A **ket** is a vector in a complex vector space.
+
+A **bra** is a linear form $f:V\rightarrow \Bbb{C}$. It maps a vector to a complex number.
+* So then it can also be thought of as a row vector.
+
+::: {.callout-note}
+How are these related to functions if they are vectors?
+Functions are infinite-valued vectors
+Functionals like the Lagrangian or Differentiation are infinite matrices that transform functions into other functions
+:::
+
+::: {.callout-question}
+So then, what are row vectors as functions? What are dot products of functions? 
+ In fact, this has been discussed before.
+ It's the infinite sum of every element of the functions, 
+ $$ \int dxf(x)g(x) = \braket{f,g} $$
+:::
+
+
+So then the ***braket*** is the inner product between functions.
+$$ \braket{f^{*}|g} $$
+The ***braket*** notation can be used for vector spaces with an *involution* operation.
+Then, the dot product must have the first argument be a conjugate.
+
+A row vector is also a conjugate (covector). Covectors aren't vectors in the traditional sense. We can think of them as functions that operate on vectors. Applying a row vector to a vector produces... voila! A scalar!
+
+
+# Proving Energy Levels
+
+The hamiltonian for a simple quantum harmonic oscillator is
+$$$$
+
+::: {.callout-question}
+If $\hat{a}^+\hat{a}$ has an eigenvalue of $n$ and eigenstate $\ket{n}$ then why would 
+ $\bra{n}\hat{a}^+\hat{a}\ket{n}=n$ 
+ I can simplify the right side to $n\ket{n}$ by the definition of eigenstate and eigenvalue, but then why would $\bra{n}n\ket{n}=n$?
+ Won't it be something like $n|n|^2$ since we have the eigenvalue $n$ and a braket of the eigenstate to itself?
+ 
+ This is because of the normalization condition.
+ $|n|^2$ is 1.
+:::
+
+
+
+# Momentum
+
+The wavefunction at its baseline describes the position of a particle. To grab the momentum of a particle, 
+$$\hat{p}\ket{\psi} = i\hbar\frac{\partial}{\partial x}\ket{\psi}$$
+
+##  How is this related to the fourier transform though?
+
+First, It's a fundamental observation that waves have energy
+$$E=\hbar\omega=h\nu$$
+$$p=\hbar k=h/\lambda$$
+Then, DeBroglie postulated that everything obeys this law.
+
+Secondly, we know a correspondence between the wavefunction $\psi(x)$ and the momentum. Quite easily, if
+$$\psi(x)=e^{-ikx}$$
+Then we can identify $k$ as the wavelength as postulated earlier.
+
+![](YourFile.png)
+
+Then, since all valid wavefunctions can be formed from superpositions, then we can sum an infinite number of plane waves whose $k$ is definite to form an arbitrary wavefunction with a "hard-to-determine" $k$, as in Fourier's theorem.
+$$\psi(x) = \frac{1}{2\pi}\int^{\infty}_{-\infty}\psi(k)e^{ikx}dx$$
+::: {.callout-important title="Wait..."}
+Where does $1/2\pi$ come from in this derivation?
+Probably some sort of normalization.
+:::

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-01-03">
 
 <title>Rings and Fields</title>
 <style>
@@ -131,13 +132,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rings" id="toc-rings" class="nav-link active" data-scroll-target="#rings">Rings</a>
+  <li><a href="#groups" id="toc-groups" class="nav-link active" data-scroll-target="#groups">Groups</a>
   <ul class="collapse">
   <li><a href="#why-rings" id="toc-why-rings" class="nav-link" data-scroll-target="#why-rings">Why rings?</a></li>
-  <li><a href="#function-ideals-and-cotangent-space" id="toc-function-ideals-and-cotangent-space" class="nav-link" data-scroll-target="#function-ideals-and-cotangent-space">Function Ideals and Cotangent space</a></li>
+  <li><a href="#function-ideals-and-cotangent-space" id="toc-function-ideals-and-cotangent-space" class="nav-link" data-scroll-target="#function-ideals-and-cotangent-space">Function Ideals and Cotangent space</a>
+  <ul class="collapse">
+  <li><a href="#quotient-notation" id="toc-quotient-notation" class="nav-link" data-scroll-target="#quotient-notation">Quotient Notation</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#vector-spaces" id="toc-vector-spaces" class="nav-link" data-scroll-target="#vector-spaces">Vector spaces</a></li>
   <li><a href="#fields" id="toc-fields" class="nav-link" data-scroll-target="#fields">Fields</a></li>
   <li><a href="#difference-between-ring-field-and-algebra." id="toc-difference-between-ring-field-and-algebra." class="nav-link" data-scroll-target="#difference-between-ring-field-and-algebra.">Difference between Ring, Field and Algebra.</a></li>
+  <li><a href="#example-finding-all-the-pythagorean-triples-of-primitive-triples" id="toc-example-finding-all-the-pythagorean-triples-of-primitive-triples" class="nav-link" data-scroll-target="#example-finding-all-the-pythagorean-triples-of-primitive-triples">Example: Finding all the Pythagorean Triples of Primitive Triples</a></li>
+  <li><a href="#example-dual-numbers-in-autograd" id="toc-example-dual-numbers-in-autograd" class="nav-link" data-scroll-target="#example-dual-numbers-in-autograd">Example: Dual numbers in AutoGrad</a></li>
+  <li><a href="#example-binary-numbers-as-galois-fields" id="toc-example-binary-numbers-as-galois-fields" class="nav-link" data-scroll-target="#example-binary-numbers-as-galois-fields">Example: Binary Numbers as Galois Fields</a></li>
   </ul>
 </nav>
     </div>
@@ -154,6 +162,12 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 3, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -164,8 +178,9 @@ window.Quarto = {
 
 
 <p>Abstract algebra is apparently the study of rings and fields plus groups…</p>
-<section id="rings" class="level1">
-<h1>Rings</h1>
+<section id="groups" class="level1">
+<h1>Groups</h1>
+<p>Groups are sets with ONE operation satisfying closure (must stay within the group), associativity, identity and inverses. # Rings</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Rings">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -179,12 +194,18 @@ Rings
 <p>Ring (German: Zahlring). A cycle of return. Sets that close back onto themselves on their operations.</p>
 </div>
 </div>
-<p>Rings are a set with addition and multiplication.</p>
+<p>Rings are a set with addition and multiplication. So like, a group + another operation.</p>
 <p>It’s less restrictive than an algebra. A ring only has to be closed over itself. That is, a closed set on addition and multiplication. An algebra, on the other hand, always has to be defined <strong>over something</strong>*. It has to be a vector space <span class="math inline">\(A\)</span> over <span class="math inline">\(K\)</span> equipped with a multiplication that is compatible with the scalars.</p>
 <p>Algebra cares about basis and dimension. Rings only care about “primeness” and factorization.</p>
 <section id="why-rings" class="level2">
 <h2 class="anchored" data-anchor-id="why-rings">Why rings?</h2>
-<p>Rings were first invented to solve Diophantine Equations. <strong>commutative algebra</strong> is the study of rings. Rings were invented as the concept of <strong>ideals</strong>.</p>
+<p><strong>Commutative algebra</strong> is the study of rings. Rings were first delineated when the concept of <strong>ideals</strong> came about.</p>
+<p>Rings have important common properties we take advantage of like unique factorization domains (a type of ring), and a bunch of other mouthful theorems like</p>
+<ul>
+<li>Maximal Ideals are one-to-one with Fields (see later section) (<span class="math inline">\(M \text{ maximal} \iff R/M \text{ is a field}\)</span>)</li>
+<li><span class="math inline">\(R/\text{ker}(\phi)\cong \text{im}(\phi)\)</span>.</li>
+</ul>
+<p>Tl;DR, things close to rings (groups, commutative rings, rings with unique factorization, fields) are useful. Theorems that apply ONLY to rings themselves are a little abstract (heh, pun intended).</p>
 <p>Ideals are subsets of rings (technically called a sublattice, probably because it’s a “discrete vector field” because it’s a linear combination of the ring elements)</p>
 <p>Ideals can be factored, and can be prime.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="**What is an Ideal?**">
@@ -244,9 +265,16 @@ Essence
 </div>
 </div>
 <blockquote class="blockquote">
-<p>TODO: Fill in later. ### Quotient Notation</p>
+<p>TODO: Fill in later.</p>
 </blockquote>
-<p><span class="math display">\[R = \frac{\mathbb{R}[x,y]}{(y^2 - x^3)}\]</span> <span class="math display">\[\text{Cotangent Space} = \frac{\mathfrak{m}}{\mathfrak{m}^2}\]</span> # Vector spaces</p>
+<section id="quotient-notation" class="level3">
+<h3 class="anchored" data-anchor-id="quotient-notation">Quotient Notation</h3>
+<p><span class="math display">\[R = \frac{\mathbb{R}[x,y]}{(y^2 - x^3)}\]</span> <span class="math display">\[\text{Cotangent Space} = \frac{\mathfrak{m}}{\mathfrak{m}^2}\]</span></p>
+</section>
+</section>
+</section>
+<section id="vector-spaces" class="level1">
+<h1>Vector spaces</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -257,10 +285,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Vector spaces are - Abelian Groups - sets closed under one operation that is associative, commutative, has an identity and inverses. - Scalable by a Field - must be multipliable by some field that still keeps it closed.</p>
+<p>Vector spaces are</p>
+<ul>
+<li>Abelian Groups - sets closed under one operation that is associative, commutative, has an identity and inverses.</li>
+<li>Scalable by a Field - must be multipliable by some field that still keeps it closed.</li>
+</ul>
 </div>
 </div>
-</section>
 </section>
 <section id="fields" class="level1">
 <h1>Fields</h1>
@@ -268,9 +299,15 @@ Note
 </section>
 <section id="difference-between-ring-field-and-algebra." class="level1">
 <h1>Difference between Ring, Field and Algebra.</h1>
-<p>A ring is a set with addition and multiplication closed over itself.</p>
-<p>A field is a commutative ring (ring with commutative multiplication) with an inverse defined for every non-zero element. All fields are rings.</p>
-<p>An algebra can be defined over a field or a ring. You need: - To be “Over something” - Over a set with multiplication and addition (So at least a ring) - Scalars that when multiplied to the elements, stays within the set. - The scalars need not come from the “over” set. Why need the scalars? Scalars make it so that you can build all elements of the set from a few elements (a <em>basis</em>). This then gives access to the tools of linear algebra: determinants, traces, matrices, eigenstuff.</p>
+<p>A ring is a set with addition and multiplication closed over itself. It must also have additive inverses.</p>
+<p>A field is a commutative ring (ring with commutative multiplication) with an inverse defined for every non-zero element. That is, it also has multiplicative inverses as opposed to just additive inverses.</p>
+<p>All fields are rings.</p>
+<p>An algebra can be defined over a field or a ring. You need:</p>
+<ul>
+<li>To be “Over something” - Over a set with multiplication and addition (So at least a ring)</li>
+<li>Scalars that when multiplied to the elements, stays within the set.</li>
+<li>The scalars need not come from the “over” set. Why need the scalars? Scalars make it so that you can build all elements of the set from a few elements (a <em>basis</em>). This then gives access to the tools of linear algebra: determinants, traces, matrices, eigenstuff.</li>
+</ul>
 <p>Nomenclature:</p>
 <ul>
 <li>Algebras over Rings are special Modules (+free, meaning it has a basis)</li>
@@ -280,6 +317,69 @@ Note
 <ul>
 <li>A ring can be an algebra over itself. So is a field an algebra over itself. These are trivial though.</li>
 </ul>
+</section>
+<section id="example-finding-all-the-pythagorean-triples-of-primitive-triples" class="level1">
+<h1>Example: Finding all the Pythagorean Triples of Primitive Triples</h1>
+<p><span class="math display">\[ a^2 + b^2  = c^2\]</span> <span class="math display">\[ (a + ib)(a - ib) = c^2\]</span></p>
+<p>We are now in the complex integer domain. Ring concept: <span class="math inline">\(\mathbb{Z[i]}\)</span> (Gaussian integers- complex numbers of the form <span class="math inline">\(a + bi; a,b \in \mathbb{R}\)</span>) is a unique factorization ring meaning there are prime elements and every non-prime element can be factorized into prime elements. This is the equivalent of the fundamental theorem of algebra for rings.</p>
+<p>That is, they are either prime or composite. If the set of factors isn’t all prime yet, you can still decompose them.</p>
+<p>This allows us to use factoring concepts for complex numbers.</p>
+<p>Let <span class="math inline">\(x=(a+ib)\)</span> and <span class="math inline">\(y=(a-ib)\)</span></p>
+<p>Let’s assume that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are coprime. Then, they must necessarily also be squares.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>… apparently this proof is more complex than I thought. It’s not a first principles proof…</p>
+<p><a href="https://math.stackexchange.com/questions/286101/show-if-a-product-of-coprime-numbers-is-a-perfect-square-so-are-the-numbers-w">If&nbsp;<span class="math inline">\(\gcd(a,b)=1\)</span>&nbsp;and&nbsp;<span class="math inline">\(ab=n^2\)</span>,&nbsp;then&nbsp;<span class="math inline">\(a,b\)</span>&nbsp;are also perfect squares requires some GCD properties</a></p>
+<p><a href="https://math.stackexchange.com/questions/1286904/show-that-gcda2-b2-gcda-b2"><span class="math inline">\(\gcd(a,b)^2 = \gcd(a^2,b^2,ab)\)</span> requires Bezout’s Identity</a></p>
+</div>
+</div>
+<p>Anyway with that we can do <span class="math display">\[(a+ib)=(t+iv)^2\]</span> then <span class="math display">\[t^2-v^2+i2vt=a+ib\]</span> then we equate real and imaginary (simple addition reduction) <span class="math display">\[t^2-v^2=a\]</span> <span class="math display">\[b=2vt\]</span> then for any integer <span class="math inline">\(v,t\)</span>, <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> will form a pythagorean triple.</p>
+<p>Lastly, we assumed that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are coprime. Are they?</p>
+<div class="callout callout-style-default callout-note callout-titled" title="$x$ and $y$ are coprime">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are coprime
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are not coprime. Then with some <span class="math inline">\(\delta\)</span> which is the common divisor of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\delta\)</span> divides <span class="math inline">\(x+y = (a+bi)+(a-bi) = 2a\)</span></li>
+<li><span class="math inline">\(\delta\)</span> divides <span class="math inline">\(x-y = (a+bi)-(a-bi) = 2ib\)</span></li>
+</ul>
+<p><span class="math inline">\(c\)</span> is always odd in a primitive triple which means <span class="math inline">\(c^2\)</span> is odd and so <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> is odd. This means <span class="math inline">\(\delta\)</span> cannot have a factor of 2.</p>
+<p>So then <span class="math inline">\(\delta\)</span> must be a common factor of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. But it’s a primitive triple <span class="math inline">\(a^2+b^2=c^2\)</span>, so they can’t have a common factor.</p>
+</div>
+</div>
+<p>This example didn’t actually require rings- just the unique factorization theorem from rings which applies to the Gaussian Integers. In this next one, we actually need rings.</p>
+</section>
+<section id="example-dual-numbers-in-autograd" class="level1">
+<h1>Example: Dual numbers in AutoGrad</h1>
+<p>Dual numbers in the ring <span class="math inline">\(\mathbb{R}[\epsilon]/(\epsilon)^2\)</span> are used for first-order approximation of gradients. As we know, this is useful for backpropagation.</p>
+<p><img src="attachments/wipguy_small.png" class="img-fluid"></p>
+</section>
+<section id="example-binary-numbers-as-galois-fields" class="level1">
+<h1>Example: Binary Numbers as Galois Fields</h1>
+<p>The polynomial ring <span class="math inline">\(\mathbb{F}_2[x] / (x^8 + x^4 + x^3 + x + 1)\)</span> with coefficients in binary:</p>
+<ul>
+<li>Allows division!!!! !!!!!! I cannot emphasize this enough WE HAVE CAN INVERT MULTIPLICATION IN BINARY.
+<ul>
+<li><strong><em>Fun fact: Because of this, the ring gets promoted to a field hence Galois Field</em></strong></li>
+</ul></li>
+<li>So then hence this can be used for encryption because it has a decryption step -&gt; AES encryption.</li>
+</ul>
+<p><img src="attachments/wipguy_small.png" class="img-fluid"></p>
 
 
 </section>

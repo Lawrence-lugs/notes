@@ -1,0 +1,132 @@
+---
+title: "Metrics and Manifolds"
+date: "2025-12-26"
+---
+# Manifolds are coordinate sets that are locally Euclidean
+
+Manifolds have many points $p$ with some coordinates.
+
+**Manifold definition**
+To be a manifold,
+	for any point $p$,
+		there is an open set of points $U$ such that
+		$\phi(U)$ is an open set in $R^n$
+		$\phi$ has to be a continuous bijection and so 
+			$\phi(U)$ has to be a joint, connected set
+
+Extra info (Set theorem):
+> *If $A$ is a collection of connected sets and $\cap A$ is non-empty, 
+> then $\cup A$ is connected. 
+
+
+## Open sets are unions of balls
+
+From the definition of an open set in Euclidean space
+
+for any point in an open set
+	you can draw a ball
+		that stays entirely within the set
+
+a ball is a set within $\epsilon$ distance of some center point
+in this case, the center is the point $p$
+
+> *but open sets aren't necessarily continuous.
+> Take for example the set of points $f(x)=1/x$ where $x \in (0,1)$
+> This is an open set but it's discontinuous. 
+
+
+# Metrics introduce the concept of distance
+
+> *Manifolds do not need metrics! Metrics are more of a DLC!*
+
+Metrics define the "arc length" in terms of the coordinates
+But note that **length** is a 1D concept. For N-dimensional manifolds, the metric encapsulates this concept.
+$$ds^2 = \sum_{i,j} g_{ij}(x) \, dx^i \, dx^j$$ 
+The metric is more specifically the matrix $g_{ij}$ that determines "how different" we are from the Euclidean metric.
+
+>  WHAT THE FUCK IS A METRIC? WE'RE STUCK. TODO: FILL LATER. The concept of a metric seems to be attached to the concept of [[Riemannian Manifolds]].
+
+# Sphere manifold example
+
+A spherical 2D manifold defined by two angles $(\phi,\theta)$
+We can map every $(\phi,\theta)$ into $R^3$ because we know what a sphere is.
+
+Using just the **spherical-to-rectangular** coordinate transform, we can do
+$(x,y,z)=(R\sin\theta \sin\phi,R\sin\theta \cos\phi,R\sin\theta)$
+
+Each of these functions is continuous, hence $\phi(U)$ is continuous
+$\phi$ has an inverse, hence it is a bijection
+
+Applying the concept of arclength on a sphere ("the sphere geodesic(?)") then the infinitesimal lengths tangent to the sphere (but orthogonal to each other) would be
+$$x,y=Rd\theta,R\sin{\theta}d\phi$$
+Which means that the little square that lives on the sphere is
+$$ds^2=R^2d\theta^2+R^2\sin^2{\theta} d\phi^2$$
+and the metric tensor is 
+$$g = \begin{bmatrix} R^2 & 0 \\ 0 & R^2 \sin^2\theta \end{bmatrix}$$
+
+## Length of a tropic
+
+For example, then, we can use this metric to compute the length of a tropic at azimuth $\theta_0$.
+
+$$ds^2=R^2d\theta^2+R^2\sin^2{\theta} d\phi^2$$
+Since $d\theta=0$ (constant) then
+$$ds=R\sin{\theta_0}d\phi$$
+$$L=\int ds$$
+We also need to apply the limits of the curve so...
+$$L=\int_0^{2\pi}{R\sin{\theta_0}d\phi}$$
+$$L=2\pi R\sin{\theta_0}$$
+Which is something we've always known in high school geometry anyway.
+
+
+## Length of a circular fence on the earth
+
+::: {.callout-important title="Anecdote"}
+Once upon a time, there was a millionaire who challenged 3 of his farmers in exchange for his entire fortune.
+*"I shall give my entire fortune to the one who can make a fence that covers the largest possible area!"*
+and so all of the farmers put in their best efforts.
+The first farmer made a square fence.
+The second farmer scoffed at him. He knew that for any 2D shape, the highest area-to-perimeter belongs to the circle. And so, the second farmer built the largest circular fence he could with the available material.
+He then saw the third farmer's fence, which was also circular, but it was extremely small
+*"You clearly lose. Why didn't you try building it larger?"*
+The third farmer then said:
+*"It's simple."*
+The third farmer steps into the circle of his fence.
+*"This part is on the outside of my fence."*
+:::
+
+Now how is this relevant? It's not. I just remembered that story.
+Anyway, let's try to draw a circle around the Philippines.
+What would be the true perimeter of that circle?
+Since it lies on a sphere, it has to be smaller than it would be on a flat plane.
+This is because the radius $r$ of the sphere as measured by an ant is larger than the actual radius (it's actually an arc length for us gods).
+
+And it's at this point that I realize, this is the same problem as that of the length of the tropic. We just changed the coordinates (center is somewhere in the Philippines instead of one of the poles).
+
+So let's change the problem to that of a square.
+
+## Length of the square fence on Earth
+
+For simplicity, let's build a massive square fence spanning $\pi/4$ rad around the earth all around.
+
+So then we can just sum up the 4 arc lengths that produce this.
+
+We have four sections:
+- $\theta \in [0,\pi/4], \phi=0$
+- $\phi \in [0,\pi/4], \theta=\pi/4$
+- $\phi \in [0,\pi/4], \theta=0$
+- $\theta \in [0,\pi/4], \phi=\pi/4$
+
+> *Note: $\theta$ is the polar angle, the colatitude.*
+
+So then, we have 4 different integrals.
+	For 2 and 3, we have $\frac{\pi}{4} R \frac{\sqrt{2}}{2}$ and $0$
+	For 1 and 4, we have that
+		$ds^2=R^2d\theta^2+R^2\sin^2{\theta}d\phi^2$
+		$ds^2=R^2d\theta^2$
+		$ds=Rd\theta$
+		$L=\int_0^{\pi/4}{Rd\theta}$
+		$L=\frac{\pi}{4}R$
+		regardless of $\phi$.
+
+so we get $$L=\frac{\pi}{4}R(\frac{\sqrt{2}}{2}+2)$$
+> *Funnily, the zero makes sense because if $\theta$ is a polar angle, the square fence we made is actually a triangle where one of the vertices is at the pole*

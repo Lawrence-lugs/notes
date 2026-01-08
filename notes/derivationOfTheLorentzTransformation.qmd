@@ -1,0 +1,70 @@
+---
+title: "Derivation of the Lorentz Transformation"
+date: "2026-01-06"
+toc: true
+---
+
+The observation goes as follows:
+
+> [!question] Observation:
+> - The speed of light is $c$ in all inertial frames of reference
+> - Hence, time and space must warp (**transform**) in order to make movement (**velocity**) slower when an object is moving relativistically.
+
+Hence, consider a 1D space where two objects A and B are moving relative to each other at a velocity $v$. Both objects have a pair of mirror separated by a distance $x$ with a laser bouncing back and forth.
+
+From object A, the speed of its own laser is $c$ and space is warped by a factor of $1$ (unwarped).
+
+From object B, the observed speed of A’s laser has to be $c$.
+
+So then from the perspective of B, the laser has to catch up to the A mirror moving at $v$. The laser would have then been travelling at $c-v$ relative to the A mirror and would have taken $\frac{x}{c-v}$ time to get there, as opposed to $x/c$. 
+
+Then, for the return trip, the laser would take $x/(c+v)$ time. So then the total time for the laser to bounce has become:
+
+$$t'=\frac{x}{c-v}+\frac{x}{c+v}=x(\frac{1}{c-v}+\frac{1}{c+v})=x(\frac{2c}{c^2-v^2})$$
+
+Solving for the time dilation factor,
+
+$$t'/t=[x(\frac{2c}{c^2-v^2})]\frac{c}{2x}=\frac{c^2}{c^2-v^2}=\frac{1}{1-\frac{v^2}{c^2}}$$
+
+
+
+# The perpendicular mode
+
+Let’s then assume the same situation but the mirrors pointed perpendicular to the direction of moment.
+
+Then, the laser will have to travel the hypotenuse of a triangle with side lengths $x$ and the length object A has travelled in the time it takes for the laser to reach the mirror $vt'/2$.
+
+The path of the laser after it’s been reflected is symmetric to this. Hence, the time dilation factor should be the same for half the time.
+
+So then, the time 
+
+$$t_h'=\frac{\sqrt{x^2+vt_h'^2}}{c}$$
+
+$$t_h'^2=\frac{x^2+v^2t_h'^2}{c^2}$$
+
+$$c^2t_h'^2-v^2t_h'^2-x^2=0$$
+
+$$t_h'^2(c^2-v^2)=x^2$$
+
+$$t_h'^2=\frac{x^2}{c^2-v^2}$$
+
+$$t_h'^2=\frac{x^2}{c^2}\frac{1}{1-\frac{v^2}{c^2}}$$
+
+$$t_h'^2/t_h^2=\frac{1}{1-v^2/c^2}$$
+
+$$l=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}$$
+
+
+# Length Contraction
+
+So then, we find that the time it takes for the laser to finish a cycle is different in these cases.
+
+This indicates that space should have warped one of the cases so that both clocks still finish at the same time.
+
+$$\frac{x^2}{c^2-v^2}=x'^2\frac{c^2}{(c^2-v^2)^2}$$
+
+$$\frac{x'}{x}=\sqrt\frac{c^2-v^2}{c^2}$$
+
+$$\frac{x'}{x}=\sqrt{1-\frac{v^2}{c^2}}<1$$
+
+and we find that length contracts in the parallel case.
