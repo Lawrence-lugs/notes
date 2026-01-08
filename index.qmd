@@ -1,10 +1,38 @@
 ---
-title: "Notes Center"
-listing: default
+title: "Lawrence Quizon"
+subtitle: "Researcher"
+listing: 
+    type: grid
+about:
+    id: about-section
+    template: solana
+    image: image.svg
+    links:
+      - icon: github
+        text: Github
+        href: https://github.com/Lawrence-lugs
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/lawrence-roman-quizon-399172158/
 ---
 
-<hr>
+::: {#about-section}
 
-# Aaaah!
-You're not supposed to be here.
-Please go find a leaf page.
+I'm a student of everything. Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master's degree in August 2025.
+
+My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (*low power computation on the edge, brain-computer interfaces*) and sciences (*device physics, emergent dynamics*). 
+
+:::
+
+:::
+
+### Secondary Interests
+
+- Open source hardware everything. Why can't we have massive Github portfolios of random hardware? (We can)
+- The Linux Kernel for RISCV
+- The very very secret GPU architectures
+- Applications of Abstract Math (surprisingly cool)
+- Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT. 
+- Learning an NVIM workflow, primarily because I'm tired of using VNC.
+
+# Recent Pages

@@ -303,79 +303,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Notes Center",
+    "title": "Lawrence Quizon",
     "section": "",
-    "text": "Aaaah!\nYou’re not supposed to be here. Please go find a leaf page.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nPatents Are a Poor Innovation Metric\n\n\n\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nSetting up an OS PDK\n\n\nFOSSI\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nTransistor Capacitances\n\n\nEEE 131 THX2/Y\n\n\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#the-problem-with-patent-first-policies",
-    "href": "slides/patentingBad/patentingBad.html#the-problem-with-patent-first-policies",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "The Problem with “Patent-First” Policies",
-    "text": "The Problem with “Patent-First” Policies\nMisconception: - patent count with real innovation output\nWhile it is true that there is correlation between patents and innovation, this is not causation. Are we really supposed to prioritize the creation of patents?"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#what-patents-are",
-    "href": "slides/patentingBad/patentingBad.html#what-patents-are",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "What Patents are",
-    "text": "What Patents are\nA protection of the rights of the inventor over their work. As objects that protect intellectual property, these are:\n\nLong-winded, full of legal jargon\nExpensive to file due to being a law construct\nBarriers to collaboration and knowledge dissemination\n\nNo student would read a patent. Neither would I- very little knowledge value can be found in patents. In fact, most patents do not become useful."
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#patents-are-the-result-not-the-cause",
-    "href": "slides/patentingBad/patentingBad.html#patents-are-the-result-not-the-cause",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Patents are the result, not the cause",
-    "text": "Patents are the result, not the cause\n\n\nAfter a strong research foundation has already been created, patents start to appear due to the commercializability of the new knowledge being produced.\n\n\nThe Bayh-Dole Act is a US law that incentivized the filing of patents by Universities. Mowery et al. found that the Bayh-Dole Act:\n\n\n\ncaused an increase in commercially useless patents\ndid not significantly increase the patent output of top universities as these were already producing patents even before it was incentivized."
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#case-study-u.s.-university-patenting-post-bayhdole",
-    "href": "slides/patentingBad/patentingBad.html#case-study-u.s.-university-patenting-post-bayhdole",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Case Study: U.S. University Patenting Post-Bayh–Dole",
-    "text": "Case Study: U.S. University Patenting Post-Bayh–Dole\n\nPatenting rose—but began even before the law’s 1980 passage.\n\nNewly patenting universities produced patents with fewer citations → lower “value.”\n\nConclusion: Incentives alone don’t equal quality or success"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#firm-level-sme-evidence-patents-vs-profitability",
-    "href": "slides/patentingBad/patentingBad.html#firm-level-sme-evidence-patents-vs-profitability",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Firm-Level & SME Evidence: Patents vs Profitability",
-    "text": "Firm-Level & SME Evidence: Patents vs Profitability\nSME longitudinal study 2023/2024 - Among tech-firms: patents that survive &gt;6 yrs and with many claims → better profitability.\n- But heavy R&D spending with weak patents reduces that benefit → “over-patenting” is counterproductive.\n- For SMEs: patents boost sales but often not profitability — patents ≠ sustainable business success."
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#what-this-means",
-    "href": "slides/patentingBad/patentingBad.html#what-this-means",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "What this means",
-    "text": "What this means\nBayh-Dole - Rushing to file patents without a strong research base → many low-value patents\nSME Evidence - Patent-first policies can drain resources (filing costs, maintenance fees) with little return\n- Real innovation requires: talent + funding + open research + publications + prototypes + industry collaboration — patents come after"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#innovation-strategy",
-    "href": "slides/patentingBad/patentingBad.html#innovation-strategy",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Innovation Strategy",
-    "text": "Innovation Strategy\nFund and build strong research programs\n\nThese in turn create good graduate programs that produce innovation power.\n\nPrioritize academic publications, open tools, and open-source designs.\n\nAllows a strong knowledge base for students and future researchers"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#conclusion",
-    "href": "slides/patentingBad/patentingBad.html#conclusion",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Conclusion",
-    "text": "Conclusion\nPatents are outputs, not starting points\n\nPatent counts by themselves are a misleading metric\n\nEvidence shows that quality of research and depth of ecosystem matter more than sheer patent numbers\n\nFor a developing-nation context like ours, the real goal should be building research capacity — not chasing patent counts"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#numbers",
-    "href": "slides/patentingBad/patentingBad.html#numbers",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Numbers",
-    "text": "Numbers"
-  },
-  {
-    "objectID": "slides/patentingBad/patentingBad.html#references",
-    "href": "slides/patentingBad/patentingBad.html#references",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "References",
-    "text": "References\n\nPoege, Harhoff, Gaessler, Baruffaldi, 2019 — Science Quality and the Value of Inventions\n\nTaalbi, 2022 — Innovation with and without patents\n\nMowery, Nelson, Sampat & Ziedonis, 2001 — The growth of patenting and licensing by U.S. universities\n\nRecent firm-level study 2025 — Patent quality, R&D investment, and the profitability of technology-based firms\n\nSME longitudinal study 2023/2024 — SMEs and patents: Is it worth it?"
+    "text": "Github\n  \n  \n    \n     LinkedIn\n  \n\n      \nI’m a student of everything. Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.\nMy primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (low power computation on the edge, brain-computer interfaces) and sciences (device physics, emergent dynamics).\n\n    \n    \n  \n\n\n:::\n\nSecondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel for RISCV\nThe very very secret GPU architectures\nApplications of Abstract Math (surprisingly cool)\nTrying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.\nLearning an NVIM workflow, primarily because I’m tired of using VNC.\n\n\n\nRecent Pages\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFrequency Response of CE Amplifier\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nSetting up an OS PDK\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\n\n\n\n\nTransistor Capacitances\n\n\n\n\n\n\nLawrence Quizon\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/settingOsPdk/settingOsPdk.html#steps-overview",
@@ -525,10 +455,10 @@
     "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
   },
   {
-    "objectID": "slides/patentingBad/patentingBad.html#block-callout-testing",
-    "href": "slides/patentingBad/patentingBad.html#block-callout-testing",
-    "title": "Patents Are a Poor Innovation Metric",
-    "section": "Block Callout Testing",
-    "text": "Block Callout Testing\nTheory: you don’t need quarto callouts to generate callouts.\n\n[!NOTE] This is a NOTE callout\n\n\n[!NOTE] Test Note 1 This is a NOTE callout with a custom name\n\nThese are called github-flavored markdown (GFM). They don’t work in Quarto anymore, apparently. They callouts are made as divs and then translated under the hood, since they’re pandoc-style."
+    "objectID": "index.html#secondary-interests",
+    "href": "index.html#secondary-interests",
+    "title": "Lawrence Quizon",
+    "section": "Secondary Interests",
+    "text": "Secondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel for RISCV\nThe very very secret GPU architectures\nApplications of Abstract Math (surprisingly cool)\nTrying to understand General Relativity and Quantum Field Theory working towards understanding AdS/CFT. Primarily because it’s referred to so much in popular media and I’m extremely fascinated with the concept.\nLearning an NVIM workflow, primarily because i’m tired of using VNC."
   }
 ]

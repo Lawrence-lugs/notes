@@ -2,6 +2,15 @@ project:
   type: website
   output-dir: docs
 
+format:
+  html:
+    theme: united
+    mainfont: Trebuchet MS
+
 website:
   navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      
     search: true

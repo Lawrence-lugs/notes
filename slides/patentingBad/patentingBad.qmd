@@ -1,5 +1,6 @@
 ---
 title: "Patents Are a Poor Innovation Metric"
+draft: true
 author: "Lawrence Quizon"
 format: 
     revealjs:
