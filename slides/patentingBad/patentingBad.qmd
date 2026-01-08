@@ -89,3 +89,18 @@ Patents are *outputs*, not *starting points*
 - Recent firm-level study 2025 — *Patent quality, R&D investment, and the profitability of technology-based firms*   
 - SME longitudinal study 2023/2024 — *SMEs and patents: Is it worth it?*   
 
+# Extra Slides
+
+## Block Callout Testing
+
+Theory: you don't need quarto callouts to generate callouts.
+
+> [!NOTE]
+> This is a NOTE callout
+
+> [!NOTE] Test Note 1
+> This is a NOTE callout with a custom name
+
+These are called github-flavored markdown (GFM).
+They don't work in Quarto anymore, apparently.
+They callouts are made as divs and then translated under the hood, since they're pandoc-style.

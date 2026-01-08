@@ -436,13 +436,29 @@ SME Evidence - Patent-first policies can drain resources (filing costs, maintena
 </li>
 <li>SME longitudinal study 2023/2024 — <em>SMEs and patents: Is it worth it?</em></li>
 </ul>
+</section>
+<section>
+<section id="extra-slides" class="title-slide slide level1 center">
+<h1>Extra Slides</h1>
+
+</section>
+<section id="block-callout-testing" class="slide level2">
+<h2>Block Callout Testing</h2>
+<p>Theory: you don’t need quarto callouts to generate callouts.</p>
+<blockquote>
+<p>[!NOTE] This is a NOTE callout</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE] Test Note 1 This is a NOTE callout with a custom name</p>
+</blockquote>
+<p>These are called github-flavored markdown (GFM). They don’t work in Quarto anymore, apparently. They callouts are made as divs and then translated under the hood, since they’re pandoc-style.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -829,7 +845,7 @@ SME Evidence - Patent-first policies can drain resources (filing costs, maintena
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

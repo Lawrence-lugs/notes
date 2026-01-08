@@ -523,5 +523,12 @@
     "title": "Setting up an OS PDK",
     "section": "MAGIC setup checklist",
     "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "slides/patentingBad/patentingBad.html#block-callout-testing",
+    "href": "slides/patentingBad/patentingBad.html#block-callout-testing",
+    "title": "Patents Are a Poor Innovation Metric",
+    "section": "Block Callout Testing",
+    "text": "Block Callout Testing\nTheory: you don’t need quarto callouts to generate callouts.\n\n[!NOTE] This is a NOTE callout\n\n\n[!NOTE] Test Note 1 This is a NOTE callout with a custom name\n\nThese are called github-flavored markdown (GFM). They don’t work in Quarto anymore, apparently. They callouts are made as divs and then translated under the hood, since they’re pandoc-style."
   }
 ]
