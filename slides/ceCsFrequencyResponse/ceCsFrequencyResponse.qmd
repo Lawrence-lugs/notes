@@ -1,0 +1,289 @@
+---
+title: "Frequency Response of CE Amplifier"
+subtitle: "EEE 131 THX2/Y"
+author: "Lawrence Quizon"
+institute:  
+    Electrical and Electronics Engineering Institute<br>
+    University of the Philippines <br>
+    Diliman
+title-slide-attributes:
+    align: left
+format:
+  revealjs: 
+    slide-number: true
+    # chalkboard: 
+      # buttons: false
+    preview-links: auto
+    theme:
+        - default
+        - ../law.scss
+    footer: "Frequency Response of CE Amplifier"
+    fontsize: 24pt
+    menu: false 
+    width: 1280
+    height: 720
+    filters:
+      - ../scripts/auto-fragment.lua
+    #   - reveal-header
+    # sc-sb-title: true
+    # slide-tone: true
+    # embed-resources: true
+    # self-contained-math: true
+    # html-math-method: katex
+mainfont: Trebuchet MS
+sansfont: Trebuchet MS
+---
+
+## Coverage
+
+::: {.incremental}
+- Frequency Response of CS/CE Amplifiers
+- CE Amplifier with an Output Pole
+- CE Amplifier with an Input Pole
+:::
+
+## CE Amplifier with an Output Pole
+
+:::: {.columns}
+
+::: {.column width=".60"}
+We begin by analyzing the CE amplifier frequency response.
+
+**Assumptions:**
+
+::: {.incremental}
+- Ignore BJT parasitic capacitances (for now).
+- Assume $r_o \rightarrow \infty$.
+- An external load capacitance $C_L$ dominates the output.
+:::
+
+:::
+
+::: {.column width=".40" .vcentered}
+![](figures/ceLoadCAp.png){width=70%}
+:::
+
+::::
+
+## CE Amplifier with an Output Pole
+
+:::{.fragment .fade-in-then-semi-out}
+KCL @ $v_o$:
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$\frac{v_o}{R_C || \frac{1}{sC_L}} + g_m v_i = 0$$
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+Then, rearranging,
+$$A_v(s) = -g_mR_C \left( \frac{1}{1 + sR_C C_L} \right)$$
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+and we have the form
+
+$$A_v(s) = A_0 \left( \frac{1}{1 + s/p_1} \right) $$
+:::
+
+## CE with Output Poles: $A_V$
+
+$$A_v(s) = -g_mR_C \left( \frac{1}{1 + sR_C C_L} \right)$$
+
+![](figures/celoadcapav.svg){fig-align="center"}
+
+## CE with Output Pole: $R_o$
+
+![](figures/zout_response.svg)
+
+## CE with Output Pole: $G_m$
+
+![](figures/gm_response.svg)
+
+## CE with Output Pole: $Z_i$
+
+![](figures/zin_response.svg)
+
+## CE Transconductance $G_m$
+
+:::{.fragment .fade-in-then-semi-out}
+Recalling that $A_v = -G_m Z_o$, we can solve for the effective transconductance:
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$G_m = \frac{-A_v}{Z_o}$$
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$G_m = \frac{-\left[ \frac{-g_m R_C}{1 + j\omega R_C C_L} \right]}{\frac{R_C}{1 + j\omega R_C C_L}}$$
+:::
+
+:::{.fragment .highlight-blue}
+$$G_m = g_m$$
+:::
+
+:::{.fragment}
+In this simplified model, the transconductance is frequency independent.
+:::
+
+## CE Input Impedance $Z_i$
+
+::::{.columns}
+:::{.column width="60%"}
+$$Z_i = \frac{v_i}{i_i} \bigg|_{v_o=0}$$
+
+By simple inspection of the small signal model:
+$$Z_i = r_\pi$$
+
+The input impedance is purely resistive and constant across frequency (in this specific configuration).
+:::
+:::{.column width="40%"}
+![](figures/ce_zi_plots.png)
+:::
+::::
+
+## CE Two-Port Equivalent (Output Pole Only)
+
+We can construct a two-port network representing the amplifier so far:
+
+![](figures/two_port_simple.png){width=60% fig-align="center"}
+
+::: {.columns}
+::: {.column width=33%}
+$$Z_i = r_\pi$$
+:::
+::: {.column width=33%}
+$$G_m = g_m$$
+:::
+::: {.column width=33%}
+$$Z_o = \frac{R_C}{1 + sR_C C_L}$$
+:::
+:::
+
+# CE Amplifier with Input Pole
+
+## The CE Amplifier with an Input Pole
+
+Now we add a source resistance $R_S$ and a base-emitter capacitance $C_\pi$.
+
+![](figures/ce_input_pole_schem.png){width=60% fig-align="center"}
+
+We must determine how $v_{be}$ relates to $v_i$ considering the frequency dependent voltage divider at the input.
+
+## Deriving the Input Transfer Function {auto-animate="true"}
+
+:::{.fragment .fade-in-then-semi-out}
+Applying voltage division at the input loop:
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$\frac{v_{be}}{v_i} = \frac{Z_\pi}{Z_\pi + R_S}$$
+where $Z_\pi = r_\pi \parallel \frac{1}{sC_\pi}$.
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$\frac{v_{be}}{v_i} = \frac{\frac{r_\pi}{1 + s r_\pi C_\pi}}{\frac{r_\pi}{1 + s r_\pi C_\pi} + R_S}$$
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+Multiplying numerator and denominator by $(1 + s r_\pi C_\pi)$:
+$$\frac{v_{be}}{v_i} = \frac{r_\pi}{r_\pi + R_S + s r_\pi R_S C_\pi}$$
+:::
+
+## Deriving the Input Transfer Function {auto-animate="true"}
+
+:::{.fragment .fade-in-then-semi-out}
+$$\frac{v_{be}}{v_i} = \frac{r_\pi}{r_\pi + R_S + s r_\pi R_S C_\pi}$$
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+We factor out $(r_\pi + R_S)$ from the denominator to normalize the DC term:
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+$$\frac{v_{be}}{v_i} = \frac{r_\pi}{r_\pi + R_S} \left( \frac{1}{1 + s C_\pi \frac{r_\pi R_S}{r_\pi + R_S}} \right)$$
+:::
+
+:::{.fragment}
+This results in an input attenuation factor $A_{i}$ and an input pole $\omega_{p1}$:
+$$\frac{v_{be}}{v_i} = A_i \frac{1}{1 + j\frac{\omega}{\omega_{p1}}}$$
+where $A_i = \frac{r_\pi}{r_\pi + R_S}$ and $\omega_{p1} = \frac{1}{C_\pi (r_\pi \parallel R_S)}$.
+:::
+
+## Total Transfer Function
+
+We combine the input section response ($A_1$) with the output section response ($A_2$).
+
+$$A_v(s) = \underbrace{\left( \frac{v_{be}}{v_i} \right)}_{\text{Input Section}} \cdot \underbrace{\left( \frac{v_o}{v_{be}} \right)}_{\text{Output Section}}$$
+
+:::{.fragment .fade-up}
+$$A_v(s) = \left[ \frac{r_\pi}{r_\pi + R_S} \cdot \frac{1}{1 + j\frac{\omega}{\omega_{p1}}} \right] \cdot \left[ -g_m R_C \cdot \frac{1}{1 + j\frac{\omega}{\omega_{p2}}} \right]$$
+:::
+
+:::{.fragment .callout-note}
+## Total Gain
+$$A_v(s) = A_{mid} \frac{1}{(1 + j\frac{\omega}{\omega_{p1}})(1 + j\frac{\omega}{\omega_{p2}})}$$
+$$\omega_{p1} = \frac{1}{C_\pi (r_\pi \parallel R_S)}, \quad \omega_{p2} = \frac{1}{R_C C_L}$$
+:::
+
+## Magnitude Response (Two Poles)
+
+Typically, the output pole $\omega_{p2}$ is lower frequency than the input pole $\omega_{p1}$.
+
+![](figures/bode_two_pole_mag.png){fig-align="center"}
+
+::: {.incremental}
+- Flat gain up to $\omega_{p2}$.
+- Slope of $-20$ dB/dec between $\omega_{p2}$ and $\omega_{p1}$.
+- Slope of $-40$ dB/dec after $\omega_{p1}$.
+:::
+
+## Phase Response
+
+The phase response depends on the separation of the poles.
+
+$$\angle A_v(\omega) = 180^\circ - \tan^{-1}\left(\frac{\omega}{\omega_{p1}}\right) - \tan^{-1}\left(\frac{\omega}{\omega_{p2}}\right)$$
+
+::::{.columns}
+:::{.column width="50%"}
+**Widely Separated**
+If poles are far apart, the phase drops in distinct steps.
+![](figures/phase_separated.png)
+:::
+:::{.column width="50%"}
+**Close Proximity**
+If poles are close, the phase shifts merge, creating a steeper descent.
+![](figures/phase_close.png)
+:::
+::::
+
+# Generalized Two-Port Model
+
+## Frequency Dependent Parameters
+
+We can generalize the two-port parameters to include frequency effects:
+
+::::{.columns}
+:::{.column width="50%"}
+**Input Impedance $Z_i(\omega)$**
+$$Z_i(\omega) = R_S + \frac{r_\pi}{1 + j\omega r_\pi C_\pi}$$
+*Derivation involves simple series/parallel combination of $R_S, r_\pi, C_\pi$.*
+:::
+
+:::{.column width="50%"}
+**Transconductance $G_m(\omega)$**
+$$G_m(\omega) = \frac{g_m}{1 + j\omega (R_S \parallel r_\pi) C_\pi} \cdot \frac{r_\pi}{r_\pi + R_S}$$
+*Effective transconductance rolls off due to the input pole.*
+:::
+::::
+
+## Next Lecture
+
+::: {.incremental}
+- Miller Capacitance
+    - What happens when a capacitor connects Input and Output?
+- Bypass and Coupling Capacitors
+    - Effect on Low Frequency Response
+:::
+
+## End of Part 1

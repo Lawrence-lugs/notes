@@ -285,7 +285,7 @@ Av_oc_db = 20 * np.log10(np.abs(Av_oc))
 # ==========================================
 # 4. Plotting
 # ==========================================
-plt.figure(figsize=(8, 4.5))
+fig = plt.figure(figsize=(8, 4.5))
 
 # Plot 1: Intrinsic DC Gain Ceiling
 plt.axhline(y=Av_intrinsic_db, color='grey', linestyle='--', linewidth=2, label=f'Intrinsic DC Voltage Gain ($g_m r_o$) = {Av_intrinsic_db:.1f} dB')
@@ -323,6 +323,7 @@ plt.title("Transistor ", fontsize=14)
 plt.xlabel("Frequency (Hz)", fontsize=12)
 plt.ylabel("Gain Magnitude (dB)", fontsize=12)
 plt.grid(True, which="both", ls="-", alpha=0.6)
+
 plt.legend(fontsize=11, loc='lower left')
 plt.xlim(1e5, 1e11)
 plt.ylim(-40, 70)
@@ -332,4 +333,5 @@ plt.legend(fontsize='small')
 # plt.tight_layout()
 
 plt.savefig('figures/ft.svg')
-plt.show()
+
+# plt.show()

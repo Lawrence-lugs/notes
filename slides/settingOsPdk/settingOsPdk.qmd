@@ -1,0 +1,197 @@
+---
+title: "Setting up an OS PDK"
+subtitle: "FOSSI"
+author: "Lawrence Quizon"
+version: "0.0"
+title-slide-attributes:
+    align: left
+format:
+  revealjs: 
+    slide-number: true
+    # chalkboard: 
+      # buttons: false
+    preview-links: auto
+    theme:
+        - default
+        - ../law.scss
+    footer: "Setting up an OS PDK"
+    fontsize: 24pt
+    menu: true
+    width: 1280
+    height: 720
+    filters:
+      - ../scripts/auto-fragment.lua
+    #   - reveal-header
+    # sc-sb-title: true
+    # slide-tone: true
+    # embed-resources: true
+    # self-contained-math: true
+    # html-math-method: katex
+    toc: true
+mainfont: Trebuchet MS
+sansfont: Trebuchet MS
+---
+
+## Steps Overview
+
+The following tools require setup for a new PDK:
+
+- Yosys Synthesis
+- OpenROAD (`place_opt`, `global_route`, `detailed_route`, `cts`)
+- MAGIC setup (sets up DRC)
+- NETGEN setup (LVS)
+- OpenSTA settings
+- OpenRCX settings
+- XSchem (Symbol creation and spice attachment)
+    - `PDK_HOME/libs.tech/xschem`
+
+## Resources
+
+**OpenLane Discussions**
+Issue on the original repo discussing PDK setup:
+[https://github.com/The-OpenROAD-Project/OpenLane/discussions/2133](https://github.com/The-OpenROAD-Project/OpenLane/discussions/2133)
+
+**PDK Configuration**
+Official documentation on setting up a configuration:
+[https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html](https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html)
+
+# Setting up LibreLane
+
+## Most important requirement: Config files
+
+In fact, little else matters because these config files point to everything that's needed.
+If they're not there, you have to make them.
+
+<!-- Run with `--manual-pdk` if building without `ciel` (the package manager). -->
+
+**Required Files:**
+
+1.  **PDK Config:**
+    `{pdk_root}/{pdk}/libs.tech/librelane/config.tcl`
+    
+    <!-- ![PDK Config](image.png) -->
+
+2.  **SCL Config:**
+    `{pdk_root}/{pdk}/libs.tech/librelane/{scl}/config.tcl`
+
+    <!-- ![SCL Config](image%201.png) -->
+
+## What's a TLEF?
+
+You don't actually need it!
+The configuration file is where you declare the `tech lef`.
+
+```tcl
+# Technology LEF
+set ::env(TECH_LEF) "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__nom.tlef"
+set ::env(TECH_LEF_MIN) "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__min.tlef"
+set ::env(TECH_LEF_MAX) "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__max.tlef"
+set ::env(CELLS_LEF) [glob "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lef/*.lef"]
+set ::env(GDS_FILES) [glob "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/gds/*.gds"]
+set ::env(STD_CELL_LIBRARY_CDL) "$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/cdl/$::env(STD_CELL_LIBRARY).cdl"
+```
+
+> **Note:** Except for `libs.ref` (which is standard), everything else is handled by this config file.
+
+## Configuration Files Detail
+
+Source: [OpenLane Docs](https://openlane.readthedocs.io/en/latest/for_developers/pdk_structure.html)
+
+* `config.tcl`: Common info for all SCLs under this PDK. [Example](https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.tech/librelane/config.tcl)
+* `common_pdn.tcl`: PDN configuration.
+* `<scl>/config.tcl`: SCL specific info (overrides PDK config). [Example](https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.tech/librelane/sg13g2_stdcell/config.tcl)
+* `<scl>/tracks.info`: Metal layer offsets and pitches (extracted from tech lef). [Example](https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.tech/librelane/sg13g2_stdcell/tracks.info)
+    * Format: `<layer name> X|Y <offset> <pitch>`
+* `<scl>/synth_exclude.cells`: Newline-separated cell names to trim during synthesis. [Example](https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.tech/librelane/sg13g2_stdcell/synth_exclude.cells)
+* `rcx_patterns.rules`: Rules for OpenSTA. [Example](https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.tech/librelane/IHP_rcx_patterns.rules)
+
+## Folder Structure
+
+::: {style="font-size: 15pt;"}
+
+* `<pdk_name>`
+    * `libs.tech`
+        * `openlane`
+            * `config.tcl`
+            * `common_pdn.tcl` (Default PDN script)
+            * `<standard cell library>`
+                * `config.tcl`
+                * `tracks.info`
+                * `no_synth.cells`
+                * `drc_exclude.cells`
+    * `libs.ref`
+        * `skyxxx_fd_xx_xx`
+            * `lef` (Can contain techlef declarations)
+            * `techlef` (Doesn't have to be a folder)
+            * `lib`
+            * ...
+:::
+
+# Execution: Setting up XSchem
+
+## XSchem as the virtuoso equivalent
+
+> **Note:** The most basic way to start is skipping XSchem and using ngspice directly.
+
+**Checklist:**
+
+- Write `libs.tech/xschem/xschemrc`
+- Create symbols for relevant elements
+    - Suggest starting with `nfet` and `pfet` to try a flow.
+    - Investigate `sky130` symbols (open with XSchem) for reference.
+
+## XSchem Symbols (like the Cadence symbol view)
+
+::::{.columns}
+:::{.column width="50%"}
+
+You must create your own symbols (using XSchem).
+
+You need to set global attributes for XSchem symbols for them to be parsed into a `spice` netlist properly.  
+
+Global attribute example () is shown on the right (model name: `nfet_1v8`)
+:::
+:::{.column width="50%"}
+
+```text
+ 1 G {}
+ 2 K {type=nmos
+ 3 lvs_format="@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult"
+ 4 format="@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W
+ 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps
+ 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd
+ 7 + mult=@mult m=@mult"
+ 8 template="name=M1
+ 9 W=1
+10 L=0.15
+11 nf=1 
+12 mult=1
+13 ad=\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\"
+14 pd=\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\"
+15 as=\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\"
+16 ps=\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\"
+17 nrd=\\"expr('0.29 / @W ')\\" nrs=\\"expr('0.29 / @W ')\\"
+18 sa=0 sb=0 sd=0
+19 model=nfet_01v8
+20 spiceprefix=X
+21 "
+22 drc="fet_drc \{@name\\\\\} \{@symname\\\\\} \{@model\\\\\} \{@W\\\\\} \{@L\\\\\} \{@nf\\\\\}"}
+```
+:::
+::::
+
+# Execution: Setting up MAGIC
+
+## MAGIC setup checklist
+
+Basically, all layout and signoff-related things (except maybe logic equivalence) are **done by magic TCL scripts**. **Checklist:**
+
+- Process the given stdcell lefs to create `maglefs`
+- Write `sky130A.tcl`
+- Write `sky130A.tech`
+- Write `sky130A.magicrc`
+- Write all the custom TCL, like fillgen.
+
+::: {.callout-note}
+I strongly recommend just copying then changing the fill and DRC scripts from the existing `sky130/libs.tech/magic` or `ihp-sg13g2/libs.tech/magic` 
+:::
