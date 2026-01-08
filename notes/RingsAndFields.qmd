@@ -35,6 +35,7 @@ Rings have important common properties we take advantage of like unique factoriz
 
 - Maximal Ideals are one-to-one with Fields (see later section) ($M \text{ maximal} \iff R/M \text{ is a field}$)
 - $R/\text{ker}(\phi)\cong \text{im}(\phi)$.
+- $u \in R$ is a unit iff $\text{Ideal}(u)=R$ (defines what a "unit" element is, like 1 or i. Probably useful for induction on weird sets too?)
 
 Tl;DR, things close to rings (groups, commutative rings, rings with unique factorization, fields) are useful. Theorems that apply ONLY to rings themselves are a little abstract (heh, pun intended).
 
