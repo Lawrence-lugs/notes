@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lawrence Quizon</title>
+<title>Rings and Fields</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,35 +66,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -129,7 +99,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -142,7 +112,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -156,150 +126,165 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-
-
-
-<div class="quarto-about-solana column-body content">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Lawrence Quizon</h1>
-<p class="subtitle lead">Researcher</p>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header> <div class="about-links">
-  <a href="https://github.com/Lawrence-lugs" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="https://www.linkedin.com/in/lawrence-roman-quizon-399172158/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-</div>
-      <div class="about-contents"><div id="about-section">
-<p>I’m a student of everything. Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.</p>
-<p>My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (<em>low power computation on the edge, brain-computer interfaces</em>) and sciences (<em>device physics, emergent dynamics</em>).</p>
-</div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#rings" id="toc-rings" class="nav-link active" data-scroll-target="#rings">Rings</a>
+  <ul class="collapse">
+  <li><a href="#why-rings" id="toc-why-rings" class="nav-link" data-scroll-target="#why-rings">Why rings?</a></li>
+  <li><a href="#function-ideals-and-cotangent-space" id="toc-function-ideals-and-cotangent-space" class="nav-link" data-scroll-target="#function-ideals-and-cotangent-space">Function Ideals and Cotangent space</a></li>
+  </ul></li>
+  <li><a href="#fields" id="toc-fields" class="nav-link" data-scroll-target="#fields">Fields</a></li>
+  <li><a href="#difference-between-ring-field-and-algebra." id="toc-difference-between-ring-field-and-algebra." class="nav-link" data-scroll-target="#difference-between-ring-field-and-algebra.">Difference between Ring, Field and Algebra.</a></li>
+  </ul>
+</nav>
     </div>
-    <img src="image.svg" class="about-image
-  rounded " style="width: 15em;">
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Rings and Fields</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</div>
+  
 
-<p><br></p>
-<section id="secondary-interests" class="level3">
-<h3 data-anchor-id="secondary-interests">Secondary Interests</h3>
+
+</header>
+
+
+<p>Abstract algebra is apparently the study of rings and fields plus groups…</p>
+<section id="rings" class="level1">
+<h1>Rings</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Rings">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rings
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ring (German: Zahlring). A cycle of return. Sets that close back onto themselves on their operations.</p>
+</div>
+</div>
+<p>Rings are a set with addition and multiplication.</p>
+<p>It’s less restrictive than an algebra. A ring only has to be closed over itself. That is, a closed set on addition and multiplication. An algebra, on the other hand, always has to be defined <strong>over something</strong>*. It has to be a vector space <span class="math inline">\(A\)</span> over <span class="math inline">\(K\)</span> equipped with a multiplication that is compatible with the scalars.</p>
+<p>Algebra cares about basis and dimension. Rings only care about “primeness” and factorization.</p>
+<section id="why-rings" class="level2">
+<h2 class="anchored" data-anchor-id="why-rings">Why rings?</h2>
+<p>Rings were first invented to solve Diophantine Equations. <strong>commutative algebra</strong> is the study of rings. Rings were invented as the concept of <strong>ideals</strong>.</p>
+<p>Ideals are subsets of rings (technically called a sublattice, probably because it’s a “discrete vector field” because it’s a linear combination of the ring elements)</p>
+<p>Ideals can be factored, and can be prime.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="**What is an Ideal?**">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>What is an Ideal?</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An ideal <span class="math inline">\(I\)</span> is a subset of the ring that absorbs multiplication. If <span class="math inline">\(r \in R\)</span> and <span class="math inline">\(x \in I\)</span>, then <span class="math inline">\(rx \in I\)</span>. Notation: <span class="math inline">\((a, b)\)</span> is the ideal generated by <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. It implies the set of all linear combinations <span class="math inline">\(\{ra + sb \mid r, s \in R\}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Real ring <span class="math inline">\(\mathbb{R}\)</span> has exactly two ideals: 1. Zero ideal (0) 2. Entire ring (1)</p>
+<p>It is trivial. This is because when trying to define any other ideal, say (0.001), you accidentally become the (1) ideal because you always have a multiplative inverse.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Maximal vs Prime Ideals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Maximal vs Prime Ideals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Maximal Ideal: An ideal <span class="math inline">\(M\)</span> is maximal if no other proper ideal <span class="math inline">\(J\)</span> contains <span class="math inline">\(M\)</span> (i.e., <span class="math inline">\(M\subset J\subset R\)</span> is impossible). Prime Ideal: An ideal <span class="math inline">\(P\)</span> is prime if for any <span class="math inline">\(a,b\)</span> in the ring, if <span class="math inline">\(ab\in P\)</span>, then <span class="math inline">\(a\in P\)</span> or <span class="math inline">\(b\in P\)</span></p>
+</div>
+</div>
+</section>
+<section id="function-ideals-and-cotangent-space" class="level2">
+<h2 class="anchored" data-anchor-id="function-ideals-and-cotangent-space">Function Ideals and Cotangent space</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Essence">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Essence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Linking Ideals and Geometry forms the power of abstract algebra</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>TODO: Fill in later. ### Quotient Notation</p>
+</blockquote>
+<p><span class="math display">\[R = \frac{\mathbb{R}[x,y]}{(y^2 - x^3)}\]</span> <span class="math display">\[\text{Cotangent Space} = \frac{\mathfrak{m}}{\mathfrak{m}^2}\]</span> # Vector spaces</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vector spaces are - Abelian Groups - sets closed under one operation that is associative, commutative, has an identity and inverses. - Scalable by a Field - must be multipliable by some field that still keeps it closed.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="fields" class="level1">
+<h1>Fields</h1>
+<p>A ring with division- that is, each element has a multiplicative inverse. <span class="math inline">\(ax=b\)</span> is always solvable in a field. <span class="math inline">\(ax=b\)</span> would be a diophantine equation if it’s on the ring <span class="math inline">\(\Bbb{Z}\)</span>, and can have no solutions (say, if <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are coprime)</p>
+</section>
+<section id="difference-between-ring-field-and-algebra." class="level1">
+<h1>Difference between Ring, Field and Algebra.</h1>
+<p>A ring is a set with addition and multiplication closed over itself.</p>
+<p>A field is a commutative ring (ring with commutative multiplication) with an inverse defined for every non-zero element. All fields are rings.</p>
+<p>An algebra can be defined over a field or a ring. You need: - To be “Over something” - Over a set with multiplication and addition (So at least a ring) - Scalars that when multiplied to the elements, stays within the set. - The scalars need not come from the “over” set. Why need the scalars? Scalars make it so that you can build all elements of the set from a few elements (a <em>basis</em>). This then gives access to the tools of linear algebra: determinants, traces, matrices, eigenstuff.</p>
+<p>Nomenclature:</p>
 <ul>
-<li>Open source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)</li>
-<li>The Linux Kernel for RISCV</li>
-<li>The very very secret GPU architectures</li>
-<li>Applications of Abstract Math (surprisingly cool)</li>
-<li>Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.</li>
-<li>Learning an NVIM workflow, primarily because I’m tired of using VNC.</li>
+<li>Algebras over Rings are special Modules (+free, meaning it has a basis)</li>
+<li>Algebras over Fields are special Vector Spaces (+multiplication)</li>
 </ul>
+<p>A few interesting things:</p>
+<ul>
+<li>A ring can be an algebra over itself. So is a field an algebra over itself. These are trivial though.</li>
+</ul>
+
+
 </section>
-<section id="recent-pages" class="level1">
-<h1>Recent Pages</h1>
 
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1767863809997" data-listing-reading-time-sort="4" data-listing-word-count-sort="639">
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Frequency Response of CE Amplifier
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1767872800611" data-listing-reading-time-sort="3" data-listing-word-count-sort="568">
-<a href="./notes/RingsAndFields.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Rings and Fields
-</h5>
-<div class="card-text listing-description">
-Abstract algebra is apparently the study of rings and fields plus groups…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1767863810011" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Setting up an OS PDK
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1766244232264" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005">
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Transistor Capacitances
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -320,6 +305,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

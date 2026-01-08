@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
+      "/notes/RingsAndFields.html",
       "/slides/settingOsPdk/settingOsPdk.html",
       "/slides/transistorCapacitances/transistorCapacitances.html"
     ]
