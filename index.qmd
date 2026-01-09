@@ -1,6 +1,6 @@
 ---
 title: "Lawrence Quizon"
-subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEi"
+subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI"
 listing: 
     type: table
     fields: [title, date]
