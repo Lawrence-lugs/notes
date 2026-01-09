@@ -2,9 +2,9 @@
 title: "Lawrence Quizon"
 subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI"
 listing: 
-    type: table
-    fields: [title, date]
-    sort: "date"
+    type: grid
+    # fields: [title, date]
+    sort: "date desc"
 about:
     id: about-section
     template: solana

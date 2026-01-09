@@ -117,10 +117,11 @@ Secondly, we know a correspondence between the wavefunction $\psi(x)$ and the mo
 $$\psi(x)=e^{-ikx}$$
 Then we can identify $k$ as the wavelength as postulated earlier.
 
-![](YourFile.png)
+![](attachments/YourFile.png)
 
 Then, since all valid wavefunctions can be formed from superpositions, then we can sum an infinite number of plane waves whose $k$ is definite to form an arbitrary wavefunction with a "hard-to-determine" $k$, as in Fourier's theorem.
 $$\psi(x) = \frac{1}{2\pi}\int^{\infty}_{-\infty}\psi(k)e^{ikx}dx$$
+
 ::: {.callout-important title="Wait..."}
 Where does $1/2\pi$ come from in this derivation?
 Probably some sort of normalization.

@@ -134,7 +134,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -161,7 +161,35 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#accounting-for-the-output-scale" id="toc-accounting-for-the-output-scale" class="nav-link active" data-scroll-target="#accounting-for-the-output-scale">Accounting for the output scale…</a></li>
+  <li><a href="#tflite-quantized-matmul" id="toc-tflite-quantized-matmul" class="nav-link" data-scroll-target="#tflite-quantized-matmul">TFlite Quantized Matmul</a>
+  <ul class="collapse">
+  <li><a href="#zeroes-thereof" id="toc-zeroes-thereof" class="nav-link" data-scroll-target="#zeroes-thereof">Zeroes Thereof</a></li>
+  </ul></li>
+  <li><a href="#full-integer-quantized-addition" id="toc-full-integer-quantized-addition" class="nav-link" data-scroll-target="#full-integer-quantized-addition">Full Integer Quantized Addition</a></li>
+  <li><a href="#errors-based-on-the-tflite-output-scaling" id="toc-errors-based-on-the-tflite-output-scaling" class="nav-link" data-scroll-target="#errors-based-on-the-tflite-output-scaling">Errors based on the TFLite output scaling</a></li>
+  <li><a href="#google-paradigm-on-dealing-with-low-precision-matrix-multiplication" id="toc-google-paradigm-on-dealing-with-low-precision-matrix-multiplication" class="nav-link" data-scroll-target="#google-paradigm-on-dealing-with-low-precision-matrix-multiplication">Google Paradigm on Dealing with Low Precision Matrix Multiplication</a></li>
+  <li><a href="#litert-torch-converter" id="toc-litert-torch-converter" class="nav-link" data-scroll-target="#litert-torch-converter">LiteRT Torch Converter</a></li>
+  <li><a href="#on-edmips" id="toc-on-edmips" class="nav-link" data-scroll-target="#on-edmips">On EdMIPS</a></li>
+  <li><a href="#biases" id="toc-biases" class="nav-link" data-scroll-target="#biases">Biases</a></li>
+  <li><a href="#static-vs-dynamic-quantization" id="toc-static-vs-dynamic-quantization" class="nav-link" data-scroll-target="#static-vs-dynamic-quantization">Static vs Dynamic Quantization</a>
+  <ul class="collapse">
+  <li><a href="#dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation." id="toc-dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation." class="nav-link" data-scroll-target="#dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation.">Dynamic Quantization — Specify quantization range for each activation fmap before calculation.</a></li>
+  <li><a href="#static-quantization-specify-range-beforehand" id="toc-static-quantization-specify-range-beforehand" class="nav-link" data-scroll-target="#static-quantization-specify-range-beforehand">Static Quantization — Specify range beforehand</a></li>
+  <li><a href="#works" id="toc-works" class="nav-link" data-scroll-target="#works">Works</a></li>
+  </ul></li>
+  <li><a href="#stochastic-quantization" id="toc-stochastic-quantization" class="nav-link" data-scroll-target="#stochastic-quantization">Stochastic Quantization</a></li>
+  <li><a href="#simulated-integer-only-quantization" id="toc-simulated-integer-only-quantization" class="nav-link" data-scroll-target="#simulated-integer-only-quantization">Simulated &amp; Integer-only Quantization</a></li>
+  <li><a href="#determining-steprange-vs-bits" id="toc-determining-steprange-vs-bits" class="nav-link" data-scroll-target="#determining-steprange-vs-bits">Determining step/range vs bits</a></li>
+  <li><a href="#edmips-quantizer-range" id="toc-edmips-quantizer-range" class="nav-link" data-scroll-target="#edmips-quantizer-range">EdMIPS Quantizer Range</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 

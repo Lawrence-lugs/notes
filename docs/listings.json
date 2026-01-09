@@ -2,19 +2,20 @@
   {
     "listing": "/index.html",
     "items": [
-      "/notes/Interesting Quantization Observations.html",
-      "/notes/Methods in Quantization.html",
-      "/notes/HypercoreX  Structure.html",
-      "/notes/Lagrangians, Hamiltonians.html",
-      "/slides/transistorCapacitances/transistorCapacitances.html",
+      "/notes/Adding an LLM to AlphaStar's Brain.html",
+      "/notes/derivationOfTheLorentzTransformation.html",
+      "/notes/RingsAndFields.html",
+      "/notes/Metrics and Manifolds.html",
+      "/notes/Observer falls into the black hole, becomes Nostradamus.html",
+      "/slides/settingOsPdk/settingOsPdk.html",
+      "/notes/wavefunctionsBrasKets.html",
       "/notes/Running TinyGPU by Adam Maj.html",
       "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
-      "/notes/wavefunctionsBrasKets.html",
-      "/slides/settingOsPdk/settingOsPdk.html",
-      "/notes/Observer falls into the black hole, becomes Nostradamus.html",
-      "/notes/Metrics and Manifolds.html",
-      "/notes/RingsAndFields.html",
-      "/notes/derivationOfTheLorentzTransformation.html"
+      "/slides/transistorCapacitances/transistorCapacitances.html",
+      "/notes/Lagrangians, Hamiltonians.html",
+      "/notes/HypercoreX  Structure.html",
+      "/notes/Methods in Quantization.html",
+      "/notes/Interesting Quantization Observations.html"
     ]
   }
 ]

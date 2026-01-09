@@ -1,6 +1,7 @@
 ---
 title: "Running TinyGPU by Adam Maj"
-date: "2025-11-28"
+date: "2025-01-07"
+toc: true
 ---
 
 Let's try to run the [basic GPU example by Adam Maj](https://github.com/adam-maj/tiny-gpu)!
@@ -298,7 +299,7 @@ The memory controller responds to `valid` assertions by consumers and then servi
 The consumers (compute cores) hold `consumer_write_valid` or `consumer_read_valid` until they're given the `ready`.
 This makes sense per the usual treatment of ready-valid handshake.
 
-```mermaid
+```{mermaid}
 flowchart TD
 	IDLE -->|consumer_read_valid && !channel_serving_customer| READ_WAITING
 	IDLE -->|consumer_write_valid && !channel_serving_consumer| WRITE_WAITING

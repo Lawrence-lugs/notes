@@ -1,6 +1,7 @@
 ---
 title: "Methods in Quantization for TinyML Frameworks"
 date: "2025-03-11"
+toc: true
 ---
 - [ ] TODO: Add commentary, since we're publicizing this one now.
 ![](attachments/wipguy_small.png)

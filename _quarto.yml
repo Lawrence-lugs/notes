@@ -8,6 +8,9 @@ format:
     mainfont: Trebuchet MS
     fontsize: 16pt 
 
+execute:
+  freeze: auto
+
 website:
   navbar:
     left:

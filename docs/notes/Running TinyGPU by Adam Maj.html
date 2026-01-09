@@ -101,6 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -134,7 +137,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -161,7 +164,32 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#environment-setup" id="toc-environment-setup" class="nav-link active" data-scroll-target="#environment-setup">Environment Setup</a>
+  <ul class="collapse">
+  <li><a href="#problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re" id="toc-problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re" class="nav-link" data-scroll-target="#problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re">Problem 1: Mamba is trying to use the base env <code>re</code> instead of the cocotb env <code>re</code></a></li>
+  </ul></li>
+  <li><a href="#running-the-tests" id="toc-running-the-tests" class="nav-link" data-scroll-target="#running-the-tests">Running the tests</a></li>
+  <li><a href="#the-simulation" id="toc-the-simulation" class="nav-link" data-scroll-target="#the-simulation">The Simulation</a>
+  <ul class="collapse">
+  <li><a href="#dataprogram-memories" id="toc-dataprogram-memories" class="nav-link" data-scroll-target="#dataprogram-memories">Data/Program Memories</a></li>
+  </ul></li>
+  <li><a href="#the-isa" id="toc-the-isa" class="nav-link" data-scroll-target="#the-isa">The ISA</a>
+  <ul class="collapse">
+  <li><a href="#compilation" id="toc-compilation" class="nav-link" data-scroll-target="#compilation">Compilation</a></li>
+  </ul></li>
+  <li><a href="#the-hardware" id="toc-the-hardware" class="nav-link" data-scroll-target="#the-hardware">The Hardware</a>
+  <ul class="collapse">
+  <li><a href="#register-file" id="toc-register-file" class="nav-link" data-scroll-target="#register-file">Register File</a></li>
+  <li><a href="#memory-controller-fsm" id="toc-memory-controller-fsm" class="nav-link" data-scroll-target="#memory-controller-fsm">Memory Controller FSM</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -455,13 +483,24 @@ Why <code>blockIdx &lt;= '0?</code>
 <h3 class="anchored" data-anchor-id="memory-controller-fsm">Memory Controller FSM</h3>
 <p>There are 4 memory channels (by default), each which has a single controller. The memory controller responds to <code>valid</code> assertions by consumers and then services them.</p>
 <p>The consumers (compute cores) hold <code>consumer_write_valid</code> or <code>consumer_read_valid</code> until they’re given the <code>ready</code>. This makes sense per the usual treatment of ready-valid handshake.</p>
-<pre class="mermaid"><code>flowchart TD
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
     IDLE --&gt;|consumer_read_valid &amp;&amp; !channel_serving_customer| READ_WAITING
     IDLE --&gt;|consumer_write_valid &amp;&amp; !channel_serving_consumer| WRITE_WAITING
     READ_WAITING --&gt;|mem_read_ready| READ_RELAYING
     WRITE_WAITING --&gt;|mem_write_ready| WRITE_RELAYING
     READ_RELAYING --&gt;|!consumer_read_valid| IDLE
-    WRITE_RELAYING --&gt;|!consumer_write_valid| IDLE</code></pre>
+    WRITE_RELAYING --&gt;|!consumer_write_valid| IDLE
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 
 
 </section>

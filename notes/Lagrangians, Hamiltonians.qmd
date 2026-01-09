@@ -1,6 +1,7 @@
 ---
 title: "Lagrangians, Hamiltonians"
 date: "2025-10"
+toc: true
 ---
 
 The Lagrangian

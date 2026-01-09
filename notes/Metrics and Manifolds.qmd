@@ -1,6 +1,7 @@
 ---
 title: "Metrics and Manifolds"
 date: "2025-12-26"
+toc: true
 ---
 # Manifolds are coordinate sets that are locally Euclidean
 

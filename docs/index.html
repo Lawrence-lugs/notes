@@ -77,9 +77,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -216,147 +216,331 @@ window.Quarto = {
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-title-sort" data-direction="asc">
-          Title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1767916800000" data-listing-file-modified-sort="1767972591270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="397">
+<a href="./notes/Adding an LLM to AlphaStar's Brain.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/Pasted image 20260109221438.png" alt="Vinyals, Oriol, et al. “Grandmaster level in StarCraft II using multi-agent reinforcement learning.” nature 575.7782 (2019): 350-354." style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Adding an LLM to AlphaStar’s Brain
+</h5>
+<div class="card-text listing-description">
+Apparently AI is shifting towards trying to use LLMs in different manners like - RL + LLM - Vision + LLM (Recall, or something) - LLMs for controlling robots
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
-</th>
-<th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1737072000000" data-listing-file-modified-sort="1767885682456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218" data-listing-title-sort="Interesting Quantization Observations" data-listing-filename-sort="Interesting Quantization Observations.md">
-<td>
-<a href="./notes/Interesting Quantization Observations.html" class="title listing-title">Interesting Quantization Observations</a>
-</td>
-<td>
-<span class="listing-date">Jan 17, 2025</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1741651200000" data-listing-file-modified-sort="1767971071796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1658" data-listing-title-sort="Methods in Quantization for TinyML Frameworks" data-listing-filename-sort="Methods in Quantization.qmd">
-<td>
-<a href="./notes/Methods in Quantization.html" class="title listing-title">Methods in Quantization for TinyML Frameworks</a>
-</td>
-<td>
-<span class="listing-date">Mar 11, 2025</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1742256000000" data-listing-file-modified-sort="1767971088458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1580" data-listing-title-sort="HyperCoreX Code Structure" data-listing-filename-sort="HypercoreX  Structure.md">
-<td>
-<a href="./notes/HypercoreX  Structure.html" class="title listing-title">HyperCoreX Code Structure</a>
-</td>
-<td>
-<span class="listing-date">Mar 18, 2025</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1767885233281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="Lagrangians, Hamiltonians" data-listing-filename-sort="Lagrangians, Hamiltonians.qmd">
-<td>
-<a href="./notes/Lagrangians, Hamiltonians.html" class="title listing-title">Lagrangians, Hamiltonians</a>
-</td>
-<td>
-<span class="listing-date">Oct 1, 2025</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1763510400000" data-listing-file-modified-sort="1767971437136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005" data-listing-title-sort="Transistor Capacitances" data-listing-filename-sort="transistorCapacitances.qmd">
-<td>
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="title listing-title">Transistor Capacitances</a>
-</td>
-<td>
-<span class="listing-date">Nov 19, 2025</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767970250600" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2131" data-listing-title-sort="Running TinyGPU by Adam Maj" data-listing-filename-sort="Running TinyGPU by Adam Maj.qmd">
-<td>
-<a href="./notes/Running TinyGPU by Adam Maj.html" class="title listing-title">Running TinyGPU by Adam Maj</a>
-</td>
-<td>
-<span class="listing-date">Nov 28, 2025</span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767971412009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="639" data-listing-title-sort="Frequency Response of CE Amplifier" data-listing-filename-sort="ceCsFrequencyResponse.qmd">
-<td>
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="title listing-title">Frequency Response of CE Amplifier</a>
-</td>
-<td>
-<span class="listing-date">Nov 28, 2025</span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1764806400000" data-listing-file-modified-sort="1767970250640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594" data-listing-title-sort="Wavefunctions, Bras, Kets" data-listing-filename-sort="wavefunctionsBrasKets.qmd">
-<td>
-<a href="./notes/wavefunctionsBrasKets.html" class="title listing-title">Wavefunctions, Bras, Kets</a>
-</td>
-<td>
-<span class="listing-date">Dec 4, 2025</span>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1765929600000" data-listing-file-modified-sort="1767971479071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712" data-listing-title-sort="Setting up an OS PDK" data-listing-filename-sort="settingOsPdk.qmd">
-<td>
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="title listing-title">Setting up an OS PDK</a>
-</td>
-<td>
-<span class="listing-date">Dec 17, 2025</span>
-</td>
-</tr>
-<tr data-index="9" data-listing-date-sort="1766016000000" data-listing-file-modified-sort="1767883852384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242" data-listing-title-sort="Observer falls into the black hole, becomes Nostradamus" data-listing-filename-sort="Observer falls into the black hole, becomes Nostradamus.qmd">
-<td>
-<a href="./notes/Observer falls into the black hole, becomes Nostradamus.html" class="title listing-title">Observer falls into the black hole, becomes Nostradamus</a>
-</td>
-<td>
-<span class="listing-date">Dec 18, 2025</span>
-</td>
-</tr>
-<tr data-index="10" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1767970250524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="772" data-listing-title-sort="Metrics and Manifolds" data-listing-filename-sort="Metrics and Manifolds.qmd">
-<td>
-<a href="./notes/Metrics and Manifolds.html" class="title listing-title">Metrics and Manifolds</a>
-</td>
-<td>
-<span class="listing-date">Dec 26, 2025</span>
-</td>
-</tr>
-<tr data-index="11" data-listing-date-sort="1767398400000" data-listing-file-modified-sort="1767970250579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110" data-listing-title-sort="Rings and Fields" data-listing-filename-sort="RingsAndFields.qmd">
-<td>
-<a href="./notes/RingsAndFields.html" class="title listing-title">Rings and Fields</a>
-</td>
-<td>
-<span class="listing-date">Jan 3, 2026</span>
-</td>
-</tr>
-<tr data-index="12" data-listing-date-sort="1767657600000" data-listing-file-modified-sort="1767970250393" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="314" data-listing-title-sort="Derivation of the Lorentz Transformation" data-listing-filename-sort="derivationOfTheLorentzTransformation.qmd">
-<td>
-<a href="./notes/derivationOfTheLorentzTransformation.html" class="title listing-title">Derivation of the Lorentz Transformation</a>
-</td>
-<td>
-<span class="listing-date">Jan 6, 2026</span>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jan 9, 2026
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1767657600000" data-listing-file-modified-sort="1767970250393" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="314">
+<a href="./notes/derivationOfTheLorentzTransformation.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Derivation of the Lorentz Transformation
+</h5>
+<div class="card-text listing-description">
+The observation goes as follows:
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jan 6, 2026
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-date-sort="1767398400000" data-listing-file-modified-sort="1767970250579" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110">
+<a href="./notes/RingsAndFields.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/wipguy_small.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Rings and Fields
+</h5>
+<div class="card-text listing-description">
+Abstract algebra is apparently the study of rings and fields plus groups…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jan 3, 2026
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1767972504474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="772">
+<a href="./notes/Metrics and Manifolds.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Metrics and Manifolds
+</h5>
+<div class="card-text listing-description">
+Manifolds have many points <span class="math inline">\(p\)</span> with some coordinates.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 26, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-date-sort="1766016000000" data-listing-file-modified-sort="1767883852384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+<a href="./notes/Observer falls into the black hole, becomes Nostradamus.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Observer falls into the black hole, becomes Nostradamus
+</h5>
+<div class="card-text listing-description">
+If the observer is moving at less than <span class="math inline">\(c\)</span>, the photon will catch up.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 18, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-listing-date-sort="1765929600000" data-listing-file-modified-sort="1767971479071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
+<a href="./slides/settingOsPdk/settingOsPdk.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Setting up an OS PDK
+</h5>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Lawrence Quizon
+</div>
+<div class="listing-date">
+Dec 17, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="6" data-listing-date-sort="1764806400000" data-listing-file-modified-sort="1767972796245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594">
+<a href="./notes/wavefunctionsBrasKets.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/YourFile.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Wavefunctions, Bras, Kets
+</h5>
+<div class="card-text listing-description">
+I found that the wikipedia page for position operator nicely shows this.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 4, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="7" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767972492431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2131">
+<a href="./notes/Running TinyGPU by Adam Maj.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Running TinyGPU by Adam Maj
+</h5>
+<div class="card-text listing-description">
+Let’s try to run the basic GPU example by Adam Maj! Assuming WSL…
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 28, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="8" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767971412009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="639">
+<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Frequency Response of CE Amplifier
+</h5>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Lawrence Quizon
+</div>
+<div class="listing-date">
+Nov 28, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="9" data-listing-date-sort="1763510400000" data-listing-file-modified-sort="1767971437136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005">
+<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Transistor Capacitances
+</h5>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Lawrence Quizon
+</div>
+<div class="listing-date">
+Nov 19, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="10" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1767972516976" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
+<a href="./notes/Lagrangians, Hamiltonians.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Lagrangians, Hamiltonians
+</h5>
+<div class="card-text listing-description">
+The Lagrangian
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Oct 1, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="11" data-listing-date-sort="1742256000000" data-listing-file-modified-sort="1767971088458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1580">
+<a href="./notes/HypercoreX  Structure.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/wipguy_small.png" alt="asd" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+HyperCoreX Code Structure
+</h5>
+<div class="card-text listing-description">
+HyperCoreX is Sir Ry’s General-purpose accelerator for Hyperdimensional Computing. We’d wanted to do something like this before.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Mar 18, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="12" data-listing-date-sort="1741651200000" data-listing-file-modified-sort="1767972509726" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1658">
+<a href="./notes/Methods in Quantization.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/wipguy_small.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Methods in Quantization for TinyML Frameworks
+</h5>
+<div class="card-text listing-description">
+<span class="math inline">\(\sum_i^n r_i=\sum_i^n s(q_i-z)\)</span>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Mar 11, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="13" data-listing-date-sort="1737072000000" data-listing-file-modified-sort="1767885682456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
+<a href="./notes/Interesting Quantization Observations.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img src="notes/attachments/image.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Interesting Quantization Observations
+</h5>
+<div class="card-text listing-description">
+With playing around with code from github.com/Lawrence-lugs/hwacc_design_garage
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Jan 17, 2025
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
