@@ -1,0 +1,52 @@
+---
+title: "Adding an LLM to AlphaStar's Brain"
+date: "2026-01-09"
+draft: true
+---
+
+Apparently AI is shifting towards trying to use LLMs in different manners like
+- RL + LLM
+- Vision + LLM (Recall, or something)
+- LLMs for controlling robots
+
+# AI is evolving like animals...?
+
+This may be reminiscent of biological evolution of nervous systems. Quick reflex-like signalling systems may have evolved into peripheral + central nervous systems. 
+
+::: {.callout-tip title="Fact-check!"}
+Northcutt, R. Glenn. "Evolution of centralized nervous systems: two schools of evolutionary thought." Proceedings of the National Academy of Sciences 109.supplement_1 (2012): 10626-10633.
+Some early creatures have *ganglionated cephalic nervous systems*. *Diffuse nerve plexus* are 
+:::
+
+Creatures with central nervous systems are allowed to have an internal cognition network with latent representations and statefulness that can help perform long term tasks.
+
+# Replacing AlphaStar's Core Module with an LLM
+
+So then maybe we can make AlphaStar into a true ladder-breaking animal
+
+What would happen if, say, we replaced AlphaStar's Deep LSTM core module with an LLM instead now?
+
+> Vinyals, Oriol, et al. "Grandmaster level in StarCraft II using multi-agent reinforcement learning." _nature_ 575.7782 (2019): 350-354. ![Vinyals, Oriol, et al. "Grandmaster level in StarCraft II using multi-agent reinforcement learning." _nature_ 575.7782 (2019): 350-354.](attachments/Pasted%20image%2020260109221438.png)
+
+The problem with this is that LLMs are still *stateless*. They don't retain memory like an LSTM does. So we need LLMs with memory.
+
+## Approaches to Stateful LLM 
+
+With some effort to arrange "evolutionarily":
+
+- Neuro-sama (some guy named Vedal) - Probably a text file used with the context window.
+- [Recurrent Memory Transformers](https://proceedings.neurips.cc/paper_files/paper/2022/file/47e288629a6996a17ce50b90a056a0e1-Paper-Conference.pdf) (NeurIPS 2022) - Add special memory tokens to the input sequence and output sequence. Then, eat your own output.
+	- Kind of like *Ghajini/Memento* in a way. You don't remember anything, but you do take notes.
+- [Structured State Space Models](https://openreview.net/pdf?id=tEYskw1VY2) (various) - compressed latent space representation memory, but still explicit memory.
+	- Mamba - They turned SSM parameters *dependent* on input $P(x)$.
+- [Titans](https://arxiv.org/pdf/2501.00663?) (Google 2024) - something like a high learning rate module (contextual memory) turning the medium-term context into parameters. Might be the most biological of all of these?
+	- They still just concatenate the learnable parameters with the input. Difference with RMT is that these are *learnable parameters*, not previous outputs.
+	- Why not do both? Humans do both as creatures.
+
+> Titans' Memory as a Context (MAC) ![](attachments/Pasted%20image%2020260109224301.png)
+
+>The RMT. Quite a beautiful hack, actually. ![](attachments/Pasted%20image%2020260109230142.png)
+
+So then, we can try to use the above to improve on AlphaStar.
+
+Unfortunately, I do not possess the X100 machines to do work on LLMs nor AlphaStar. Or so goes my excuse.

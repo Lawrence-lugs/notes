@@ -1,0 +1,309 @@
+---
+title: "Running TinyGPU by Adam Maj"
+date: "2025-11-28"
+---
+
+Let's try to run the [basic GPU example by Adam Maj](https://github.com/adam-maj/tiny-gpu)!
+Assuming WSL...
+
+::: {.callout-warning}
+If not running from WSL, you may need to change the docker compose script.
+So far though, nothing really needs an XServer so you probably don't
+:::
+
+# Environment Setup
+
+First, start from the custom (with sudo) `iic-osic-tools` image. This custom image:
+- Adds `sudo` capability.
+- Uses the NVIM deployment script
+
+```Dockerfile
+FROM hpretl/iic-osic-tools:latest
+
+
+# Install sudo
+USER root
+
+RUN useradd -s /bin/bash designer
+RUN usermod -aG sudo designer
+
+RUN echo "designer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/designer \
+    && chmod 0440 /etc/sudoers.d/designer
+
+WORKDIR /workspaces
+
+USER designer
+
+
+# Deploy NVIM
+
+# ==============================================================================
+
+# [vim_deploy] INJECTION START
+
+# ==============================================================================
+
+# 1. Install prerequisites
+RUN sudo apt-get update && sudo apt-get install -y git curl wget
+
+
+# 2. Clone and Run the Installer
+
+# NOTE: We clone to a permanent path (/root/.vim_deploy) and DO NOT delete it.
+
+# The install.sh creates symlinks to this folder. If we deleted it, the config would break.
+RUN git clone https://github.com/Lawrence-lugs/vim_deploy ~/.vim_deploy && \
+    cd ~/.vim_deploy && \
+    bash install.sh
+
+
+# 3. Update PATH and ALIASES for the image
+ENV PATH="~/miniforge3/bin:$PATH"
+
+
+# (Optional) Ensure the alias works for the default user in interactive mode
+RUN echo "alias vim=nvim" >> ~/.bash_aliases
+
+# ==============================================================================
+
+# [vim_deploy] INJECTION END
+
+# ==============================================================================
+```
+
+docker-compose.yml
+```yml
+services:
+  osic_tools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: osic_tools_container
+    working_dir: /workspaces
+    environment:
+      - DISPLAY=:0
+      - WAYLAND_DISPLAY=wayland-0
+      - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+      - PULSE_SERVER=/mnt/wslg/PulseServer
+      - SHELL=/bin/bash
+    volumes:
+      - ../:/workspaces
+      # WSLg Graphics & Audio Sockets
+      - /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix
+      - /run/desktop/mnt/host/wslg:/mnt/wslg
+      # Hardware Acceleration (GPU Drivers)
+      - /usr/lib/wsl:/usr/lib/wsl
+```
+
+> Then do `docker compose up` to open a terminal for use. 
+
+Somehow, after the deploy script is done, we still need to redo mamba init due to some inner workings in `iic-osic-tools`. We need to activate the deployed mamba init: do...
+
+Then, we need to install cocotb using miniforge mamba (conda but better).
+However, the latest versions of cocotb no longer have the build command `cocotb-config --prefix` used in the TinyGPU Makefile so we need a specific version
+
+```Makefile
+test_%:
+	make compile
+	iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v
+	MODULE=test.test_$* vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp
+```
+
+> `mamba create -n "cocotb" cocotb==1.7.2 pytest`
+> `mamba activate cocotb`
+
+We also need `sv2v` (systemVerilog to Verilog converter)
+
+```bash
+wget https://github.com/zachjs/sv2v/releases/download/v0.0.13/sv2v-Linux.zip
+unzip sv2v-Linux.zip
+```
+
+### Problem 1: Mamba is trying to use the base env `re` instead of the cocotb env `re`
+
+```log 
+  File "/headless/miniforge3/lib/python3.13/re/_compiler.py", line 18, in <module>
+    assert _sre.MAGIC == MAGIC, "SRE module mismatch"
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: SRE module mismatch
+```
+
+This is because `$PYTHONPATH` is explicitly set in the `iic-osic-tools` container. We need to unset it. 
+
+> `unset PYTHONPATH`
+
+Unfortunately, you have to do this everytime after activating.
+
+
+# Running the tests
+
+> `make test_matmul`
+
+It takes a LONG time but finally,
+
+```log
+(cocotb) /workspaces/tiny-gpu > make test_matmul
+make compile
+make[1]: Entering directory '/workspaces/tiny-gpu'
+make compile_alu
+make[2]: Entering directory '/workspaces/tiny-gpu'
+sv2v -w build/alu.v src/alu.sv
+make[2]: Leaving directory '/workspaces/tiny-gpu'
+sv2v -I src/* -w build/gpu.v
+echo "" >> build/gpu.v
+cat build/alu.v >> build/gpu.v
+echo '`timescale 1ns/1ns' > build/temp.v
+cat build/gpu.v >> build/temp.v
+mv build/temp.v build/gpu.v
+make[1]: Leaving directory '/workspaces/tiny-gpu'
+iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v
+MODULE=test.test_matmul vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp
+     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:76   in set_program_name_in_venv        Did not detect Python virtual environment. Usin
+g system-wide Python interpreter
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     cocotb                             Running on Icarus Verilog version 13.0 (devel)
+     0.00ns INFO     cocotb                             Running tests with cocotb v1.7.2 from /headless/miniforge3/envs/cocotb/lib/python3.11/site-packages/cocotb
+     0.00ns INFO     cocotb                             Seeding Python random module with 1767944425
+     0.00ns INFO     cocotb.regression                  Found test test.test_matmul.test_matadd
+     0.00ns INFO     cocotb.regression                  running test_matadd (1/1)
+12300001.00ns INFO     cocotb.regression                  test_matadd passed
+12300001.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                          ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                          **************************************************************************************
+                                                          ** test.test_matmul.test_matadd   PASS    12300001.00         150.74      81596.40  **
+                                                          **************************************************************************************
+                                                          ** TESTS=1 PASS=1 FAIL=0 SKIP=0           12300001.00         151.43      81224.19  **
+                                                          **************************************************************************************
+
+```
+
+Taking about $12$ ms in sim time and about $2.5$ min for the computation.
+
+```
+DATA MEMORY
++----------------+
+| Addr | Data     |
++----------------+
+| 0    | 1        |
+| 1    | 2        |
+| 2    | 3        |
+| 3    | 4        |
+| 4    | 1        |
+| 5    | 2        |
+| 6    | 3        |
+| 7    | 4        |
+| 8    | 0        |
+| 9    | 0        |
+| 10   | 0        |
+| 11   | 0        |
++----------------+
+
+... BUNCH OF LOGS OF SO MANY CYCLES ...
+Completed in 491 cycles
+
+DATA MEMORY
++----------------+
+| Addr | Data     |
++----------------+
+| 0    | 1        |
+| 1    | 2        |
+| 2    | 3        |
+| 3    | 4        |
+| 4    | 1        |
+| 5    | 2        |
+| 6    | 3        |
+| 7    | 4        |
+| 8    | 7        |
+| 9    | 10       |
+| 10   | 15       |
+| 11   | 22       |
++----------------+
+```
+
+So it definitely worked. But is it supposed to be this slow? It only took 491 cycles.
+
+
+# The Simulation
+
+The simulation uses cocotb. 
+The memories are implemented as python classes, but all this does is "change up the values". The main simulation meat is here:
+
+```python
+    cycles = 0
+    while dut.done.value != 1:
+        data_memory.run()
+        program_memory.run()
+
+        await cocotb.triggers.ReadOnly()
+        format_cycle(dut, cycles, thread_id=1)
+        
+        await RisingEdge(dut.clk)
+        cycles += 1
+```
+
+
+### Data/Program Memories
+
+Data/program memories are single-cycle. The memory controller was needed to arbitrate concurrent thread read/write attempts.
+
+
+# The ISA
+
+![](https://github.com/adam-maj/tiny-gpu/blob/master/docs/images/isa.png?raw=true)
+
+
+### Compilation
+
+The project doesn't come with its own compiler, but I think it's some sort of personal ISA of the author.
+
+Max-astro made [his own compiler](https://github.com/Max-astro/tiny-gpu-chisel) for it in Scala
+Some other guy [made one in Rust](https://github.com/dsandall/tiny-gpu-assembler).
+I think Rust would be easier to use (has a conda feedstock)
+
+
+# The Hardware
+
+
+### Register File
+
+::: {.callout-note}
+In this context, thread=core, I guess. There is no concept of hyperthreading or software threads.
+:::
+
+Each thread has its own register file with additional read-only registers:
+- `%blockIdx - register 1101
+- `%blockDim - register 1110`
+- `%threadIdx - register 1111`
+this is heavily used by the code.
+
+They're declared like this 
+
+```verilog
+            // Initialize read-only registers
+            registers[13] <= 8'b0;              // %blockIdx
+            registers[14] <= THREADS_PER_BLOCK; // %blockDim
+            registers[15] <= THREAD_ID;         // %threadIdx
+```
+
+::: {.callout-note title="Why `blockIdx <= '0?`"}
+There is only one block in TinyGPU
+:::
+
+
+### Memory Controller FSM
+
+There are 4 memory channels (by default), each which has a single controller.
+The memory controller responds to `valid` assertions by consumers and then services them. 
+
+The consumers (compute cores) hold `consumer_write_valid` or `consumer_read_valid` until they're given the `ready`.
+This makes sense per the usual treatment of ready-valid handshake.
+
+```mermaid
+flowchart TD
+	IDLE -->|consumer_read_valid && !channel_serving_customer| READ_WAITING
+	IDLE -->|consumer_write_valid && !channel_serving_consumer| WRITE_WAITING
+	READ_WAITING -->|mem_read_ready| READ_RELAYING
+	WRITE_WAITING -->|mem_write_ready| WRITE_RELAYING
+	READ_RELAYING -->|!consumer_read_valid| IDLE
+	WRITE_RELAYING -->|!consumer_write_valid| IDLE
+```

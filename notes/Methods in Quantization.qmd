@@ -1,0 +1,297 @@
+---
+title: "Methods in Quantization for TinyML Frameworks"
+date: "2025-03-11"
+---
+- [ ] TODO: Add commentary, since we're publicizing this one now.
+![](attachments/wipguy_small.png)
+# Quantized Averagepool
+
+$\sum_i^n r_i=\sum_i^n s(q_i-z)$
+
+$=\frac{s[(\sum_i^nq_i)-nz]}{n}$
+
+$=\frac{s}{n}\sum q_i-sz$
+
+### Accounting for the output scale…
+
+$r_y=\sum_i^n r_{xi}=\sum_i^n s_x(q_{xi}-z_x)$
+
+$r_y=\frac{s_x[(\sum_i^nq_{xi})-nz_x]}{n}$
+
+$r_y=\frac{s_x}{n}\sum q_{xi}-sz_x$
+
+$s_y(q_y-z_y)=\frac{s_x}{n}\sum q_{xi}-sz_x$
+
+$q_y=\frac{s_x}{s_yn}\sum q_{xi}-\frac{s_x}{s_y}z_x+z_y$
+
+
+# TFlite Quantized Matmul
+
+[Tensorflow Lite inference - how do I scale down the convolution layer outputs?](https://stackoverflow.com/questions/62512871/tensorflow-lite-inference-how-do-i-scale-down-the-convolution-layer-outputs)
+
+- the output of a multiplication int8 x int8 is also scaled by some multiplier M.
+    - $Y=AX$
+    - $M=\frac{S_AS_X}{S_Y}$ (see google paper on tflite [https://arxiv.org/pdf/1712.05877](https://arxiv.org/pdf/1712.05877))
+    - $M\in[0,1]$ empirically.
+- we represent this with a bitshift and a number $M_0\in[0.5,1]$
+    - $M=2^{-n}M_0$
+- $M_0$ is representable in fixed-point with **purely fractional bits.**
+- If the initial multiplication result is a 16-bit $R$ and $M_0$ is also 16-bit, then $RM_0$ is a 32-bit number.
+- We then >> shift out 16 bits (as many as the bits of $M_0$) of $RM_0$ (as many as the result, then apply $2^{-n}$ to it in shifts.
+- Finally, apply a saturating clip to 8 bits to the result. (Take the lowest outBits bits)
+
+```c++
+def convert_scale_to_shift_and_m0(scale,precision=16):
+    " Convert scale(s) to shift and zero point "
+
+    shift = int(np.ceil(np.log2(scale)))
+    # shift = np.abs(shift)
+    m0 = scale / 2**shift
+    fp_string = convert_to_fixed_point(m0,precision)
+    m0_clipped = fixed_point_to_float(fp_string,precision)
+    return m0_clipped, shift
+
+vconvert_scale_to_shift_and_m0 = np.vectorize(convert_scale_to_shift_and_m0)
+
+def convert_to_fixed_point(number,precision):
+    " Convert a float [0,1] to fixed point binary string"
+    out = ''
+    for i in range(precision):
+        number *= 2
+        integer = int(number)
+        number -= integer
+        out += str(integer)
+    return out
+
+def convert_to_fixed_point_int(number,precision):
+    " Convert a float [0,1] to fixed point binary "
+    return int(convert_to_fixed_point(number,precision),base=2)
+
+def fixed_point_to_float(number,precision):
+    " Convert a fixed point binary to float [0,1] "
+    out = 0
+    for i in range(precision):
+        out += int(number[i]) * 2**-(i+1)
+    return out
+```
+
+```c++
+m0, shift = q.convert_scale_to_shift_and_m0(0.019110053777694702)
+fp_int = q.convert_to_fixed_point_int(m0,16)
+(m0 * 2**(shift)) - (fp_int * 2**(shift-16))
+```
+
+
+### Zeroes Thereof
+
+![](attachments/16d40c87b91d970d6014377f61dc9f01.png)
+
+
+# Full Integer Quantized Addition
+
+[openaccess.thecvf.com](https://openaccess.thecvf.com/content_cvpr_2018/Supplemental/0777-supp.pdf) — Supplementary information of the TFLite paper
+
+> Some neural networks use a plain **Addition** layer type, that simply adds two activation arrays together. Such Addition layers are more expensive in quantized inference compared to floating-point because rescaling is needed: one input needs to be rescaled onto the other’s scale using a fixedpoint multiplication by the multiplier $M = S_1/S_2$ similar to what we have seen earlier before actual addition can be performed as a simple integer addition; finally, the result must be rescaled again to fit the output array’s scale8.
+
+*Their implementation in the tflite code: *
+
+[https://github.com/tensorflow/tensorflow/blob/4952f981be07b8bf508f8226f83c10cdafa3f0c4/tensorflow/contrib/lite/kernels/internal/optimized/optimized_ops.h#L1402-L1507](https://github.com/tensorflow/tensorflow/blob/4952f981be07b8bf508f8226f83c10cdafa3f0c4/tensorflow/contrib/lite/kernels/internal/optimized/optimized_ops.h#L1402-L1507)
+
+```c++
+  for (; i < size; i++) {
+    const int32 input1_val = input1_offset + input1_data[i];
+    const int32 input2_val = input2_offset + input2_data[i];
+    const int32 shifted_input1_val = input1_val * (1 << left_shift);
+    const int32 shifted_input2_val = input2_val * (1 << left_shift);
+    const int32 scaled_input1_val = MultiplyByQuantizedMultiplierSmallerThanOne(
+        shifted_input1_val, input1_multiplier, input1_shift);
+    const int32 scaled_input2_val = MultiplyByQuantizedMultiplierSmallerThanOne(
+        shifted_input2_val, input2_multiplier, input2_shift);
+    const int32 raw_sum = scaled_input1_val + scaled_input2_val;
+    const int32 raw_output = MultiplyByQuantizedMultiplierSmallerThanOne(
+                                 raw_sum, output_multiplier, output_shift) +
+                             output_offset;
+    const int32 clamped_output = std::min(
+        output_activation_max, std::max(output_activation_min, raw_output));
+    output_data[i] = static_cast<uint8>(clamped_output);
+  }
+```
+
+
+# Errors based on the TFLite output scaling
+
+- Graph
+    - x — internal precision
+    - y — order of error
+    - (16, ^-10)
+
+
+# Google Paradigm on Dealing with Low Precision Matrix Multiplication
+
+Also see:
+
+— Basically also discussed in the TFLite paper
+
+[https://github.com/google/gemmlowp/blob/master/doc/quantization.md](https://github.com/google/gemmlowp/blob/master/doc/quantization.md)
+
+
+# LiteRT Torch Converter
+
+- Can convert with quantization using either torch’s PT2E or TFLite.
+    - See  https://github.com/google-ai-edge/ai-edge-torch/blob/main/docs/pytorch_converter/README.md 
+- 
+
+
+# On EdMIPS
+
+[https://www.figma.com/file/9pmqozMDAtTJckTQEhCzhj/300B?type=whiteboard&node-id=21-135&t=8svuD9WRbEzFTHpY-4](https://www.figma.com/file/9pmqozMDAtTJckTQEhCzhj/300B?type=whiteboard&node-id=21-135&t=8svuD9WRbEzFTHpY-4)
+
+
+# Biases
+
+$\hat{I}\cdot\hat{W}+\hat{B}\neq I\cdot W+B$
+
+
+# Static vs Dynamic Quantization
+
+The value distribution of the input feature maps can vary from input to input, making it difficult to specify optimal quantization ranges.
+
+
+### Dynamic Quantization — Specify quantization range for each activation fmap before calculation.
+
+
+### Static Quantization — Specify range beforehand
+
+-  Use a series of calibration inputs to compute the typical range using:
+    - Minimize MSE
+    - KL Divergence (entropy)
+    - Impose clipping range during training
+
+
+### Works
+
+- LQNets
+- PACT
+- LSQ/LSQ+
+
+
+# Stochastic Quantization
+
+> *Typically only for online learning*
+
+For online learning with quantization, small weight updates may not necessarily lead to large changes in weight. To effectively still reflect the small changes, we can keep a probability $x$ separate from the rounded $\lfloor x \rceil$ integer x. In this case,
+
+$\hat{x} = \begin{cases}
+\lfloor x \rfloor \text{ with probability } \lceil x \rceil - x  \\
+\lceil x \rceil \text{ with probability } x - \lfloor x \rfloor\\ 
+\end{cases}$
+
+
+# Simulated & Integer-only Quantization
+
+> *In simulated quantization, the quantized model parameters are stored in low-precision, but the operations (e.g. matrix multiplications and convolutions) are carried out with floating point arithmetic. - Gholami ‘22 LPCV*
+
+![](attachments/9cdf206f1a19dd8d055e338037c60b6f.png)
+
+Simulated Quantization is “fake” quantization needing dequantization before every operation. EdMIPS uses simulated quantization in order to perform their differential architecture search with finetuning while searching for the optimal weight quantization set $\{o_i,o_w\}$.
+
+::: {.callout-note}
+## + Fact: The HWGQ Quantizer from EdMIPS is simulated quantization. See the `*step` portion of the formula.
+```javascript
+ class _hwgq(torch.autograd.Function):
+ 
+     @staticmethod
+     def forward(ctx, x, step):
+         y = torch.round(x / step) * step
+         return y
+ 
+     @staticmethod
+     def backward(ctx, grad_output):
+         return grad_output, None
+ ```
+:::
+
+
+In contrast, works like MCUNet and AIMC use integer-only quantization specifically for the reason of energy efficiency. 
+
+> *Some hardware processors, including NVIDIA V100 and Titan RTX, support fast processing of low-precision arithmetic that can boost the inference throughput and latency. — Gholami ‘22*
+
+Peng ‘21 Neurosim in a work on fully-integer based quantization for mobile CNN inference mention in their introduction:
+
+> … the dot product of two bit vectors x and y can be computed using the following formula [24], where $x_i,y_i\in\{0,1\}\forall i$ and the ‘‘bitcount” operation counts the number of bits that have a value of one in each vector element
+
+$x\cdot y=bitcount(x AND y)$ 
+
+This is exactly how we perform 1b W x 1b I in SRAM-IMC.
+
+
+# Determining step/range vs bits
+
+<!-- Column 1 -->
+```python
+def quantize_model_weights(model, bits, step):
+
+		# qm = EdMIPS quantization module
+
+    quantized_state_dict = model.state_dict()
+    for name, param in model.named_parameters():
+        quantized_state_dict[name] = qm._gauss_quantize.apply(
+            param,
+            step,
+            bits
+        )
+    model.load_state_dict(quantized_state_dict)
+
+    return model
+```
+
+
+<!-- Column 2 -->
+![The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available.](attachments/6fe497340003c358ccc0bd8993638575.png)
+
+
+# EdMIPS Quantizer Range
+
+From these two and the corresponding code, we now have a working quantizer function.
+
+We now need to look into the literature in order to find the optimal quantizer range. IIRC, this is mentioned in:
+
+- HWGQ (though this is for 1-bit)
+- EdMIPS $(\sigma t_i,\sigma t_{i+1})$
+
+> *A quantizer is the set of ranges for which you clip values into specific integers.*
+
+The optimal quantizer can be found by way of Lloyd’s Algorithm (k-means clustering). However, this is difficult to perform for since each weight group has a different distribution. This is simplified by two ideas:
+
+1. Weight distributions are typically gaussian. Hence, we only need the mean and variance in order to specify the quantizer.
+2. By using batchnorm, the weight means and variances are all 0 and 1, allowing us to use the same quantizer for all layers. This means that we only have to solve the Lloyd’s algorithm once. Lloyd’s algorithm restrained for uniform quantization for standard gaussian $\sigma=1,\mu=0$ gives results as follows:
+```python
+gaussian_steps = {1: 1.596, 2: 0.996, 3: 0.586, 4: 0.336}
+hwgq_steps = {1: 0.799, 2: 0.538, 3: 0.3217, 4: 0.185}
+```
+3. EdMIPS further assumes that the means are all 0 but the variances are non-1. This means that measuring the standard deviation per parameter set (weight layer) is enough. The step for the quantization can then be scaled as $\sigma*step$.
+Hence, the gauss quantize function becomes as follows.
+```python
+class _gauss_quantize(torch.autograd.Function):
+
+    @staticmethod
+    def forward(ctx, x, step, bit):
+        lvls = 2 ** bit / 2
+        alpha = x.std().item()
+        step *= alpha
+        y = (torch.round(x/step+0.5)-0.5) * step
+        thr = (lvls-0.5)*step
+        y = y.clamp(min=-thr, max=thr)
+        return y
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        return grad_output, None, None
+```
+
+<!-- Column 1 -->
+We can observe there’s a constant `-step*0.5`  portion to the y, which shows itself as the lack of a “0” in our quantized weight histograms.
+
+
+<!-- Column 2 -->
+![Jacob ‘18 CVPR “Quantization & Training of NN for Efficient INT-only Arithmetic” synced block](../08_Literature_Reference/Papers/Jacob%20‘18%20CVPR%20“Quantization%20&%20Training%20of%20NN%20for%20Efficient%20INT-only%20Arithmetic”%20synced%20block.md)
