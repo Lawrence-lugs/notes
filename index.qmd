@@ -4,6 +4,7 @@ subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI"
 listing: 
     type: table
     fields: [title, date]
+    sort: "date"
 about:
     id: about-section
     template: solana
@@ -21,7 +22,7 @@ about:
 
 ::: {#about-section}
 
-I'm a student of everything. Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master's degree in August 2025.
+Researcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master's degree in August 2025.
 
 My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (*low power computation on the edge, brain-computer interfaces*) and sciences (*device physics, emergent dynamics*). 
 
