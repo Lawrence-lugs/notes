@@ -2,17 +2,19 @@
   {
     "listing": "/index.html",
     "items": [
-      "/notes/derivationOfTheLorentzTransformation.html",
-      "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
-      "/notes/HypercoreX  Structure.html",
       "/notes/Interesting Quantization Observations.html",
+      "/notes/Methods in Quantization.html",
+      "/notes/HypercoreX  Structure.html",
       "/notes/Lagrangians, Hamiltonians.html",
-      "/notes/Metrics and Manifolds.html",
-      "/notes/Observer falls into the black hole, becomes Nostradamus.html",
-      "/notes/RingsAndFields.html",
-      "/slides/settingOsPdk/settingOsPdk.html",
       "/slides/transistorCapacitances/transistorCapacitances.html",
-      "/notes/wavefunctionsBrasKets.html"
+      "/notes/Running TinyGPU by Adam Maj.html",
+      "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
+      "/notes/wavefunctionsBrasKets.html",
+      "/slides/settingOsPdk/settingOsPdk.html",
+      "/notes/Observer falls into the black hole, becomes Nostradamus.html",
+      "/notes/Metrics and Manifolds.html",
+      "/notes/RingsAndFields.html",
+      "/notes/derivationOfTheLorentzTransformation.html"
     ]
   }
 ]
