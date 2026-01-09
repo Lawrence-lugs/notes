@@ -2,6 +2,7 @@
 title: "Transistor Capacitances"
 subtitle: "EEE 131 THX2/Y"
 author: "Lawrence Quizon"
+date: "2025-11-19"
 institute:  
     Electrical and Electronics Engineering Institute<br>
     University of the Philippines <br>
