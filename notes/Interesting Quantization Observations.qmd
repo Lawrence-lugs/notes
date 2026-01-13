@@ -3,6 +3,7 @@ title: "Interesting Quantization Observations"
 date: "2025-01-17"
 toc: true
 ---
+
 # Spreads, RMSE and SNR vs Bits
 
 With playing around with code from [github.com/Lawrence-lugs/hwacc_design_garage](https://github.com/Lawrence-lugs/hwacc_design_garage)

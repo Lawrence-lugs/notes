@@ -7,6 +7,7 @@ toc: true
 The observation goes as follows:
 
 ::: {.callout-question title="Observation:"}
+
 - The speed of light is $c$ in all inertial frames of reference
 - Hence, time and space must warp (**transform**) in order to make movement (**velocity**) slower when an object is moving relativistically.
 :::

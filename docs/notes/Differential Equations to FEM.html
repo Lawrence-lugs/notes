@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-01-10">
+
+<title>Differential Equations to FEM</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#first-solutions-runge-kutta" id="toc-first-solutions-runge-kutta" class="nav-link active" data-scroll-target="#first-solutions-runge-kutta">First solutions: Runge-Kutta</a>
+  <ul class="collapse">
+  <li><a href="#dragged-ballistics" id="toc-dragged-ballistics" class="nav-link" data-scroll-target="#dragged-ballistics">Dragged Ballistics</a></li>
+  <li><a href="#the-cheat-everything-is-first-order-in-phase-space" id="toc-the-cheat-everything-is-first-order-in-phase-space" class="nav-link" data-scroll-target="#the-cheat-everything-is-first-order-in-phase-space">The Cheat: Everything is First-Order In Phase Space</a></li>
+  <li><a href="#correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode" id="toc-correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode" class="nav-link" data-scroll-target="#correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode">Correction: Every N-order ODE is a higher dimension 1st-order ODE</a></li>
+  <li><a href="#towards-finite-elements-the-integral-form" id="toc-towards-finite-elements-the-integral-form" class="nav-link" data-scroll-target="#towards-finite-elements-the-integral-form">Towards finite elements: the integral form</a></li>
+  </ul></li>
+  <li><a href="#finite-elements" id="toc-finite-elements" class="nav-link" data-scroll-target="#finite-elements">Finite elements</a>
+  <ul class="collapse">
+  <li><a href="#solving-pde-with-finite-elements-in-general" id="toc-solving-pde-with-finite-elements-in-general" class="nav-link" data-scroll-target="#solving-pde-with-finite-elements-in-general">Solving PDE with Finite Elements in General</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Differential Equations to FEM</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 10, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>People have definitely come up with differential equations long before computers were around</li>
+<li>Differential equations are sometimes so hard there aren’t any analytical solutions</li>
+<li>Computers were probably a lifesaver when they came around</li>
+<li>How did people start using computers and developing numeric algorithms to solve differential equations?</li>
+<li>I want to try it in C</li>
+<li>The divergence operator <span class="math inline">\(\vec\nabla\)</span> looks and sounds as cool as ever</li>
+</ul>
+</div>
+</div>
+<section id="first-solutions-runge-kutta" class="level1">
+<h1>First solutions: Runge-Kutta</h1>
+<p>Actually, instead of just coming up with hard-to-solve differential equations, they also came up with pain-in-the-ass-to-compute algorithms to solve them (Runge-Kutta, Euler) earlier than computers.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="[Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Given a problem in the following form: <span class="math display">\[\frac{dy}{dt}=f(t,y), y(t_0)=y_0\]</span> RK4 gives an estimate of <span class="math inline">\(\frac{dy}{dt}\)</span> using a weighted average of four slopes <span class="math inline">\(f(t,y)\)</span> <span class="math inline">\(k_1\)</span> to <span class="math inline">\(k_4\)</span> in the “future” of the current point in time Choosing a time step <span class="math inline">\(\Delta t&gt;0\)</span> <span class="math display">\[y_{n+1}=y_n+\frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)\]</span> <span class="math display">\[t_{n+1}=t_n+\Delta t\]</span> <span class="math display">\[k_1=f(t_n,y_n),\]</span> <span class="math display">\[k_2=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_1}{2})\]</span> <span class="math display">\[k_3=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_2}{2})\]</span> <span class="math display">\[k_4=f(t_n+\Delta t,y_n+\Delta tk_3)\]</span></p>
+</div>
+</div>
+<section id="dragged-ballistics" class="level3">
+<h3 class="anchored" data-anchor-id="dragged-ballistics">Dragged Ballistics</h3>
+<p>RK4 was first useful in calculating ballistics for weapons. Real trajectories had to be calculated with drag and wind, which wasn’t easy to hand-calculate. With drag:</p>
+<p><span class="math display">\[\frac{d^2x}{dt^2}=-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_x\]</span> <span class="math display">\[\frac{d^2x}{dt^2}=-g-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_y\]</span> But wait… this is second order.</p>
+</section>
+<section id="the-cheat-everything-is-first-order-in-phase-space" class="level3">
+<h3 class="anchored" data-anchor-id="the-cheat-everything-is-first-order-in-phase-space">The Cheat: Everything is First-Order In Phase Space</h3>
+<p>We can cheat by analytically reducing this into a first-order differential equation solvable by RK4.</p>
+<p>So then, we merge the entire state space into one four-dimensional variable: <span class="math display">\[S = \begin{bmatrix}
+x \\ y \\ v_x \\ v_x
+\end{bmatrix}\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Trivia">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Trivia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In more usual terms, this is called changing into the <em>phase space</em>. Apparently <em>phase</em> is used this way as in <em>status</em> (phases of the moon). To me, that naming feels discrete, though.</p>
+</div>
+</div>
+<p>This turns the second-order 2D problem into a first-order 4D problem <span class="math display">\[\frac{dS}{dt}=\begin{bmatrix}
+dx/dt \\ dy/dt \\ dv_x/dt \\ dv_y/dt
+\end{bmatrix}=\begin{bmatrix}
+v_x \\ v_y \\ a_x \\ a_y
+\end{bmatrix}\]</span> <span class="math display">\[\frac{dS}{dt}=\begin{bmatrix}
+dx/dt \\ dy/dt \\ dv_x/dt \\ dv_y/dt
+\end{bmatrix}=\begin{bmatrix}
+v_x \\ v_y \\ -\frac{k}{m}\sqrt{v_x^2+v_y^2}v_x \\ -g-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_y
+\end{bmatrix}\]</span> For which we can apply RK4.</p>
+<p>TODO: Implement this solver in C with GNUplot as the plotter</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode" class="level3">
+<h3 class="anchored" data-anchor-id="correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode">Correction: Every N-order ODE is a higher dimension 1st-order ODE</h3>
+<p>However, not all problems only change versus one variable. In the prettiest (colorful) problems, we’re tracking a scalar or a vector field permeating all across space but also changing across time.</p>
+<p>So say, the 1D heat equation: <span class="math display">\[\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = f\]</span></p>
+<p>This is a partial differential equation (PDE) with both time and space dimension.</p>
+<p>In this case, the way they were able to do it is to separate space into a discrete grid. We want to satisfy the time portion of the PDE at specific points in the grid: <span class="math display">\[\frac{d u_i}{dt} - \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} = f_i\]</span> We choose a <span class="math inline">\(\Delta x\)</span> for the grid, then we choose a <span class="math inline">\(\Delta t\)</span> to apply RD4 to it.</p>
+<p>In this grid, the neighboring points influence point <span class="math inline">\(i\)</span>. This is kinda reminiscent of trying to simulate phase coupled oscillators like in the <a href="https://en.wikipedia.org/wiki/Kuramoto_model">Kuramoto model</a>.</p>
+<p>Problems:</p>
+<ul>
+<li>This blew the problem to as many dimensions as there are <span class="math inline">\(\text{grid cells} \cdot \text{ODE order}\)</span><br>
+</li>
+<li>Trying to get the EXACT solution for each point is difficult when each point doesn’t even know if it’s in the correct position yet. This caused a soft of overfitting in this approach where it’s hard to converge in situations where the gradient changes quickly. You can fix this by making <span class="math inline">\(dx\)</span> small enough that the change is still “gradual”, but this gets expensive quick.</li>
+</ul>
+</section>
+<section id="towards-finite-elements-the-integral-form" class="level3">
+<h3 class="anchored" data-anchor-id="towards-finite-elements-the-integral-form">Towards finite elements: the integral form</h3>
+<p>The form of the finite difference equation <span class="math display">\[\frac{d u_i}{dt} - \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} = f_i\]</span> is extremely rigid. We have to enforce <span class="math inline">\(f_i\)</span> (heat source), but then it’s almost never correct either.</p>
+<p>Instead, we can rearrange to accept a finite error over the entire domain: <span class="math display">\[R(x)=\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i\]</span> and “kindly ask” this residual to approach zero, instead of forcing it all to zero every time step. In other words, we’re able to relax the condition so that a grid point <span class="math inline">\(i\)</span> doesn’t reduce its error to 0 at the cost of other points being unable to converge or getting a big relative error. <span class="math display">\[\int_\Omega{R(x)\cdot v(x)dx=0}\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>That explanation feels wishy-washy about “kindly asking” and “giving a weaker condition”, sounding like empirical AI. Probably some better way to say it after the next part.</p>
+</div>
+</div>
+<p><span class="math inline">\(v(x)\)</span> is some arbitrary “test function”, useful to give nice properties to the integral. I would think that <span class="math inline">\(v(x)\)</span> has to be nonzero everywhere (else <span class="math inline">\(R(x)\)</span> can be nonzero for some <span class="math inline">\(x\)</span>).</p>
+<p>The entire form would be</p>
+<p>With <span class="math inline">\(v(x)\)</span> we can apply integration by parts: <span class="math display">\[\int_\Omega{(\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i)\cdot v(x)dx=0}\]</span> We focus on the difficult term first: <span class="math display">\[\int_\Omega{\frac{d^2u}{dx^2}\cdot v(x)dx=0}\]</span> Chain rule: <span class="math display">\[\frac{d}{dx}(v\frac{du}{dx})=v\frac{d^2u}{dx^2}+\frac{du}{dx}\frac{dv}{dx}\]</span> <span class="math display">\[\int_\Omega dx v\frac{d^2u}{dx^2}=\int_\Omega dx\frac{d}{dx}(v\frac{du}{dx})+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}\]</span> <span class="math display">\[=v\frac{du}{dx}\Big\vert_\Omega+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}\]</span> We kick away the weird-looking boundary evaluation term <span class="math inline">\(v\frac{du}{dx}\)</span> by always choosing the test function to be zero at the boundary <span class="math inline">\(v\big\vert_\Omega = 0\)</span>.</p>
+<p>In the end, we’ve found an integral form of the problem which minimizes the error of the problem over the entire domain instead of in every point “independently”:</p>
+<p>The other terms are all already first-order terms we can apply the RK4 method to, so we don’t need to think too hard about them: <span class="math display">\[\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv\]</span> So the final form is <span class="math display">\[\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv+\int_\Omega dx \frac{du}{dx}\frac{dv}{dx}=0\]</span> <span class="math display">\[\int_\Omega dx (\frac{du}{dt}v- f_iv+ \frac{du}{dx}\frac{dv}{dx})=0\]</span> This one is specific to the heat equation example, though.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="In 3D:">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+In 3D:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You’re supposed to do this with the divergence identities and theorem: For a vector field <span class="math inline">\(F\)</span>, the volume integral of the divergence of <span class="math inline">\(F\)</span> is the same as the surface integral of the surface enclosing that volume of the normal component of <span class="math inline">\(F\)</span> to the surface (<span class="math inline">\(F\cdot \hat n\)</span>) <span class="math display">\[\\\iiint_V (\nabla \cdot F)dV = \iint_S (F\cdot \hat n)dS\]</span> <span class="math display">\[\vec\nabla(v\nabla u) =v\nabla^2 u+\nabla u \nabla v\]</span> <span class="math display">\[\int_\Omega dx v\nabla^2 u= \int_\Omega dx \vec\nabla(v\nabla u)-\int_\Omega dx \nabla u\nabla v\]</span> Via the divergence theorem <span class="math display">\[\int_\Omega dx \vec\nabla (v\nabla u)=\int_{d\Omega}dSv(\nabla u\cdot n)\]</span> and and again they do away with this <span class="math inline">\(\int_{d\Omega}\)</span> term by letting <span class="math inline">\(v=0\)</span> on the boundary. This is another special property of the test function.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="finite-elements" class="level1">
+<h1>Finite elements</h1>
+<p>The essence (and namesake) of finite elements is in assuming the entire solution over the domain is a sum of simple shapes: <span class="math display">\[u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)\]</span> Then we *choose the test function <span class="math inline">\(v\)</span> to be the same as the <span class="math inline">\(\phi_i\)</span>. There is one <span class="math inline">\(\phi_i\)</span> per finite element.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="[FEM Hat Functions](https://hplgit.github.io/INF5620/doc/pub/sphinx-fem/._main_fem003.html#calculating-a-general-row-in-the-matrix))">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="https://hplgit.github.io/INF5620/doc/pub/sphinx-fem/._main_fem003.html#calculating-a-general-row-in-the-matrix">FEM Hat Functions</a>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\phi_j\)</span> is the FEM hat function.</p>
+</div>
+</div>
+<p>We simplify the equation as we subsitute:</p>
+<p><span class="math display">\[\int_\Omega dx \left( \frac{d}{dt} \left( \sum_{j=1}^{N}u_j(t)\phi_j \right) \phi_i- f_i\phi_i+ \frac{d}{dx}\left( \sum_{j=1}^{N}u_j(t)\phi_j \right)\frac{d\phi_i}{dx} \right)=0\]</span> <span class="math display">\[\int_\Omega dx \left( \sum_{j=1}^{N}\frac{du_j(t)}{dt}\phi_j  \phi_i- f_i\phi_i+  \sum_{j=1}^{N}u_j(t)\frac{d\phi_j}{dx} \frac{d\phi_i}{dx} \right)=0\]</span> and realize that the sum terms are matrix multiplications on vectors:</p>
+<p>Let <span class="math inline">\(M_{ij}=\int_\Omega dx \phi_i\phi_j\)</span>, <span class="math inline">\(K_{ij}=\int_\Omega dx \frac{d\phi_j}{dx}\frac{d\phi_i}{dx}\)</span>, for which the elements are easy-to-calculate hat function integrals (or integrals of their derivatives, so rectangles), then we end up with: <span class="math display">\[\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}u=\mathbf{F}\]</span> which we can plug directly into a first-order ODE solver.</p>
+<section id="solving-pde-with-finite-elements-in-general" class="level2">
+<h2 class="anchored" data-anchor-id="solving-pde-with-finite-elements-in-general">Solving PDE with Finite Elements in General</h2>
+<p>Let’s say we have a general residual PDE <span class="math inline">\(R\)</span> of order <span class="math inline">\(N\)</span> we have <span class="math display">\[\int_\Omega dx R\cdot v=0\]</span> we are guaranteed to be able to split the order between <span class="math inline">\(R\)</span> and <span class="math inline">\(v\)</span> using IBP getting order <span class="math inline">\(N/2\)</span>. If solving more than a second order PDE (like in the beam equation), we’re supposed to do <strong>mixed finite elements</strong> where we split the original differential equation into coupled differential equations, like in earlier.</p>
+<p>Once we have a first-order weak form, we apply the FEM hat function formulation. This essentially eliminates space as a variable by performing the integrals over the easy-to-work-with hat functions <span class="math inline">\(\phi\)</span> and placing them into the <span class="math inline">\(\mathbf{M}\)</span> and <span class="math inline">\(\mathbf{K}\)</span> matrices.</p>
+<p><span class="math display">\[u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)\]</span> In the end, we get a system of ODEs that also depend on the length of the finite element hat <span class="math inline">\(h\)</span> (characteristic mesh size) <span class="math display">\[\mathbf{M}\frac{\vec{d^nu}}{dt^n}+\mathbf{K}\vec{u}=\mathbf{F}\]</span> ::: {.callout-warning title=“Limitations”} Not all forms look like that. That form is limited to</p>
+<ul>
+<li>Linear PDE</li>
+<li>Time dependence is only via time derivative</li>
+<li>No auxiliary fields or damping (so no wind in the ballistics equations either) :::</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

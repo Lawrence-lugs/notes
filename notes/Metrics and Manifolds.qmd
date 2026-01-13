@@ -1,8 +1,8 @@
 ---
 title: "Metrics and Manifolds"
 date: "2025-12-26"
-toc: true
 ---
+
 # Manifolds are coordinate sets that are locally Euclidean
 
 Manifolds have many points $p$ with some coordinates.
@@ -112,6 +112,7 @@ For simplicity, let's build a massive square fence spanning $\pi/4$ rad around t
 So then we can just sum up the 4 arc lengths that produce this.
 
 We have four sections:
+
 - $\theta \in [0,\pi/4], \phi=0$
 - $\phi \in [0,\pi/4], \theta=\pi/4$
 - $\phi \in [0,\pi/4], \theta=0$

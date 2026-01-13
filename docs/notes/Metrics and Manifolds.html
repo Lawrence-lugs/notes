@@ -98,9 +98,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -127,25 +128,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#manifolds-are-coordinate-sets-that-are-locally-euclidean" id="toc-manifolds-are-coordinate-sets-that-are-locally-euclidean" class="nav-link active" data-scroll-target="#manifolds-are-coordinate-sets-that-are-locally-euclidean">Manifolds are coordinate sets that are locally Euclidean</a>
-  <ul class="collapse">
-  <li><a href="#open-sets-are-unions-of-balls" id="toc-open-sets-are-unions-of-balls" class="nav-link" data-scroll-target="#open-sets-are-unions-of-balls">Open sets are unions of balls</a></li>
-  </ul></li>
-  <li><a href="#metrics-introduce-the-concept-of-distance" id="toc-metrics-introduce-the-concept-of-distance" class="nav-link" data-scroll-target="#metrics-introduce-the-concept-of-distance">Metrics introduce the concept of distance</a></li>
-  <li><a href="#sphere-manifold-example" id="toc-sphere-manifold-example" class="nav-link" data-scroll-target="#sphere-manifold-example">Sphere manifold example</a>
-  <ul class="collapse">
-  <li><a href="#length-of-a-tropic" id="toc-length-of-a-tropic" class="nav-link" data-scroll-target="#length-of-a-tropic">Length of a tropic</a></li>
-  <li><a href="#length-of-a-circular-fence-on-the-earth" id="toc-length-of-a-circular-fence-on-the-earth" class="nav-link" data-scroll-target="#length-of-a-circular-fence-on-the-earth">Length of a circular fence on the earth</a></li>
-  <li><a href="#length-of-the-square-fence-on-earth" id="toc-length-of-the-square-fence-on-earth" class="nav-link" data-scroll-target="#length-of-the-square-fence-on-earth">Length of the square fence on Earth</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -233,7 +216,13 @@ Anecdote
 <h2 class="anchored" data-anchor-id="length-of-the-square-fence-on-earth">Length of the square fence on Earth</h2>
 <p>For simplicity, let’s build a massive square fence spanning <span class="math inline">\(\pi/4\)</span> rad around the earth all around.</p>
 <p>So then we can just sum up the 4 arc lengths that produce this.</p>
-<p>We have four sections: - <span class="math inline">\(\theta \in [0,\pi/4], \phi=0\)</span> - <span class="math inline">\(\phi \in [0,\pi/4], \theta=\pi/4\)</span> - <span class="math inline">\(\phi \in [0,\pi/4], \theta=0\)</span> - <span class="math inline">\(\theta \in [0,\pi/4], \phi=\pi/4\)</span></p>
+<p>We have four sections:</p>
+<ul>
+<li><span class="math inline">\(\theta \in [0,\pi/4], \phi=0\)</span></li>
+<li><span class="math inline">\(\phi \in [0,\pi/4], \theta=\pi/4\)</span></li>
+<li><span class="math inline">\(\phi \in [0,\pi/4], \theta=0\)</span></li>
+<li><span class="math inline">\(\theta \in [0,\pi/4], \phi=\pi/4\)</span></li>
+</ul>
 <blockquote class="blockquote">
 <p><em>Note: <span class="math inline">\(\theta\)</span> is the polar angle, the colatitude.</em></p>
 </blockquote>

@@ -1,10 +1,10 @@
 ---
 title: "Adding an LLM to AlphaStar's Brain"
 date: "2026-01-09"
-toc: true
 ---
 
 Apparently AI is shifting towards trying to use LLMs in different manners like
+
 - RL + LLM
 - Vision + LLM (Recall, or something)
 - LLMs for controlling robots
@@ -15,7 +15,7 @@ This may be reminiscent of biological evolution of nervous systems. Quick reflex
 
 ::: {.callout-tip title="Fact-check!"}
 Northcutt, R. Glenn. "Evolution of centralized nervous systems: two schools of evolutionary thought." Proceedings of the National Academy of Sciences 109.supplement_1 (2012): 10626-10633.
-Some early creatures have *ganglionated cephalic nervous systems*. *Diffuse nerve plexus* are common among those thought to be ancestors of metazoans (animal).
+Some early creatures have *ganglionated cephalic nervous systems*. *Diffuse nerve plexus* are 
 :::
 
 Creatures with central nervous systems are allowed to have an internal cognition network with latent representations and statefulness that can help perform long term tasks.

@@ -2,8 +2,8 @@
 title: "Lawrence Quizon"
 subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI"
 listing: 
-    type: grid
-    # fields: [title, date]
+    type: table
+    fields: [title, date]
     sort: "date desc"
 about:
     id: about-section
@@ -36,10 +36,12 @@ My primary research interest is in the creation of efficient computational syste
 ### Secondary Interests
 
 - Open source hardware everything. Why can't we have massive Github portfolios of random hardware? (We can)
-- The Linux Kernel for RISCV
+- The Linux Kernel (as a representative of the missing region between microarchitecture and user level. Things like thread synchronization.)
 - The very very secret GPU architectures
 - Applications of Abstract Math (surprisingly cool)
 - Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT. 
 - Learning an NVIM workflow, primarily because I'm tired of using VNC.
 
 # Recent Pages
+
+Notes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.

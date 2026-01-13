@@ -1,15 +1,24 @@
 project:
   type: website
   output-dir: docs
+  pre-render: 
+    - scripts/batch_gfm_to_quarto.py _notes notes
+
+# Pre-render script transforms obsidian-compatible GFM notes
+# into quarto-style div-based markdown
 
 format:
   html:
     theme: united
     mainfont: Trebuchet MS
     fontsize: 16pt 
+    fig-align: center
+    lightbox: true
+    css: styles.css
 
 execute:
   freeze: auto
+  cache: true
 
 website:
   navbar:

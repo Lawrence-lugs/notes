@@ -1,0 +1,46 @@
+---
+title: "The Linux Page Fault Handler"
+date: "2026-01-05"
+status: "WIP"
+---
+
+# How to get there
+
+A TLB miss generates an exception.
+The Linux kernel hooks this into the exception vectors on boot (as functions.
+
+>[!important] Hooking Exception Vectors in ARM
+>There's a file named `linux/arch/arm/kernel/entry-armv.S` which contains unconditional branches to different vector handlers
+>These ASM instructions sit "harmlessly" in the kernel somewhere like `0xC0008000` on boot.
+>They're copied into the exception vector table using `memcpy` calls in `arch/arm/kernel/traps.c::early_trap_init` 
+
+
+```mermaid
+mindmap
+	exceptions_init
+		hook_fault_code(do_translation_fault)
+
+```
+
+
+# The Fault Handler in RISCV
+
+```mermaid
+mindmap
+	handle_page_fault
+		kprobe_page_fault
+		["user_mode(regs)"]
+		trace_page_fault_user
+		
+```
+::: {.callout-note}
+## Glossary
+- handle_page_fault - *called to handle page faults*
+ - kprobe_page_fault - *returns yes if fault has been handled by kprobe*
+ - user_mode(regs) - *macro that refers to the CPU register context saved on stack by the exception service routine*
+ - trace_page_fault_user - *records a trace of the page fault*
+:::
+
+`__kprobes` - linux kernel debug tracer "decorator" macro. BUT if you declare a function as a kprobe (one of the tracers) then it won't trace it because you don't want to recurse. This is used in this context to make sure it won't be traced. 
+
+`unlikely()` - compiler directive for branch prediction (used in booleans inside if() statements)

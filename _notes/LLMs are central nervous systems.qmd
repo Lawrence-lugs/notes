@@ -1,7 +1,6 @@
 ---
-title: "LLMs Centered on the Brain"
+title: "LLMs can be central nervous systems?"
 date: "2026-01-09"
-draft: true
 ---
 
 Apparently AI is shifting towards trying to use LLMs in different manners like
@@ -25,7 +24,7 @@ So then maybe we can make AlphaStar into a true ladder-breaking animal
 
 What would happen if, say, we replaced AlphaStar's Deep LSTM core module with an LLM instead now?
 
-> Vinyals, Oriol, et al. "Grandmaster level in StarCraft II using multi-agent reinforcement learning." _nature_ 575.7782 (2019): 350-354. ![Vinyals, Oriol, et al. "Grandmaster level in StarCraft II using multi-agent reinforcement learning." _nature_ 575.7782 (2019): 350-354.](attachments/Pasted%20image%2020260109221438.png)
+![Vinyals, Oriol, et al. "Grandmaster level in StarCraft II using multi-agent reinforcement learning." _nature_ 575.7782 (2019): 350-354.](attachments/Pasted%20image%2020260109221438.png)
 
 The problem with this is that LLMs are still *stateless*. They don't retain memory like an LSTM does. So we need LLMs with memory.
 
@@ -40,4 +39,4 @@ With some effort to arrange "evolutionarily":
 	- Mamba - They turned SSM parameters *dependent* on input $P(x)$.
 - Titans (Google 2024) - something like a high learning rate module (contextual memory) turning the medium-term context into parameters. Might be the most biological of all of these?
 
-> Titans' Memory as a Context (MAC) ![](attachments/Pasted%20image%2020260109224301.png)
+![Titans' Memory as a Context (MAC)](attachments/Pasted%20image%2020260109224301.png)

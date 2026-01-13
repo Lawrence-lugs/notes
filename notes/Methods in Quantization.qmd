@@ -1,10 +1,11 @@
 ---
 title: "Methods in Quantization for TinyML Frameworks"
 date: "2025-03-11"
-toc: true
 ---
+
 - [ ] TODO: Add commentary, since we're publicizing this one now.
 ![](attachments/wipguy_small.png)
+
 # Quantized Averagepool
 
 $\sum_i^n r_i=\sum_i^n s(q_i-z)$
@@ -197,6 +198,7 @@ $\hat{x} = \begin{cases}
 Simulated Quantization is “fake” quantization needing dequantization before every operation. EdMIPS uses simulated quantization in order to perform their differential architecture search with finetuning while searching for the optimal weight quantization set $\{o_i,o_w\}$.
 
 ::: {.callout-note}
+
 ## + Fact: The HWGQ Quantizer from EdMIPS is simulated quantization. See the `*step` portion of the formula.
 ```javascript
  class _hwgq(torch.autograd.Function):
@@ -270,6 +272,7 @@ The optimal quantizer can be found by way of Lloyd’s Algorithm (k-means cluste
 gaussian_steps = {1: 1.596, 2: 0.996, 3: 0.586, 4: 0.336}
 hwgq_steps = {1: 0.799, 2: 0.538, 3: 0.3217, 4: 0.185}
 ```
+
 3. EdMIPS further assumes that the means are all 0 but the variances are non-1. This means that measuring the standard deviation per parameter set (weight layer) is enough. The step for the quantization can then be scaled as $\sigma*step$.
 Hence, the gauss quantize function becomes as follows.
 ```python

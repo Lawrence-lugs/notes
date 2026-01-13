@@ -74,6 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -132,9 +135,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -161,35 +165,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#accounting-for-the-output-scale" id="toc-accounting-for-the-output-scale" class="nav-link active" data-scroll-target="#accounting-for-the-output-scale">Accounting for the output scale…</a></li>
-  <li><a href="#tflite-quantized-matmul" id="toc-tflite-quantized-matmul" class="nav-link" data-scroll-target="#tflite-quantized-matmul">TFlite Quantized Matmul</a>
-  <ul class="collapse">
-  <li><a href="#zeroes-thereof" id="toc-zeroes-thereof" class="nav-link" data-scroll-target="#zeroes-thereof">Zeroes Thereof</a></li>
-  </ul></li>
-  <li><a href="#full-integer-quantized-addition" id="toc-full-integer-quantized-addition" class="nav-link" data-scroll-target="#full-integer-quantized-addition">Full Integer Quantized Addition</a></li>
-  <li><a href="#errors-based-on-the-tflite-output-scaling" id="toc-errors-based-on-the-tflite-output-scaling" class="nav-link" data-scroll-target="#errors-based-on-the-tflite-output-scaling">Errors based on the TFLite output scaling</a></li>
-  <li><a href="#google-paradigm-on-dealing-with-low-precision-matrix-multiplication" id="toc-google-paradigm-on-dealing-with-low-precision-matrix-multiplication" class="nav-link" data-scroll-target="#google-paradigm-on-dealing-with-low-precision-matrix-multiplication">Google Paradigm on Dealing with Low Precision Matrix Multiplication</a></li>
-  <li><a href="#litert-torch-converter" id="toc-litert-torch-converter" class="nav-link" data-scroll-target="#litert-torch-converter">LiteRT Torch Converter</a></li>
-  <li><a href="#on-edmips" id="toc-on-edmips" class="nav-link" data-scroll-target="#on-edmips">On EdMIPS</a></li>
-  <li><a href="#biases" id="toc-biases" class="nav-link" data-scroll-target="#biases">Biases</a></li>
-  <li><a href="#static-vs-dynamic-quantization" id="toc-static-vs-dynamic-quantization" class="nav-link" data-scroll-target="#static-vs-dynamic-quantization">Static vs Dynamic Quantization</a>
-  <ul class="collapse">
-  <li><a href="#dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation." id="toc-dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation." class="nav-link" data-scroll-target="#dynamic-quantization-specify-quantization-range-for-each-activation-fmap-before-calculation.">Dynamic Quantization — Specify quantization range for each activation fmap before calculation.</a></li>
-  <li><a href="#static-quantization-specify-range-beforehand" id="toc-static-quantization-specify-range-beforehand" class="nav-link" data-scroll-target="#static-quantization-specify-range-beforehand">Static Quantization — Specify range beforehand</a></li>
-  <li><a href="#works" id="toc-works" class="nav-link" data-scroll-target="#works">Works</a></li>
-  </ul></li>
-  <li><a href="#stochastic-quantization" id="toc-stochastic-quantization" class="nav-link" data-scroll-target="#stochastic-quantization">Stochastic Quantization</a></li>
-  <li><a href="#simulated-integer-only-quantization" id="toc-simulated-integer-only-quantization" class="nav-link" data-scroll-target="#simulated-integer-only-quantization">Simulated &amp; Integer-only Quantization</a></li>
-  <li><a href="#determining-steprange-vs-bits" id="toc-determining-steprange-vs-bits" class="nav-link" data-scroll-target="#determining-steprange-vs-bits">Determining step/range vs bits</a></li>
-  <li><a href="#edmips-quantizer-range" id="toc-edmips-quantizer-range" class="nav-link" data-scroll-target="#edmips-quantizer-range">EdMIPS Quantizer Range</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -219,8 +195,10 @@ window.Quarto = {
 
 
 <ul class="task-list">
-<li><label><input type="checkbox">TODO: Add commentary, since we’re publicizing this one now. <img src="attachments/wipguy_small.png" class="img-fluid"> # Quantized Averagepool</label></li>
+<li><label><input type="checkbox">TODO: Add commentary, since we’re publicizing this one now. <img src="attachments/wipguy_small.png" class="img-fluid"></label></li>
 </ul>
+<section id="quantized-averagepool" class="level1">
+<h1>Quantized Averagepool</h1>
 <p><span class="math inline">\(\sum_i^n r_i=\sum_i^n s(q_i-z)\)</span></p>
 <p><span class="math inline">\(=\frac{s[(\sum_i^nq_i)-nz]}{n}\)</span></p>
 <p><span class="math inline">\(=\frac{s}{n}\sum q_i-sz\)</span></p>
@@ -231,6 +209,7 @@ window.Quarto = {
 <p><span class="math inline">\(r_y=\frac{s_x}{n}\sum q_{xi}-sz_x\)</span></p>
 <p><span class="math inline">\(s_y(q_y-z_y)=\frac{s_x}{n}\sum q_{xi}-sz_x\)</span></p>
 <p><span class="math inline">\(q_y=\frac{s_x}{s_yn}\sum q_{xi}-\frac{s_x}{s_y}z_x+z_y\)</span></p>
+</section>
 </section>
 <section id="tflite-quantized-matmul" class="level1">
 <h1>TFlite Quantized Matmul</h1>
@@ -288,7 +267,7 @@ window.Quarto = {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">(</span>m0 <span class="op">*</span> <span class="dv">2</span><span class="op">**(</span>shift<span class="op">))</span> <span class="op">-</span> <span class="op">(</span>fp_int <span class="op">*</span> <span class="dv">2</span><span class="op">**(</span>shift<span class="op">-</span><span class="dv">16</span><span class="op">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="zeroes-thereof" class="level3">
 <h3 class="anchored" data-anchor-id="zeroes-thereof">Zeroes Thereof</h3>
-<p><img src="attachments/16d40c87b91d970d6014377f61dc9f01.png" class="img-fluid"></p>
+<p><a href="attachments/16d40c87b91d970d6014377f61dc9f01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="attachments/16d40c87b91d970d6014377f61dc9f01.png" class="img-fluid"></a></p>
 </section>
 </section>
 <section id="full-integer-quantized-addition" class="level1">
@@ -394,7 +373,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><em>In simulated quantization, the quantized model parameters are stored in low-precision, but the operations (e.g.&nbsp;matrix multiplications and convolutions) are carried out with floating point arithmetic. - Gholami ’22 LPCV</em></p>
 </blockquote>
-<p><img src="attachments/9cdf206f1a19dd8d055e338037c60b6f.png" class="img-fluid"></p>
+<p><a href="attachments/9cdf206f1a19dd8d055e338037c60b6f.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="attachments/9cdf206f1a19dd8d055e338037c60b6f.png" class="img-fluid"></a></p>
 <p>Simulated Quantization is “fake” quantization needing dequantization before every operation. EdMIPS uses simulated quantization in order to perform their differential architecture search with finetuning while searching for the optimal weight quantization set <span class="math inline">\(\{o_i,o_w\}\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -449,7 +428,7 @@ window.Quarto = {
 <!-- Column 2 -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="attachments/6fe497340003c358ccc0bd8993638575.png" class="img-fluid figure-img"></p>
+<p><a href="attachments/6fe497340003c358ccc0bd8993638575.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."><img src="attachments/6fe497340003c358ccc0bd8993638575.png" class="img-fluid figure-img" alt="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."></a></p>
 <figcaption>The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available.</figcaption>
 </figure>
 </div>
@@ -495,12 +474,16 @@ window.Quarto = {
 <!-- Column 2 -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="img-fluid"></p>
+<p><a href="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block"><embed src="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="img-fluid"></a></p>
 <figcaption>Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block</figcaption>
 </figure>
 </div>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-3">The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available.</span>
+<span class="glightbox-desc lightbox-desc-4">Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block</span>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -914,6 +897,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

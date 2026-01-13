@@ -1,7 +1,6 @@
 ---
 title: "Running TinyGPU by Adam Maj"
-date: "2025-01-07"
-toc: true
+date: "2025-11-28"
 ---
 
 Let's try to run the [basic GPU example by Adam Maj](https://github.com/adam-maj/tiny-gpu)!
@@ -15,6 +14,7 @@ So far though, nothing really needs an XServer so you probably don't
 # Environment Setup
 
 First, start from the custom (with sudo) `iic-osic-tools` image. This custom image:
+
 - Adds `sudo` capability.
 - Uses the NVIM deployment script
 
@@ -272,6 +272,7 @@ In this context, thread=core, I guess. There is no concept of hyperthreading or 
 :::
 
 Each thread has its own register file with additional read-only registers:
+
 - `%blockIdx - register 1101
 - `%blockDim - register 1110`
 - `%threadIdx - register 1111`

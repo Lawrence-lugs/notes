@@ -2,8 +2,13 @@
   {
     "listing": "/index.html",
     "items": [
+      "/notes/The Generalized Stokes' Theorem.html",
+      "/notes/Differential Equations to FEM.html",
+      "/notes/Solving Differential Equations with C.html",
       "/notes/Adding an LLM to AlphaStar's Brain.html",
+      "/notes/LLMs are central nervous systems.html",
       "/notes/derivationOfTheLorentzTransformation.html",
+      "/notes/The Linux Page Fault Handler.html",
       "/notes/RingsAndFields.html",
       "/notes/Metrics and Manifolds.html",
       "/notes/Observer falls into the black hole, becomes Nostradamus.html",
@@ -13,6 +18,7 @@
       "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
       "/slides/transistorCapacitances/transistorCapacitances.html",
       "/notes/Lagrangians, Hamiltonians.html",
+      "/notes/Humans, Information and LLMs.html",
       "/notes/HypercoreX  Structure.html",
       "/notes/Methods in Quantization.html",
       "/notes/Interesting Quantization Observations.html"

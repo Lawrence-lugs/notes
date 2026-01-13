@@ -1,0 +1,182 @@
+---
+title: Differential Equations to FEM
+date: 2026-01-10
+modified: 2026-01-11T23:50:41+08:00
+toc: true
+---
+
+::: {.callout-important}
+
+- People have definitely come up with differential equations long before computers were around
+- Differential equations are sometimes so hard there aren't any analytical solutions
+- Computers were probably a lifesaver when they came around
+- How did people start using computers and developing numeric algorithms to solve differential equations?
+- I want to try it in C
+- The divergence operator $\vec\nabla$ looks and sounds as cool as ever
+
+:::
+
+# First solutions: Runge-Kutta
+
+Actually, instead of just coming up with hard-to-solve differential equations, they also came up with pain-in-the-ass-to-compute algorithms to solve them (Runge-Kutta, Euler) earlier than computers.
+
+::: {.callout-tip title="[Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)"}
+Given a problem in the following form: 
+$$\frac{dy}{dt}=f(t,y), y(t_0)=y_0$$
+RK4 gives an estimate of $\frac{dy}{dt}$ using a weighted average of four slopes $f(t,y)$ $k_1$ to $k_4$ in the "future" of the current point in time
+Choosing a time step $\Delta t>0$
+$$y_{n+1}=y_n+\frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)$$
+$$t_{n+1}=t_n+\Delta t$$
+$$k_1=f(t_n,y_n),$$
+$$k_2=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_1}{2})$$
+$$k_3=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_2}{2})$$
+$$k_4=f(t_n+\Delta t,y_n+\Delta tk_3)$$
+:::
+
+### Dragged Ballistics
+
+RK4 was first useful in calculating ballistics for weapons. Real trajectories had to be calculated with drag and wind, which wasn't easy to hand-calculate. With drag:
+
+$$\frac{d^2x}{dt^2}=-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_x$$
+$$\frac{d^2x}{dt^2}=-g-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_y$$
+But wait... this is second order.
+
+### The Cheat: Everything is First-Order In Phase Space
+
+We can cheat by analytically reducing this into a first-order differential equation solvable by RK4.
+
+So then, we merge the entire state space into one four-dimensional variable:
+$$S = \begin{bmatrix}
+x \\ y \\ v_x \\ v_x
+\end{bmatrix}$$
+
+::: {.callout-tip title="Trivia"}
+In more usual terms, this is called changing into the *phase space*. Apparently *phase* is used this way as in *status* (phases of the moon). To me, that naming feels discrete, though.
+:::
+
+This turns the second-order 2D problem into a first-order 4D problem
+$$\frac{dS}{dt}=\begin{bmatrix}
+dx/dt \\ dy/dt \\ dv_x/dt \\ dv_y/dt 
+\end{bmatrix}=\begin{bmatrix}
+v_x \\ v_y \\ a_x \\ a_y
+\end{bmatrix}$$
+$$\frac{dS}{dt}=\begin{bmatrix}
+dx/dt \\ dy/dt \\ dv_x/dt \\ dv_y/dt 
+\end{bmatrix}=\begin{bmatrix}
+v_x \\ v_y \\ -\frac{k}{m}\sqrt{v_x^2+v_y^2}v_x \\ -g-\frac{k}{m}\sqrt{v_x^2+v_y^2}v_y
+\end{bmatrix}$$
+For which we can apply RK4.
+
+TODO: Implement this solver in C with GNUplot as the plotter
+
+```c
+```
+
+### Correction: Every N-order ODE is a higher dimension 1st-order ODE
+
+However, not all problems only change versus one variable. In the prettiest (colorful) problems, we're tracking a scalar or a vector field permeating all across space but also changing across time.
+
+So say, the 1D heat equation:
+$$\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = f$$
+
+This is a partial differential equation (PDE) with both time and space dimension. 
+
+In this case, the way they were able to do it is to separate space into a discrete grid. We want to satisfy the time portion of the PDE at specific points in the grid:
+$$\frac{d u_i}{dt} - \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} = f_i$$
+We choose a $\Delta x$ for the grid, then we choose a $\Delta t$ to apply RD4 to it.
+
+In this grid, the neighboring points influence point $i$. This is kinda reminiscent of trying to simulate phase coupled oscillators like in the [Kuramoto model](https://en.wikipedia.org/wiki/Kuramoto_model).
+
+Problems:
+
+- This blew the problem to as many dimensions as there are $\text{grid cells} \cdot \text{ODE order}$  
+- Trying to get the EXACT solution for each point is difficult when each point doesn't even know if it's in the correct position yet. This caused a soft of overfitting in this approach where it's hard to converge in situations where the gradient changes quickly. You can fix this by making $dx$ small enough that the change is still "gradual", but this gets expensive quick.
+
+### Towards finite elements: the integral form
+
+The form of the finite difference equation
+$$\frac{d u_i}{dt} - \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} = f_i$$
+is extremely rigid. We have to enforce $f_i$ (heat source), but then it's almost never correct either.
+
+Instead, we can rearrange to accept a finite error over the entire domain:
+$$R(x)=\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i$$
+and "kindly ask" this residual to approach zero, instead of forcing it all to zero every time step. In other words, we're able to relax the condition so that a grid point $i$ doesn't reduce its error to 0 at the cost of other points being unable to converge or getting a big relative error.
+$$\int_\Omega{R(x)\cdot v(x)dx=0}$$
+
+::: {.callout-warning}
+That explanation feels wishy-washy about "kindly asking" and "giving a weaker condition", sounding like empirical AI. Probably some better way to say it after the next part.
+:::
+
+
+$v(x)$ is some arbitrary "test function", useful to give nice properties to the integral. I would think that $v(x)$ has to be nonzero everywhere (else $R(x)$ can be nonzero for some $x$).
+
+The entire form would be
+
+With $v(x)$ we can apply integration by parts:
+$$\int_\Omega{(\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i)\cdot v(x)dx=0}$$
+We focus on the difficult term first:
+$$\int_\Omega{\frac{d^2u}{dx^2}\cdot v(x)dx=0}$$
+Chain rule:
+$$\frac{d}{dx}(v\frac{du}{dx})=v\frac{d^2u}{dx^2}+\frac{du}{dx}\frac{dv}{dx}$$
+$$\int_\Omega dx v\frac{d^2u}{dx^2}=\int_\Omega dx\frac{d}{dx}(v\frac{du}{dx})+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}$$
+$$=v\frac{du}{dx}\Big\vert_\Omega+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}$$
+We kick away the weird-looking boundary evaluation term $v\frac{du}{dx}$ by always choosing the test function to be zero at the boundary $v\big\vert_\Omega = 0$.
+
+In the end, we've found an integral form of the problem which minimizes the error of the problem over the entire domain instead of in every point "independently":
+
+The other terms are all already first-order terms we can apply the RK4 method to, so we don't need to think too hard about them: 
+$$\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv$$
+So the final form is
+$$\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv+\int_\Omega dx \frac{du}{dx}\frac{dv}{dx}=0$$
+$$\int_\Omega dx (\frac{du}{dt}v- f_iv+ \frac{du}{dx}\frac{dv}{dx})=0$$
+This one is specific to the heat equation example, though.
+
+::: {.callout-tip title="In 3D:"}
+ You're supposed to do this with the divergence identities and theorem:
+ For a vector field $F$, the volume integral of the divergence of $F$ is the same as the surface integral of the surface enclosing that volume of the normal component of $F$ to the surface ($F\cdot \hat n$) 
+ $$\\\iiint_V (\nabla \cdot F)dV = \iint_S (F\cdot \hat n)dS$$
+$$\vec\nabla(v\nabla u) =v\nabla^2 u+\nabla u \nabla v$$
+$$\int_\Omega dx v\nabla^2 u= \int_\Omega dx \vec\nabla(v\nabla u)-\int_\Omega dx \nabla u\nabla v$$
+Via the divergence theorem 
+$$\int_\Omega dx \vec\nabla (v\nabla u)=\int_{d\Omega}dSv(\nabla u\cdot n)$$ and and again they do away with this $\int_{d\Omega}$ term by letting $v=0$ on the boundary. This is another special property of the test function.
+:::
+
+# Finite elements
+
+The essence (and namesake) of finite elements is in assuming the entire solution over the domain is a sum of simple shapes:
+$$u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)$$
+Then we *choose the test function $v$ to be the same as the $\phi_i$.
+There is one $\phi_i$ per finite element.
+
+::: {.callout-tip title="[FEM Hat Functions](https://hplgit.github.io/INF5620/doc/pub/sphinx-fem/._main_fem003.html#calculating-a-general-row-in-the-matrix))"}
+$\phi_j$ is the FEM hat function.
+:::
+
+We simplify the equation as we subsitute:
+
+$$\int_\Omega dx \left( \frac{d}{dt} \left( \sum_{j=1}^{N}u_j(t)\phi_j \right) \phi_i- f_i\phi_i+ \frac{d}{dx}\left( \sum_{j=1}^{N}u_j(t)\phi_j \right)\frac{d\phi_i}{dx} \right)=0$$
+$$\int_\Omega dx \left( \sum_{j=1}^{N}\frac{du_j(t)}{dt}\phi_j  \phi_i- f_i\phi_i+  \sum_{j=1}^{N}u_j(t)\frac{d\phi_j}{dx} \frac{d\phi_i}{dx} \right)=0$$
+and realize that the sum terms are matrix multiplications on vectors:
+
+Let $M_{ij}=\int_\Omega dx \phi_i\phi_j$, $K_{ij}=\int_\Omega dx \frac{d\phi_j}{dx}\frac{d\phi_i}{dx}$, for which the elements are easy-to-calculate hat function integrals (or integrals of their derivatives, so rectangles), then we end up with:
+$$\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}u=\mathbf{F}$$
+which we can plug directly into a first-order ODE solver.
+
+## Solving PDE with Finite Elements in General
+
+Let's say we have a general residual PDE $R$ of order $N$ we have
+$$\int_\Omega dx R\cdot v=0$$
+we are guaranteed to be able to split the order between $R$ and $v$ using IBP getting order $N/2$. If solving more than a second order PDE (like in the beam equation), we're supposed to do **mixed finite elements** where we split the original differential equation into coupled differential equations, like in earlier.
+
+Once we have a first-order weak form, we apply the FEM hat function formulation. This essentially eliminates space as a variable by performing the integrals over the easy-to-work-with hat functions $\phi$ and placing them into the $\mathbf{M}$ and $\mathbf{K}$ matrices. 
+
+$$u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)$$
+ In the end, we get a system of ODEs that also depend on the length of the finite element hat $h$ (characteristic mesh size)
+$$\mathbf{M}\frac{\vec{d^nu}}{dt^n}+\mathbf{K}\vec{u}=\mathbf{F}$$
+::: {.callout-warning title="Limitations"}
+Not all forms look like that. That form is limited to
+
+- Linear PDE
+- Time dependence is only via time derivative
+- No auxiliary fields or damping (so no wind in the ballistics equations either)
+:::

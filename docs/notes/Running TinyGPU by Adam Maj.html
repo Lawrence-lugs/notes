@@ -74,6 +74,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -135,9 +138,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,32 +168,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#environment-setup" id="toc-environment-setup" class="nav-link active" data-scroll-target="#environment-setup">Environment Setup</a>
-  <ul class="collapse">
-  <li><a href="#problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re" id="toc-problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re" class="nav-link" data-scroll-target="#problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re">Problem 1: Mamba is trying to use the base env <code>re</code> instead of the cocotb env <code>re</code></a></li>
-  </ul></li>
-  <li><a href="#running-the-tests" id="toc-running-the-tests" class="nav-link" data-scroll-target="#running-the-tests">Running the tests</a></li>
-  <li><a href="#the-simulation" id="toc-the-simulation" class="nav-link" data-scroll-target="#the-simulation">The Simulation</a>
-  <ul class="collapse">
-  <li><a href="#dataprogram-memories" id="toc-dataprogram-memories" class="nav-link" data-scroll-target="#dataprogram-memories">Data/Program Memories</a></li>
-  </ul></li>
-  <li><a href="#the-isa" id="toc-the-isa" class="nav-link" data-scroll-target="#the-isa">The ISA</a>
-  <ul class="collapse">
-  <li><a href="#compilation" id="toc-compilation" class="nav-link" data-scroll-target="#compilation">Compilation</a></li>
-  </ul></li>
-  <li><a href="#the-hardware" id="toc-the-hardware" class="nav-link" data-scroll-target="#the-hardware">The Hardware</a>
-  <ul class="collapse">
-  <li><a href="#register-file" id="toc-register-file" class="nav-link" data-scroll-target="#register-file">Register File</a></li>
-  <li><a href="#memory-controller-fsm" id="toc-memory-controller-fsm" class="nav-link" data-scroll-target="#memory-controller-fsm">Memory Controller FSM</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -234,7 +213,11 @@ Warning
 </div>
 <section id="environment-setup" class="level1">
 <h1>Environment Setup</h1>
-<p>First, start from the custom (with sudo) <code>iic-osic-tools</code> image. This custom image: - Adds <code>sudo</code> capability. - Uses the NVIM deployment script</p>
+<p>First, start from the custom (with sudo) <code>iic-osic-tools</code> image. This custom image:</p>
+<ul>
+<li>Adds <code>sudo</code> capability.</li>
+<li>Uses the NVIM deployment script</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> hpretl/iic-osic-tools:latest</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -435,7 +418,7 @@ DATA MEMORY
 </section>
 <section id="the-isa" class="level1">
 <h1>The ISA</h1>
-<p><img src="https://github.com/adam-maj/tiny-gpu/blob/master/docs/images/isa.png?raw=true" class="img-fluid"></p>
+<p><a href="https://github.com/adam-maj/tiny-gpu/blob/master/docs/images/isa.png?raw=true" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://github.com/adam-maj/tiny-gpu/blob/master/docs/images/isa.png?raw=true" class="img-fluid"></a></p>
 <section id="compilation" class="level3">
 <h3 class="anchored" data-anchor-id="compilation">Compilation</h3>
 <p>The project doesn’t come with its own compiler, but I think it’s some sort of personal ISA of the author.</p>
@@ -459,7 +442,12 @@ Note
 <p>In this context, thread=core, I guess. There is no concept of hyperthreading or software threads.</p>
 </div>
 </div>
-<p>Each thread has its own register file with additional read-only registers: - <code>%blockIdx - register 1101 -</code>%blockDim - register 1110<code>-</code>%threadIdx - register 1111` this is heavily used by the code.</p>
+<p>Each thread has its own register file with additional read-only registers:</p>
+<ul>
+<li>`%blockIdx - register 1101</li>
+<li><code>%blockDim - register 1110</code></li>
+<li><code>%threadIdx - register 1111</code> this is heavily used by the code.</li>
+</ul>
 <p>They’re declared like this</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode verilog code-with-copy"><code class="sourceCode verilog"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Initialize read-only registers</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>            registers<span class="op">[</span><span class="dv">13</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="bn">8'b0</span><span class="op">;</span>              <span class="co">// %blockIdx</span></span>
@@ -483,7 +471,7 @@ Why <code>blockIdx &lt;= '0?</code>
 <h3 class="anchored" data-anchor-id="memory-controller-fsm">Memory Controller FSM</h3>
 <p>There are 4 memory channels (by default), each which has a single controller. The memory controller responds to <code>valid</code> assertions by consumers and then services them.</p>
 <p>The consumers (compute cores) hold <code>consumer_write_valid</code> or <code>consumer_read_valid</code> until they’re given the <code>ready</code>. This makes sense per the usual treatment of ready-valid handshake.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -917,6 +905,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

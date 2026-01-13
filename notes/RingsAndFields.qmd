@@ -10,6 +10,7 @@ Abstract algebra is apparently the study of rings and fields plus groups...
 # Groups
 
 Groups are sets with ONE operation satisfying closure (must stay within the group), associativity, identity and inverses.
+
 # Rings
 
 ::: {.callout-note title="Rings"}
@@ -49,6 +50,7 @@ An ideal $I$ is a subset of the ring that absorbs multiplication. If $r \in R$ a
 
 ::: {.callout-note}
 The Real ring $\mathbb{R}$ has exactly two ideals:
+
 1. Zero ideal (0)
 2. Entire ring (1)
 
