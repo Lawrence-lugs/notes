@@ -23,6 +23,7 @@ execute:
   cache: true
 
 website:
+  title: Lawrence Roman A. Quizon
   navbar:
     left:
       - href: index.qmd
