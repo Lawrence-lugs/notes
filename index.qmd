@@ -36,10 +36,11 @@ My primary research interest is in the creation of efficient computational syste
 ### Secondary Interests
 
 - Open source hardware everything. Why can't we have massive Github portfolios of random hardware? (We can)
-- The Linux Kernel (as a representative of the missing region between microarchitecture and user level. Things like thread synchronization.)
+- The Linux Kernel as a representative of the missing region between microarchitecture and user level.
 - The very very secret GPU architectures
-- Applications of Abstract Math (surprisingly cool)
+- Practical Applications of Abstract Math
 - Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT. 
+- Differential equations and numerical methods have and always will be the most exciting application of computing.
 - Learning an NVIM workflow, primarily because I'm tired of using VNC.
 
 # Recent Pages

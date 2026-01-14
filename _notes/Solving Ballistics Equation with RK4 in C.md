@@ -1,7 +1,7 @@
 ---
 title: Solving Ballistics Equation with RK4 in C
-modified: 2026-01-12T15:55:49+08:00
-date: 2026-01-12T14:48:24+08:00
+modified: 2026-01-15
+date: 2026-01-12
 toc: true
 ---
 >[!note] Questions
