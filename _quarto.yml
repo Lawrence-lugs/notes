@@ -3,6 +3,8 @@ project:
   output-dir: docs
   pre-render: 
     - scripts/batch_gfm_to_quarto.py _notes notes
+  resources:
+    - "googleba81d2991a90411e.html"
 
 # Pre-render script transforms obsidian-compatible GFM notes
 # into quarto-style div-based markdown
