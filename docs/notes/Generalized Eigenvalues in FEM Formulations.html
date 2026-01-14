@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-09">
+<meta name="dcterms.date" content="2025-09-18">
 
-<title>LLMs can be central nervous systems?</title>
+<title>Generalized Eigenvalues in FEM Formulations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,9 +40,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -137,7 +134,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LLMs can be central nervous systems?</h1>
+<h1 class="title">Generalized Eigenvalues in FEM Formulations</h1>
 </div>
 
 
@@ -148,7 +145,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 9, 2026</p>
+      <p class="date">September 18, 2025</p>
     </div>
   </div>
   
@@ -160,69 +157,166 @@ window.Quarto = {
 </header>
 
 
-<p>Apparently AI is shifting towards trying to use LLMs in different manners like</p>
-<ul>
-<li>RL + LLM</li>
-<li>Vision + LLM (Recall, or something)</li>
-<li>LLMs for controlling robots</li>
-</ul>
-<section id="ai-is-evolving-like-animals" class="level1">
-<h1>AI is evolving like animals…?</h1>
-<p>This may be reminiscent of biological evolution of nervous systems. Quick reflex-like signalling systems may have evolved into peripheral + central nervous systems.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Fact-check!">
+<section id="generalized-eigenvalue-problem" class="level1">
+<h1>Generalized Eigenvalue Problem</h1>
+<p>The eigenvectors and eigenvalues of <span class="math inline">\(\mathbf{M}\)</span> and <span class="math inline">\(\mathbf{K}\)</span> can significantly simplify solutions of the FEM problem.</p>
+<p>Decomposing the solution <span class="math inline">\(u(x,t)\)</span> into a linear combination of eigenvalues and eigenvectors allows to solve only the <span class="math inline">\(N\)</span> (like 20 or so) most important modalities. The rest of the eigenvectors contribute so little to <span class="math inline">\(u(x,t)\)</span> that numeric error outscales it, so they’re not really necessary.</p>
+<p>We can look at the unforced FEM formulation of the heat equation for this: <span class="math display">\[\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}\vec{u}=0\]</span> If we can find the eigenvector <span class="math inline">\(\vec{v}\)</span> of <span class="math inline">\(\mathbf{K}\)</span> and <span class="math inline">\(\mathbf{M}\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span>, we can just do: Let <span class="math inline">\(\vec{u}=\vec{v}e^{-\lambda t}\)</span> (decay). Then, <span class="math display">\[-\mathbf{M}\lambda\vec{u}+\mathbf{K}\vec{u}=0\]</span> <span class="math display">\[-\mathbf{M}\lambda\vec{v}e^{-\lambda t}+\mathbf{K}\vec{v}e^{-\lambda t}=0\]</span> <span class="math display">\[-\mathbf{M}\lambda\vec{v}+\mathbf{K}\vec{v}=0\]</span> and we get that the <span class="math inline">\(\lambda\)</span> are the eigenvalues in a <a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Generalized_eigenvalue_problem">generalized eigenvalue problem</a>.</p>
+<p>Then, we can use this in some Fourier or Laplace magic (in this case, laplace magic because the time-varying forms called <span class="math inline">\(\xi(t)=e^{-\lambda t}\)</span> are decay forms)</p>
+<p>We can project the solution into a basis of a bunch of discrete <span class="math inline">\(\lambda\)</span> time constants and add up the solutions for each of those.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="The Spectral Theorem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Fact-check!
+The Spectral Theorem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Northcutt, R. Glenn. “Evolution of centralized nervous systems: two schools of evolutionary thought.” Proceedings of the National Academy of Sciences 109.supplement_1 (2012): 10626-10633. Some early creatures have <em>ganglionated cephalic nervous systems</em>. <em>Diffuse nerve plexus</em> are</p>
+<p>In fact, the spectral theorem gives us that if <span class="math inline">\(K\)</span> and <span class="math inline">\(M\)</span> are symmetric positive-definite matrices, we can always get real <span class="math inline">\(\lambda\)</span> and that the eigenvectors <span class="math inline">\(v_1,v_2,...,v_3\)</span> form a basis. This means we can project the true solution into the basis.</p>
 </div>
 </div>
-<p>Creatures with central nervous systems are allowed to have an internal cognition network with latent representations and statefulness that can help perform long term tasks.</p>
+<p>So then, the exact solution becomes a linear combination of eigenvectors: <span class="math display">\[u(t)=\sum^{N}_{i=1} c_iv_ie^{-\lambda_it}\]</span></p>
 </section>
-<section id="replacing-alphastars-core-module-with-an-llm" class="level1">
-<h1>Replacing AlphaStar’s Core Module with an LLM</h1>
-<p>So then maybe we can make AlphaStar into a true ladder-breaking animal</p>
-<p>What would happen if, say, we replaced AlphaStar’s Deep LSTM core module with an LLM instead now?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="attachments/Pasted image 20260109221438.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;nature&nbsp;575.7782 (2019): 350-354."><img src="attachments/Pasted image 20260109221438.png" class="img-fluid figure-img" alt="Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;nature&nbsp;575.7782 (2019): 350-354."></a></p>
-<figcaption>Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;<em>nature</em>&nbsp;575.7782 (2019): 350-354.</figcaption>
-</figure>
+<section id="generalized-eigenvalues-with-a-force-term" class="level1">
+<h1>Generalized eigenvalues with a force term</h1>
+<p>With a force term, we get something like <span class="math display">\[-\mathbf{M}\lambda\vec{v}e^{-\lambda t}+\mathbf{K}\vec{v}e^{-\lambda t}=\mathbf{F}\]</span> In this case, the time term is incorrect (the forcing term prevents it from just being a decay, making the “guess” incorrect)</p>
+<p>So then, we just avoid guessing a time term completely.</p>
+<p>Let <span class="math inline">\(\vec{u}=\vec{v_i}\xi_i(t)\)</span></p>
+<p>Then we can use this in the FEM formulation <span class="math display">\[\mathbf{M} \left( \sum_{i=1}^N \dot{\xi}_i(t) \vec{v}_i \right) + \mathbf{K} \left( \sum_{i=1}^N \xi_i(t) \vec{v}_i \right) = \mathbf{F}(t)\]</span> To isolate the solution for a specific mode, <span class="math inline">\(v_i\)</span>, we multiply with the ket form <span class="math inline">\(v_j^T\)</span> to “precipitate out” the important terms. <span class="math display">\[\vec{v}_j^T \mathbf{M} \left( \sum \dot{\xi}_i \vec{v}_i \right) + \vec{v}_j^T \mathbf{K} \left( \sum \xi_i \vec{v}_i \right) = \vec{v}_j^T \mathbf{F}(t)\]</span> That is, important terms being <strong>only the ones with <span class="math inline">\(i=j\)</span></strong>. For the other terms, <span class="math display">\[v_j^T \mathbf{M} v_i=0 \text{ if }i \neq j \text{ (orthogonal basis)}\]</span> <span class="math display">\[v_j^T \mathbf{K} v_i=0 \text{ if }i \neq j \text{ (orthogonal basis)}\]</span> We’re left with the <span class="math inline">\(\xi_i(t)\)</span> terms mixed with a simple scalar form. <span class="math display">\[\vec{v}_j^T \mathbf{M} \vec{v}_j\dot{\xi}_j(t) + \vec{v}_j^T \mathbf{K} \vec{v}_j\xi_j(t)=\vec{v}_j^T\mathbf{F}(t)\]</span> We call these terms “modal mass, modal stiffness, and modal force”: <span class="math display">\[m_j \dot{\xi}_j(t) + k_j \xi_j(t) = f_j(t)\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>The problem with this is that LLMs are still <em>stateless</em>. They don’t retain memory like an LSTM does. So we need LLMs with memory.</p>
-<section id="approaches-to-stateful-llm" class="level2">
-<h2 class="anchored" data-anchor-id="approaches-to-stateful-llm">Approaches to Stateful LLM</h2>
-<p>With some effort to arrange “evolutionarily”:</p>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interestingly, these terms resemble the ket forms in quantum mechanics <span class="math display">\[\bra{v}\mathbf{M}\ket{v}, \bra{v}\mathbf{K}\ket{v}, \bra{v}\mathbf{F}\]</span> Apparetly <span class="math inline">\(\bra{v}\mathbf{M}\ket{v}\)</span> is called the kinetic energy norm and <span class="math inline">\(\bra{v}\mathbf{K}\ket{v}\)</span> is called the Strain Energy</p>
+</div>
+</div>
+<p>Now we have a simply solvable calculus problem: <span class="math display">\[\frac{d\xi_j}{dt}+\lambda_j\xi_j=\frac{f_j(t)}{m_j}\]</span> whose solution is <span class="math display">\[\xi_j(t)=\xi_j(0)e^{-\lambda_j t}+\int_0^td\tau e^{-\lambda_j (t-\tau)} \frac{f_j(\tau)}{m_j}\]</span></p>
+<p>The thing is, we have to do that for <em>every single modality we’re accounting for</em>.</p>
+<p>Maybe the good news is that solving for the <span class="math inline">\(\xi_j\)</span> form once probably makes it trivial to get all the others (<span class="math inline">\(f_j\)</span> will likely rarely change in form per <span class="math inline">\(j\)</span>, more like only scaling)</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For second-order FEM formulas">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For second-order FEM formulas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For things like the beam equation, for example, the solution turns out to be <span class="math display">\[\ddot{\xi} + \omega_0^2 \xi = f(t)\]</span> <span class="math display">\[\xi(t) = \int_0^t \frac{1}{\omega_0} \sin(\omega_0(t-\tau)) f(\tau) d\tau\]</span></p>
+</div>
+</div>
+</section>
+<section id="how-to-solve-a-generalized-eigenvalue-problem" class="level1">
+<h1>How to solve a generalized eigenvalue problem?</h1>
+<p>Starting from <span class="math display">\[-\mathbf{M}\lambda\vec{v}+\mathbf{K}\vec{v}=0\]</span> we still need to solve for the <span class="math inline">\(\lambda_j\)</span>s and the <span class="math inline">\(\vec{v_j}\)</span>s.</p>
+<p>We use the Lanczos algorithm for this (kind of like Givens rotations etc. algorithms for QR decomposition.)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is nice because the Lanczos algorithm can give the eigenvalues in order of importants (like PCA). That’s because it usually gives it in order of highest to lowest (like most linalg iterative algorithms) but if you do shift-and-invert you can make the lowest eigenvalues the highest.</p>
+</div>
+</div>
+</section>
+<section id="where-is-this-used" class="level1">
+<h1>Where is this used?</h1>
+<p>Only used for problems with nice well-defined structures whose properties <span class="math inline">\(\mathbf{M}\)</span> and <span class="math inline">\(\mathbf{K}\)</span> do not change over the course of the simulation.</p>
+<p>Problems where it’s applicable:</p>
 <ul>
-<li>Neuro-sama (some guy named Vedal) - Probably a text file used with the context window.</li>
-<li>Recurrent Memory Transformers (NeurIPS 2022) - Add special memory tokens to the input sequence and output sequence. Then, eat your own output.
-<ul>
-<li>Kind of like <em>Ghajini/Memento</em> in a way. You don’t remember anything, but you do take notes.</li>
-</ul></li>
-<li>Structured State Space Models (various) - compressed latent space representation memory, but still explicit memory.
-<ul>
-<li>Mamba - They turned SSM parameters <em>dependent</em> on input <span class="math inline">\(P(x)\)</span>.</li>
-</ul></li>
-<li>Titans (Google 2024) - something like a high learning rate module (contextual memory) turning the medium-term context into parameters. Might be the most biological of all of these?</li>
+<li>Tall building (doesn’t really change behavior until it breaks)</li>
+<li>PCB vibration</li>
+<li>Drivetrains and gears</li>
+<li>Laminar flow (apparently you just have the Stokes Equation for this)</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="attachments/Pasted image 20260109224301.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Titans’ Memory as a Context (MAC)"><img src="attachments/Pasted image 20260109224301.png" class="img-fluid figure-img" alt="Titans’ Memory as a Context (MAC)"></a></p>
-<figcaption>Titans’ Memory as a Context (MAC)</figcaption>
-</figure>
+<p>Problems where it’s inapplicable:</p>
+<ul>
+<li>Turbulent flow (you have to use Navier-Stokes, which has an advection <span class="math inline">\((\vec{v} \cdot \nabla) \vec{v}\)</span> term that will appear as <span class="math inline">\(\mathbf{K}(v)\)</span>. Stiffness is a function of <span class="math inline">\(v\)</span>. For these, we have to directly solve the FEM form.</li>
+</ul>
+</section>
+<section id="notes" class="level1">
+<h1>Notes</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;<em>nature</em>&nbsp;575.7782 (2019): 350-354.</span>
-<span class="glightbox-desc lightbox-desc-2">Titans’ Memory as a Context (MAC)</span>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The eigenvalues <span class="math inline">\(\lambda_i\)</span> are not like harmonics- they can be randomly spaced in between each other. <span class="math inline">\(\lambda_2\)</span> might be <span class="math inline">\(1.43 \times \lambda_1\)</span>. <span class="math inline">\(\lambda_3\)</span> might be <span class="math inline">\(2.11 \times \lambda_1\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In practice, we choose some “Nyquist maximum” frequency at which to stop caring about the solution. So then we solve for all <span class="math inline">\(\lambda_n &lt; 1Grads\)</span> or <span class="math inline">\(\omega_n &lt; 1Grads\)</span> if we expect the forcing function <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Cool thing:">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Cool thing:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\vec{v}_j^T\mathbf{F}(t)\)</span> is literally use projecting the “simulation stimulus force” onto the eigenvector basis. So then putting specific modalities of vibration or decay in <span class="math inline">\(F\)</span> would allow us to simulate resonance type things. We’re not turning <span class="math inline">\(F\)</span> into its fourier transform. Rather, we’re asking how much does <span class="math inline">\(F\)</span> looks like <span class="math inline">\(v_1\)</span>? How much does it look like <span class="math inline">\(v_2\)</span>? etc.</p>
+</div>
 </div>
 </section>
+<section id="test-coverage-and-using-eigenvalue-based-fem-correctly" class="level1">
+<h1>“Test coverage” and using eigenvalue-based FEM correctly:</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Effective Modal Inertia">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Effective Modal Inertia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A parameter named “effective modal inertia” captures the “test coverage” of eigenvectors- capturing how much the current set of eigenvectors makes up the overall response to a stimulus <span class="math inline">\(F\)</span>.</p>
+<p>Simulating with a specific <span class="math inline">\(F\)</span> like an earthquake you try to get up to 90% “test coverage” (effective modal inertia) on it.</p>
+<p>Then, you think of another <span class="math inline">\(F\)</span> to test it out with. Say, supertyphoon winds, then you get 90% test coverage on that.</p>
+<p>If you fail to find the <span class="math inline">\(F\)</span> that breaks your thing, that’s unfortunate.</p>
+</div>
+</div>
+<p>I have an idea.</p>
+<p>I wonder if we can design <span class="math inline">\(F\)</span> to be “constant white noise” in the “eigenvector basis” so that we can use one <span class="math inline">\(F\)</span> to simulate all behaviors?</p>
+<p>This is apparently called “Response Spectrum Analysis”. Commercial simulators have this feature, as it looks like in Google results.</p>
+<blockquote class="blockquote">
+<p>Ok. Since we can disastrously miss resonance modes that can cause failure, let’s just go back to the direct FEM solution.</p>
+</blockquote>
+<p>For this one, we’re limited instead by the <span class="math inline">\(\Delta t\)</span> used in the RK4 or the reverse euler solution.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -636,31 +730,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

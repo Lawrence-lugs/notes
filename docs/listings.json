@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/notes/Solving Ballistics Equation with RK4 in C.html",
+      "/notes/AI for Learning and Feeling stupid organically.html",
       "/notes/The Generalized Stokes' Theorem.html",
       "/notes/Differential Equations to FEM.html",
       "/notes/Solving Differential Equations with C.html",
@@ -19,6 +21,7 @@
       "/slides/transistorCapacitances/transistorCapacitances.html",
       "/notes/Lagrangians, Hamiltonians.html",
       "/notes/Humans, Information and LLMs.html",
+      "/notes/Generalized Eigenvalues in FEM Formulations.html",
       "/notes/HypercoreX  Structure.html",
       "/notes/Methods in Quantization.html",
       "/notes/Interesting Quantization Observations.html"
