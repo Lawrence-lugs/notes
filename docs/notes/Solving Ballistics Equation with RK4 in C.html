@@ -232,7 +232,7 @@ x\\y\\dx/dt\\dy/dt
 \end{bmatrix}\]</span></p>
 <section id="forward-euler" class="level1">
 <h1>Forward Euler</h1>
-<p><span class="math display">\[\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}\]</span> and since <span class="math inline">\(x_{n+1}=\Delta t \frac{dx}{dt}+x_n,y_{n+1}=\Delta t \frac{dy}{dt}+y_n,\)</span></p>
+<p><img src="attachments/Pasted image 20260115115215.png" class="img-fluid"> <span class="math display">\[\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}\]</span> and since <span class="math inline">\(x_{n+1}=\Delta t \frac{dx}{dt}+x_n,y_{n+1}=\Delta t \frac{dy}{dt}+y_n,\)</span></p>
 <p>The update matrix is <span class="math display">\[\mathbf{U}=\begin{bmatrix}
 1 &amp; 0 &amp; dt &amp; 0 \\
 0 &amp; 1 &amp; 0 &amp; dt \\
@@ -1065,7 +1065,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

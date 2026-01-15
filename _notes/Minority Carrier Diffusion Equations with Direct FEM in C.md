@@ -1,8 +1,45 @@
 ---
-title: Minority Carrier Diffusion Equations with RK4 in C
-modified: 2026-01-12T14:54:12+08:00
+title: Minority Carrier Diffusion Equations with explicit FEM in C
+modified: 2026-01-15
 date: 2026-01-12T14:48:24+08:00
 draft: true
 ---
 
-Asdlkasjdlk
+>[!question] 
+>- How do we deal with PDEs in the current RK4 setup?
+>- What do we need to do to implement FEM in C?
+
+# Finite Difference
+
+Let's start with an easy formulation: minority carrier diffusion with RG 
+
+$$\frac{dn}{dt}=D_n\frac{d^2n}{dx^2}-\frac{n}{\tau_n}$$
+$$n\Big\vert_{x=0}=n_0;n\Big\vert_{t=0}=0$$
+where $n$ is the minority carrier concentration.
+
+>[!tip] Aside
+>Why is diffusion second-order here? If it's diffusion, it should just depend on the concentration gradient, which is first-order.
+>
+>Intuitively, if the rate of flow of $n$ into a spot $x$ is $dn/dt$. If that's constant over $x$, the should be no change in concentration over time (inflow = outflow). However, if there is a difference in inflow and outflow (divergence) then there will be a $dn/dt$. By this logic:
+>
+>$$\frac{dn}{dt}=\vec\nabla\cdot\nabla n$$
+>
+>i.e. second derivative in one dimension
+
+So we have a slope function of
+
+$$\frac{dn}{dt}=D_n \frac{2n-n_{x+1}-n_{x-1}}{\Delta x^2}-\frac{n}{\tau_n}$$
+
+As we introduce separate state vectors for every point $n_x$.
+
+Now, we have a grid of $n_0,n_1,...,n_N$ separated by a $dx$.
+## Managing the grid
+
+Because of introduction of a grid, I guess we'll manage it using a matrix. 
+
+
+
+# Weak Form of Minority Carrier Diffusion
+
+# Finite Element
+

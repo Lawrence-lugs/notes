@@ -1,6 +1,6 @@
 ---
 title: "LLMs can be central nervous systems?"
-date: "2026-01-09"
+date: "2025-10-03"
 ---
 
 Apparently AI is shifting towards trying to use LLMs in different manners like

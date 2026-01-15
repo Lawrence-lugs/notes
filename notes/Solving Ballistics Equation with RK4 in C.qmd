@@ -18,6 +18,7 @@ x\\y\\dx/dt\\dy/dt
 \end{bmatrix}$$ 
 
 # Forward Euler
+![](attachments/Pasted%20image%2020260115115215.png)
 $$\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}$$
 and since $x_{n+1}=\Delta t \frac{dx}{dt}+x_n,y_{n+1}=\Delta t \frac{dy}{dt}+y_n,$
 

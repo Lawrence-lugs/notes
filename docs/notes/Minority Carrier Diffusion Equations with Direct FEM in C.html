@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-01-12">
 
-<title>Lawrence Roman A. Quizon - Minority Carrier Diffusion Equations with RK4 in C</title>
+<title>Lawrence Roman A. Quizon - Minority Carrier Diffusion Equations with explicit FEM in C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -110,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Minority Carrier Diffusion Equations with RK4 in C</h1>
+<h1 class="title">Minority Carrier Diffusion Equations with explicit FEM in C</h1>
 </div>
 
 
@@ -133,9 +162,49 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Asdlkasjdlk</p>
+<div class="callout-question">
+<ul>
+<li>How do we deal with PDEs in the current RK4 setup?</li>
+<li>What do we need to do to implement FEM in C?</li>
+</ul>
+</div>
+<section id="finite-difference" class="level1">
+<h1>Finite Difference</h1>
+<p>Let’s start with an easy formulation: minority carrier diffusion with RG</p>
+<p><span class="math display">\[\frac{dn}{dt}=D_n\frac{d^2n}{dx^2}-\frac{n}{\tau_n}\]</span> <span class="math display">\[n\Big\vert_{x=0}=n_0;n\Big\vert_{t=0}=0\]</span> where <span class="math inline">\(n\)</span> is the minority carrier concentration.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Aside">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Aside
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why is diffusion second-order here? If it’s diffusion, it should just depend on the concentration gradient, which is first-order.</p>
+<p>Intuitively, if the rate of flow of <span class="math inline">\(n\)</span> into a spot <span class="math inline">\(x\)</span> is <span class="math inline">\(dn/dt\)</span>. If that’s constant over <span class="math inline">\(x\)</span>, the should be no change in concentration over time (inflow = outflow). However, if there is a difference in inflow and outflow (divergence) then there will be a <span class="math inline">\(dn/dt\)</span>. By this logic:</p>
+<p><span class="math display">\[\frac{dn}{dt}=\vec\nabla\cdot\nabla n\]</span></p>
+<p>i.e.&nbsp;second derivative in one dimension</p>
+</div>
+</div>
+<p>So we have a slope function of</p>
+<p><span class="math display">\[\frac{dn}{dt}=D_n \frac{2n-n_{x+1}-n_{x-1}}{\Delta x^2}-\frac{n}{\tau_n}\]</span></p>
+<p>As we introduce separate state vectors for every point <span class="math inline">\(n_x\)</span>.</p>
+<p>Now, we have a grid of <span class="math inline">\(n_0,n_1,...,n_N\)</span> separated by a <span class="math inline">\(dx\)</span>.</p>
+<section id="managing-the-grid" class="level2">
+<h2 class="anchored" data-anchor-id="managing-the-grid">Managing the grid</h2>
+<p>Because of introduction of a grid, I guess we’ll manage it using a matrix.</p>
+</section>
+</section>
+<section id="weak-form-of-minority-carrier-diffusion" class="level1">
+<h1>Weak Form of Minority Carrier Diffusion</h1>
+</section>
+<section id="finite-element" class="level1">
+<h1>Finite Element</h1>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
