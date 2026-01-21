@@ -223,99 +223,99 @@ Warning
 <li>Adds <code>sudo</code> capability.</li>
 <li>Uses the NVIM deployment script</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> hpretl/iic-osic-tools:latest</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install sudo</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> root</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">useradd</span> <span class="at">-s</span> /bin/bash designer</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">usermod</span> <span class="at">-aG</span> sudo designer</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">"designer ALL=(ALL) NOPASSWD:ALL"</span> <span class="op">&gt;</span> /etc/sudoers.d/designer <span class="dt">\</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">chmod</span> 0440 /etc/sudoers.d/designer</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /workspaces</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">USER</span> designer</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy NVIM</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># [vim_deploy] INJECTION START</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Install prerequisites</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> git curl wget</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Clone and Run the Installer</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: We clone to a permanent path (/root/.vim_deploy) and DO NOT delete it.</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># The install.sh creates symlinks to this folder. If we deleted it, the config would break.</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">git</span> clone https://github.com/Lawrence-lugs/vim_deploy ~/.vim_deploy <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> ~/.vim_deploy <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bash</span> install.sh</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Update PATH and ALIASES for the image</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> PATH=<span class="st">"~/miniforge3/bin:$PATH"</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional) Ensure the alias works for the default user in interactive mode</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">"alias vim=nvim"</span> <span class="op">&gt;&gt;</span> ~/.bash_aliases</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># [vim_deploy] INJECTION </span><span class="re">END</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># ==============================================================================</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource dockerfile number-lines code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">FROM</span> hpretl/iic-osic-tools:latest</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Install sudo</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">USER</span> root</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">RUN</span> <span class="ex">useradd</span> <span class="at">-s</span> /bin/bash designer</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">RUN</span> <span class="ex">usermod</span> <span class="at">-aG</span> sudo designer</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">"designer ALL=(ALL) NOPASSWD:ALL"</span> <span class="op">&gt;</span> /etc/sudoers.d/designer <span class="dt">\</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">chmod</span> 0440 /etc/sudoers.d/designer</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">WORKDIR</span> /workspaces</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="kw">USER</span> designer</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># Deploy NVIM</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co"># [vim_deploy] INJECTION START</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># 1. Install prerequisites</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="kw">RUN</span> <span class="fu">sudo</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt-get install <span class="at">-y</span> git curl wget</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co"># 2. Clone and Run the Installer</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: We clone to a permanent path (/root/.vim_deploy) and DO NOT delete it.</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># The install.sh creates symlinks to this folder. If we deleted it, the config would break.</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="kw">RUN</span> <span class="fu">git</span> clone https://github.com/Lawrence-lugs/vim_deploy ~/.vim_deploy <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>    <span class="bu">cd</span> ~/.vim_deploy <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>    <span class="fu">bash</span> install.sh</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co"># 3. Update PATH and ALIASES for the image</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="kw">ENV</span> PATH=<span class="st">"~/miniforge3/bin:$PATH"</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co"># (Optional) Ensure the alias works for the default user in interactive mode</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="kw">RUN</span> <span class="bu">echo</span> <span class="st">"alias vim=nvim"</span> <span class="op">&gt;&gt;</span> ~/.bash_aliases</span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co"># [vim_deploy] INJECTION </span><span class="re">END</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a></span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="co"># ==============================================================================</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>docker-compose.yml</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">osic_tools</span><span class="kw">:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> .</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> osic_tools_container</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">working_dir</span><span class="kw">:</span><span class="at"> /workspaces</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> DISPLAY=:0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> WAYLAND_DISPLAY=wayland-0</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PULSE_SERVER=/mnt/wslg/PulseServer</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> SHELL=/bin/bash</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ../:/workspaces</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">      # WSLg Graphics &amp; Audio Sockets</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /run/desktop/mnt/host/wslg:/mnt/wslg</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">      # Hardware Acceleration (GPU Drivers)</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /usr/lib/wsl:/usr/lib/wsl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  </span><span class="fu">osic_tools</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">      </span><span class="fu">context</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">      </span><span class="fu">dockerfile</span><span class="kw">:</span><span class="at"> Dockerfile</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> osic_tools_container</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">    </span><span class="fu">working_dir</span><span class="kw">:</span><span class="at"> /workspaces</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> DISPLAY=:0</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">      </span><span class="kw">-</span><span class="at"> WAYLAND_DISPLAY=wayland-0</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PULSE_SERVER=/mnt/wslg/PulseServer</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="at">      </span><span class="kw">-</span><span class="at"> SHELL=/bin/bash</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ../:/workspaces</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">      # WSLg Graphics &amp; Audio Sockets</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /run/desktop/mnt/host/wslg:/mnt/wslg</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">      # Hardware Acceleration (GPU Drivers)</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /usr/lib/wsl:/usr/lib/wsl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Then do <code>docker compose up</code> to open a terminal for use.</p>
 </blockquote>
 <p>Somehow, after the deploy script is done, we still need to redo mamba init due to some inner workings in <code>iic-osic-tools</code>. We need to activate the deployed mamba init: do…</p>
 <p>Then, we need to install cocotb using miniforge mamba (conda but better). However, the latest versions of cocotb no longer have the build command <code>cocotb-config --prefix</code> used in the TinyGPU Makefile so we need a specific version</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">test_%:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="er">    </span>make compile</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">MODULE</span><span class="ch">=</span><span class="st">test.test_</span><span class="ch">$*</span><span class="st"> vvp -M </span><span class="ch">$$</span><span class="st">(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource makefile number-lines code-with-copy"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">test_%:</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="er">    </span>make compile</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="dt">MODULE</span><span class="ch">=</span><span class="st">test.test_</span><span class="ch">$*</span><span class="st"> vvp -M </span><span class="ch">$$</span><span class="st">(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p><code>mamba create -n "cocotb" cocotb==1.7.2 pytest</code> <code>mamba activate cocotb</code></p>
 </blockquote>
 <p>We also need <code>sv2v</code> (systemVerilog to Verilog converter)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/zachjs/sv2v/releases/download/v0.0.13/sv2v-Linux.zip</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> sv2v-Linux.zip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">wget</span> https://github.com/zachjs/sv2v/releases/download/v0.0.13/sv2v-Linux.zip</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">unzip</span> sv2v-Linux.zip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re" class="level3">
 <h3 class="anchored" data-anchor-id="problem-1-mamba-is-trying-to-use-the-base-env-re-instead-of-the-cocotb-env-re">Problem 1: Mamba is trying to use the base env <code>re</code> instead of the cocotb env <code>re</code></h3>
-<pre class="log"><code>  File "/headless/miniforge3/lib/python3.13/re/_compiler.py", line 18, in &lt;module&gt;
-    assert _sre.MAGIC == MAGIC, "SRE module mismatch"
-           ^^^^^^^^^^^^^^^^^^^
-AssertionError: SRE module mismatch</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource log number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>  File "/headless/miniforge3/lib/python3.13/re/_compiler.py", line 18, in &lt;module&gt;</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    assert _sre.MAGIC == MAGIC, "SRE module mismatch"</span>
+<span id="cb5-3"><a href="#cb5-3"></a>           ^^^^^^^^^^^^^^^^^^^</span>
+<span id="cb5-4"><a href="#cb5-4"></a>AssertionError: SRE module mismatch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is because <code>$PYTHONPATH</code> is explicitly set in the <code>iic-osic-tools</code> container. We need to unset it.</p>
 <blockquote class="blockquote">
 <p><code>unset PYTHONPATH</code></p>
@@ -329,39 +329,38 @@ AssertionError: SRE module mismatch</code></pre>
 <p><code>make test_matmul</code></p>
 </blockquote>
 <p>It takes a LONG time but finally,</p>
-<pre class="log"><code>(cocotb) /workspaces/tiny-gpu &gt; make test_matmul
-make compile
-make[1]: Entering directory '/workspaces/tiny-gpu'
-make compile_alu
-make[2]: Entering directory '/workspaces/tiny-gpu'
-sv2v -w build/alu.v src/alu.sv
-make[2]: Leaving directory '/workspaces/tiny-gpu'
-sv2v -I src/* -w build/gpu.v
-echo "" &gt;&gt; build/gpu.v
-cat build/alu.v &gt;&gt; build/gpu.v
-echo '`timescale 1ns/1ns' &gt; build/temp.v
-cat build/gpu.v &gt;&gt; build/temp.v
-mv build/temp.v build/gpu.v
-make[1]: Leaving directory '/workspaces/tiny-gpu'
-iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v
-MODULE=test.test_matmul vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp
-     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:76   in set_program_name_in_venv        Did not detect Python virtual environment. Usin
-g system-wide Python interpreter
-     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered
-     0.00ns INFO     cocotb                             Running on Icarus Verilog version 13.0 (devel)
-     0.00ns INFO     cocotb                             Running tests with cocotb v1.7.2 from /headless/miniforge3/envs/cocotb/lib/python3.11/site-packages/cocotb
-     0.00ns INFO     cocotb                             Seeding Python random module with 1767944425
-     0.00ns INFO     cocotb.regression                  Found test test.test_matmul.test_matadd
-     0.00ns INFO     cocotb.regression                  running test_matadd (1/1)
-12300001.00ns INFO     cocotb.regression                  test_matadd passed
-12300001.00ns INFO     cocotb.regression                  **************************************************************************************
-                                                          ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
-                                                          **************************************************************************************
-                                                          ** test.test_matmul.test_matadd   PASS    12300001.00         150.74      81596.40  **
-                                                          **************************************************************************************
-                                                          ** TESTS=1 PASS=1 FAIL=0 SKIP=0           12300001.00         151.43      81224.19  **
-                                                          **************************************************************************************
-</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource log number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>(cocotb) /workspaces/tiny-gpu &gt; make test_matmul</span>
+<span id="cb6-2"><a href="#cb6-2"></a>make compile</span>
+<span id="cb6-3"><a href="#cb6-3"></a>make[1]: Entering directory '/workspaces/tiny-gpu'</span>
+<span id="cb6-4"><a href="#cb6-4"></a>make compile_alu</span>
+<span id="cb6-5"><a href="#cb6-5"></a>make[2]: Entering directory '/workspaces/tiny-gpu'</span>
+<span id="cb6-6"><a href="#cb6-6"></a>sv2v -w build/alu.v src/alu.sv</span>
+<span id="cb6-7"><a href="#cb6-7"></a>make[2]: Leaving directory '/workspaces/tiny-gpu'</span>
+<span id="cb6-8"><a href="#cb6-8"></a>sv2v -I src/* -w build/gpu.v</span>
+<span id="cb6-9"><a href="#cb6-9"></a>echo "" &gt;&gt; build/gpu.v</span>
+<span id="cb6-10"><a href="#cb6-10"></a>cat build/alu.v &gt;&gt; build/gpu.v</span>
+<span id="cb6-11"><a href="#cb6-11"></a>echo '`timescale 1ns/1ns' &gt; build/temp.v</span>
+<span id="cb6-12"><a href="#cb6-12"></a>cat build/gpu.v &gt;&gt; build/temp.v</span>
+<span id="cb6-13"><a href="#cb6-13"></a>mv build/temp.v build/gpu.v</span>
+<span id="cb6-14"><a href="#cb6-14"></a>make[1]: Leaving directory '/workspaces/tiny-gpu'</span>
+<span id="cb6-15"><a href="#cb6-15"></a>iverilog -o build/sim.vvp -s gpu -g2012 build/gpu.v</span>
+<span id="cb6-16"><a href="#cb6-16"></a>MODULE=test.test_matmul vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus build/sim.vvp</span>
+<span id="cb6-17"><a href="#cb6-17"></a>     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:76   in set_program_name_in_venv        Did not detect Python virtual environment. Usin</span>
+<span id="cb6-18"><a href="#cb6-18"></a>g system-wide Python interpreter</span>
+<span id="cb6-19"><a href="#cb6-19"></a>     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:101  in gpi_print_registered_impl       VPI registered</span>
+<span id="cb6-20"><a href="#cb6-20"></a>     0.00ns INFO     cocotb                             Running on Icarus Verilog version 13.0 (devel)</span>
+<span id="cb6-21"><a href="#cb6-21"></a>     0.00ns INFO     cocotb                             Running tests with cocotb v1.7.2 from /headless/miniforge3/envs/cocotb/lib/python3.11/site-packages/cocotb</span>
+<span id="cb6-22"><a href="#cb6-22"></a>     0.00ns INFO     cocotb                             Seeding Python random module with 1767944425</span>
+<span id="cb6-23"><a href="#cb6-23"></a>     0.00ns INFO     cocotb.regression                  Found test test.test_matmul.test_matadd</span>
+<span id="cb6-24"><a href="#cb6-24"></a>     0.00ns INFO     cocotb.regression                  running test_matadd (1/1)</span>
+<span id="cb6-25"><a href="#cb6-25"></a>12300001.00ns INFO     cocotb.regression                  test_matadd passed</span>
+<span id="cb6-26"><a href="#cb6-26"></a>12300001.00ns INFO     cocotb.regression                  **************************************************************************************</span>
+<span id="cb6-27"><a href="#cb6-27"></a>                                                          ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **</span>
+<span id="cb6-28"><a href="#cb6-28"></a>                                                          **************************************************************************************</span>
+<span id="cb6-29"><a href="#cb6-29"></a>                                                          ** test.test_matmul.test_matadd   PASS    12300001.00         150.74      81596.40  **</span>
+<span id="cb6-30"><a href="#cb6-30"></a>                                                          **************************************************************************************</span>
+<span id="cb6-31"><a href="#cb6-31"></a>                                                          ** TESTS=1 PASS=1 FAIL=0 SKIP=0           12300001.00         151.43      81224.19  **</span>
+<span id="cb6-32"><a href="#cb6-32"></a>                                                          **************************************************************************************</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Taking about <span class="math inline">\(12\)</span> ms in sim time and about <span class="math inline">\(2.5\)</span> min for the computation.</p>
 <pre><code>DATA MEMORY
 +----------------+
@@ -406,16 +405,16 @@ DATA MEMORY
 <section id="the-simulation" class="level1">
 <h1>The Simulation</h1>
 <p>The simulation uses cocotb. The memories are implemented as python classes, but all this does is “change up the values”. The main simulation meat is here:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    cycles <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> dut.done.value <span class="op">!=</span> <span class="dv">1</span>:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        data_memory.run()</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        program_memory.run()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> cocotb.triggers.ReadOnly()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        format_cycle(dut, cycles, thread_id<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> RisingEdge(dut.clk)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        cycles <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>    cycles <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="cf">while</span> dut.done.value <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb8-3"><a href="#cb8-3"></a>        data_memory.run()</span>
+<span id="cb8-4"><a href="#cb8-4"></a>        program_memory.run()</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a>        <span class="cf">await</span> cocotb.triggers.ReadOnly()</span>
+<span id="cb8-7"><a href="#cb8-7"></a>        format_cycle(dut, cycles, thread_id<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        </span>
+<span id="cb8-9"><a href="#cb8-9"></a>        <span class="cf">await</span> RisingEdge(dut.clk)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>        cycles <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="dataprogram-memories" class="level3">
 <h3 class="anchored" data-anchor-id="dataprogram-memories">Data/Program Memories</h3>
 <p>Data/program memories are single-cycle. The memory controller was needed to arbitrate concurrent thread read/write attempts.</p>
@@ -454,10 +453,10 @@ Note
 <li><code>%threadIdx - register 1111</code> this is heavily used by the code.</li>
 </ul>
 <p>They’re declared like this</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode verilog code-with-copy"><code class="sourceCode verilog"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>            <span class="co">// Initialize read-only registers</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>            registers<span class="op">[</span><span class="dv">13</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="bn">8'b0</span><span class="op">;</span>              <span class="co">// %blockIdx</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            registers<span class="op">[</span><span class="dv">14</span><span class="op">]</span> <span class="op">&lt;=</span> THREADS_PER_BLOCK<span class="op">;</span> <span class="co">// %blockDim</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            registers<span class="op">[</span><span class="dv">15</span><span class="op">]</span> <span class="op">&lt;=</span> THREAD_ID<span class="op">;</span>         <span class="co">// %threadIdx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource verilog number-lines code-with-copy"><code class="sourceCode verilog"><span id="cb9-1"><a href="#cb9-1"></a>            <span class="co">// Initialize read-only registers</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>            registers<span class="op">[</span><span class="dv">13</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="bn">8'b0</span><span class="op">;</span>              <span class="co">// %blockIdx</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>            registers<span class="op">[</span><span class="dv">14</span><span class="op">]</span> <span class="op">&lt;=</span> THREADS_PER_BLOCK<span class="op">;</span> <span class="co">// %blockDim</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>            registers<span class="op">[</span><span class="dv">15</span><span class="op">]</span> <span class="op">&lt;=</span> THREAD_ID<span class="op">;</span>         <span class="co">// %threadIdx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Why `blockIdx <= '0?`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -910,7 +909,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
