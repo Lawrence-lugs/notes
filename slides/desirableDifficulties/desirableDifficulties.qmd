@@ -1,0 +1,291 @@
+---
+title: Retrieval over Reading
+author: "Lawrence Quizon"
+format: 
+    revealjs:
+        theme: 
+        - ../law.scss
+        filters:
+        - ../scripts/auto-fragment.lua
+date: 2026-01-21
+---
+
+# Gising gising
+
+# FAST – RAPID
+# LAMP – LI__T
+# KING – CROWN
+# TREE – LE__
+# LONG – SHORT
+# HARD – SO__
+# KNEE – BEND
+# FOOT – SH__
+# STOVE – HOT
+# ICE – C__D
+# LION – ROAR
+# DOG – B__K
+# RED – ROSE
+# BLUE – S__
+# SLOW – TURTLE
+# HIGH – L__
+# WISH – WANT
+# BEAUTIFUL – P__TTY
+# DARK – NIGHT
+# WHITE – BL__K
+
+# OK LETS DISCUSS THE SYLLABUS
+
+## Diagnostic Quiz
+# TREE
+# DOG
+# FAST
+# BLUE
+# STOVE
+# WISH
+# ICE
+# LONG
+# BEAUTIFUL
+# KNEE
+# RED
+# HIGH
+# LION
+# FOOT
+# DARK
+# LAMP
+# SLOW
+# HARD
+# WHITE
+# KING
+
+
+## Checking
+# TREE – LE__
+# DOG – B__K
+# FAST – RAPID
+# BLUE – S__
+# STOVE – HOT
+# WISH – WANT
+# ICE – C__D
+# LONG – SHORT
+# BEAUTIFUL – P__TTY
+# KNEE – BEND
+# RED – ROSE
+# HIGH – L__
+# LION – ROAR
+# FOOT – SH__
+# DARK – NIGHT
+# LAMP – LI__T
+# SLOW – TURTLE
+# HARD – SO__
+# WHITE – BL__K
+# KING – CROWN
+
+## Result 
+
+You are **much more likely to have gotten the words with blanks CORRECT**.
+
+- Words without blanks: You read and accept it.
+- Words with blanks: You read, **think about what it is**, then you say "ok that makes sense".
+
+What we just did is the same experiment in the seminal 1978 Learning Psychology paper *The Generation Effect*
+
+## Desirable Difficulties 
+
+::: {.callout-note title="Quote"} 
+"Basically, any time that you, as a learner, look up an answer or have somebody tell or show you something that you could, drawing on current cues and your past knowledge, generate instead, you rob yourself of a powerful learning opportunity"
+:::
+
+- **Writing down what you know** is better than reading the slides. 
+
+## Familiarity $\neq$ Understanding
+
+::: {.callout-note title="Bjork 2011"} 
+Be aware, too, when rereading a chapter or your notes, that prior exposures create a **sense of familiarity** that can easily be confused with understanding.
+:::
+
+The following are likely cases of mistaking familiarity for understanding:
+
+- *"I remember this lesson but I can't solve the problem"*
+- *"The exam problems are too different from the slides"*
+
+## Retrieval Circuits (Neuropsychology)
+
+Retrieval (that is, trying to **recall**), modifies neural circuits such that you are more likely to be able to retrieve something next time.
+
+- Re-reading slides isn't enough- because then your retrieval circuits are not trained. We need to practice **active recall**.
+
+## The Feynman Technique^[Not actually made by Feynman]
+
+:::: {.columns}
+
+::: {.column width=0.47}
+
+1. Choose a concept
+2. Pretend to teach it to someone
+3. Identify gaps
+4. Simplify
+
+:::
+
+::: {.column width=0.47}
+![](https://physicsworld.com/wp-content/uploads/2018/04/65-12-163-FEYNMAN.jpg)
+:::
+
+::::
+
+## Sem-wide Bonus
+
+### [Handout Generation](https://docs.google.com/spreadsheets/d/17IF0q8iyh3DJ43dXVcnXQfpiLbjzbJopYsxsAWsKsdo/edit?usp=sharing)
+
+Create a handout version of the slides for a specific lesson in EEE 141.
+
+Use [stackedit](https://stackedit.io/app#) or your any Markdown editor (notepad works) to create the handout.
+
+Sign up for a specific lesson in the link above.
+
+One (complete) handout is worth one bonus handler grade point. (1% of grade) - note that this is about as much as a single homework.
+
+
+# Experiment: Identify the Painter
+
+## Georges Seurat
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Georges_Seurat_-_Landscape_at_Saint-Ouen_PC_7.jpg/1280px-Georges_Seurat_-_Landscape_at_Saint-Ouen_PC_7.jpg)
+
+## Georges Seurat
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Georges_Seurat_-_View_of_Fort_Samson.jpg/1280px-Georges_Seurat_-_View_of_Fort_Samson.jpg)
+
+## Georges Seurat
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Georges_Seurat_026.jpg/1280px-Georges_Seurat_026.jpg)
+
+## Georges Seurat
+
+![](https://upload.wikimedia.org/wikipedia/commons/5/53/Georges_Seurat_007.jpg)
+
+## Paul Cézanne
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/La_Maison_du_pendu%2C_Auvers-sur-Oise%2C_par_Paul_C%C3%A9zanne%2C_FWN_81.jpg/1280px-La_Maison_du_pendu%2C_Auvers-sur-Oise%2C_par_Paul_C%C3%A9zanne%2C_FWN_81.jpg)
+
+## Paul Cézanne
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Paul_C%C3%A9zanne_-_Le_moulin_sur_la_Couleuvre_%C3%A0_Pontoise_-_Google_Art_Project.jpg/1280px-Paul_C%C3%A9zanne_-_Le_moulin_sur_la_Couleuvre_%C3%A0_Pontoise_-_Google_Art_Project.jpg)
+
+## Paul Cézanne
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Le_Bassin_du_Jas_de_Bouffan%2C_par_Paul_C%C3%A9zanne.jpg/1280px-Le_Bassin_du_Jas_de_Bouffan%2C_par_Paul_C%C3%A9zanne.jpg)
+
+## Paul Cézanne
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Cezanne_-_Ebene_mit_dem_Mont_Sainte_Victoire.jpg/1280px-Cezanne_-_Ebene_mit_dem_Mont_Sainte_Victoire.jpg)
+
+## Maurice de Vlaminck
+
+![](https://upload.wikimedia.org/wikipedia/en/a/a7/Maurice_de_Vlaminck%2C_c.1909%2C_Town_on_the_Bank_of_a_Lake%2C_oil_on_canvas%2C_81.3_x_100.3_cm%2C_Hermitage_Museum%2C_Saint_Petersburg.jpg)
+
+## Maurice de Vlaminck
+
+![](https://upload.wikimedia.org/wikipedia/en/a/aa/Maurice_de_Vlaminck%2C_c.1912%2C_Village%2C_oil_on_canvas%2C_73.7_x_92.1_cm_%2829_x_36_1-4_in.%29%2C_Art_Institute_of_Chicago.jpg)
+
+## Maurice de Vlaminck
+
+![](https://www.artchive.com/wp-content/uploads/2024/08/the-gardener-maurice-de-vlaminck-1904.jpg)
+
+## Maurice de Vlaminck
+
+![](https://www.museum-barberini.de/images/Prolog_Sammlung_Vlaminck_Seine_Ufer_bei_Bougival_1906.jpg?w=1600)
+
+## Paul Gauguin
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Paul_Gauguin_089.jpg/1280px-Paul_Gauguin_089.jpg)
+
+## Paul Gauguin
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Paul_Gauguin_087.jpg/1280px-Paul_Gauguin_087.jpg)
+
+## Paul Gauguin
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Gauguin%2C_Paul_-_Landscape_near_Arles_-_Google_Art_Project.jpg/960px-Gauguin%2C_Paul_-_Landscape_near_Arles_-_Google_Art_Project.jpg)
+
+## Paul Gauguin
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Martinique_Landscape_Paul_Gauguin%2C_1887.jpg/960px-Martinique_Landscape_Paul_Gauguin%2C_1887.jpg)
+
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Gray_Weather%2C_Grand_Jatte_%281888%29_-_Georges_Seurat_%28Metropolitan_Museum_of_Art%29.jpg/1280px-Gray_Weather%2C_Grand_Jatte_%281888%29_-_Georges_Seurat_%28Metropolitan_Museum_of_Art%29.jpg)
+
+. . .
+
+Georges Seurat
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Paul_Gauguin_-_La_berg%C3%A8re_bretonne.jpg/1280px-Paul_Gauguin_-_La_berg%C3%A8re_bretonne.jpg)
+
+. . .
+
+Paul Gauguin
+
+## Who?
+
+![](https://artincontext.org/wp-content/uploads/2024/07/Maurice-de-Vlaminck.jpg)
+
+. . .
+
+Maurice De Vlaminck
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lac_d%27Annecy%2C_par_Paul_C%C3%A9zanne.jpg/1280px-Lac_d%27Annecy%2C_par_Paul_C%C3%A9zanne.jpg)
+
+. . .
+
+Paul Cézanne
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/en/c/cc/Maurice_de_Vlaminck%2C_c.1910%2C_Le_pont_de_Poissy%2C_oil_on_canvas%2C_46.4_x_54.9_cm.jpg)
+
+. . .
+
+Maurice De Vlaminck
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Georges_Seurat_034.jpg/1280px-Georges_Seurat_034.jpg)
+
+. . .
+
+Georges Seurat
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Paul_Gauguin_039.jpg/1280px-Paul_Gauguin_039.jpg)
+
+. . .
+
+Paul Gauguin
+
+## Who?
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Montagne_Sainte-Victoire%2C_par_Paul_C%C3%A9zanne_108.jpg/1280px-Montagne_Sainte-Victoire%2C_par_Paul_C%C3%A9zanne_108.jpg)
+
+. . .
+
+Paul Cézanne
+
+
+# appendix
+
+## Feynman Biography
+
+::: {.callout-note title="From The Life and Science of Richard Feynman"}
+On the title page he wrote: **Notebook Of Things I Don’t Know About**. For the first but
+not the last time he reorganized his knowledge. He worked for weeks at disassembling each branch of physics, oiling the parts, and putting them
+back together, looking all the while for the raw edges and inconsistencies.
+He tried to find the essential kernels of each subject. When he was done
+he had a notebook of which he was especially proud.
+:::

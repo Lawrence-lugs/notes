@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/slides/desirableDifficulties/desirableDifficulties.html",
       "/notes/Solving Ballistics Equation with RK4 in C.html",
       "/notes/The Generalized Stokes' Theorem.html",
       "/notes/Differential Equations to FEM.html",

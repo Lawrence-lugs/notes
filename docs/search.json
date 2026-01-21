@@ -298,7 +298,7 @@
     "href": "index.html",
     "title": "Lawrence Quizon",
     "section": "",
-    "text": "Github\n  \n  \n    \n     LinkedIn\n  \n  \n     Google Scholar\n  \n\n      \nResearcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.\nMy primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (low power computation on the edge, brain-computer interfaces) and sciences (device physics, emergent dynamics).\n\n    \n    \n  \n\n\n\n\nSecondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel as a representative of the missing region between microarchitecture and user level.\nThe very very secret GPU architectures\nPractical Applications of Abstract Math\nTrying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.\nDifferential equations and numerical methods have and always will be the most exciting application of computing.\nLearning an NVIM workflow, primarily because I’m tired of using VNC.\n\n\n\nRecent Pages\nNotes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nSolving Ballistics Equation with RK4 in C\n\n\nJan 12, 2026\n\n\n\n\nThe Generalized Stokes’ Theorem\n\n\nJan 11, 2026\n\n\n\n\nDifferential Equations to FEM\n\n\nJan 10, 2026\n\n\n\n\nRings and Fields\n\n\nJan 3, 2026\n\n\n\n\nMetrics and Manifolds\n\n\nDec 26, 2025\n\n\n\n\nObserver falls into the black hole, becomes Nostradamus\n\n\nDec 18, 2025\n\n\n\n\nSetting up an OS PDK\n\n\nDec 17, 2025\n\n\n\n\nDerivation of the Lorentz Transformation\n\n\nDec 5, 2025\n\n\n\n\nWavefunctions, Bras, Kets\n\n\nDec 4, 2025\n\n\n\n\nRunning TinyGPU by Adam Maj\n\n\nNov 28, 2025\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nNov 28, 2025\n\n\n\n\nThe Linux Page Fault Handler\n\n\nNov 24, 2025\n\n\n\n\nTransistor Capacitances\n\n\nNov 19, 2025\n\n\n\n\nAI for Learning and Feeling stupid organically\n\n\nOct 20, 2025\n\n\n\n\nLLMs can be central nervous systems?\n\n\nOct 3, 2025\n\n\n\n\nAdding an LLM to AlphaStar’s Brain\n\n\nOct 2, 2025\n\n\n\n\nLagrangians, Hamiltonians\n\n\nOct 1, 2025\n\n\n\n\nInformation theory says humans reduce information, but that’s ok\n\n\nSep 23, 2025\n\n\n\n\nGeneralized Eigenvalues in FEM Formulations\n\n\nSep 18, 2025\n\n\n\n\nHyperCoreX Code Structure\n\n\nMar 18, 2025\n\n\n\n\nMethods in Quantization for TinyML Frameworks\n\n\nMar 11, 2025\n\n\n\n\nInteresting Quantization Observations\n\n\nJan 17, 2025\n\n\n\n\n\nNo matching items"
+    "text": "Github\n  \n  \n    \n     LinkedIn\n  \n  \n     Google Scholar\n  \n\n      \nResearcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.\nMy primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (low power computation on the edge, brain-computer interfaces) and sciences (device physics, emergent dynamics).\n\n    \n    \n  \n\n\n\n\nSecondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel as a representative of the missing region between microarchitecture and user level.\nThe very very secret GPU architectures\nPractical Applications of Abstract Math\nTrying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.\nDifferential equations and numerical methods have and always will be the most exciting application of computing.\nLearning an NVIM workflow, primarily because I’m tired of using VNC.\n\n\n\nRecent Pages\nNotes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\n \n\n\n \n\n\n\n\nSolving Ballistics Equation with RK4 in C\n\n\nJan 12, 2026\n\n\n\n\nThe Generalized Stokes’ Theorem\n\n\nJan 11, 2026\n\n\n\n\nDifferential Equations to FEM\n\n\nJan 10, 2026\n\n\n\n\nRings and Fields\n\n\nJan 3, 2026\n\n\n\n\nMetrics and Manifolds\n\n\nDec 26, 2025\n\n\n\n\nObserver falls into the black hole, becomes Nostradamus\n\n\nDec 18, 2025\n\n\n\n\nSetting up an OS PDK\n\n\nDec 17, 2025\n\n\n\n\nDerivation of the Lorentz Transformation\n\n\nDec 5, 2025\n\n\n\n\nWavefunctions, Bras, Kets\n\n\nDec 4, 2025\n\n\n\n\nRunning TinyGPU by Adam Maj\n\n\nNov 28, 2025\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nNov 28, 2025\n\n\n\n\nThe Linux Page Fault Handler\n\n\nNov 24, 2025\n\n\n\n\nTransistor Capacitances\n\n\nNov 19, 2025\n\n\n\n\nAI for Learning and Feeling stupid organically\n\n\nOct 20, 2025\n\n\n\n\nLLMs can be central nervous systems?\n\n\nOct 3, 2025\n\n\n\n\nAdding an LLM to AlphaStar’s Brain\n\n\nOct 2, 2025\n\n\n\n\nLagrangians, Hamiltonians\n\n\nOct 1, 2025\n\n\n\n\nInformation theory says humans reduce information, but that’s ok\n\n\nSep 23, 2025\n\n\n\n\nGeneralized Eigenvalues in FEM Formulations\n\n\nSep 18, 2025\n\n\n\n\nHyperCoreX Code Structure\n\n\nMar 18, 2025\n\n\n\n\nMethods in Quantization for TinyML Frameworks\n\n\nMar 11, 2025\n\n\n\n\nInteresting Quantization Observations\n\n\nJan 17, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/AI for Learning and Feeling stupid organically.html",
@@ -572,5 +572,614 @@
     "title": "Setting up an OS PDK",
     "section": "MAGIC setup checklist",
     "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#so",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#so",
+    "title": "Desirable Difficulties",
+    "section": "So?",
+    "text": "So?\nIf you give up on trying to remember something and instead look it up, you’ve lost an opportunity for learning."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#desirable-difficulties",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#desirable-difficulties",
+    "title": "Retrieval over",
+    "section": "Desirable Difficulties",
+    "text": "Desirable Difficulties\n\n\n\n\n\n\n\nQuote\n\n\n“Basically, any time that you, as a learner, look up an answer or have somebody tell or show you something that you could, drawing on current cues and your past knowledge, generate instead, you rob yourself of a powerful learning opportunity”\n\n\n\n\n\nWriting down what you know is better than reading the slides."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#familiarity",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#familiarity",
+    "title": "Desirable Difficulties",
+    "section": "Familiarity $",
+    "text": "Familiarity $"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding",
+    "title": "Retrieval over",
+    "section": "Familiarity \\(\\neq\\) Understanding",
+    "text": "Familiarity \\(\\neq\\) Understanding\n\n\n\n\n\n\n\nBjork 2011\n\n\nBe aware, too, when rereading a chapter or your notes, that prior exposures create a sense of familiarity that can easily be confused with understanding.\n\n\n\n\nThe following are likely cases of mistaking familiarity for understanding:\n\n“I remember this lesson but I can’t solve the problem”\n“The exam problems are too different from the slides”"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retri",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#retri",
+    "title": "Desirable Difficulties",
+    "section": "Retri",
+    "text": "Retri"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-is-better-than-restr",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-is-better-than-restr",
+    "title": "Desirable Difficulties",
+    "section": "Retrieval is better than Restr",
+    "text": "Retrieval is better than Restr"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-is-better-than-restudying.",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-is-better-than-restudying.",
+    "title": "Desirable Difficulties",
+    "section": "Retrieval is better than Restudying.",
+    "text": "Retrieval is better than Restudying.\nRetrieval (that is, trying to recall), modifies neural circuits such that you are more likely to be able to retrieve something next time.\n\nRe-reading slides isn’t enough- because then your retrieval circuits are not trained.\n\nPractice active recall."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#creator-effect1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#creator-effect1",
+    "title": "Desirable Difficulties",
+    "section": "Creator Effect1",
+    "text": "Creator Effect1"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#creator-effect",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#creator-effect",
+    "title": "Desirable Difficulties",
+    "section": "Creator Effect",
+    "text": "Creator Effect\n\n\n\n\n\n\n\nBjork 1975\n\n\nBasically, any time that you, as a learner, look up an answer or have somebody tell or show you something that you could, drawing on current cues and your past knowledge, generate instead, you rob yourself of a powerful learning opportunity. Retrieval, in effect, is a powerful “memory modifier”.1\n\n\n\n\nYou are more likely to remember something you came up with on your own rather than something you just read.\nQuote is from Bjork but The Generation Effect is from Slamecka 1978"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#experiment",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#experiment",
+    "title": "Desirable Difficulties",
+    "section": "Experiment",
+    "text": "Experiment"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#experiment-identify-the-pai",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#experiment-identify-the-pai",
+    "title": "Desirable Difficulties",
+    "section": "Experiment: Identify the Pai",
+    "text": "Experiment: Identify the Pai"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#experiment-identify-the-painter",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#experiment-identify-the-painter",
+    "title": "Desirable Difficulties",
+    "section": "Experiment: Identify the Painter",
+    "text": "Experiment: Identify the Painter"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#experiment-geoguessr",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#experiment-geoguessr",
+    "title": "Desirable Difficulties",
+    "section": "Experiment: GeoGuessr",
+    "text": "Experiment: GeoGuessr"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#e",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#e",
+    "title": "Desirable Difficulties",
+    "section": "E",
+    "text": "E"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurat",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurat",
+    "title": "Desirable Difficulties",
+    "section": "Seurat",
+    "text": "Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurat-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurat-1",
+    "title": "Desirable Difficulties",
+    "section": "Seurat",
+    "text": "Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurat-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurat-2",
+    "title": "Desirable Difficulties",
+    "section": "Seurat",
+    "text": "Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurats",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurats",
+    "title": "Desirable Difficulties",
+    "section": "Seurats",
+    "text": "Seurats"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurat-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurat-3",
+    "title": "Desirable Difficulties",
+    "section": "Seurat",
+    "text": "Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#seurat-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#seurat-4",
+    "title": "Desirable Difficulties",
+    "section": "Seurat",
+    "text": "Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne",
+    "title": "Retrieval over",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat",
+    "title": "Retrieval over",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-1",
+    "title": "Retrieval over",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-2",
+    "title": "Retrieval over",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-3",
+    "title": "Retrieval over",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#georges-seurat-4",
+    "title": "Desirable Difficulties",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-1",
+    "title": "Retrieval over",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-2",
+    "title": "Retrieval over",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-3",
+    "title": "Retrieval over",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-4",
+    "title": "Desirable Difficulties",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck",
+    "title": "Retrieval over",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-1",
+    "title": "Retrieval over",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-2",
+    "title": "Retrieval over",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-3",
+    "title": "Retrieval over",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#maurice-de-vlaminck-4",
+    "title": "Desirable Difficulties",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#nor",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#nor",
+    "title": "Desirable Difficulties",
+    "section": "Nor",
+    "text": "Nor"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#norway",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#norway",
+    "title": "Desirable Difficulties",
+    "section": "Norway",
+    "text": "Norway"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#norway-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#norway-1",
+    "title": "Desirable Difficulties",
+    "section": "Norway",
+    "text": "Norway"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#norway-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#norway-2",
+    "title": "Desirable Difficulties",
+    "section": "Norway",
+    "text": "Norway"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#norway-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#norway-3",
+    "title": "Desirable Difficulties",
+    "section": "Norway",
+    "text": "Norway"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#norway-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#norway-4",
+    "title": "Desirable Difficulties",
+    "section": "Norway",
+    "text": "Norway"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sweden",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sweden",
+    "title": "Desirable Difficulties",
+    "section": "Sweden",
+    "text": "Sweden"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sweden-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sweden-1",
+    "title": "Desirable Difficulties",
+    "section": "Sweden",
+    "text": "Sweden"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sweden-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sweden-2",
+    "title": "Desirable Difficulties",
+    "section": "Sweden",
+    "text": "Sweden"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sweden-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sweden-3",
+    "title": "Desirable Difficulties",
+    "section": "Sweden",
+    "text": "Sweden"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sweden-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sweden-4",
+    "title": "Desirable Difficulties",
+    "section": "Sweden",
+    "text": "Sweden"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#estonia",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#estonia",
+    "title": "Desirable Difficulties",
+    "section": "Estonia",
+    "text": "Estonia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#estonia-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#estonia-1",
+    "title": "Desirable Difficulties",
+    "section": "Estonia",
+    "text": "Estonia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#estonia-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#estonia-2",
+    "title": "Desirable Difficulties",
+    "section": "Estonia",
+    "text": "Estonia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#estonia-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#estonia-3",
+    "title": "Desirable Difficulties",
+    "section": "Estonia",
+    "text": "Estonia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#estonia-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#estonia-4",
+    "title": "Desirable Difficulties",
+    "section": "Estonia",
+    "text": "Estonia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#latvia",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#latvia",
+    "title": "Desirable Difficulties",
+    "section": "Latvia",
+    "text": "Latvia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#latvia-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#latvia-1",
+    "title": "Desirable Difficulties",
+    "section": "Latvia",
+    "text": "Latvia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#latvia-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#latvia-2",
+    "title": "Desirable Difficulties",
+    "section": "Latvia",
+    "text": "Latvia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#latvia-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#latvia-3",
+    "title": "Desirable Difficulties",
+    "section": "Latvia",
+    "text": "Latvia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#latvia-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#latvia-4",
+    "title": "Desirable Difficulties",
+    "section": "Latvia",
+    "text": "Latvia"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin",
+    "title": "Retrieval over",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-1",
+    "title": "Retrieval over",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-2",
+    "title": "Retrieval over",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-3",
+    "title": "Retrieval over",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-4",
+    "title": "Desirable Difficulties",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin\n ## Who? ## Who?"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-5",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-gauguin-5",
+    "title": "Desirable Difficulties",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nGeorges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-1",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-1",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-2",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nMaurice De Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-3",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-3",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-5",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#paul-cézanne-5",
+    "title": "Desirable Difficulties",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-4",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-4",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nMaurice De Vlaminck"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-5",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-5",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nGeorges Seurat"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-6",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-6",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Gauguin"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#who-7",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#who-7",
+    "title": "Retrieval over",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Cézanne"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-study-phase",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-study-phase",
+    "title": "Desirable Difficulties",
+    "section": "Word-Pair Experiment — Study Phase",
+    "text": "Word-Pair Experiment — Study Phase"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-recall-phase",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-recall-phase",
+    "title": "Desirable Difficulties",
+    "section": "Word-Pair Experiment — Recall Phase",
+    "text": "Word-Pair Experiment — Recall Phase"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-self-check",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#word-pair-experiment-self-check",
+    "title": "Desirable Difficulties",
+    "section": "Word-Pair Experiment — Self-Check",
+    "text": "Word-Pair Experiment — Self-Check"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#study-phase",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#study-phase",
+    "title": "Desirable Difficulties",
+    "section": "Study Phase",
+    "text": "Study Phase"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sem-wide-bonus-handout-generation",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sem-wide-bonus-handout-generation",
+    "title": "Desirable Difficulties",
+    "section": "Sem-wide Bonus: Handout Generation",
+    "text": "Sem-wide Bonus: Handout Generation\nHandout Generation\nGeneration is better than restudy.\nCreate a handout version of the slides for a specific lesson in EEE 141.\nUse stackedit or your any Markdown editor (notepad works) to create the handout.\nSign up for a specific lesson below.\nOne (complete) handout is worth one bonus handler grade points. (1% of grade)"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#resul",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#resul",
+    "title": "Desirable Difficulties",
+    "section": "resul",
+    "text": "resul"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#result",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#result",
+    "title": "Retrieval over",
+    "section": "Result",
+    "text": "Result\nYou are much more likely to have gotten the words with blanks CORRECT.\n\nWords without blanks: You read and accept it.\nWords with blanks: You read, think about what it is, then you say “ok that makes sense”.\n\nWhat we just did is the same experiment in the seminal 1978 Learning Psychology paper The Generation Effect"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-t",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-t",
+    "title": "Desirable Difficulties",
+    "section": "The Feynman T",
+    "text": "The Feynman T\n\n\n\n\n\n\n\nFrom The Life and Science of Richard Feynman\n\n\nOn the title page he wrote: Notebook Of Things I Don’t Know About. For the first but not the last time he reorganized his knowledge. He worked for weeks at disassembling each branch of physics, oiling the parts, and putting them back together, looking all the while for the raw edges and inconsistencies. He tried to find the essential kernels of each subject. When he was done he had a notebook of which he was especially proud."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-technique",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-technique",
+    "title": "Retrieval over",
+    "section": "The Feynman Technique1",
+    "text": "The Feynman Technique1\n\n\n\nChoose a concept\nPretend to teach it to someone\nIdentify gaps\nSimplify\n\n\n\n\n\nNot actually made by Feynman"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sem-wide-bonus",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#sem-wide-bonus",
+    "title": "Retrieval over",
+    "section": "Sem-wide Bonus",
+    "text": "Sem-wide Bonus\nHandout Generation\nCreate a handout version of the slides for a specific lesson in EEE 141.\nUse stackedit or your any Markdown editor (notepad works) to create the handout.\nSign up for a specific lesson in the link above.\nOne (complete) handout is worth one bonus handler grade point. (1% of grade) - note that this is about as much as a single homework."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsych",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsych",
+    "title": "Desirable Difficulties",
+    "section": "Retrieval Circuits (Neuropsych)",
+    "text": "Retrieval Circuits (Neuropsych)\nRetrieval (that is, trying to recall), modifies neural circuits such that you are more likely to be able to retrieve something next time.\n\nRe-reading slides isn’t enough- because then your retrieval circuits are not trained.\n\nPractice active recall."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsychology",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsychology",
+    "title": "Retrieval over",
+    "section": "Retrieval Circuits (Neuropsychology)",
+    "text": "Retrieval Circuits (Neuropsychology)\nRetrieval (that is, trying to recall), modifies neural circuits such that you are more likely to be able to retrieve something next time.\n\nRe-reading slides isn’t enough- because then your retrieval circuits are not trained. We need to practice active recall."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#feynman-a",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#feynman-a",
+    "title": "Desirable Difficulties",
+    "section": "Feynman a",
+    "text": "Feynman a"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#feynman-biography",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#feynman-biography",
+    "title": "Retrieval over",
+    "section": "Feynman Biography",
+    "text": "Feynman Biography\n\n\n\n\n\n\n\nFrom The Life and Science of Richard Feynman\n\n\nOn the title page he wrote: Notebook Of Things I Don’t Know About. For the first but not the last time he reorganized his knowledge. He worked for weeks at disassembling each branch of physics, oiling the parts, and putting them back together, looking all the while for the raw edges and inconsistencies. He tried to find the essential kernels of each subject. When he was done he had a notebook of which he was especially proud."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#diagnostic-quiz",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#diagnostic-quiz",
+    "title": "Retrieval over",
+    "section": "Diagnostic Quiz",
+    "text": "Diagnostic Quiz"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#checking",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#checking",
+    "title": "Retrieval over",
+    "section": "Checking",
+    "text": "Checking"
   }
 ]

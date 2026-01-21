@@ -16,6 +16,7 @@ services:
       - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
       - PULSE_SERVER=/mnt/wslg/PulseServer
       - SHELL=/bin/bash
+      #- SSH_AUTH_SOCK=/ssh-agent
     volumes:
       - ../:/root/workspace
       # WSLg Graphics & Audio Sockets
@@ -23,3 +24,5 @@ services:
       - /run/desktop/mnt/host/wslg:/mnt/wslg
       # Hardware Acceleration (GPU Drivers)
       - /usr/lib/wsl:/usr/lib/wsl
+      #- ${SSH_AUTH_SOCK}:/ssh-agent
+      #- ${HOME}/.gitconfig:/root/.gitconfig

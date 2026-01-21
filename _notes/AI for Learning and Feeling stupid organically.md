@@ -1,6 +1,6 @@
 ---
 title: AI for Learning and Feeling stupid organically
-modified: 2026-01-12T01:07:41+08:00
+modified: 2026-01-21
 date: 2025-10-20T23:56:19+08:00
 ---
 > [!note] Fundamental Question

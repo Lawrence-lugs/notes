@@ -15,6 +15,7 @@ format:
     fig-align: center
     lightbox: true
     css: styles.css
+    code-line-numbers: true
 
 execute:
   freeze: auto
