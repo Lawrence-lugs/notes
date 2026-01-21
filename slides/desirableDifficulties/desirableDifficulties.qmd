@@ -10,7 +10,7 @@ format:
 date: 2026-01-21
 ---
 
-# Gising gising
+# "Icebreaking Activity"
 
 # FAST – RAPID
 # LAMP – LI__T
@@ -59,6 +59,11 @@ date: 2026-01-21
 
 
 ## Checking
+
+Grade separately **words pairs with blanks** and **word pairs that were given completely**.
+
+Compare your final scores.
+
 # TREE – LE__
 # DOG – B__K
 # FAST – RAPID
@@ -89,49 +94,70 @@ You are **much more likely to have gotten the words with blanks CORRECT**.
 
 What we just did is the same experiment in the seminal 1978 Learning Psychology paper *The Generation Effect*
 
-## Desirable Difficulties 
+## Pre-141 Study Tips
 
-::: {.callout-note title="Quote"} 
-"Basically, any time that you, as a learner, look up an answer or have somebody tell or show you something that you could, drawing on current cues and your past knowledge, generate instead, you rob yourself of a powerful learning opportunity"
-:::
+Per the statistics EEE 131 is objectively difficult. EEE 141 is also objectively difficult. 
 
-- **Writing down what you know** is better than reading the slides. 
+But it doesn't have to be!
+
+- Both of these were my favorite subjects!
+- My grades were lowest at the start of undergrad, but slowly improved.
+- The following are what I can remember were useful to me.
+
+## Active Recall 
+
+From the activity, we can take:
+
+- **Writing down what you know** is better than reading the slides again.
+- Practice filling a yellow pad with **EVERYTHING** you remember first, THEN reading the slides
+
+This modifies your neural circuits not to just *familiarize*, but to be good at *recalling*.
 
 ## Familiarity $\neq$ Understanding
+
+Quite often, you can find yourself having trouble with a problem *that you're supposed to know easily.* The following are likely cases of mistaking familiarity for understanding:
+
+- *"I remember this lesson but I can't solve the problem"*
+- *"The exam problems are too different from the slides"*
+
+**In any case, it's better to have this problem BEFORE the exam.**
+
+## Familiarity $\neq$ Understanding (2)
 
 ::: {.callout-note title="Bjork 2011"} 
 Be aware, too, when rereading a chapter or your notes, that prior exposures create a **sense of familiarity** that can easily be confused with understanding.
 :::
 
-The following are likely cases of mistaking familiarity for understanding:
+## Generate your own questions
 
-- *"I remember this lesson but I can't solve the problem"*
-- *"The exam problems are too different from the slides"*
+- Actively think up questions about the subject matter during the class. Write it down.
+*Why do electrons move up? Why is frequency response important? Do we really use coupling capacitors for everything? Does anyone ever use JUST a CE amplifier?*
+- Create your own sample problems. If *you can make a sample problem, then you understand WHY we try to learn a specific lesson.* You have mastered the concept. This is true understanding.
 
-## Retrieval Circuits (Neuropsychology)
+## Generate your own questions (2)
 
-Retrieval (that is, trying to **recall**), modifies neural circuits such that you are more likely to be able to retrieve something next time.
+I was always the annoying kid who kept his instructor in the classroom for about 15 minutes after class, asking about theoreticals.
 
-- Re-reading slides isn't enough- because then your retrieval circuits are not trained. We need to practice **active recall**.
+- Please ask me questions after class. ANY question.
 
-## The Feynman Technique^[Not actually made by Feynman]
-
-:::: {.columns}
-
-::: {.column width=0.47}
-
-1. Choose a concept
-2. Pretend to teach it to someone
-3. Identify gaps
-4. Simplify
-
+::: {.callout-tip}
+Nowadays, chat AI can typically answer questions like these very easily as well!
 :::
 
-::: {.column width=0.47}
-![](https://physicsworld.com/wp-content/uploads/2018/04/65-12-163-FEYNMAN.jpg)
-:::
+## Miscellaneous
 
-::::
+- **Answer ALL the samplex you can**^[I used to go through a decade's worth of Math samplex in Ministop Maginhawa or ZenTea nung may pera na ko] ^[**WITHOUT** any solutions. Just answering.].
+- **Study in various places**. This is known to be more effective^[Smith, Glenberg, & Bjork, 1978: I studied in Ministop Maginhawa and Zentea].
+- **Interleave subjects!**. This is also known to be more effective than studying one at a time.^[Shea & Morgan, 1979 "Contextual Interference"]
+
+
+## Further Reading 
+
+If you're interested in the neuropsychology of learning:
+
+- Desirable Difficulties (Bjork 2011)^[Essay by a UC Couple Profs].
+- Google "Feynman Technique" (Not actually made by Feynman).
+- How to Solve It (Pólya 1945)^[Goated short book].
 
 ## Sem-wide Bonus
 

@@ -522,7 +522,7 @@
     "href": "slides/desirableDifficulties/desirableDifficulties.html#checking",
     "title": "Retrieval over Reading",
     "section": "Checking",
-    "text": "Checking"
+    "text": "Checking\nGrade separately words pairs with blanks and word pairs that were given completely.\nCompare your final scores."
   },
   {
     "objectID": "slides/desirableDifficulties/desirableDifficulties.html#result",
@@ -532,32 +532,60 @@
     "text": "Result\nYou are much more likely to have gotten the words with blanks CORRECT.\n\nWords without blanks: You read and accept it.\nWords with blanks: You read, think about what it is, then you say “ok that makes sense”.\n\nWhat we just did is the same experiment in the seminal 1978 Learning Psychology paper The Generation Effect"
   },
   {
-    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#desirable-difficulties",
-    "href": "slides/desirableDifficulties/desirableDifficulties.html#desirable-difficulties",
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#pre-141-study-tips",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#pre-141-study-tips",
     "title": "Retrieval over Reading",
-    "section": "Desirable Difficulties",
-    "text": "Desirable Difficulties\n\n\n\n\n\n\n\nQuote\n\n\n“Basically, any time that you, as a learner, look up an answer or have somebody tell or show you something that you could, drawing on current cues and your past knowledge, generate instead, you rob yourself of a powerful learning opportunity”\n\n\n\n\n\nWriting down what you know is better than reading the slides."
+    "section": "Pre-141 Study Tips",
+    "text": "Pre-141 Study Tips\nPer the statistics EEE 131 is objectively difficult. EEE 141 is also objectively difficult.\nBut it doesn’t have to be!\n\nBoth of these were my favorite subjects!\nMy grades were lowest at the start of undergrad, but slowly improved.\nThe following are what I can remember were useful to me."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#active-recall",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#active-recall",
+    "title": "Retrieval over Reading",
+    "section": "Active Recall",
+    "text": "Active Recall\nFrom the activity, we can take:\n\nWriting down what you know is better than reading the slides again.\nPractice filling a yellow pad with EVERYTHING you remember first, THEN reading the slides\n\nThis modifies your neural circuits not to just familiarize, but to be good at recalling."
   },
   {
     "objectID": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding",
     "href": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding",
     "title": "Retrieval over Reading",
     "section": "Familiarity \\(\\neq\\) Understanding",
-    "text": "Familiarity \\(\\neq\\) Understanding\n\n\n\n\n\n\n\nBjork 2011\n\n\nBe aware, too, when rereading a chapter or your notes, that prior exposures create a sense of familiarity that can easily be confused with understanding.\n\n\n\n\nThe following are likely cases of mistaking familiarity for understanding:\n\n“I remember this lesson but I can’t solve the problem”\n“The exam problems are too different from the slides”"
+    "text": "Familiarity \\(\\neq\\) Understanding\nQuite often, you can find yourself having trouble with a problem that you’re supposed to know easily. The following are likely cases of mistaking familiarity for understanding:\n\n“I remember this lesson but I can’t solve the problem”\n“The exam problems are too different from the slides”\n\nIn any case, it’s better to have this problem BEFORE the exam."
   },
   {
-    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsychology",
-    "href": "slides/desirableDifficulties/desirableDifficulties.html#retrieval-circuits-neuropsychology",
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#familiarity-neq-understanding-2",
     "title": "Retrieval over Reading",
-    "section": "Retrieval Circuits (Neuropsychology)",
-    "text": "Retrieval Circuits (Neuropsychology)\nRetrieval (that is, trying to recall), modifies neural circuits such that you are more likely to be able to retrieve something next time.\n\nRe-reading slides isn’t enough- because then your retrieval circuits are not trained. We need to practice active recall."
+    "section": "Familiarity \\(\\neq\\) Understanding (2)",
+    "text": "Familiarity \\(\\neq\\) Understanding (2)\n\n\n\n\n\n\n\nBjork 2011\n\n\nBe aware, too, when rereading a chapter or your notes, that prior exposures create a sense of familiarity that can easily be confused with understanding."
   },
   {
-    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-technique",
-    "href": "slides/desirableDifficulties/desirableDifficulties.html#the-feynman-technique",
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#generate-your-own-questions",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#generate-your-own-questions",
     "title": "Retrieval over Reading",
-    "section": "The Feynman Technique1",
-    "text": "The Feynman Technique1\n\n\n\nChoose a concept\nPretend to teach it to someone\nIdentify gaps\nSimplify\n\n\n\n\n\nNot actually made by Feynman"
+    "section": "Generate your own questions",
+    "text": "Generate your own questions\n\nActively think up questions about the subject matter during the class. Write it down. Why do electrons move up? Why is frequency response important? Do we really use coupling capacitors for everything? Does anyone ever use JUST a CE amplifier?\nCreate your own sample problems. If you can make a sample problem, then you understand WHY we try to learn a specific lesson. You have mastered the concept. This is true understanding."
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#generate-your-own-questions-2",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#generate-your-own-questions-2",
+    "title": "Retrieval over Reading",
+    "section": "Generate your own questions (2)",
+    "text": "Generate your own questions (2)\nI was always the annoying kid who kept his instructor in the classroom for about 15 minutes after class, asking about theoreticals.\n\nPlease ask me questions after class. ANY question.\n\n\n\n\n\n\n\nTip\n\n\nNowadays, chat AI can typically answer questions like these very easily as well!"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#miscellaneous",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#miscellaneous",
+    "title": "Retrieval over Reading",
+    "section": "Miscellaneous",
+    "text": "Miscellaneous\n\nAnswer ALL the samplex you can1 2.\nStudy in various places. This is known to be more effective3.\nInterleave subjects!. This is also known to be more effective than studying one at a time.4\n\nI used to go through a decade’s worth of Math samplex in Ministop Maginhawa or ZenTea nung may pera na koWITHOUT any solutions. Just answering.Smith, Glenberg, & Bjork, 1978: I studied in Ministop Maginhawa and ZenteaShea & Morgan, 1979 “Contextual Interference”"
+  },
+  {
+    "objectID": "slides/desirableDifficulties/desirableDifficulties.html#further-reading",
+    "href": "slides/desirableDifficulties/desirableDifficulties.html#further-reading",
+    "title": "Retrieval over Reading",
+    "section": "Further Reading",
+    "text": "Further Reading\nIf you’re interested in the neuropsychology of learning:\n\nDesirable Difficulties (Bjork 2011)1.\nGoogle “Feynman Technique” (Not actually made by Feynman).\nHow to Solve It (Pólya 1945)2.\n\nEssay by a UC Couple ProfsGoated short book"
   },
   {
     "objectID": "slides/desirableDifficulties/desirableDifficulties.html#sem-wide-bonus",
