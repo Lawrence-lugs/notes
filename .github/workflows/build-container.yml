@@ -2,10 +2,9 @@ name: Build & push devcontainer image
 
 on:
   push:
-    branches: [main]
     paths:
       - ".devcontainer/Dockerfile"
-      - "environment.yml"
+      - ".devcontainer/env.yml"
 
 env:
   IMAGE: ghcr.io/lawrence-lugs/quartolatex
@@ -38,6 +37,7 @@ jobs:
           context: .
           file: .devcontainer/Dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ${{ env.IMAGE }}:latest
           cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max

@@ -1,0 +1,60 @@
+name: Test Quarto in devcontainer
+
+# Trigger on any push that touches the container config or quarto content,
+# AND automatically after a successful container build.
+on:
+  push:
+    paths:
+      - ".devcontainer/**"
+      - "_quarto.yml"
+      - "index.qmd"
+  workflow_run:
+    workflows: ["Build & push devcontainer image"]
+    types: [completed]
+
+env:
+  IMAGE: ghcr.io/lawrence-lugs/quartolatex
+
+jobs:
+  test-quarto:
+    runs-on: ubuntu-latest
+    # When triggered by workflow_run, only run if the build succeeded.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Build for amd64 only and load into the local daemon so we can run it.
+      # (Multi-arch builds cannot be --load'd; single-arch can.)
+      - name: Build image locally (amd64)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: .devcontainer/Dockerfile
+          push: false
+          load: true
+          tags: quartolatex-test:ci
+          cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache
+
+      # quarto check verifies that the quarto CLI and all its tooling
+      # (Jupyter, knitr, etc.) are wired up correctly inside the container.
+      - name: quarto check
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            quartolatex-test:ci \
+            quarto check
+
+      # Smoke-test: render one page end-to-end to confirm the full pipeline works.
+      - name: quarto render smoke test (index.qmd)
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            quartolatex-test:ci \
+            quarto render index.qmd --to html --no-cache

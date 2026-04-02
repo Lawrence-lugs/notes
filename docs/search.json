@@ -831,5 +831,334 @@
     "title": "Setting up an OS PDK",
     "section": "MAGIC setup checklist",
     "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#diagnostic-quiz",
+    "href": "slides/inPrep/inPrep.html#diagnostic-quiz",
+    "title": "Retrieval over Reading",
+    "section": "Diagnostic Quiz",
+    "text": "Diagnostic Quiz"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#checking",
+    "href": "slides/inPrep/inPrep.html#checking",
+    "title": "Retrieval over Reading",
+    "section": "Checking",
+    "text": "Checking\nGrade separately words pairs with blanks and word pairs that were given completely.\nCompare your final scores."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#result",
+    "href": "slides/inPrep/inPrep.html#result",
+    "title": "Retrieval over Reading",
+    "section": "Result",
+    "text": "Result\nYou are much more likely to have gotten the words with blanks CORRECT.\n\nWords without blanks: You read and accept it.\nWords with blanks: You read, think about what it is, then you say “ok that makes sense”.\n\nWhat we just did is the same experiment in the seminal 1978 Learning Psychology paper The Generation Effect"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#pre-141-study-tips",
+    "href": "slides/inPrep/inPrep.html#pre-141-study-tips",
+    "title": "Retrieval over Reading",
+    "section": "Pre-141 Study Tips",
+    "text": "Pre-141 Study Tips\nPer the statistics EEE 131 is objectively difficult. EEE 141 is also objectively difficult.\nBut it doesn’t have to be!\n\nBoth of these were my favorite subjects!\nMy grades were lowest at the start of undergrad, but slowly improved.\nThe following are what I can remember were useful to me."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#active-recall",
+    "href": "slides/inPrep/inPrep.html#active-recall",
+    "title": "Retrieval over Reading",
+    "section": "Active Recall",
+    "text": "Active Recall\nFrom the activity, we can take:\n\nWriting down what you know is better than reading the slides again.\nPractice filling a yellow pad with EVERYTHING you remember first, THEN reading the slides\n\nThis modifies your neural circuits not to just familiarize, but to be good at recalling."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#familiarity-neq-understanding",
+    "href": "slides/inPrep/inPrep.html#familiarity-neq-understanding",
+    "title": "Retrieval over Reading",
+    "section": "Familiarity \\(\\neq\\) Understanding",
+    "text": "Familiarity \\(\\neq\\) Understanding\nQuite often, you can find yourself having trouble with a problem that you’re supposed to know easily. The following are likely cases of mistaking familiarity for understanding:\n\n“I remember this lesson but I can’t solve the problem”\n“The exam problems are too different from the slides”\n\nIn any case, it’s better to have this problem BEFORE the exam."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#familiarity-neq-understanding-2",
+    "href": "slides/inPrep/inPrep.html#familiarity-neq-understanding-2",
+    "title": "Retrieval over Reading",
+    "section": "Familiarity \\(\\neq\\) Understanding (2)",
+    "text": "Familiarity \\(\\neq\\) Understanding (2)\n\n\n\n\n\n\n\nBjork 2011\n\n\nBe aware, too, when rereading a chapter or your notes, that prior exposures create a sense of familiarity that can easily be confused with understanding."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#generate-your-own-questions",
+    "href": "slides/inPrep/inPrep.html#generate-your-own-questions",
+    "title": "Retrieval over Reading",
+    "section": "Generate your own questions",
+    "text": "Generate your own questions\n\nActively think up questions about the subject matter during the class. Write it down. Why do electrons move up? Why is frequency response important? Do we really use coupling capacitors for everything? Does anyone ever use JUST a CE amplifier?\nCreate your own sample problems. If you can make a sample problem, then you understand WHY we try to learn a specific lesson. You have mastered the concept. This is true understanding."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#generate-your-own-questions-2",
+    "href": "slides/inPrep/inPrep.html#generate-your-own-questions-2",
+    "title": "Retrieval over Reading",
+    "section": "Generate your own questions (2)",
+    "text": "Generate your own questions (2)\nI was always the annoying kid who kept his instructor in the classroom for about 15 minutes after class, asking about theoreticals.\n\nPlease ask me questions after class. ANY question.\n\n\n\n\n\n\n\nTip\n\n\nNowadays, chat AI can typically answer questions like these very easily as well!"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#miscellaneous",
+    "href": "slides/inPrep/inPrep.html#miscellaneous",
+    "title": "Retrieval over Reading",
+    "section": "Miscellaneous",
+    "text": "Miscellaneous\n\nAnswer ALL the samplex you can1 2.\nStudy in various places. This is known to be more effective3.\nInterleave subjects!. This is also known to be more effective than studying one at a time.4\n\nI used to go through a decade’s worth of Math samplex in Ministop Maginhawa or ZenTea nung may pera na koWITHOUT any solutions. Just answering.Smith, Glenberg, & Bjork, 1978: I studied in Ministop Maginhawa and ZenteaShea & Morgan, 1979 “Contextual Interference”"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#further-reading",
+    "href": "slides/inPrep/inPrep.html#further-reading",
+    "title": "Retrieval over Reading",
+    "section": "Further Reading",
+    "text": "Further Reading\nIf you’re interested in the neuropsychology of learning:\n\nDesirable Difficulties (Bjork 2011)1.\nGoogle “Feynman Technique” (Not actually made by Feynman).\nHow to Solve It (Pólya 1945)2.\n\nEssay by a UC Couple ProfsGoated short book"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#sem-wide-bonus",
+    "href": "slides/inPrep/inPrep.html#sem-wide-bonus",
+    "title": "Retrieval over Reading",
+    "section": "Sem-wide Bonus",
+    "text": "Sem-wide Bonus\nHandout Generation\nCreate a handout version of the slides for a specific lesson in EEE 141.\nUse stackedit or your any Markdown editor (notepad works) to create the handout.\nSign up for a specific lesson in the link above.\nOne (complete) handout is worth one bonus handler grade point. (1% of grade) - note that this is about as much as a single homework."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#georges-seurat",
+    "href": "slides/inPrep/inPrep.html#georges-seurat",
+    "title": "Retrieval over Reading",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#georges-seurat-1",
+    "href": "slides/inPrep/inPrep.html#georges-seurat-1",
+    "title": "Retrieval over Reading",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#georges-seurat-2",
+    "href": "slides/inPrep/inPrep.html#georges-seurat-2",
+    "title": "Retrieval over Reading",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#georges-seurat-3",
+    "href": "slides/inPrep/inPrep.html#georges-seurat-3",
+    "title": "Retrieval over Reading",
+    "section": "Georges Seurat",
+    "text": "Georges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-cézanne",
+    "href": "slides/inPrep/inPrep.html#paul-cézanne",
+    "title": "Retrieval over Reading",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-cézanne-1",
+    "href": "slides/inPrep/inPrep.html#paul-cézanne-1",
+    "title": "Retrieval over Reading",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-cézanne-2",
+    "href": "slides/inPrep/inPrep.html#paul-cézanne-2",
+    "title": "Retrieval over Reading",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-cézanne-3",
+    "href": "slides/inPrep/inPrep.html#paul-cézanne-3",
+    "title": "Retrieval over Reading",
+    "section": "Paul Cézanne",
+    "text": "Paul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#maurice-de-vlaminck",
+    "href": "slides/inPrep/inPrep.html#maurice-de-vlaminck",
+    "title": "Retrieval over Reading",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#maurice-de-vlaminck-1",
+    "href": "slides/inPrep/inPrep.html#maurice-de-vlaminck-1",
+    "title": "Retrieval over Reading",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#maurice-de-vlaminck-2",
+    "href": "slides/inPrep/inPrep.html#maurice-de-vlaminck-2",
+    "title": "Retrieval over Reading",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#maurice-de-vlaminck-3",
+    "href": "slides/inPrep/inPrep.html#maurice-de-vlaminck-3",
+    "title": "Retrieval over Reading",
+    "section": "Maurice de Vlaminck",
+    "text": "Maurice de Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-gauguin",
+    "href": "slides/inPrep/inPrep.html#paul-gauguin",
+    "title": "Retrieval over Reading",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-gauguin-1",
+    "href": "slides/inPrep/inPrep.html#paul-gauguin-1",
+    "title": "Retrieval over Reading",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-gauguin-2",
+    "href": "slides/inPrep/inPrep.html#paul-gauguin-2",
+    "title": "Retrieval over Reading",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#paul-gauguin-3",
+    "href": "slides/inPrep/inPrep.html#paul-gauguin-3",
+    "title": "Retrieval over Reading",
+    "section": "Paul Gauguin",
+    "text": "Paul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who",
+    "href": "slides/inPrep/inPrep.html#who",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nGeorges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-1",
+    "href": "slides/inPrep/inPrep.html#who-1",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-2",
+    "href": "slides/inPrep/inPrep.html#who-2",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nMaurice De Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-3",
+    "href": "slides/inPrep/inPrep.html#who-3",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-4",
+    "href": "slides/inPrep/inPrep.html#who-4",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nMaurice De Vlaminck"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-5",
+    "href": "slides/inPrep/inPrep.html#who-5",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nGeorges Seurat"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-6",
+    "href": "slides/inPrep/inPrep.html#who-6",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Gauguin"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#who-7",
+    "href": "slides/inPrep/inPrep.html#who-7",
+    "title": "Retrieval over Reading",
+    "section": "Who?",
+    "text": "Who?\n\n\nPaul Cézanne"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#feynman-biography",
+    "href": "slides/inPrep/inPrep.html#feynman-biography",
+    "title": "Retrieval over Reading",
+    "section": "Feynman Biography",
+    "text": "Feynman Biography\n\n\n\n\n\n\n\nFrom The Life and Science of Richard Feynman\n\n\nOn the title page he wrote: Notebook Of Things I Don’t Know About. For the first but not the last time he reorganized his knowledge. He worked for weeks at disassembling each branch of physics, oiling the parts, and putting them back together, looking all the while for the raw edges and inconsistencies. He tried to find the essential kernels of each subject. When he was done he had a notebook of which he was especially proud."
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#timeline-overview",
+    "href": "slides/inPrep/inPrep.html#timeline-overview",
+    "title": "MICAS Interview Prep",
+    "section": "Timeline Overview",
+    "text": "Timeline Overview\n\n\n\n\n\ntimeline\n    title Research and Development Timeline\n\n    section Undergraduate\n        2021 : VCMA-MTJ Random Number Generation\n\n    section Researcher\n        2023 : Inertial Federated Learning with MLPerfTiny Models\n        2024: SeqAcc QR-based IMC Tapeout\n        2024: CIDR2 P3 Mixed-signal Architecture and Flow\n\n    section [\"Master's\"\n        2025 : MARP - Rectangular Packing for High Utilization AIMC Mappings\n        2025 : QRAcc - Analog/Digital Hybrid DNN Accelerator"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#retrieval-over-reading",
+    "href": "slides/inPrep/inPrep.html#retrieval-over-reading",
+    "title": "MICAS Interview Prep",
+    "section": "Retrieval over Reading",
+    "text": "Retrieval over Reading"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#field-contributions-timeline",
+    "href": "slides/inPrep/inPrep.html#field-contributions-timeline",
+    "title": "MICAS Interview Prep",
+    "section": "Field Contributions Timeline",
+    "text": "Field Contributions Timeline\n\n\n\n\n\ntimeline\n    title Research and Development Timeline\n\n    section Undergraduate\n        2021 : VCMA-MTJ Random Number Generation\n\n    section Researcher\n        2023 : Inertial Federated Learning with MLPerfTiny Models\n        2024: SeqAcc QR-based IMC Tapeout\n        2024: CIDR2 P3 Mixed-signal Architecture and Flow\n\n    section Master's\n        2025 : MARP - Rectangular Packing for High Utilization AIMC Mappings\n        2025 : QRAcc - Analog/Digital Hybrid DNN Accelerator"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#voltage-controlled-magnetic-anisotropy-based-magnetic-tunnel-junction-random-number-generation",
+    "href": "slides/inPrep/inPrep.html#voltage-controlled-magnetic-anisotropy-based-magnetic-tunnel-junction-random-number-generation",
+    "title": "MICAS Interview Prep",
+    "section": "Voltage-Controlled Magnetic Anisotropy-based Magnetic Tunnel Junction Random Number Generation",
+    "text": "Voltage-Controlled Magnetic Anisotropy-based Magnetic Tunnel Junction Random Number Generation"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#inertial-federated-learning-with-mlperftiny-models",
+    "href": "slides/inPrep/inPrep.html#inertial-federated-learning-with-mlperftiny-models",
+    "title": "MICAS Interview Prep",
+    "section": "Inertial Federated Learning with MLPerfTiny Models",
+    "text": "Inertial Federated Learning with MLPerfTiny Models"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#seqacc-qr-based-imc-tapeout",
+    "href": "slides/inPrep/inPrep.html#seqacc-qr-based-imc-tapeout",
+    "title": "MICAS Interview Prep",
+    "section": "SeqAcc QR-based IMC Tapeout",
+    "text": "SeqAcc QR-based IMC Tapeout"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#cidr2-p3-mixed-signal-architecture-and-flow",
+    "href": "slides/inPrep/inPrep.html#cidr2-p3-mixed-signal-architecture-and-flow",
+    "title": "MICAS Interview Prep",
+    "section": "CIDR2 P3 Mixed-signal Architecture and Flow",
+    "text": "CIDR2 P3 Mixed-signal Architecture and Flow"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#marp---rectangular-packing-for-high-utilization-aimc-mappings",
+    "href": "slides/inPrep/inPrep.html#marp---rectangular-packing-for-high-utilization-aimc-mappings",
+    "title": "MICAS Interview Prep",
+    "section": "MARP - Rectangular Packing for High Utilization AIMC Mappings",
+    "text": "MARP - Rectangular Packing for High Utilization AIMC Mappings"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#qracc---analogdigital-hybrid-dnn-accelerator",
+    "href": "slides/inPrep/inPrep.html#qracc---analogdigital-hybrid-dnn-accelerator",
+    "title": "MICAS Interview Prep",
+    "section": "QRAcc - Analog/Digital Hybrid DNN Accelerator",
+    "text": "QRAcc - Analog/Digital Hybrid DNN Accelerator"
+  },
+  {
+    "objectID": "slides/inPrep/inPrep.html#vcma-mtj-based-rng",
+    "href": "slides/inPrep/inPrep.html#vcma-mtj-based-rng",
+    "title": "MICAS Interview Prep",
+    "section": "VCMA-MTJ-based RNG",
+    "text": "VCMA-MTJ-based RNG\n\nMTJs are memristors whose resistance depends on the relative magnetization of two layers.\nIn 2018, Vodenicarevic demonstrated use of extremely low energy-barrier MTJs for RNG.\nLow barrier - MTJ’s readout state depends on thermal noise.\nSpeed is limited by the MTJ switching time.\nWe showed that using a normally-stable MTJ but controlling its energy barrier with voltage (VCMA) allows faster switching with less area. The energy consumption difference is"
   }
 ]

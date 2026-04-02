@@ -37,9 +37,16 @@ RUN apt update && apt install -y \
 
 # 3. Install Quarto
 ARG QUARTO_VER="1.4.555"
-RUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VER}/quarto-${QUARTO_VER}-linux-amd64.deb \
-    && dpkg -i quarto-${QUARTO_VER}-linux-amd64.deb \
-    && rm quarto-${QUARTO_VER}-linux-amd64.deb
+RUN set -eux; \
+    ARCH="$(dpkg --print-architecture)"; \
+    case "$ARCH" in \
+      amd64|arm64) ;; \
+      *) echo "Unsupported architecture for Quarto package: $ARCH"; exit 1 ;; \
+    esac; \
+    DEB_FILE="quarto-${QUARTO_VER}-linux-${ARCH}.deb"; \
+    curl -LO "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VER}/${DEB_FILE}"; \
+    dpkg -i "${DEB_FILE}"; \
+    rm "${DEB_FILE}"
 
 # 4. Install Micromamba
 # We use a "multi-stage copy" to grab the binary from the official image.
@@ -53,9 +60,8 @@ ENV MAMBA_ROOT_PREFIX=/opt/conda
 ENV PATH=$MAMBA_ROOT_PREFIX/bin:$PATH
 
 # Copy env.yml and install
-COPY env.yml /tmp/env.yml
-RUN micromamba create -y -n base -f /tmp/env.yml && \
-    micromamba clean --all --yes
+COPY .devcontainer/env.yml /tmp/env.yml
+RUN micromamba create -y -n base -f /tmp/env.yml
 
 # 6. Activate Environment by Default
 # We force the system PATH to look in the 'base' environment first.
