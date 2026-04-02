@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     # Enable multiverse for Microsoft Fonts
     && add-apt-repository multiverse \
-    && apt-get update
+    && apt-get update 
 
 # 2. Install TeX Live
 RUN apt-get install -y \
