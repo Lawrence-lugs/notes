@@ -1,0 +1,21 @@
+---
+title: Information theory says humans reduce information, but that's ok
+date: 2025-09-23
+status: WIP
+modified: 2026-01-10T21:34:35+08:00
+---
+
+>[!note] Summary
+>- Humans as computing agents transform raw information (say, NIRSpec data) into records (as in, conclusions from data).
+>- Records in technically contain less information than the raw information. It's more ordered, so via information theory less there's not much more you can conclude.
+>- Information in the universe tends to a maximum because it's proportional to entropy. However, it gets harder to extract useful information in the way humans and computers do.
+>- We appreciate records/conclusions made by humans more than raw data (say, in bits) because they increase the mutual information between the world and a record.
+
+![processing pipeline](attachments/YourFile%20(3).png)
+
+Computation (or information transformation) can't create more information than what's already available. However, it can make latent information explicit. 
+
+In physics, mass-energy gives a bound on the amount of information an object is allowed to possess ([Bekenstein Bound](https://en.wikipedia.org/wiki/Bekenstein_bound)). However, this doesn't mean that objects with the same energy contain the same amount of information.
+
+Stringy molecule soup vs DNA of the same temperature "basically" has a similar macrostate. Stringy molecule soup has more entropy and hence more information. However, DNA contains much less but more meaningful information.
+

@@ -1,10 +1,48 @@
 ---
-title: "Notes Center"
-listing: default
+title: "Lawrence Quizon"
+subtitle: "Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI"
+listing: 
+    type: table
+    fields: [title, date]
+    sort: "date desc"
+about:
+    id: about-section
+    template: solana
+    image: image.svg
+    links:
+      - icon: github
+        text: Github
+        href: https://github.com/Lawrence-lugs
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/lawrence-roman-quizon-399172158/
+      - text: Google Scholar
+        href: https://scholar.google.com/citations?user=8LJ9X_gAAAAJ&hl=en
 ---
 
-<hr>
+::: {#about-section}
 
-# Aaaah!
-You're not supposed to be here.
-Please go find a leaf page.
+Researcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master's degree in August 2025.
+
+My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (*low power computation on the edge, brain-computer interfaces*) and sciences (*device physics, emergent dynamics*). 
+
+:::
+
+
+<br>
+
+
+
+### Secondary Interests
+
+- Open source hardware everything. Why can't we have massive Github portfolios of random hardware? (We can)
+- The Linux Kernel as a representative of the missing region between microarchitecture and user level.
+- The very very secret GPU architectures
+- Practical Applications of Abstract Math
+- Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT. 
+- Differential equations and numerical methods have and always will be the most exciting application of computing.
+- Learning an NVIM workflow, primarily because I'm tired of using VNC.
+
+# Recent Pages
+
+Notes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.

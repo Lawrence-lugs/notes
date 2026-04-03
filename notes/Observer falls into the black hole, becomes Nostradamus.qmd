@@ -1,0 +1,31 @@
+---
+title: "Observer falls into the black hole, becomes Nostradamus"
+date: "2025-12-18"
+---
+
+- Someone on the inside of a black hole can observe the outside of the black hole
+- The observer falling through the event horizon can fall through it in finite local time 
+- Someone watching from afar will see that the object falling into the event horizon takes infinite time.
+- Hence, the observer can watch **the entire fate of the universe happen** just as they fall into the event horizon?
+
+
+
+### Caveats and Counters
+
+- If a photon falls into the event horizon later than the initial observer, then would it catch up to the observer?
+	- If the observer is moving at less than $c$, the photon will catch up.
+	- Hence, this is not a counterargument. Photons about the outside WILL reach the eyes of the observer.
+- The data becomes impossibly redshifted as it falls into your eyes.
+	- If you're not yet through the event horizon, it won't be "impossibly" redshifted. It's red, but still observably so. 
+
+
+### The true crowdsourced answer
+
+- The object doesn't take infinite time to fall into a black hole as observed from outside. However, the light left behind by the object takes basically forever to show that.
+- It is impossible for the object's light to show it crossing through the event horizon.
+
+>  If the observer is moving at less than $c$, the photon will catch up.
+
+This is false. The photon cannot catch up says some reddit user.
+
+We'll need some treatment of the Kruzskal-Szekerez coordinates to confirm if this is the case.

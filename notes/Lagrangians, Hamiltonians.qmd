@@ -1,0 +1,335 @@
+---
+title: "Lagrangians, Hamiltonians"
+date: "2025-10"
+---
+
+The Lagrangian
+
+$\frac{d}{dt}(\frac{\partial{L}}{\partial{\ddot{x}}})=-\frac{\partial{L}}{\partial{x}}$
+
+is related to the Hamiltonian via phase space transformation
+
+$\frac{dq}{dt}=\frac{\partial{H}}{\partial{p}}$
+
+$\frac{dp}{dt}=-\frac{\partial{H}}{\partial{q}}$
+
+
+
+### Coordinate Systems
+
+A standard coordinate system is like $(q,\dot q)$ or $(x,\dot x)$.
+
+In Hamiltonian mechanics, this system turns into $(x,mv)$ or $(p,q)$ instead. 
+
+
+### MGH in Lagrangian
+
+Let’s consider the dynamic of a falling point object in Lagrangian mechanics.
+
+Then, 
+
+$L= T-V$
+
+so the kinetic energy is
+
+$T=\frac{1}{2}m\dot x^2$
+
+and the potential energy is just
+
+$V=-mgx$
+
+so then
+
+$L=\frac{1}{2}m\dot x^2 + mgx$
+
+solving the lagrangian gives us
+
+$m\ddot x=-mg$
+
+or then that
+
+$a=-g$
+
+which is obvious.
+
+
+### MGH in Hamiltonian Phase
+
+Let’s consider the dynamics of a falling point in Hamiltonian mechanics.
+
+Then, the Hamiltonian is
+
+$H=T+ V$
+
+> *Given that T and V are written in terms of only P and Q*
+
+Then if
+
+$T=\frac{1}{2}mv^2$
+
+and 
+
+$p=mv$
+
+then
+
+$T=\frac{1}{2}pv=\frac{p^2}{2m}$
+
+and 
+
+$V=-mgx=-mgq$
+
+which is already a valid Hamiltonian description
+
+so then
+
+$H=\frac{p^2}{2m}-mgq$
+
+solving the phase equation we have
+
+$\frac{dp}{dt} = -\frac{\partial H}{\partial q}$
+
+$F=-mg$
+
+which is true, ($F=\frac{dp}{dt}$)
+
+and solving the position equation we have 
+
+$\frac{dq}{dt}=\frac{p}{m}$
+
+which is funnily a redundant equation saying
+
+$v=\frac{mv}{m}$
+
+The more apt description of the system in Hamiltonian mechanics is though
+
+$\dot p=-mg$
+
+$\dot q=\frac{p}{m}$
+
+which are used as coupled first-order ODEs which can be mathematically easier to solve.
+
+
+### Momentum from the Lagrangian
+
+$p=\frac{\partial L}{\partial \dot q}$
+
+Was defined by Lagrange beforehand- not as a relation to Hamiltonian Mechanics.
+
+The legendre transform is mathematically
+
+$Df=(Df^*)^{-1}$
+
+but is defined mechanically as
+
+$(q,\dot q) \rightarrow (p,q)$ 
+
+and it can be used to turn the Lagrangian into the Hamiltonian.
+
+$\frac{d}{dt}(\frac{\partial{L}}{\partial{\ddot{x}}})=-\frac{\partial{L}}{\partial{x}}$
+
+so
+
+
+### Aside: Definition of Hamiltonian from Lagrangian
+
+$H=\sum_i^n{p_i\dot q^i}-L$
+
+so then if $p_i\dot q^i$ is $mv^2/2$ then simply
+
+$H=T-(T-V)=V$???
+
+
+### Derivation of the Lagrange-Euler Equations
+
+This is called the “principle of least action”.
+
+The action $S$ must be minimized
+
+$S\equiv \int_{t_0}^{t_1}Ldt$
+
+so then this is equivalent to saying that any small perturbation on $L$ must not affect the value of $S$
+
+so then some $x(t)$ solution to this that is perturbed a little bit by some arbitrary function that is zero at the bounds $t_0$ and $t_1$
+
+$x(t)=x_0(t)+a\beta(t)$
+
+should not change $S$ for small changes in $a$ so then
+
+$\frac{dS}{da}=0$
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}\frac{dL}{da}dt$
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}(\frac{dL}{dx}\frac{dx}{da}+\frac{dL}{d\dot x}\frac{d\dot x}{da})dt$
+
+but note that
+
+$\frac{dx}{da}=\beta(t)$ and
+
+$\dot x=\frac{dx}{dt}=\frac{dx_0}{dt}+a\frac{d\beta}{dt}$
+
+so
+
+$\frac{d\dot x}{dt}=\dot \beta$
+
+and then
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}(\frac{dL}{dx}\beta+\frac{dL}{d\dot x}\dot \beta )dt$
+
+and then we can integrate by parts the latter side since $\dot \beta dt=d\beta$
+
+$\int \frac{dL}{d \dot x}d\beta=\frac{dL}{d\dot x}\beta-\int\beta du$
+
+and $\frac{du}{dt}=\frac{d}{dt}\frac{dL}{d\dot x}$
+
+$\int \frac{dL}{d \dot x}d\beta=\frac{dL}{d\dot x}\beta-\int\beta \frac{d}{dt}\frac{dL}{d\dot x}dt$
+
+so then
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}(\frac{dL}{dx}\beta+\beta \frac{d}{dt}\frac{dL}{d\dot x})dt-\frac{dL}{d\dot x}\beta \bigg\rvert_{t_0}^{t_1}$
+
+but $\beta(t_1)=\beta(t_0)=0$ so then $-\frac{dL}{d\dot x}\beta \bigg\rvert_{t_0}^{t_1}=0$
+
+and remains
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}(\frac{dL}{dx}\beta+\beta \frac{d}{dt}\frac{dL}{d\dot x})dt$
+
+$\frac{dS}{da}=\int_{t_0}^{t_1}\beta
+(\frac{dL}{dx}+ \frac{d}{dt}\frac{dL}{d\dot x})dt$
+
+now we’re arguing that for <u>**any function **</u>$\beta(t)$<u>** this evaluates to zero.**</u>
+
+Consider the case where $\frac{dL}{dx}+ \frac{d}{dt}\frac{dL}{d\dot x}\neq0$. Then, we can choose also a nonzero $\beta(t)$ for that portion and see that $\frac{dS}{da}\neq0$ for smooth, integrable $L$ on $x,\dot x$. Therefore, 
+
+$\frac{dL}{dx}+ \frac{d}{dt}\frac{dL}{d\dot x}=0$
+
+which is the Euler-Lagrange equation.
+
+
+### Evaluating for polynomial with zeros only at the bounds
+
+Let’s say we have a falling particle in a gravity field. Then,
+
+$L=T-V=\frac{1}{2}my'^2-mgy$
+
+$y''=-g$
+
+$y=-\frac{1}{2}gt^2$
+
+Let’s pretend the bounds are $t\in[t_0,t_1]$. Then,
+
+$y=-\frac{1}{2}gt^2+\epsilon (t-t_0)(t-t_1)$
+
+should make it so that $\frac{dS}{d\epsilon}\rightarrow0$ as $\epsilon \rightarrow 0$ i.e. $\frac{dS}{d\epsilon}\bigg\rvert_{\epsilon=0}=0$
+
+$\frac{dS}{d\epsilon}=\int_{t_0}^{t_1}{\frac{dL}{d\epsilon}dt}$
+
+$\int(my'\frac{dy'}{d\epsilon}-mg\frac{dy}{d\epsilon})dt$
+
+$y'=-gt+\epsilon(2t-t_0-t_1)$
+
+$\frac{dy'}{d\epsilon}=2t-t_0-t_1$
+
+$\frac{dy}{d\epsilon}=(t-t_0)(t-t_1)$
+
+$m\int((-gt+\epsilon(2t-t_0-t_1))(2t-t_0-t_1)-g(t-t_0)(t-t_1))dt$
+
+$m\int(-gt(2t-t_0-t_1)+\epsilon(2t-t_0-t_1^2)-g(t-t_0)(t-t_1))dt$
+
+Then, because epsilon goes to zero, we can remove epsilon terms.
+
+$m\int(-gt(2t-t_0-t_1)-g(t^2-t(t_0+t_1)+t_0t_1))dt$
+
+$mg\int(-2t^2+t(t_0+t_1)-t^2+t(t_0+t_1)-t_0t_1))dt$
+
+$mg\int(-3t^2+2t(t_0+t_1)-t_0t_1))dt$
+
+$mg[-t^3+t^2(t_0+t_1)-tt_0t_1]\big\rvert_{t_0}^{t_1}$
+
+$mg([-t_1^3+t_1^3+t_1^2t_0-t_1^2t_0]-[-t_0^3+t_0^3+t_1t_0^2-t_0^2t_1])$
+
+$=0$
+
+
+### What about for completely arbitrary perturbation functions?
+
+$f(t_0)=0,f(t_1)=0$
+
+Let’s pretend the bounds are $t\in[t_0,t_1]$. Then,
+
+$y=-\frac{1}{2}gt^2+\epsilon f(t)$
+
+should make it so that $\frac{dS}{d\epsilon}\rightarrow0$ as $\epsilon \rightarrow 0$ i.e. $\frac{dS}{d\epsilon}\bigg\rvert_{\epsilon=0}=0$
+
+$y'=-gt+\epsilon f'(t)$
+
+$\frac{dy'}{d\epsilon}=f'(t)$
+
+$\frac{dy}{d\epsilon}=f(t)$
+
+Then if
+
+$L=\frac{my'^2}{2}-mgy$
+
+$\int(my'\frac{dy'}{d\epsilon}-mg\frac{dy}{d\epsilon})dt$
+
+$\int(m(-gt+\epsilon f'(t))f'(t)-mgf'(t))dt$
+
+$m\int(-gtf'(t)+\epsilon f'(t)^2-gf'(t))dt$
+
+$m\int(-(gt+g)f'(t)+\epsilon f'(t)^2)dt$
+
+Then, again, $\epsilon \rightarrow 0$
+
+$m\int(-(gt+g)f'(t))dt$
+
+$mg\int(-(t+1)f'(t))dt$
+
+$mg\int-(t+1)f'(t)dt$
+
+$mg\int-(t+1)f'(t)dt$
+
+$mg(\int-tf'(t)dt-\int f'(t)dt)$
+
+Remove mg, since that doesn’t matter, then distribute
+
+$\int-tf'(t)dt-f(t)\rvert_{t_0}^{t_1}$
+
+$\int-tf'(t)dt$
+
+then via substitution
+
+$du=f'(t)dt$
+
+$u=f(t)$
+
+$\int-tdu$
+
+$-ut$
+
+$-tf(t)\big\rvert_{t_0}^{t_1}$
+
+$0$
+
+Turns out, the subsitution above is illegal because $t=f^{-1}(u)$
+
+Making the solution more general than this would require some sort of general description of functions that solve the EL equation? Or actually, can any lagrangian work so long as $T$ describes a kinetic-like energy and $V$ describes a conservative field?
+
+$\frac{d}{dt}(\frac{dL}{dy'})=-\frac{dL}{dy}$
+
+
+### Generalized d-dimensional Dirac Delta
+
+$\int d^dx\delta^{(d)}(x)=1$
+
+then the fourier transform is
+
+$\int e^{ikx}d^dx\delta^{(d)}(x)$
+
+but via the sifting property
+
+$\int f(x) \delta^{(d)}(x)d^{d}x=f(0)$
+
+so then
+
+$\int e^{ikx}d^dx\delta^{(d)}(x)=e^{ik0}=1$

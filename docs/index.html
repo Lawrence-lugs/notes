@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notes Center</title>
+<title>Lawrence Roman A. Quizon - Lawrence Quizon</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -78,9 +77,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -128,6 +127,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -136,9 +136,25 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-        <div class="quarto-navbar-tools tools-end">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Lawrence Roman A. Quizon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
 </div>
-          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -148,139 +164,287 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+
+
+
+<div class="quarto-about-solana column-body content">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notes Center</h1>
+<h1 class="title">Lawrence Quizon</h1>
+<p class="subtitle lead">Mixed Signal Accelerators | Efficient AI | Researcher @ UP EEEI</p>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header> <div class="about-links">
+  <a href="https://github.com/Lawrence-lugs" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+  <a href="https://www.linkedin.com/in/lawrence-roman-quizon-399172158/" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://scholar.google.com/citations?user=8LJ9X_gAAAAJ&amp;hl=en" class="about-link" rel="" target="">
+     <span class="about-link-text">Google Scholar</span>
+  </a>
+</div>
+      <div class="about-contents"><div id="about-section">
+<p>Researcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.</p>
+<p>My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (<em>low power computation on the edge, brain-computer interfaces</em>) and sciences (<em>device physics, emergent dynamics</em>).</p>
+</div></div>
+    </div>
+    <img src="image.svg" class="about-image
+  rounded " style="width: 15em;">
+  </div>
 </div>
 
+<p><br></p>
+<section id="secondary-interests" class="level3">
+<h3 data-anchor-id="secondary-interests">Secondary Interests</h3>
+<ul>
+<li>Open source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)</li>
+<li>The Linux Kernel as a representative of the missing region between microarchitecture and user level.</li>
+<li>The very very secret GPU architectures</li>
+<li>Practical Applications of Abstract Math</li>
+<li>Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.</li>
+<li>Differential equations and numerical methods have and always will be the most exciting application of computing.</li>
+<li>Learning an NVIM workflow, primarily because I’m tired of using VNC.</li>
+</ul>
+</section>
+<section id="recent-pages" class="level1">
+<h1>Recent Pages</h1>
+<p>Notes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.</p>
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<hr>
-<section id="aaaah" class="level1">
-<h1>Aaaah!</h1>
-<p>You’re not supposed to be here. Please go find a leaf page.</p>
 
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1766244232249" data-listing-reading-time-sort="4" data-listing-word-count-sort="639">
-<div class="thumbnail">
-<p><a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external"></a></p><a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external">
-<!-- img(9CEB782EFEE6)[progressive=false, height=]:slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html -->
-</a><p><a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external"></a></p>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external">Frequency Response of CE Amplifier</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external">EEE 131 THX2/Y</a>
-</div>
-<div class="listing-description">
-<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html --></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external"></a></p><a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="no-external">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1767603753507" data-listing-reading-time-sort="3" data-listing-word-count-sort="590">
-<div class="thumbnail">
-<p><a href="./slides/patentingBad/patentingBad.html" class="no-external"></a></p><a href="./slides/patentingBad/patentingBad.html" class="no-external">
-<!-- img(9CEB782EFEE6)[progressive=false, height=]:slides/patentingBad/patentingBad.html -->
-</a><p><a href="./slides/patentingBad/patentingBad.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./slides/patentingBad/patentingBad.html" class="no-external">Patents Are a Poor Innovation Metric</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./slides/patentingBad/patentingBad.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./slides/patentingBad/patentingBad.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:slides/patentingBad/patentingBad.html --></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./slides/patentingBad/patentingBad.html" class="no-external"></a></p><a href="./slides/patentingBad/patentingBad.html" class="no-external">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1766307316115" data-listing-reading-time-sort="4" data-listing-word-count-sort="712">
-<div class="thumbnail">
-<p><a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external"></a></p><a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external">
-<!-- img(9CEB782EFEE6)[progressive=false, height=]:slides/settingOsPdk/settingOsPdk.html -->
-</a><p><a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external">Setting up an OS PDK</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external">FOSSI</a>
-</div>
-<div class="listing-description">
-<a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:slides/settingOsPdk/settingOsPdk.html --></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external"></a></p><a href="./slides/settingOsPdk/settingOsPdk.html" class="no-external">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1766244232264" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005">
-<div class="thumbnail">
-<p><a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external"></a></p><a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external">
-<!-- img(9CEB782EFEE6)[progressive=false, height=]:slides/transistorCapacitances/transistorCapacitances.html -->
-</a><p><a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external">Transistor Capacitances</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external">EEE 131 THX2/Y</a>
-</div>
-<div class="listing-description">
-<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external"><!-- desc(5A0113B34292)[max=175]:slides/transistorCapacitances/transistorCapacitances.html --></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external"></a></p><a href="./slides/transistorCapacitances/transistorCapacitances.html" class="no-external">
-<div class="listing-author">
-Lawrence Quizon
-</div>
-</a>
-</div>
-</div>
-</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1768953600000" data-listing-file-modified-sort="1769014019661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="863" data-listing-title-sort="Retrieval over Reading" data-listing-filename-sort="desirableDifficulties.qmd">
+<td>
+<a href="./slides/desirableDifficulties/desirableDifficulties.html" class="title listing-title">Retrieval over Reading</a>
+</td>
+<td>
+<span class="listing-date">Jan 21, 2026</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1768176000000" data-listing-file-modified-sort="1768479271770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2380" data-listing-title-sort="Solving Ballistics Equation with RK4 in C" data-listing-filename-sort="Solving Ballistics Equation with RK4 in C.qmd">
+<td>
+<a href="./notes/Solving Ballistics Equation with RK4 in C.html" class="title listing-title">Solving Ballistics Equation with RK4 in C</a>
+</td>
+<td>
+<span class="listing-date">Jan 12, 2026</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1768089600000" data-listing-file-modified-sort="1768479271778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165" data-listing-title-sort="The Generalized Stokes' Theorem" data-listing-filename-sort="The Generalized Stokes' Theorem.qmd">
+<td>
+<a href="./notes/The Generalized Stokes' Theorem.html" class="title listing-title">The Generalized Stokes’ Theorem</a>
+</td>
+<td>
+<span class="listing-date">Jan 11, 2026</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1768003200000" data-listing-file-modified-sort="1768479271615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1229" data-listing-title-sort="Differential Equations to FEM" data-listing-filename-sort="Differential Equations to FEM.qmd">
+<td>
+<a href="./notes/Differential Equations to FEM.html" class="title listing-title">Differential Equations to FEM</a>
+</td>
+<td>
+<span class="listing-date">Jan 10, 2026</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1767398400000" data-listing-file-modified-sort="1768479271748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110" data-listing-title-sort="Rings and Fields" data-listing-filename-sort="RingsAndFields.qmd">
+<td>
+<a href="./notes/RingsAndFields.html" class="title listing-title">Rings and Fields</a>
+</td>
+<td>
+<span class="listing-date">Jan 3, 2026</span>
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1768479271710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="772" data-listing-title-sort="Metrics and Manifolds" data-listing-filename-sort="Metrics and Manifolds.qmd">
+<td>
+<a href="./notes/Metrics and Manifolds.html" class="title listing-title">Metrics and Manifolds</a>
+</td>
+<td>
+<span class="listing-date">Dec 26, 2025</span>
+</td>
+</tr>
+<tr data-index="6" data-listing-date-sort="1766016000000" data-listing-file-modified-sort="1768479271738" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242" data-listing-title-sort="Observer falls into the black hole, becomes Nostradamus" data-listing-filename-sort="Observer falls into the black hole, becomes Nostradamus.qmd">
+<td>
+<a href="./notes/Observer falls into the black hole, becomes Nostradamus.html" class="title listing-title">Observer falls into the black hole, becomes Nostradamus</a>
+</td>
+<td>
+<span class="listing-date">Dec 18, 2025</span>
+</td>
+</tr>
+<tr data-index="7" data-listing-date-sort="1765929600000" data-listing-file-modified-sort="1767971479071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712" data-listing-title-sort="Setting up an OS PDK" data-listing-filename-sort="settingOsPdk.qmd">
+<td>
+<a href="./slides/settingOsPdk/settingOsPdk.html" class="title listing-title">Setting up an OS PDK</a>
+</td>
+<td>
+<span class="listing-date">Dec 17, 2025</span>
+</td>
+</tr>
+<tr data-index="8" data-listing-date-sort="1764892800000" data-listing-file-modified-sort="1768479271605" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="314" data-listing-title-sort="Derivation of the Lorentz Transformation" data-listing-filename-sort="derivationOfTheLorentzTransformation.qmd">
+<td>
+<a href="./notes/derivationOfTheLorentzTransformation.html" class="title listing-title">Derivation of the Lorentz Transformation</a>
+</td>
+<td>
+<span class="listing-date">Dec 5, 2025</span>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1764806400000" data-listing-file-modified-sort="1768479271794" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594" data-listing-title-sort="Wavefunctions, Bras, Kets" data-listing-filename-sort="wavefunctionsBrasKets.qmd">
+<td>
+<a href="./notes/wavefunctionsBrasKets.html" class="title listing-title">Wavefunctions, Bras, Kets</a>
+</td>
+<td>
+<span class="listing-date">Dec 4, 2025</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1768479271758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2131" data-listing-title-sort="Running TinyGPU by Adam Maj" data-listing-filename-sort="Running TinyGPU by Adam Maj.qmd">
+<td>
+<a href="./notes/Running TinyGPU by Adam Maj.html" class="title listing-title">Running TinyGPU by Adam Maj</a>
+</td>
+<td>
+<span class="listing-date">Nov 28, 2025</span>
+</td>
+</tr>
+<tr data-index="11" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767971412009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="639" data-listing-title-sort="Frequency Response of CE Amplifier" data-listing-filename-sort="ceCsFrequencyResponse.qmd">
+<td>
+<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="title listing-title">Frequency Response of CE Amplifier</a>
+</td>
+<td>
+<span class="listing-date">Nov 28, 2025</span>
+</td>
+</tr>
+<tr data-index="12" data-listing-date-sort="1763942400000" data-listing-file-modified-sort="1768479271786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172" data-listing-title-sort="The Linux Page Fault Handler" data-listing-filename-sort="The Linux Page Fault Handler.qmd">
+<td>
+<a href="./notes/The Linux Page Fault Handler.html" class="title listing-title">The Linux Page Fault Handler</a>
+</td>
+<td>
+<span class="listing-date">Nov 24, 2025</span>
+</td>
+</tr>
+<tr data-index="13" data-listing-date-sort="1763510400000" data-listing-file-modified-sort="1767971437136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005" data-listing-title-sort="Transistor Capacitances" data-listing-filename-sort="transistorCapacitances.qmd">
+<td>
+<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="title listing-title">Transistor Capacitances</a>
+</td>
+<td>
+<span class="listing-date">Nov 19, 2025</span>
+</td>
+</tr>
+<tr data-index="14" data-listing-date-sort="1760975779000" data-listing-file-modified-sort="1768479271584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="495" data-listing-title-sort="AI for Learning and Feeling stupid organically" data-listing-filename-sort="AI for Learning and Feeling stupid organically.qmd">
+<td>
+<a href="./notes/AI for Learning and Feeling stupid organically.html" class="title listing-title">AI for Learning and Feeling stupid organically</a>
+</td>
+<td>
+<span class="listing-date">Oct 20, 2025</span>
+</td>
+</tr>
+<tr data-index="15" data-listing-date-sort="1759449600000" data-listing-file-modified-sort="1768479271688" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="301" data-listing-title-sort="LLMs can be central nervous systems?" data-listing-filename-sort="LLMs are central nervous systems.qmd">
+<td>
+<a href="./notes/LLMs are central nervous systems.html" class="title listing-title">LLMs can be central nervous systems?</a>
+</td>
+<td>
+<span class="listing-date">Oct 3, 2025</span>
+</td>
+</tr>
+<tr data-index="16" data-listing-date-sort="1759363200000" data-listing-file-modified-sort="1768479271562" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="388" data-listing-title-sort="Adding an LLM to AlphaStar's Brain" data-listing-filename-sort="Adding an LLM to AlphaStar's Brain.qmd">
+<td>
+<a href="./notes/Adding an LLM to AlphaStar's Brain.html" class="title listing-title">Adding an LLM to AlphaStar’s Brain</a>
+</td>
+<td>
+<span class="listing-date">Oct 2, 2025</span>
+</td>
+</tr>
+<tr data-index="17" data-listing-date-sort="1759276800000" data-listing-file-modified-sort="1768479271674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="Lagrangians, Hamiltonians" data-listing-filename-sort="Lagrangians, Hamiltonians.qmd">
+<td>
+<a href="./notes/Lagrangians, Hamiltonians.html" class="title listing-title">Lagrangians, Hamiltonians</a>
+</td>
+<td>
+<span class="listing-date">Oct 1, 2025</span>
+</td>
+</tr>
+<tr data-index="18" data-listing-date-sort="1758585600000" data-listing-file-modified-sort="1768479271638" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184" data-listing-title-sort="Information theory says humans reduce information, but that's ok" data-listing-filename-sort="Humans, Information and LLMs.qmd">
+<td>
+<a href="./notes/Humans, Information and LLMs.html" class="title listing-title">Information theory says humans reduce information, but that’s ok</a>
+</td>
+<td>
+<span class="listing-date">Sep 23, 2025</span>
+</td>
+</tr>
+<tr data-index="19" data-listing-date-sort="1758153600000" data-listing-file-modified-sort="1768479271628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="987" data-listing-title-sort="Generalized Eigenvalues in FEM Formulations" data-listing-filename-sort="Generalized Eigenvalues in FEM Formulations.qmd">
+<td>
+<a href="./notes/Generalized Eigenvalues in FEM Formulations.html" class="title listing-title">Generalized Eigenvalues in FEM Formulations</a>
+</td>
+<td>
+<span class="listing-date">Sep 18, 2025</span>
+</td>
+</tr>
+<tr data-index="20" data-listing-date-sort="1742256000000" data-listing-file-modified-sort="1768479271650" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1580" data-listing-title-sort="HyperCoreX Code Structure" data-listing-filename-sort="HypercoreX  Structure.qmd">
+<td>
+<a href="./notes/HypercoreX  Structure.html" class="title listing-title">HyperCoreX Code Structure</a>
+</td>
+<td>
+<span class="listing-date">Mar 18, 2025</span>
+</td>
+</tr>
+<tr data-index="21" data-listing-date-sort="1741651200000" data-listing-file-modified-sort="1768479271699" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1658" data-listing-title-sort="Methods in Quantization for TinyML Frameworks" data-listing-filename-sort="Methods in Quantization.qmd">
+<td>
+<a href="./notes/Methods in Quantization.html" class="title listing-title">Methods in Quantization for TinyML Frameworks</a>
+</td>
+<td>
+<span class="listing-date">Mar 11, 2025</span>
+</td>
+</tr>
+<tr data-index="22" data-listing-date-sort="1737072000000" data-listing-file-modified-sort="1768479271662" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218" data-listing-title-sort="Interesting Quantization Observations" data-listing-filename-sort="Interesting Quantization Observations.qmd">
+<td>
+<a href="./notes/Interesting Quantization Observations.html" class="title listing-title">Interesting Quantization Observations</a>
+</td>
+<td>
+<span class="listing-date">Jan 17, 2025</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -305,13 +469,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

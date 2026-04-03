@@ -1,7 +1,31 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "googleba81d2991a90411e.html"
+
+# Pre-render script transforms obsidian-compatible GFM notes
+# into quarto-style div-based markdown
+
+format:
+  html:
+    theme: united
+    mainfont: Trebuchet MS
+    fontsize: 16pt 
+    fig-align: center
+    lightbox: true
+    css: styles.css
+    code-line-numbers: true
+
+execute:
+  freeze: auto
+  cache: true
 
 website:
+  title: Lawrence Roman A. Quizon
   navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      
     search: true

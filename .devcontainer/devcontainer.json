@@ -1,7 +1,8 @@
 {
   "name": "Miniforge Python Environment",
   "build": {
-    "dockerfile": "Dockerfile"
+    "dockerfile": "Dockerfile",
+    "cacheFrom": "ghcr.io/lawrence-lugs/quartolatex"
   },
   "customizations": {
     "vscode": {
@@ -31,7 +32,7 @@
     "XDG_RUNTIME_DIR": "/mnt/wslg/runtime-dir",
     "PULSE_SERVER": "/mnt/wslg/PulseServer",
     "SHELL": "/bin/bash"
-  }
+  },
   "mounts": [
     "type=bind,source=/run/desktop/mnt/host/wslg/.X11-unix,target=/tmp/.X11-unix",
     "type=bind,source=/run/desktop/mnt/host/wslg,target=/mnt/wslg",
