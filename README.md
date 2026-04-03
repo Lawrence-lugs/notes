@@ -7,4 +7,4 @@ Additionally, here is where my revealJS slides are deployed (because there's no 
 ## Devcontainer and Docker
 
 The devcontainer and dockerfile contains a quarto + latex + micromamba installation.
-Why micromamba? By accident. I usually use miniforge.
+See ghcr.io/lawrence-lugs/quartolatex
