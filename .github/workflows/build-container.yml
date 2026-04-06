@@ -5,6 +5,7 @@ on:
     paths:
       - ".devcontainer/Dockerfile"
       - ".devcontainer/env.yml"
+      - ".devcontainer/devcontainer.json"
 
 env:
   IMAGE: ghcr.io/lawrence-lugs/quartolatex

@@ -2,7 +2,8 @@
   "name": "Miniforge Python Environment",
   "build": {
     "dockerfile": "Dockerfile",
-    "cacheFrom": "ghcr.io/lawrence-lugs/quartolatex"
+    "cacheFrom": "ghcr.io/lawrence-lugs/quartolatex",
+    "context": ".."
   },
   "customizations": {
     "vscode": {
