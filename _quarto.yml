@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - "googleba81d2991a90411e.html"
+    - "slides/inPrep/imec_recent.html"
 
 # Pre-render script transforms obsidian-compatible GFM notes
 # into quarto-style div-based markdown

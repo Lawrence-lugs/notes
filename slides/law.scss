@@ -228,3 +228,18 @@ div.callout.definition .callout-body {
     /* Uses the global Reveal.js font size variable */
     font-size: var(--r-main-font-size, 24pt); 
 }
+
+.callout.callout-style-default .callout-body {
+  font-size: 24pt; /* Adjust size here */
+}
+
+.color-emph {
+  color: rgb(198 126 106 / var(--tw-text-opacity, 1));
+  font-weight: bold;
+}
+
+// Allow mermaid to fill container
+.cell-output-display, .mermaid {
+  width: 100% !important;
+  height: auto !important;
+}

@@ -1160,5 +1160,138 @@
     "title": "MICAS Interview Prep",
     "section": "VCMA-MTJ-based RNG",
     "text": "VCMA-MTJ-based RNG\n\nMTJs are memristors whose resistance depends on the relative magnetization of two layers.\nIn 2018, Vodenicarevic demonstrated use of extremely low energy-barrier MTJs for RNG.\nLow barrier - MTJ’s readout state depends on thermal noise.\nSpeed is limited by the MTJ switching time.\nWe showed that using a normally-stable MTJ but controlling its energy barrier with voltage (VCMA) allows faster switching with less area. The energy consumption difference is"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#cmos-2.0",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#cmos-2.0",
+    "title": "DSE with CMOS 2.0",
+    "section": "CMOS 2.0",
+    "text": "CMOS 2.0\n\n\n\nEnd of area scaling causes 3D stacking.\nCMOS 2.0 is IMEC’s term for its 3D stacking enabled by hybrid bonding interfaces different process layers.\nSpecifically, eDRAM process on top of regular process is possible.\nHaving high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzags-current-state",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#zigzags-current-state",
+    "title": "DSE with CMOS 2.0",
+    "section": "ZigZag’s Current State",
+    "text": "ZigZag’s Current State\n\nMei - Original cost estimation + DSE\nSun - IMC extensions (ZigZag-IMC)\nSymons - Main repo maintainer, Stream\nGeens - LLM-specific DSE (ZigZag-LLM)\n\n\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics. Most related: Stream, MARP, ZigZag-IMC (but maybe much less so ZigZag-IMC)1.\n\nThe main innovation is the dense stacking of local buffers on top of compute, not compute inside the buffer itself, so…"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#main-problem",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#main-problem",
+    "title": "DSE with CMOS 2.0",
+    "section": "Main Problem",
+    "text": "Main Problem\nCMOS 2.0-based 3D stacking capabilities need to be accounted for by the existing DSE frameworks.\nNew problem dimensions:\n\nAdding Multicore NoC-type NMC accelerators in the modelling space\nOverall architectural arrangements of such 3D-stacked chips\nMuch denser integration introduces special temperature-related constraints which affects each memory technology differently"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#d-edram-stacking-imc",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#d-edram-stacking-imc",
+    "title": "DSE with CMOS 2.0",
+    "section": "3D eDRAM stacking IMC",
+    "text": "3D eDRAM stacking IMC\nWe can utilize NoC-based accelerator architectures1 as effective architectures on 3D compute-memory fabrics. They:\n\nPlace compute near large global buffers in a scalable architecture\nCome with mapping algorithms\n\n\nChallenge: Make these compatible with ZigZag\n\ne.g. Eyeriss2, NeuRRAM, NeuroSIM"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#dram-explicit-refresh",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#dram-explicit-refresh",
+    "title": "DSE with CMOS 2.0",
+    "section": "DRAM: Explicit Refresh",
+    "text": "DRAM: Explicit Refresh\nWith explicitly managed memory, we explicitly know when we’re not using the DRAM.\nRefreshes typically distributed evenly over all time, \\(t_r\\approx 64ms\\) but you stall DRAM requests every \\(64ms/depth\\) (\\(\\sim \\mu s\\)).\nIt takes about \\(~400n*8192=3.2ms\\) for a full refresh for all rows at once.\nGoal: interlace the DRAM refresh with the workload scheduling.\n\nChallenge: explicitly control refresh durations as a scheduling constraint in ZigZag."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#dram-dark-silicon",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#dram-dark-silicon",
+    "title": "DSE with CMOS 2.0",
+    "section": "DRAM: Dark Silicon",
+    "text": "DRAM: Dark Silicon\nDRAM refresh requirement vs temp. can be modelled via Arrhenius model (energy barrier)1 \\[t_{ret}(T)=t_{ret}(T_0)\\cdot e^{\\frac{E_a}{k_B}(1/T-1/T_0)}\\] We find that the \\(t_r\\propto e^{-T}\\) and so heating makes refresh cycle constraints more frequent2\nThe problem is exarcerbated in 3D stacking which traps heat.\n\nChallenge: Account for temperature in workload scheduling\n\nMay require probabilistic modelling later on.in the first place, do DNNs care so much about the errors?"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with",
+    "title": "DSE with CMOS 2.0",
+    "section": "Near-Memory Compute with",
+    "text": "Near-Memory Compute with\nWe can utilize NoC-based accelerator architectures1 as effective architectures on 3D compute-memory fabrics. They:\n\nPlace compute near large global buffers in a scalable architecture\nCome with mapping algorithms\n\n\nChallenge: Make these compatible with ZigZag\n\ne.g. Eyeriss2, NeuRRAM, NeuroSIM"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with-buffer-memory-above",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with-buffer-memory-above",
+    "title": "DSE with CMOS 2.0",
+    "section": "Near-Memory Compute with Buffer Memory Above",
+    "text": "Near-Memory Compute with Buffer Memory Above\n\n\nWe can utilize NoC-based accelerator architectures1 as effective architectures on 3D compute-memory fabrics. They:\n\nPlace compute near large global buffers in a scalable architecture\nCome with mapping algorithms\n\n\nChallenge: Make these compatible with ZigZag\n\n\n\n\n \n\n\n\n\n2\n\n\n\n\ne.g. Eyeriss2, NeuRRAM, NeuroSIM Mutlu, Onur, et al. “A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#accounting",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#accounting",
+    "title": "DSE with CMOS 2.0",
+    "section": "Accounting",
+    "text": "Accounting\n\nMust characterize accelerator’s heating effect and schedule power gating/core usage accordingly.\nNeed post-PnR electrothermal simulations &gt; then analytically model per-process.\nDo we need to turn off regions? What consequences are there in the architecture?\n\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#temperature-model",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#temperature-model",
+    "title": "DSE with CMOS 2.0",
+    "section": "Temperature Model",
+    "text": "Temperature Model\n\nMust characterize accelerator’s heating effect and schedule power gating/core usage accordingly.\nNeed post-PnR electrothermal simulations &gt; then analytically model per-process.\nDo we need to turn off regions? What consequences are there in the architecture?\n\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-algo-co-design",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-algo-co-design",
+    "title": "DSE with CMOS 2.0",
+    "section": "Electrothermal-Algo Co-design",
+    "text": "Electrothermal-Algo Co-design\n\nMust characterize accelerator’s heating effect and schedule power gating/core usage accordingly.\nNeed post-PnR electrothermal simulations &gt; then analytically model per-process.\nDo we need to turn off regions? What consequences are there in the architecture?\n\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design",
+    "title": "DSE with CMOS 2.0",
+    "section": "Electrothermal-Hardware-Algo Co-design",
+    "text": "Electrothermal-Hardware-Algo Co-design\n\n\nClassical co-design models latency and energy vs workload.\nIf we eliminate the memory wall, we may be bottlenecked by the thermal power budget.\n\nMust characterize accelerator’s heating effect and schedule power gating/core usage accordingly.\nThermal simulations model constraints in the loop.\n\n\n\n\n\n\n\n\n\n\n\nrefresh constraint\n\n\n\n\n\n\n\n\n\n\n\nCompact thermal simulation\n\n\n\nRefine Scheduling and Mapping\n\n\n\nPrimeTime Power Estimates"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design-2",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design-2",
+    "title": "DSE with CMOS 2.0",
+    "section": "Electrothermal-Hardware-Algo Co-design (2)",
+    "text": "Electrothermal-Hardware-Algo Co-design (2)\nCoarse-grid modelling of the thermal stack from a top-level floorplan with a heat-coupling equation \\[\\mathbf{C} \\frac{d\\mathbf{T}}{dt} = -\\mathbf{G}\\mathbf{T} + \\mathbf{P}\\] Problem: Needs a preliminary top-level floorplan to discretize.\nEach block has a specific thermal characteristic (from PrimeTime power estimates)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#build-on-zigzag",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#build-on-zigzag",
+    "title": "DSE with CMOS 2.0",
+    "section": "Build on ZigZag",
+    "text": "Build on ZigZag\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics.\nRelevant extensions:\n\nZigZag-LLM - we target LLM acceleration and GNNs1\nMARP + Stream - multicore compute-memory fabric efficiency\nZigZag-IMC - account for special dataflows available in IMC\n\n\nI’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.\n\nThere is no particular extension for GNNs yet. Treat as usual OR extend ourselves."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzag---current-state",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#zigzag---current-state",
+    "title": "DSE with CMOS 2.0",
+    "section": "ZigZag - Current State",
+    "text": "ZigZag - Current State\nLooking into ZigZag, the project’s direction seems to be:\n\nMei1 - Original cost estimation + DSE\nSun - IMC extensions (ZigZag-IMC)\nSymons - Main repo maintainer, Stream\nGeens - LLM-specific DSE (ZigZag-LLM)\n\nGraduated"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#onur-mut",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#onur-mut",
+    "title": "DSE with CMOS 2.0",
+    "section": "Onur Mut",
+    "text": "Onur Mut\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#onur-mutlu-stack",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#onur-mutlu-stack",
+    "title": "DSE with CMOS 2.0",
+    "section": "Onur Mutlu Stack",
+    "text": "Onur Mutlu Stack\nSAFARI group has had decades of work on DRAM-based IMC\n\nFocuses on accelerating memset and memcpy1\nGeneral workload acceleration (not DNN targeted)\n\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0\n\n\nThey argue these comprise a lot of the typical workload"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#timeline",
+    "title": "DSE with CMOS 2.0",
+    "section": "Timeline",
+    "text": "Timeline\n\n\n\n\n\n\n\nY1NMC-NoC (CMF)ArchitecturesModelling, Survey.ZigZag Cost-Modelwork with CMOS2.0memory stackscharacterization.Y2Complete CMFcost-modelextensions toZigZag.CMF tile scalableRTLY3CMF tile tapeout.Validate -Cost-Model,Workloads, ThermalCharacteristicsY4CMF tile-based NoCaccelerator tapeout.Validate -Cost-Model,Workloads, ThermalCharacteristics"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline-2",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#timeline-2",
+    "title": "DSE with CMOS 2.0",
+    "section": "Timeline (2)",
+    "text": "Timeline (2)\n\n\n\n\n\n%%| mermaid-format: svg\n\n%%{init: {  \n'gantt': {\n    'fontSize': '12',\n    'useWidth': '800'\n}  \n}}%%\ngantt\n    title CMF / NMC-NoC Research & Tapeout Roadmap\n    dateFormat  YYYY\n    axisFormat %m-%Y\n\n    section Research Foundations\n    NMC-NoC + CMF architecture survey        :a1, 2027, 6M\n    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M\n    Initial CMF architectures                :a3, after a1, 6M\n\n    section ZigZag: DSE & Estimator\n    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y\n    Validation vs existing CMF architectures :b2, after a2, 6M\n    Validation vs CMOS2.0 memories           :b3, after a2, 6M\n\n    section Silicon\n    DSE CMF Tile Architecture             :crit,c1, after a3, 1y\n    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y\n    DSE CMF Array Architecture                :crit, c4, after c1, 1y\n    Tapeout 2 (CMF Array)                               :c3, after c2, 1y"
   }
 ]

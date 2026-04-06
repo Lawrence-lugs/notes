@@ -1,10 +1,7 @@
 {
   "name": "Miniforge Python Environment",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "cacheFrom": "ghcr.io/lawrence-lugs/quartolatex",
-    "context": ".."
-  },
+  // We now enforce building off of gh workflows and avoid local builds
+  "image": "ghcr.io/lawrence-lugs/quartolatex",  
   "customizations": {
     "vscode": {
       "settings": {
