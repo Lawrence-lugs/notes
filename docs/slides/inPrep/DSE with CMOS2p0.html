@@ -12,7 +12,7 @@
 
   <meta name="author" content="Lawrence Quizon">
   <meta name="dcterms.date" content="2026-04-06">
-  <title>Lawrence Roman A. Quizon - DSE with CMOS 2.0</title>
+  <title>Lawrence Roman A. Quizon - DSE for CMOS 2.0 Compute-Memory Fabrics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -328,7 +393,7 @@
     <div class="slides">
 
 <section id="title-slide" align="left" class="quarto-title-block center">
-  <h1 class="title">DSE with CMOS 2.0</h1>
+  <h1 class="title">DSE for CMOS 2.0 Compute-Memory Fabrics</h1>
   <p class="subtitle">Preplanning</p>
 
 <div class="quarto-title-authors">
@@ -344,62 +409,98 @@ Lawrence Quizon
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li><a href="#/overall-idea-dse-for-vertically-stacked-compute-memory-fabrics" id="/toc-overall-idea-dse-for-vertically-stacked-compute-memory-fabrics">Overall Idea: DSE for Vertically-stacked Compute-Memory Fabrics</a>
-<ul>
-<li><a href="#/cmos-2.0" id="/toc-cmos-2.0">CMOS 2.0</a></li>
-<li><a href="#/main-problem" id="/toc-main-problem">Main Problem</a></li>
-<li><a href="#/build-on-zigzag" id="/toc-build-on-zigzag">Build on ZigZag</a></li>
-<li><a href="#/zigzag---current-state" id="/toc-zigzag---current-state">ZigZag - Current State</a></li>
-</ul></li>
-<li><a href="#/specifics-dram-noc-example" id="/toc-specifics-dram-noc-example">Specifics: DRAM NoC Example</a>
-<ul>
-<li><a href="#/near-memory-compute-with-buffer-memory-above" id="/toc-near-memory-compute-with-buffer-memory-above">Near-Memory Compute with Buffer Memory Above</a></li>
-<li><a href="#/dram-explicit-refresh" id="/toc-dram-explicit-refresh">DRAM: Explicit Refresh</a></li>
-<li><a href="#/dram-dark-silicon" id="/toc-dram-dark-silicon">DRAM: Dark Silicon</a></li>
-<li><a href="#/electrothermal-hardware-algo-co-design" id="/toc-electrothermal-hardware-algo-co-design">Electrothermal-Hardware-Algo Co-design</a></li>
-<li><a href="#/electrothermal-hardware-algo-co-design-2" id="/toc-electrothermal-hardware-algo-co-design-2">Electrothermal-Hardware-Algo Co-design (2)</a></li>
-<li><a href="#/timeline" id="/toc-timeline">Timeline</a></li>
-<li><a href="#/timeline-2" id="/toc-timeline-2">Timeline (2)</a></li>
-</ul></li>
-<li><a href="#/preliminary-characterization" id="/toc-preliminary-characterization">Preliminary Characterization</a>
-<ul>
-<li><a href="#/onur-mutlu-stack" id="/toc-onur-mutlu-stack">Onur Mutlu Stack</a></li>
-</ul></li>
+<li><a href="#/for-the-meeting-ideas-for-the-proposal." id="/toc-for-the-meeting-ideas-for-the-proposal.">For the meeting/ ideas for the proposal.</a></li>
+<li><a href="#/specifics-and-implementation" id="/toc-specifics-and-implementation">Specifics and Implementation</a></li>
+<li><a href="#/project-visions" id="/toc-project-visions">Project Visions</a></li>
+<li><a href="#/specifics-details" id="/toc-specifics-details">Specifics, Details</a></li>
 </ul>
 </nav>
 </section>
 <section>
-<section id="overall-idea-dse-for-vertically-stacked-compute-memory-fabrics" class="title-slide slide level1 center">
-<h1>Overall Idea: DSE for Vertically-stacked Compute-Memory Fabrics</h1>
+<section id="for-the-meeting-ideas-for-the-proposal." class="title-slide slide level1 center">
+<h1>For the meeting/ ideas for the proposal.</h1>
 
 </section>
-<section id="cmos-2.0" class="slide level2">
-<h2>CMOS 2.0</h2>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
+<p>What is the timeline for the proposal?</p>
+<p>What’s the approval process for the proposal?</p>
+<p>What are my deliverables for this proposal?</p>
+<p>How much freedom do we have to shape the goals of the project?</p>
+<p>Difference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?</p>
+</section>
+<section id="ideas-for-the-proposal" class="slide level2">
+<h2>Ideas for the proposal</h2>
+<p>My dream: <span class="bigger color-emph">AI should be entirely self-contained in its hardware</span></p>
+<ul>
+<li>Only training and inference inputs/outputs should be coming in and out of the chip.</li>
+<li>LLMs live in the chip.</li>
+</ul>
+<p>Barriers:</p>
+<ul>
+<li>Limitations of 2D memory capacity (like Cerebras WSE)</li>
+</ul>
+<p>This is solved by 3D integration like CMOS 2.0.</p>
+</section>
+<section id="from-zigzag-style-accelerators-to-cmf" class="slide level2">
+<h2>From ZigZag-style Accelerators to CMF</h2>
+
+<img data-src="attachments/towardscmf.png" class="r-stretch"><div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Most practical accelerators are Stream-style or ZigZag-style.</p>
+<p>A lot of academic demonstrations of IMC/NMC fit in the third style.</p>
+<p>NoC-style accelerators like WSE exist as samples of (4).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-dimensions" class="slide level2" style="font-size: 20pt;">
+<h2>Problem Dimensions</h2>
+<ul>
+<li><strong>CMOS 2.0</strong>. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?</li>
+<li><strong>Towards DSE</strong>. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.</li>
+<li><strong>Thermal Problem of 3D stacks</strong>. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.</li>
+<li><strong>Heterogenous Computational Memory.</strong> 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.</li>
+<li><strong>Special Memory Management.</strong> Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.<sup>1</sup></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Donghyuk ’16 ACM TACO “Simultaneous multi-layer access”</p></li></ol></aside></section></section>
+<section>
+<section id="specifics-and-implementation" class="title-slide slide level1 center">
+<h1>Specifics and Implementation</h1>
+
+</section>
+<section id="potential-dsemodelling-framework" class="slide level2">
+<h2>Potential DSE/Modelling Framework</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column">
+<p>Requirements:</p>
 <ul>
-<li>End of area scaling causes 3D stacking.</li>
-<li>CMOS 2.0 is IMEC’s term for its 3D stacking enabled by hybrid bonding interfaces different process layers.</li>
-<li>Specifically, eDRAM process on top of regular process is possible.</li>
-<li>Having high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics.</li>
+<li>NoC-style dataflow topologies (mesh, torus, etc.)</li>
+<li>Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)</li>
+<li>Modelling of heterogenous regular or computational memory types</li>
+<li>Thermal modelling</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<p><img data-src="attachments/Pasted image 20260406142623.png"></p>
+</div><div class="column">
+<p>Insights:</p>
+<ul>
+<li>Loop ordering doesn’t feel as powerful if memory is no longer hierarchical</li>
+<li>Graph techniques can work
+<ul>
+<li>MARP + coloring - adjacent operations cannot be on the same tile</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </section>
-<section id="main-problem" class="slide level2">
-<h2>Main Problem</h2>
-<p>CMOS 2.0-based 3D stacking capabilities need to be accounted for by the existing DSE frameworks.</p>
-<p>New problem dimensions:</p>
-<ul>
-<li>Adding Multicore NoC-type NMC accelerators in the modelling space</li>
-<li>Overall architectural arrangements of such 3D-stacked chips</li>
-<li>Much denser integration introduces special temperature-related constraints which affects each memory technology differently</li>
-</ul>
-</section>
-<section id="build-on-zigzag" class="slide level2">
-<h2>Build on ZigZag</h2>
+<section id="building-on-zigzag" class="slide level2">
+<h2>Building on ZigZag</h2>
 <p>Plan: Extend ZigZag to account for <span class="color-emph">NoC-style compute-memory fabrics</span>.</p>
 <p>Relevant extensions:</p>
 <ul>
@@ -410,7 +511,7 @@ Lawrence Quizon
 <blockquote>
 <p><em>I’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li></ol></aside></section>
 <section id="zigzag---current-state" class="slide level2">
 <h2>ZigZag - Current State</h2>
 <p>Looking into ZigZag, the project’s direction seems to be:</p>
@@ -420,10 +521,56 @@ Lawrence Quizon
 <li>Symons - Main repo maintainer, Stream</li>
 <li>Geens - LLM-specific DSE (ZigZag-LLM)</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Graduated</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Graduated</p></li></ol></aside></section></section>
 <section>
-<section id="specifics-dram-noc-example" class="title-slide slide level1 center">
-<h1>Specifics: DRAM NoC Example</h1>
+<section id="project-visions" class="title-slide slide level1 center">
+<h1>Project Visions</h1>
+<p>Scope depends on how large the project’s proposal actually is</p>
+</section>
+<section id="path-to-self-contained-training-and-inference" class="slide level2">
+<h2>Path to self-contained Training and Inference</h2>
+<p>Goal: <span class="color-emph">Avoid off-chip data movement completely</span></p>
+<div class="columns">
+<div class="column" style="width:.47;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>LLM</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deepseek v3</td>
+<td>156G</td>
+<td>78G</td>
+</tr>
+<tr class="even">
+<td>Llama-2</td>
+<td>17.5G</td>
+<td>8.75G</td>
+</tr>
+<tr class="odd">
+<td>Mistral 7</td>
+<td>1.825G</td>
+<td>0.9G</td>
+</tr>
+</tbody>
+</table>
+<p>Would be nice to be able to demonstrate the SLMs in a fully self-contained demonstration<sup>1</sup> <sup>2</sup> on CMOS 2.0</p>
+</div><div class="column" style="width:.47;">
+<p>Practical enablers:</p>
+<ul>
+<li><strong>MARP</strong> - increases spatial utilization</li>
+<li><strong>5PP</strong><sup>3</sup> - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?</li>
+</ul>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.</p></li><li id="fn5"><p><a href="../../../03_Concepts/Barriers to Monolithic LLM inference.md">Barriers to Monolithic LLM inference</a></p></li><li id="fn6"><p>Dazzi, Martino, et al.&nbsp;“5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.”&nbsp;<em>arXiv preprint arXiv:1906.03474</em>&nbsp;(2019).</p></li></ol></aside></section></section>
+<section>
+<section id="specifics-details" class="title-slide slide level1 center">
+<h1>Specifics, Details</h1>
 
 </section>
 <section id="near-memory-compute-with-buffer-memory-above" class="slide level2">
@@ -435,9 +582,6 @@ Lawrence Quizon
 <li>Place compute near large global buffers in a scalable architecture</li>
 <li>Come with mapping algorithms</li>
 </ul>
-<blockquote>
-<p><em>Challenge: Make these compatible with ZigZag</em></p>
-</blockquote>
 </div><div class="column quarto-layout-panel" data-layout="[[-1], [1], [-1]]" style="width:0.47;">
 <div class="quarto-layout-row">
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
@@ -451,7 +595,7 @@ Lawrence Quizon
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn4"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn8"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
 <section id="dram-explicit-refresh" class="slide level2">
 <h2>DRAM: Explicit Refresh</h2>
 <p>With explicitly managed memory, we explicitly know when we’re not using the DRAM.</p>
@@ -469,7 +613,7 @@ Lawrence Quizon
 <blockquote>
 <p><em>Challenge: Account for temperature in workload scheduling</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn5"><p>May require probabilistic modelling later on.</p></li><li id="fn6"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn9"><p>May require probabilistic modelling later on.</p></li><li id="fn10"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
 <section id="electrothermal-hardware-algo-co-design" class="slide level2">
 <h2>Electrothermal-Hardware-Algo Co-design</h2>
 <div class="columns">
@@ -522,73 +666,78 @@ Lawrence Quizon
 </div>
 </div>
 </section>
-<section id="electrothermal-hardware-algo-co-design-2" class="slide level2">
+<section id="electrothermal-hardware-algo-co-design-2" class="slide level2 unlisted">
 <h2>Electrothermal-Hardware-Algo Co-design (2)</h2>
 <p>Coarse-grid modelling of the thermal stack from a top-level floorplan with a heat-coupling equation <span class="math display">\[\mathbf{C} \frac{d\mathbf{T}}{dt} = -\mathbf{G}\mathbf{T} + \mathbf{P}\]</span> Problem: Needs a preliminary top-level floorplan to discretize.</p>
 <p>Each block has a specific thermal characteristic (from PrimeTime power estimates).</p>
 </section>
 <section id="timeline" class="slide level2">
 <h2>Timeline</h2>
-<div class="cell" data-font-size="24pt" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<svg aria-roledescription="timeline" role="graphics-document document" viewbox="0 0 990 531.2625122070312" style="; display: block; margin: auto auto auto auto" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="960" id="mermaid-figure-2" height="480">
-<style>#mermaid-figure-2{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-figure-2 .error-icon{fill:#a44141;}#mermaid-figure-2 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:2px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-figure-2 .marker.cross{stroke:lightgrey;}#mermaid-figure-2 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-2 .edge{stroke-width:3;}#mermaid-figure-2 .section--1 rect,#mermaid-figure-2 .section--1 path,#mermaid-figure-2 .section--1 circle,#mermaid-figure-2 .section--1 path{fill:#1f2020;}#mermaid-figure-2 .section--1 text{fill:lightgrey;}#mermaid-figure-2 .node-icon--1{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge--1{stroke:#1f2020;}#mermaid-figure-2 .edge-depth--1{stroke-width:17;}#mermaid-figure-2 .section--1 line{stroke:#e0dfdf;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-0 rect,#mermaid-figure-2 .section-0 path,#mermaid-figure-2 .section-0 circle,#mermaid-figure-2 .section-0 path{fill:#0b0000;}#mermaid-figure-2 .section-0 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-0{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-0{stroke:#0b0000;}#mermaid-figure-2 .edge-depth-0{stroke-width:14;}#mermaid-figure-2 .section-0 line{stroke:#f4ffff;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-1 rect,#mermaid-figure-2 .section-1 path,#mermaid-figure-2 .section-1 circle,#mermaid-figure-2 .section-1 path{fill:#4d1037;}#mermaid-figure-2 .section-1 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-1{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-1{stroke:#4d1037;}#mermaid-figure-2 .edge-depth-1{stroke-width:11;}#mermaid-figure-2 .section-1 line{stroke:#b2efc8;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-2 rect,#mermaid-figure-2 .section-2 path,#mermaid-figure-2 .section-2 circle,#mermaid-figure-2 .section-2 path{fill:#3f5258;}#mermaid-figure-2 .section-2 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-2{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-2{stroke:#3f5258;}#mermaid-figure-2 .edge-depth-2{stroke-width:8;}#mermaid-figure-2 .section-2 line{stroke:#c0ada7;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-3 rect,#mermaid-figure-2 .section-3 path,#mermaid-figure-2 .section-3 circle,#mermaid-figure-2 .section-3 path{fill:#4f2f1b;}#mermaid-figure-2 .section-3 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-3{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-3{stroke:#4f2f1b;}#mermaid-figure-2 .edge-depth-3{stroke-width:5;}#mermaid-figure-2 .section-3 line{stroke:#b0d0e4;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-4 rect,#mermaid-figure-2 .section-4 path,#mermaid-figure-2 .section-4 circle,#mermaid-figure-2 .section-4 path{fill:#6e0a0a;}#mermaid-figure-2 .section-4 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-4{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-4{stroke:#6e0a0a;}#mermaid-figure-2 .edge-depth-4{stroke-width:2;}#mermaid-figure-2 .section-4 line{stroke:#91f5f5;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-5 rect,#mermaid-figure-2 .section-5 path,#mermaid-figure-2 .section-5 circle,#mermaid-figure-2 .section-5 path{fill:#3b0048;}#mermaid-figure-2 .section-5 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-5{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-5{stroke:#3b0048;}#mermaid-figure-2 .edge-depth-5{stroke-width:-1;}#mermaid-figure-2 .section-5 line{stroke:#c4ffb7;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-6 rect,#mermaid-figure-2 .section-6 path,#mermaid-figure-2 .section-6 circle,#mermaid-figure-2 .section-6 path{fill:#995a01;}#mermaid-figure-2 .section-6 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-6{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-6{stroke:#995a01;}#mermaid-figure-2 .edge-depth-6{stroke-width:-4;}#mermaid-figure-2 .section-6 line{stroke:#66a5fe;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-7 rect,#mermaid-figure-2 .section-7 path,#mermaid-figure-2 .section-7 circle,#mermaid-figure-2 .section-7 path{fill:#154706;}#mermaid-figure-2 .section-7 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-7{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-7{stroke:#154706;}#mermaid-figure-2 .edge-depth-7{stroke-width:-7;}#mermaid-figure-2 .section-7 line{stroke:#eab8f9;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-8 rect,#mermaid-figure-2 .section-8 path,#mermaid-figure-2 .section-8 circle,#mermaid-figure-2 .section-8 path{fill:#161722;}#mermaid-figure-2 .section-8 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-8{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-8{stroke:#161722;}#mermaid-figure-2 .edge-depth-8{stroke-width:-10;}#mermaid-figure-2 .section-8 line{stroke:#e9e8dd;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-9 rect,#mermaid-figure-2 .section-9 path,#mermaid-figure-2 .section-9 circle,#mermaid-figure-2 .section-9 path{fill:#00296f;}#mermaid-figure-2 .section-9 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-9{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-9{stroke:#00296f;}#mermaid-figure-2 .edge-depth-9{stroke-width:-13;}#mermaid-figure-2 .section-9 line{stroke:#ffd690;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-10 rect,#mermaid-figure-2 .section-10 path,#mermaid-figure-2 .section-10 circle,#mermaid-figure-2 .section-10 path{fill:#01629c;}#mermaid-figure-2 .section-10 text{fill:lightgrey;}#mermaid-figure-2 .node-icon-10{font-size:40px;color:lightgrey;}#mermaid-figure-2 .section-edge-10{stroke:#01629c;}#mermaid-figure-2 .edge-depth-10{stroke-width:-16;}#mermaid-figure-2 .section-10 line{stroke:#fe9d63;stroke-width:3;}#mermaid-figure-2 .lineWrapper line{stroke:lightgrey;}#mermaid-figure-2 .disabled,#mermaid-figure-2 .disabled circle,#mermaid-figure-2 .disabled text{fill:lightgray;}#mermaid-figure-2 .disabled text{fill:#efefef;}#mermaid-figure-2 .section-root rect,#mermaid-figure-2 .section-root path,#mermaid-figure-2 .section-root circle{fill:hsl(180, 1.5873015873%, 48.3529411765%);}#mermaid-figure-2 .section-root text{fill:#2c2c2c;}#mermaid-figure-2 .icon-container{height:100%;display:flex;justify-content:center;align-items:center;}#mermaid-figure-2 .edge{fill:none;}#mermaid-figure-2 .eventWrapper{filter:brightness(120%);}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g></g><g></g><defs><marker orient="auto" markerheight="4" markerwidth="6" refy="2" refx="5" id="mermaid-figure-2-arrowhead"><path d="M 0,0 V 4 L6,2 Z"></path></marker></defs><g transform="translate(100, 50)" class="taskWrapper"><g class="timeline-node section--1"><g><path d="M0 60.815625 v-55.815625 q0,-5 5,-5 h180 q5,0 5,5 v60.815625 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.815625" x2="190" y1="65.815625" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Y1</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-2-arrowhead)" stroke="black" stroke-width="2" y2="481.2625" x2="195" y1="115.815625" x1="195"></line></g><g transform="translate(100, 250)" class="eventWrapper"><g class="timeline-node section--1"><g><path d="M0 76.01875 v-71.01875 q0,-5 5,-5 h180 q5,0 5,5 v76.01875 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="81.01875" x2="190" y1="81.01875" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">NMC-NoC (CMF)</tspan><tspan dy="1.1em" x="0">Architectures</tspan><tspan dy="1.1em" x="0">Modelling, Survey.</tspan></text></g></g></g><g transform="translate(100, 341.01875)" class="eventWrapper"><g class="timeline-node section--1"><g><path d="M0 93.6125 v-88.6125 q0,-5 5,-5 h180 q5,0 5,5 v93.6125 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="98.6125" x2="190" y1="98.6125" x1="0" class="node-line--1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">ZigZag Cost-Model</tspan><tspan dy="1.1em" x="0">work with CMOS2.0</tspan><tspan dy="1.1em" x="0">memory stacks</tspan><tspan dy="1.1em" x="0">characterization.</tspan></text></g></g></g><g transform="translate(300, 50)" class="taskWrapper"><g class="timeline-node section-0"><g><path d="M0 60.815625 v-55.815625 q0,-5 5,-5 h180 q5,0 5,5 v60.815625 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.815625" x2="190" y1="65.815625" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Y2</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-2-arrowhead)" stroke="black" stroke-width="2" y2="481.2625" x2="395" y1="115.815625" x1="395"></line></g><g transform="translate(300, 250)" class="eventWrapper"><g class="timeline-node section-0"><g><path d="M0 93.6125 v-88.6125 q0,-5 5,-5 h180 q5,0 5,5 v93.6125 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="98.6125" x2="190" y1="98.6125" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Complete CMF</tspan><tspan dy="1.1em" x="0">cost-model</tspan><tspan dy="1.1em" x="0">extensions to</tspan><tspan dy="1.1em" x="0">ZigZag.</tspan></text></g></g></g><g transform="translate(300, 358.6125)" class="eventWrapper"><g class="timeline-node section-0"><g><path d="M0 58.409375 v-53.409375 q0,-5 5,-5 h180 q5,0 5,5 v58.409375 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="63.409375" x2="190" y1="63.409375" x1="0" class="node-line-0"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">CMF tile scalable</tspan><tspan dy="1.1em" x="0">RTL</tspan></text></g></g></g><g transform="translate(500, 50)" class="taskWrapper"><g class="timeline-node section-1"><g><path d="M0 60.815625 v-55.815625 q0,-5 5,-5 h180 q5,0 5,5 v60.815625 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.815625" x2="190" y1="65.815625" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Y3</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-2-arrowhead)" stroke="black" stroke-width="2" y2="481.2625" x2="595" y1="115.815625" x1="595"></line></g><g transform="translate(500, 250)" class="eventWrapper"><g class="timeline-node section-1"><g><path d="M0 45 v-40 q0,-5 5,-5 h180 q5,0 5,5 v45 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="50" x2="190" y1="50" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">CMF tile tapeout.</tspan></text></g></g></g><g transform="translate(500, 310)" class="eventWrapper"><g class="timeline-node section-1"><g><path d="M0 93.6125 v-88.6125 q0,-5 5,-5 h180 q5,0 5,5 v93.6125 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="98.6125" x2="190" y1="98.6125" x1="0" class="node-line-1"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Validate -</tspan><tspan dy="1.1em" x="0">Cost-Model,</tspan><tspan dy="1.1em" x="0">Workloads, Thermal</tspan><tspan dy="1.1em" x="0">Characteristics</tspan></text></g></g></g><g transform="translate(700, 50)" class="taskWrapper"><g class="timeline-node section-2"><g><path d="M0 60.815625 v-55.815625 q0,-5 5,-5 h180 q5,0 5,5 v60.815625 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="65.815625" x2="190" y1="65.815625" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Y4</tspan></text></g></g></g><g class="lineWrapper"><line stroke-dasharray="5,5" marker-end="url(#mermaid-figure-2-arrowhead)" stroke="black" stroke-width="2" y2="481.2625" x2="795" y1="115.815625" x1="795"></line></g><g transform="translate(700, 250)" class="eventWrapper"><g class="timeline-node section-2"><g><path d="M0 58.409375 v-53.409375 q0,-5 5,-5 h180 q5,0 5,5 v58.409375 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="63.409375" x2="190" y1="63.409375" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">CMF tile-based NoC</tspan><tspan dy="1.1em" x="0">accelerator tapeout.</tspan></text></g></g></g><g transform="translate(700, 323.409375)" class="eventWrapper"><g class="timeline-node section-2"><g><path d="M0 93.6125 v-88.6125 q0,-5 5,-5 h180 q5,0 5,5 v93.6125 H0 Z" class="node-bkg node-undefined" id="node-undefined"></path><line y2="98.6125" x2="190" y1="98.6125" x1="0" class="node-line-2"></line></g><g transform="translate(95, 10)"><text text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" dy="1em"><tspan dy="1em" x="0">Validate -</tspan><tspan dy="1.1em" x="0">Cost-Model,</tspan><tspan dy="1.1em" x="0">Workloads, Thermal</tspan><tspan dy="1.1em" x="0">Characteristics</tspan></text></g></g></g><g class="lineWrapper"><line marker-end="url(#mermaid-figure-2-arrowhead)" stroke="black" stroke-width="4" y2="165.815625" x2="940" y1="165.815625" x1="50"></line></g>
-</svg>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>%%| mermaid-format: svg</span>
+<span id="cb1-2"><a></a>%%| font-size: 24pt</span>
+<span id="cb1-3"><a></a>%%{init: {  </span>
+<span id="cb1-4"><a></a>'theme': 'dark',  </span>
+<span id="cb1-5"><a></a>'timeline': {  </span>
+<span id="cb1-6"><a></a>'fontSize': '24pt'  </span>
+<span id="cb1-7"><a></a>}  </span>
+<span id="cb1-8"><a></a>}}%%</span>
+<span id="cb1-9"><a></a>timeline</span>
+<span id="cb1-10"><a></a>    Y1: NMC-NoC (CMF) Architectures Modelling, Survey.</span>
+<span id="cb1-11"><a></a>      : ZigZag Cost-Model work with CMOS2.0 memory stacks characterization.</span>
+<span id="cb1-12"><a></a>    Y2: Complete CMF cost-model extensions to ZigZag.</span>
+<span id="cb1-13"><a></a>      : CMF tile scalable RTL</span>
+<span id="cb1-14"><a></a>    Y3: CMF tile tapeout.</span>
+<span id="cb1-15"><a></a>      : Validate - Cost-Model, Workloads, Thermal Characteristics</span>
+<span id="cb1-16"><a></a>    Y4: CMF tile-based NoC accelerator tapeout.  </span>
+<span id="cb1-17"><a></a>      : Validate - Cost-Model, Workloads, Thermal Characteristics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="timeline-2" class="slide level2">
 <h2>Timeline (2)</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">%%| mermaid-format: svg
-
-%%{init: {  
-'gantt': {
-    'fontSize': '12',
-    'useWidth': '800'
-}  
-}}%%
-gantt
-    title CMF / NMC-NoC Research &amp; Tapeout Roadmap
-    dateFormat  YYYY
-    axisFormat %m-%Y
-
-    section Research Foundations
-    NMC-NoC + CMF architecture survey        :a1, 2027, 6M
-    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M
-    Initial CMF architectures                :a3, after a1, 6M
-
-    section ZigZag: DSE &amp; Estimator
-    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y
-    Validation vs existing CMF architectures :b2, after a2, 6M
-    Validation vs CMOS2.0 memories           :b3, after a2, 6M
-
-    section Silicon
-    DSE CMF Tile Architecture             :crit,c1, after a3, 1y
-    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y
-    DSE CMF Array Architecture                :crit, c4, after c1, 1y
-    Tapeout 2 (CMF Array)                               :c3, after c2, 1y
-    
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>gantt</span>
+<span id="cb2-2"><a></a>    section Research Foundations</span>
+<span id="cb2-3"><a></a>    NMC-NoC + CMF architecture survey                         :a1, 2027, 6M</span>
+<span id="cb2-4"><a></a>    CMOS2.0 memory characterization for analytical modelling  :a2, after b1, 6M</span>
+<span id="cb2-5"><a></a>    Initial CMF architectures                                 :a3, after a1, 6M</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a>    section ZigZag: DSE &amp; Estimator</span>
+<span id="cb2-8"><a></a>    Validation vs existing CMF architectures                  :b2, after a2, 6M</span>
+<span id="cb2-9"><a></a>    Validation vs CMOS2.0 memories                            :b3, after a2, 6M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="timeline-3" class="slide level2 unlisted">
+<h2>Timeline (3)</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a></span>
+<span id="cb3-2"><a></a>%%| mermaid-format: svg</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>%%{init: {  </span>
+<span id="cb3-5"><a></a>'gantt': {</span>
+<span id="cb3-6"><a></a>    'fontSize': '12',</span>
+<span id="cb3-7"><a></a>    'useWidth': '800'</span>
+<span id="cb3-8"><a></a>}  </span>
+<span id="cb3-9"><a></a>}}%%</span>
+<span id="cb3-10"><a></a>gantt</span>
+<span id="cb3-11"><a></a>    title CMF / NMC-NoC Research &amp; Tapeout Roadmap</span>
+<span id="cb3-12"><a></a>    dateFormat  YYYY</span>
+<span id="cb3-13"><a></a>    axisFormat %m-%Y</span>
+<span id="cb3-14"><a></a></span>
+<span id="cb3-15"><a></a>    section Research Foundations</span>
+<span id="cb3-16"><a></a>    NMC-NoC + CMF architecture survey        :a1, 2027, 6M</span>
+<span id="cb3-17"><a></a>    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M</span>
+<span id="cb3-18"><a></a>    Initial CMF architectures                :a3, after a1, 6M</span>
+<span id="cb3-19"><a></a></span>
+<span id="cb3-20"><a></a>    section ZigZag: DSE &amp; Estimator</span>
+<span id="cb3-21"><a></a>    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y</span>
+<span id="cb3-22"><a></a>    Validation vs existing CMF architectures :b2, after a2, 6M</span>
+<span id="cb3-23"><a></a>    Validation vs CMOS2.0 memories           :b3, after a2, 6M</span>
+<span id="cb3-24"><a></a></span>
+<span id="cb3-25"><a></a>    section Silicon</span>
+<span id="cb3-26"><a></a>    DSE CMF Tile Architecture             :crit,c1, after a3, 1y</span>
+<span id="cb3-27"><a></a>    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y</span>
+<span id="cb3-28"><a></a>    DSE CMF Array Architecture                :crit, c4, after c1, 1y</span>
+<span id="cb3-29"><a></a>    Tapeout 2 (CMF Array)                               :c3, after c2, 1y</span>
+<span id="cb3-30"><a></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
-<section id="preliminary-characterization" class="title-slide slide level1 center">
+<section id="preliminary-characterization" class="title-slide slide level1 unlisted center">
 <h1>Preliminary Characterization</h1>
 <ul>
 <li>Based off typical 3D DRAM fabrics and their communication interfaces</li>
@@ -602,13 +751,53 @@ gantt
 <li>Focuses on accelerating <code>memset</code> and <code>memcpy</code><sup>1</sup></li>
 <li>General workload acceleration (not DNN targeted)</li>
 </ul>
+<aside><ol class="aside-footnotes"><li id="fn11"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 unlisted center">
+<h1>Appendix</h1>
+
+</section>
+<section id="applicability-of-zigzag" class="slide level2">
+<h2>Applicability of ZigZag</h2>
+<p>ZigZag finds its data reuse capability from maximizing temporal reuse and utilization. However, in a fully self-contained CMF, <em>there is no weight movement</em>.</p>
+<p>How about activation movement?</p>
+<p>To solve activation movement, we take inspiration from 5PP and mesh-style data movement. This is different from ZigZag’s hierarchical transferred data movement (because it, in fact, is strictly single core). Stream’s multicore data reuse <strong>assumes that a specific memory level is shared between cores.</strong> I doubt this can be the case <em>across tiles</em>.</p>
+</section>
+<section id="demonstrations-of-integrated-cim-inference" class="slide level2">
+<h2>Demonstrations of Integrated CIM-inference</h2>
+<ul>
+<li>Cerebras WSE3 - Full-wafer divided into reticle-limit chips.</li>
+<li>Corsair<sup>1</sup> - d-Matrix (company) in IEEE Micro Magazine</li>
+<li>3D-CiMLet<sup>2</sup> - Design-space exploration work by Purdue on 3D integration CiM with different memory types.</li>
+</ul>
+<p><img data-src="attachments/cerebrassinglecore.png"><sup>3</sup></p>
+<p><img data-src="attachments/3dcimlet.png"><sup>4</sup></p>
+<aside><ol class="aside-footnotes"><li id="fn12"><p>Srivastava, Satyam, et al.&nbsp;“Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).</p></li><li id="fn13"><p>Du, Shuting, et al.&nbsp;“3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.</p></li><li id="fn14"><p>Cerebras WSE3 White Paper</p></li><li id="fn15"><p>3D-CiMLET, Purdue</p></li></ol></aside></section>
+<section id="demonstrations-of-integrated-cim-inference-2" class="slide level2 unlisted">
+<h2>Demonstrations of Integrated CIM-inference (2)</h2>
+<p>Things to look out for 1. Data Routing Techniques 2. Core Arrangement 3. Thermal Considerations 4. 3D integration style/level</p>
+</section>
+<section id="cmos-2.0" class="slide level2">
+<h2>CMOS 2.0</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>End of area scaling causes 3D stacking.</li>
+<li>CMOS 2.0 is IMEC’s term for its 3D stacking enabled by hybrid bonding interfaces different process layers.</li>
+<li>Specifically, eDRAM process on top of regular process is possible.</li>
+<li>Having high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="attachments/Pasted image 20260406142623.png"></p>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>Compute-memory Fabric DSE with CMOS 2.0</p>
+<p>DSE for CMOS 2.0 Compute-Memory Fabrics</p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn7"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
+</section></section>
 
     </div>
   </div>

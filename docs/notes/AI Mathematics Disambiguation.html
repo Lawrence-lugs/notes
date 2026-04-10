@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-17">
 
-<title>Lawrence Roman A. Quizon - Minority Carrier Diffusion Equations with explicit FEM in C</title>
+<title>Lawrence Roman A. Quizon - AI Mathematics Disambiguation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -102,35 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -173,7 +110,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Minority Carrier Diffusion Equations with explicit FEM in C</h1>
+<h1 class="title">AI Mathematics Disambiguation</h1>
 </div>
 
 
@@ -184,7 +121,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 12, 2026</p>
+      <p class="date">January 17, 2026</p>
     </div>
   </div>
   
@@ -196,137 +133,45 @@ window.Quarto = {
 </header>
 
 
-<div class="callout-question">
-<ul>
-<li>How do we deal with PDEs in the current RK4 setup?</li>
-<li>What do we need to do to implement FEM in C?</li>
-</ul>
-</div>
-<section id="finite-difference" class="level1">
-<h1>Finite Difference</h1>
-<p>Let’s start with an easy formulation: minority carrier diffusion with RG</p>
-<p><span class="math display">\[\frac{dn}{dt}=D_n\frac{d^2n}{dx^2}-\frac{n}{\tau_n}\]</span> <span class="math display">\[n\Big\vert_{x=0}=n_0;n\Big\vert_{t=0}=0\]</span> <span class="math display">\[n\Big\vert_{x=L}=n_0\]</span> where <span class="math inline">\(n\)</span> is the minority carrier concentration.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Aside">
+<div class="callout callout-style-default callout-tip callout-titled" title="How we got there">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aside
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Why is diffusion second-order here? If it’s diffusion, it should just depend on the concentration gradient, which is first-order.</p>
-<p>Intuitively, if the rate of flow of <span class="math inline">\(n\)</span> into a spot <span class="math inline">\(x\)</span> is <span class="math inline">\(dn/dt\)</span>. If that’s constant over <span class="math inline">\(x\)</span>, the should be no change in concentration over time (inflow = outflow). However, if there is a difference in inflow and outflow (divergence) then there will be a <span class="math inline">\(dn/dt\)</span>. By this logic:</p>
-<p><span class="math display">\[\frac{dn}{dt}=\vec\nabla\cdot\nabla n\]</span></p>
-<p>i.e.&nbsp;second derivative in one dimension</p>
-</div>
-</div>
-<p>So we have a slope function of</p>
-<p><span class="math display">\[\frac{dn}{dt}=D_n \frac{2n-n_{x+1}-n_{x-1}}{\Delta x^2}-\frac{n}{\tau_n}\]</span></p>
-<p>As we introduce separate state vectors for every point <span class="math inline">\(n_x\)</span>.</p>
-<p>Now, we have a grid of <span class="math inline">\(n_0,n_1,...,n_N\)</span> separated by a <span class="math inline">\(dx\)</span>.</p>
-<section id="constants" class="level2">
-<h2 class="anchored" data-anchor-id="constants">Constants</h2>
-<p><span class="math display">\[\frac{D_n}{\mu_n} = 0.026V\]</span> <span class="math display">\[D_n=0.026V*1350\frac{cm^2}{Vs}=35 cm^2/s\]</span></p>
-</section>
-<section id="a-tensor-library-isnt-that-necessary-for-physics" class="level2">
-<h2 class="anchored" data-anchor-id="a-tensor-library-isnt-that-necessary-for-physics">A tensor library isn’t THAT necessary for Physics</h2>
-<p>I’m starting to regret coupling so closely to my tensor library.</p>
-<ol type="1">
-<li>State structs should just be per-application, now that I realize. It’s a waste to use vectors for this.</li>
-<li>Matrix multiplication was trivially coded. It’s not even useful beyond the easy eigen-able formulations. As soon as quadratic drag was introduced, it was ggs. (<span class="math inline">\(\propto v^2\)</span>).</li>
-</ol>
-<p>Anyway, we still need tensors to keep track of complicated grids. However, we’ll just be using the canonical main tensor definition.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> Tensor <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="dt">size_t</span> length<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="dt">size_t</span> ndims<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="dt">size_t</span><span class="op">*</span> shape<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="dt">float</span><span class="op">*</span> elements<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="op">}</span> Tensor<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>See <a href="https://github.com/Lawrence-lugs/diff_eq_solvers/blob/6c024e235c1a7bc91b499b3df740ba0da1ad151c/tensors.c#L1">the current library here</a>.</p>
-<p>This ended up mainly useful for the global objects.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>    <span class="dt">size_t</span> tensorShape<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> NUM_GRID_POINTS<span class="op">,</span> NUM_STEPS<span class="op">};</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    Tensor<span class="op">*</span> results <span class="op">=</span> tensor_create<span class="op">(</span><span class="dv">3</span><span class="op">,</span> tensorShape<span class="op">);</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">size_t</span> gridShape<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> NUM_GRID_POINTS<span class="op">};</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    Tensor<span class="op">*</span> grid <span class="op">=</span> tensor_create<span class="op">(</span><span class="dv">2</span><span class="op">,</span>gridShape<span class="op">);</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    tensor_set_zero<span class="op">(</span>grid<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="prev-current-next-point-iteration" class="level2">
-<h2 class="anchored" data-anchor-id="prev-current-next-point-iteration">Prev, Current, Next Point Iteration</h2>
-<p>We take the current, previous and next points from the grid and compute the slope from that. Let’s use forward euler for now.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Notice how we’ve stopped using vectors for state. This is us decoupling physics from the tensor library. We just use a function to transform the global tensor into state.</p>
-</div>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>    State currPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>    State prevPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">-</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    State nextPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">+</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    State slope <span class="op">=</span> get_slope<span class="op">(</span>currPointState<span class="op">,</span> prevPointState<span class="op">,</span> nextPointState<span class="op">);</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    </span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="dt">char</span> name<span class="op">[</span><span class="dv">32</span><span class="op">];</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="dt">char</span> slope_name<span class="op">[</span><span class="dv">32</span><span class="op">];</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    sprintf<span class="op">(</span>name<span class="op">,</span> <span class="st">"Point </span><span class="sc">%zu</span><span class="st">"</span><span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    sprintf<span class="op">(</span>slope_name<span class="op">,</span> <span class="st">"Slope </span><span class="sc">%zu</span><span class="st">"</span><span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a>    printf<span class="op">(</span><span class="st">"State </span><span class="sc">%zu</span><span class="st"> : (</span><span class="sc">%f</span><span class="st">,</span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span>point<span class="op">,</span>currPointState<span class="op">.</span>n<span class="op">,</span>currPointState<span class="op">.</span>dn<span class="op">);</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    printf<span class="op">(</span><span class="st">"Slope </span><span class="sc">%zu</span><span class="st"> : (</span><span class="sc">%f</span><span class="st">,</span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span>point<span class="op">,</span>slope<span class="op">.</span>n<span class="op">,</span>slope<span class="op">.</span>dn<span class="op">);</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a></span>
-<span id="cb3-15"><a href="#cb3-15"></a>    currPointState<span class="op">.</span>n <span class="op">=</span> currPointState<span class="op">.</span>n <span class="op">+</span> DT<span class="op">*</span>slope<span class="op">.</span>n<span class="op">;</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a>    currPointState<span class="op">.</span>dn <span class="op">=</span> currPointState<span class="op">.</span>dn <span class="op">+</span> DT<span class="op">*</span>slope<span class="op">.</span>dn<span class="op">;</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a>    insert_state_on_grid<span class="op">(</span>grid<span class="op">,</span> point<span class="op">,</span> currPointState<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The PDE is encoded in the get_slope function as usual.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a>State get_slope<span class="op">(</span><span class="dt">const</span> State point<span class="op">,</span> <span class="dt">const</span> State leftPoint<span class="op">,</span> <span class="dt">const</span> State rightPoint<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    State slope<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="dt">float</span> diffusion    <span class="op">=</span> <span class="op">-</span>DIFFN<span class="op">*(</span><span class="dv">2</span><span class="op">*</span>point<span class="op">.</span>n<span class="op">-</span>leftPoint<span class="op">.</span>n<span class="op">-</span>rightPoint<span class="op">.</span>n<span class="op">)/(</span>DX<span class="op">*</span>DX<span class="op">);</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="dt">float</span> rg           <span class="op">=</span> <span class="op">-</span> point<span class="op">.</span>n<span class="op">/</span>TAU<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    slope<span class="op">.</span>n <span class="op">=</span> point<span class="op">.</span>dn<span class="op">;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    slope<span class="op">.</span>dn <span class="op">=</span> rg<span class="op">;</span> </span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="cf">return</span> slope<span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Debug">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Debug
+How we got there
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Trying to copy 3200b into a 400b location. - something wrong with <code>tensor_length</code></li>
-<li>Trying to copy 400b into an 8b location. - <code>tensor_sliceto</code> wasn’t calculating an offset</li>
-<li>Tensor copy shape mismatch (some large number != 2) - probs initializing shape?</li>
+<li>Information geometry described biological learning in a differential geometry type of manner.</li>
+<li>This later became relevant in the foundations of gradient descent and the mathematical analysis thereof.</li>
+<li>However, information geometry wasn’t good at describing the fractal “attractor” (learning trajectory) and sparse connectivity of biological neural systems.</li>
+<li>In contrast, the structured connectivity of AI was a great place for information geometry. Hence, nowadays, IG can typically be found in “Advanced Optimization for ML” and other such courses.</li>
 </ul>
 </div>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource log number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>Tensor copy shape 0 mismatch (tsr1 1203982336 != tsr2 2)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>[1203982336,2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="weak-form-of-minority-carrier-diffusion" class="level1">
-<h1>Weak Form of Minority Carrier Diffusion</h1>
-</section>
-<section id="finite-element" class="level1">
-<h1>Finite Element</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="References">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Surya Ganguli - <em>Statistical Mechanics of Learning</em>, Stanford</li>
+<li>Pratik Chaudhari - <em>Principles in Deep Learning</em>, UPenn</li>
+<li>Shun-Ichi Amari - <em>Information Geometry and its Applications</em></li>
+<li>Various (ICL, NYU, Qualcomm, Deepmind) - <em><a href="https://arxiv.org/pdf/2104.13478">Geometric Deep Learning</a></em></li>
+</ul>
+</div>
+</div>
+<p>Information Geometry comes from the differential mathematics side of AI. The other sides are rigorous statistics, dynamics (edge of chaos, etc), and physicists (“phase transition” and such).</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,5 +1,5 @@
 ---
-title: DSE with CMOS 2.0
+title: DSE for CMOS 2.0 Compute-Memory Fabrics
 subtitle: Preplanning
 author: Lawrence Quizon
 date: 2026-04-06
@@ -13,47 +13,96 @@ format:
     theme:
       - default
       - ../law.scss
-    footer: Compute-memory Fabric DSE with CMOS 2.0
+    footer: DSE for CMOS 2.0 Compute-Memory Fabrics
     fontsize: 24pt
     menu: true
     width: 1280
     height: 720
     filters:
       - ../scripts/auto-fragment.lua
+      - ../../scripts/gfm_to_quarto_filter.lua
     toc: true
+    toc-depth: 1
 mainfont: Trebuchet MS
 sansfont: Trebuchet MS
-modified: 2026-04-06
+modified: 2026-04-08
 ---
 
-# Overall Idea: DSE for Vertically-stacked Compute-Memory Fabrics
+# For the meeting/ ideas for the proposal.
 
-## CMOS 2.0
+## Questions
 
-:::{.columns}
-:::{.column width="50%"}
-- End of area scaling causes 3D stacking.
-- CMOS 2.0 is IMEC's term for its 3D stacking enabled by hybrid bonding interfaces different process layers.
-- Specifically, eDRAM process on top of regular process is possible.
-- Having high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics.
+What is the timeline for the proposal?
+
+What's the approval process for the proposal?
+
+What are my deliverables for this proposal?
+
+How much freedom do we have to shape the goals of the project?
+
+Difference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?
+
+## Ideas for the proposal
+
+My dream: [AI should be entirely self-contained in its hardware]{.bigger .color-emph}
+
+- Only training and inference inputs/outputs should be coming in and out of the chip.
+- LLMs live in the chip.
+
+Barriers:
+
+- Limitations of 2D memory capacity (like Cerebras WSE)
+
+This is solved by 3D integration like CMOS 2.0.
+
+## From ZigZag-style Accelerators to CMF
+
+![](attachments/towardscmf.png)
+ 
+> [!note]
+> Most practical accelerators are Stream-style or ZigZag-style.
+> 
+> A lot of academic demonstrations of IMC/NMC fit in the third style.
+> 
+> NoC-style accelerators like WSE exist as samples of (4).
+
+## Problem Dimensions {style="font-size: 20pt;"}
+
+- **CMOS 2.0**. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature? 
+- **Towards DSE**. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.
+- **Thermal Problem of 3D stacks**. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation. 
+- **Heterogenous Computational Memory.** 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.
+- **Special Memory Management.** Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.^[Donghyuk '16 ACM TACO "Simultaneous multi-layer access"]
+
+# Specifics and Implementation
+
+## Potential DSE/Modelling Framework
+
+:::: {.columns}
+
+::: {.column}
+ 
+Requirements:
+
+ - NoC-style dataflow topologies (mesh, torus, etc.)
+ - Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)
+ - Modelling of heterogenous regular or computational memory types 
+ - Thermal modelling
+
 :::
-:::{.column width="50%"}
-![](attachments/Pasted%20image%2020260406142623.png)
+
+::: {.column}
+
+Insights: 
+
+- Loop ordering doesn't feel as powerful if memory is no longer hierarchical
+- Graph techniques can work
+	- MARP + coloring - adjacent operations cannot be on the same tile
+
 :::
-:::
 
-## Main Problem
-
-CMOS 2.0-based 3D stacking capabilities need to be accounted for by the existing DSE frameworks. 
-
-New problem dimensions:
-
-- Adding Multicore NoC-type NMC accelerators in the modelling space
-- Overall architectural arrangements of such 3D-stacked chips
-- Much denser integration introduces special temperature-related constraints which affects each memory technology differently
-
-
-## Build on ZigZag
+::::
+## Building on ZigZag
 
 Plan: Extend ZigZag to account for [NoC-style compute-memory fabrics]{.color-emph}.  
 
@@ -74,7 +123,43 @@ Looking into ZigZag, the project's direction seems to be:
 - Symons - Main repo maintainer, Stream
 - Geens - LLM-specific DSE (ZigZag-LLM)
 
-# Specifics: DRAM NoC Example
+# Project Visions
+Scope depends on how large the project's proposal actually is
+
+## Path to self-contained Training and Inference
+
+Goal: [Avoid off-chip data movement completely]{.color-emph} 
+
+:::: {.columns}
+
+::: {.column width=.47}
+
+| LLM         | INT8   | INT4  |
+| ----------- | ------ | ----- |
+| Deepseek v3 | 156G   | 78G   |
+| Llama-2     | 17.5G  | 8.75G |
+| Mistral 7   | 1.825G | 0.9G  |
+
+Would be nice to be able to demonstrate the SLMs in a fully self-contained demonstration^[Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.]
+^[[Barriers to Monolithic LLM inference](../../../03_Concepts/Barriers%20to%20Monolithic%20LLM%20inference.md)] on CMOS 2.0
+
+:::
+
+::: {.column width=.47}
+
+Practical enablers:
+
+- **MARP** - increases spatial utilization
+- **5PP**^[Dazzi, Martino, et al. "5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory." _arXiv preprint arXiv:1906.03474_ (2019).] - Practically, weight movement between "cores" (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?
+
+:::
+
+::::
+
+
+
+
+# Specifics, Details
 
 ## Near-Memory Compute with Buffer Memory Above
 
@@ -85,8 +170,6 @@ We can utilize NoC-based accelerator architectures^[e.g. Eyeriss2, NeuRRAM, Neur
 
 - Place compute near large global buffers in a scalable architecture
 - Come with mapping algorithms
-
-> *Challenge: Make these compatible with ZigZag* 
 
 :::
 
@@ -101,7 +184,7 @@ We can utilize NoC-based accelerator architectures^[e.g. Eyeriss2, NeuRRAM, Neur
 
 ## DRAM: Explicit Refresh
 
-With explicitly managed memory, we explicitly know when we're not using the DRAM. 
+With explicitly managed memory, we explicitly know when we're not using the DRAM.  
 
 Refreshes typically distributed evenly over all time, $t_r\approx 64ms$ but you stall DRAM requests every $64ms/depth$ ($\sim \mu s$).
 
@@ -160,19 +243,19 @@ flowchart TD
 
 :::: 
 
-## Electrothermal-Hardware-Algo Co-design (2)
+## Electrothermal-Hardware-Algo Co-design (2) {.unlisted} 
 
 Coarse-grid modelling of the thermal stack from a top-level floorplan with a heat-coupling equation
 $$\mathbf{C} \frac{d\mathbf{T}}{dt} = -\mathbf{G}\mathbf{T} + \mathbf{P}$$
-Problem: Needs a preliminary top-level floorplan to discretize.
+Problem: Needs a preliminary top-level floorplan to discretize. 
 
 Each block has a specific thermal characteristic (from PrimeTime power estimates).
 
 
-## Timeline
+## Timeline  
 
 
-```{mermaid}
+```mermaid
 %%| mermaid-format: svg
 %%| font-size: 24pt
 %%{init: {  
@@ -191,12 +274,26 @@ timeline
 	Y4: CMF tile-based NoC accelerator tapeout.  
 	  : Validate - Cost-Model, Workloads, Thermal Characteristics
 ```
- 
 
-## Timeline (2)
+## Timeline (2) 
+
+```mermaid
+gantt
+    section Research Foundations
+    NMC-NoC + CMF architecture survey                         :a1, 2027, 6M
+    CMOS2.0 memory characterization for analytical modelling  :a2, after b1, 6M
+    Initial CMF architectures                                 :a3, after a1, 6M
+
+    section ZigZag: DSE & Estimator
+    Validation vs existing CMF architectures                  :b2, after a2, 6M
+    Validation vs CMOS2.0 memories                            :b3, after a2, 6M
+```
 
 
-```{mermaid}
+## Timeline (3) {.unlisted}
+
+
+```mermaid
 
 %%| mermaid-format: svg
 
@@ -229,7 +326,7 @@ gantt
     
 ```
 
-# Preliminary Characterization
+# Preliminary Characterization {.unlisted}
 
 - Based off typical 3D DRAM fabrics and their communication interfaces
 - Use Ramulator?
@@ -241,3 +338,49 @@ SAFARI group has had decades of work on DRAM-based IMC
 
 - Focuses on accelerating `memset` and `memcpy`^[They argue these comprise a lot of the typical workload]
 - General workload acceleration (not DNN targeted)  
+
+# Appendix {.unlisted}
+
+## Applicability of ZigZag
+
+ZigZag finds its data reuse capability from maximizing temporal reuse and utilization.
+However, in a fully self-contained CMF, _there is no weight movement_.
+
+How about activation movement?
+
+To solve activation movement, we take inspiration from 5PP and mesh-style data movement. This is different from ZigZag's hierarchical transferred data movement (because it, in fact, is strictly single core).
+Stream's multicore data reuse **assumes that a specific memory level is shared between cores.** 
+I doubt this can be the case _across tiles_.
+ 
+## Demonstrations of Integrated CIM-inference
+
+- Cerebras WSE3 - Full-wafer divided into reticle-limit chips.
+- Corsair^[Srivastava, Satyam, et al. "Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration." IEEE Micro (2025).] - d-Matrix (company) in IEEE Micro Magazine
+- 3D-CiMLet^[Du, Shuting, et al. "3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning." 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.] - Design-space exploration work by Purdue on 3D integration CiM with different memory types.
+
+![](attachments/cerebrassinglecore.png)^[Cerebras WSE3 White Paper]
+
+![](attachments/3dcimlet.png)^[3D-CiMLET, Purdue]
+
+
+## Demonstrations of Integrated CIM-inference (2) {.unlisted}
+
+Things to look out for
+1. Data Routing Techniques
+2. Core Arrangement
+3. Thermal Considerations
+4. 3D integration style/level
+
+## CMOS 2.0
+
+:::{.columns}
+:::{.column width="50%"}
+- End of area scaling causes 3D stacking.
+- CMOS 2.0 is IMEC's term for its 3D stacking enabled by hybrid bonding interfaces different process layers.
+- Specifically, eDRAM process on top of regular process is possible.
+- Having high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics.
+:::
+:::{.column width="50%"}
+![](attachments/Pasted%20image%2020260406142623.png)
+:::
+:::

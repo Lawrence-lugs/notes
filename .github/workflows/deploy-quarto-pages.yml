@@ -1,0 +1,72 @@
+name: Deploy Quarto Site to GitHub Pages
+
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - ".devcontainer/**"
+      - "_quarto.yml"
+      - "index.qmd"
+      - "notes/**"
+      - "_notes/**"
+      - "styles.css"
+      - "scripts/**"
+      - ".github/workflows/test-quarto.yml"
+  workflow_dispatch:
+
+env:
+  IMAGE: ghcr.io/lawrence-lugs/quartolatex:latest
+
+permissions:
+  contents: read
+  packages: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/gh-pages'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull prebuilt Quarto image
+        run: docker pull "${{ env.IMAGE }}"
+
+      - name: Render site in container
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            "${{ env.IMAGE }}" \
+            quarto render
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

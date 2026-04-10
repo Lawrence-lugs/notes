@@ -1164,9 +1164,9 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#cmos-2.0",
     "href": "slides/inPrep/DSE with CMOS2p0.html#cmos-2.0",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "CMOS 2.0",
-    "text": "CMOS 2.0\n\n\n\nEnd of area scaling causes 3D stacking.\nCMOS 2.0 is IMEC’s term for its 3D stacking enabled by hybrid bonding interfaces different process layers.\nSpecifically, eDRAM process on top of regular process is possible.\nHaving high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics."
+    "text": "CMOS 2.0\n\n\n\nEnd of area scaling causes 3D stacking.\nCMOS 2.0 is IMEC’s term for its 3D stacking enabled by hybrid bonding interfaces different process layers.\nSpecifically, eDRAM process on top of regular process is possible.\nHaving high bandwidth connections between eDRAM above and compute below would allow close to ideal compute-memory fabrics.\n\n\n\n\n\n\n\n\nDSE for CMOS 2.0 Compute-Memory Fabrics"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzags-current-state",
@@ -1178,7 +1178,7 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#main-problem",
     "href": "slides/inPrep/DSE with CMOS2p0.html#main-problem",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Main Problem",
     "text": "Main Problem\nCMOS 2.0-based 3D stacking capabilities need to be accounted for by the existing DSE frameworks.\nNew problem dimensions:\n\nAdding Multicore NoC-type NMC accelerators in the modelling space\nOverall architectural arrangements of such 3D-stacked chips\nMuch denser integration introduces special temperature-related constraints which affects each memory technology differently"
   },
@@ -1192,14 +1192,14 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#dram-explicit-refresh",
     "href": "slides/inPrep/DSE with CMOS2p0.html#dram-explicit-refresh",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "DRAM: Explicit Refresh",
     "text": "DRAM: Explicit Refresh\nWith explicitly managed memory, we explicitly know when we’re not using the DRAM.\nRefreshes typically distributed evenly over all time, \\(t_r\\approx 64ms\\) but you stall DRAM requests every \\(64ms/depth\\) (\\(\\sim \\mu s\\)).\nIt takes about \\(~400n*8192=3.2ms\\) for a full refresh for all rows at once.\nGoal: interlace the DRAM refresh with the workload scheduling.\n\nChallenge: explicitly control refresh durations as a scheduling constraint in ZigZag."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#dram-dark-silicon",
     "href": "slides/inPrep/DSE with CMOS2p0.html#dram-dark-silicon",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "DRAM: Dark Silicon",
     "text": "DRAM: Dark Silicon\nDRAM refresh requirement vs temp. can be modelled via Arrhenius model (energy barrier)1 \\[t_{ret}(T)=t_{ret}(T_0)\\cdot e^{\\frac{E_a}{k_B}(1/T-1/T_0)}\\] We find that the \\(t_r\\propto e^{-T}\\) and so heating makes refresh cycle constraints more frequent2\nThe problem is exarcerbated in 3D stacking which traps heat.\n\nChallenge: Account for temperature in workload scheduling\n\nMay require probabilistic modelling later on.in the first place, do DNNs care so much about the errors?"
   },
@@ -1213,9 +1213,9 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with-buffer-memory-above",
     "href": "slides/inPrep/DSE with CMOS2p0.html#near-memory-compute-with-buffer-memory-above",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Near-Memory Compute with Buffer Memory Above",
-    "text": "Near-Memory Compute with Buffer Memory Above\n\n\nWe can utilize NoC-based accelerator architectures1 as effective architectures on 3D compute-memory fabrics. They:\n\nPlace compute near large global buffers in a scalable architecture\nCome with mapping algorithms\n\n\nChallenge: Make these compatible with ZigZag\n\n\n\n\n \n\n\n\n\n2\n\n\n\n\ne.g. Eyeriss2, NeuRRAM, NeuroSIM Mutlu, Onur, et al. “A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243."
+    "text": "Near-Memory Compute with Buffer Memory Above\n\n\nWe can utilize NoC-based accelerator architectures1 as effective architectures on 3D compute-memory fabrics. They:\n\nPlace compute near large global buffers in a scalable architecture\nCome with mapping algorithms\n\n\n\n\n \n\n\n\n\n2\n\n\n\n\ne.g. Eyeriss2, NeuRRAM, NeuroSIM Mutlu, Onur, et al. “A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#accounting",
@@ -1241,28 +1241,28 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design",
     "href": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Electrothermal-Hardware-Algo Co-design",
     "text": "Electrothermal-Hardware-Algo Co-design\n\n\nClassical co-design models latency and energy vs workload.\nIf we eliminate the memory wall, we may be bottlenecked by the thermal power budget.\n\nMust characterize accelerator’s heating effect and schedule power gating/core usage accordingly.\nThermal simulations model constraints in the loop.\n\n\n\n\n\n\n\n\n\n\n\nrefresh constraint\n\n\n\n\n\n\n\n\n\n\n\nCompact thermal simulation\n\n\n\nRefine Scheduling and Mapping\n\n\n\nPrimeTime Power Estimates"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design-2",
     "href": "slides/inPrep/DSE with CMOS2p0.html#electrothermal-hardware-algo-co-design-2",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Electrothermal-Hardware-Algo Co-design (2)",
     "text": "Electrothermal-Hardware-Algo Co-design (2)\nCoarse-grid modelling of the thermal stack from a top-level floorplan with a heat-coupling equation \\[\\mathbf{C} \\frac{d\\mathbf{T}}{dt} = -\\mathbf{G}\\mathbf{T} + \\mathbf{P}\\] Problem: Needs a preliminary top-level floorplan to discretize.\nEach block has a specific thermal characteristic (from PrimeTime power estimates)."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#build-on-zigzag",
     "href": "slides/inPrep/DSE with CMOS2p0.html#build-on-zigzag",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Build on ZigZag",
     "text": "Build on ZigZag\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics.\nRelevant extensions:\n\nZigZag-LLM - we target LLM acceleration and GNNs1\nMARP + Stream - multicore compute-memory fabric efficiency\nZigZag-IMC - account for special dataflows available in IMC\n\n\nI’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.\n\nThere is no particular extension for GNNs yet. Treat as usual OR extend ourselves."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzag---current-state",
     "href": "slides/inPrep/DSE with CMOS2p0.html#zigzag---current-state",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "ZigZag - Current State",
     "text": "ZigZag - Current State\nLooking into ZigZag, the project’s direction seems to be:\n\nMei1 - Original cost estimation + DSE\nSun - IMC extensions (ZigZag-IMC)\nSymons - Main repo maintainer, Stream\nGeens - LLM-specific DSE (ZigZag-LLM)\n\nGraduated"
   },
@@ -1276,22 +1276,148 @@
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#onur-mutlu-stack",
     "href": "slides/inPrep/DSE with CMOS2p0.html#onur-mutlu-stack",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Onur Mutlu Stack",
-    "text": "Onur Mutlu Stack\nSAFARI group has had decades of work on DRAM-based IMC\n\nFocuses on accelerating memset and memcpy1\nGeneral workload acceleration (not DNN targeted)\n\n\n\n\nCompute-memory Fabric DSE with CMOS 2.0\n\n\nThey argue these comprise a lot of the typical workload"
+    "text": "Onur Mutlu Stack\nSAFARI group has had decades of work on DRAM-based IMC\n\nFocuses on accelerating memset and memcpy1\nGeneral workload acceleration (not DNN targeted)\n\nThey argue these comprise a lot of the typical workload"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline",
     "href": "slides/inPrep/DSE with CMOS2p0.html#timeline",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Timeline",
-    "text": "Timeline\n\n\n\n\n\n\n\nY1NMC-NoC (CMF)ArchitecturesModelling, Survey.ZigZag Cost-Modelwork with CMOS2.0memory stackscharacterization.Y2Complete CMFcost-modelextensions toZigZag.CMF tile scalableRTLY3CMF tile tapeout.Validate -Cost-Model,Workloads, ThermalCharacteristicsY4CMF tile-based NoCaccelerator tapeout.Validate -Cost-Model,Workloads, ThermalCharacteristics"
+    "text": "Timeline\n%%| mermaid-format: svg\n%%| font-size: 24pt\n%%{init: {  \n'theme': 'dark',  \n'timeline': {  \n'fontSize': '24pt'  \n}  \n}}%%\ntimeline\n    Y1: NMC-NoC (CMF) Architectures Modelling, Survey.\n      : ZigZag Cost-Model work with CMOS2.0 memory stacks characterization.\n    Y2: Complete CMF cost-model extensions to ZigZag.\n      : CMF tile scalable RTL\n    Y3: CMF tile tapeout.\n      : Validate - Cost-Model, Workloads, Thermal Characteristics\n    Y4: CMF tile-based NoC accelerator tapeout.  \n      : Validate - Cost-Model, Workloads, Thermal Characteristics"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline-2",
     "href": "slides/inPrep/DSE with CMOS2p0.html#timeline-2",
-    "title": "DSE with CMOS 2.0",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Timeline (2)",
+    "text": "Timeline (2)\ngantt\n    section Research Foundations\n    NMC-NoC + CMF architecture survey                         :a1, 2027, 6M\n    CMOS2.0 memory characterization for analytical modelling  :a2, after b1, 6M\n    Initial CMF architectures                                 :a3, after a1, 6M\n\n    section ZigZag: DSE & Estimator\n    Validation vs existing CMF architectures                  :b2, after a2, 6M\n    Validation vs CMOS2.0 memories                            :b3, after a2, 6M"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#tiers-by-ambition",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#tiers-by-ambition",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Tiers by Ambition",
+    "text": "Tiers by Ambition\nDepending on the scale of the project…\n\nOptimal single compute-memory fabric tile\nTrue compute-memory fabric (multiple tiles)\n\nPurely hardware self-contained LLMs\n\nMinimal to no weight movement\nFabric connectivity decided by architecture\n“AI brain”"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#self-contained-llm-dream",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#self-contained-llm-dream",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Self-contained LLM Dream",
+    "text": "Self-contained LLM Dream\n\n\n\n\n\nLLM\nINT8\nINT4\n\n\n\n\nDeepseek v3\n156G\n78G\n\n\nLlama-2\n17.5G\n8.75G\n\n\nMistral 7\n1.825G\n0.9G\n\n\n\nWould be nice to be able to demonstrate the SLMs in a fully self-contained demonstration1 2 on CMOS 2.0\n\nPractical enablers:\n\nMARP - increases utilization\n5PP3 - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?\n\n\n\nCerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.Barriers to Monolithic LLM inferenceDazzi, Martino, et al. “5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.” arXiv preprint arXiv:1906.03474 (2019)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#applicability-of-zigzag",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#applicability-of-zigzag",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Applicability of ZigZag",
+    "text": "Applicability of ZigZag\nZigZag finds its data reuse capability from maximizing temporal reuse and utilization. However, in a fully self-contained CMF, there is no weight movement.\nHow about activation movement?\nTo solve activation movement, we take inspiration from 5PP and mesh-style data movement. This is different from ZigZag’s hierarchical transferred data movement (because it, in fact, is strictly single core). Stream’s multicore data reuse assumes that a specific memory level is shared between cores. I doubt this can be the case across tiles."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Demonstrations of Integrated CIM-inference",
+    "text": "Demonstrations of Integrated CIM-inference\n\nCerebras WSE3 - Full-wafer divided into reticle-limit chips.\nCorsair1 - d-Matrix (company) in IEEE Micro Magazine\n3D-CiMLet2 - Design-space exploration work by Purdue on 3D integration CiM with different memory types.\n\n3\n4\nSrivastava, Satyam, et al. “Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).Du, Shuting, et al. “3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.Cerebras WSE3 White Paper3D-CiMLET, Purdue"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference-2",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference-2",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Demonstrations of Integrated CIM-inference (2)",
+    "text": "Demonstrations of Integrated CIM-inference (2)\nThings to look out for 1. Data Routing Techniques 2. Core Arrangement 3. Thermal Considerations 4. 3D integration style/level"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#self-contained-llm-dream-1",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#self-contained-llm-dream-1",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Self-contained LLM Dream",
+    "text": "Self-contained LLM Dream\n\n\n\n\n\nLLM\nINT8\nINT4\n\n\n\n\nDeepseek v3\n156G\n78G\n\n\nLlama-2\n17.5G\n8.75G\n\n\nMistral 7\n1.825G\n0.9G\n\n\n\nWould be nice to be able to demonstrate the SLMs in a fully self-contained demonstration1 2.\n\nPractical enablers:\n\nMARP - increases utilization\n5PP3 - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?\n\n\n\nCerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.Barriers to Monolithic LLM inferenceDazzi, Martino, et al. “5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.” arXiv preprint arXiv:1906.03474 (2019)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#from-zigzag-style-accelerators-to",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#from-zigzag-style-accelerators-to",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "From ZigZag-style Accelerators to",
+    "text": "From ZigZag-style Accelerators to"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#from-zigzag-style-accelerators-to-cmf",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#from-zigzag-style-accelerators-to-cmf",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "From ZigZag-style Accelerators to CMF",
+    "text": "From ZigZag-style Accelerators to CMF\n\n\n\n\n\n\n\nNote\n\n\nMost practical accelerators are Stream-style or ZigZag-style.\nA lot of academic demonstrations of IMC/NMC fit in the third style.\nNoC-style accelerators like WSE exist as samples of (4)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline-2-1",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#timeline-2-1",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Timeline (2)",
     "text": "Timeline (2)\n\n\n\n\n\n%%| mermaid-format: svg\n\n%%{init: {  \n'gantt': {\n    'fontSize': '12',\n    'useWidth': '800'\n}  \n}}%%\ngantt\n    title CMF / NMC-NoC Research & Tapeout Roadmap\n    dateFormat  YYYY\n    axisFormat %m-%Y\n\n    section Research Foundations\n    NMC-NoC + CMF architecture survey        :a1, 2027, 6M\n    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M\n    Initial CMF architectures                :a3, after a1, 6M\n\n    section ZigZag: DSE & Estimator\n    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y\n    Validation vs existing CMF architectures :b2, after a2, 6M\n    Validation vs CMOS2.0 memories           :b3, after a2, 6M\n\n    section Silicon\n    DSE CMF Tile Architecture             :crit,c1, after a3, 1y\n    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y\n    DSE CMF Array Architecture                :crit, c4, after c1, 1y\n    Tapeout 2 (CMF Array)                               :c3, after c2, 1y"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline-3",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#timeline-3",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Timeline (3)",
+    "text": "Timeline (3)\n\n%%| mermaid-format: svg\n\n%%{init: {  \n'gantt': {\n    'fontSize': '12',\n    'useWidth': '800'\n}  \n}}%%\ngantt\n    title CMF / NMC-NoC Research & Tapeout Roadmap\n    dateFormat  YYYY\n    axisFormat %m-%Y\n\n    section Research Foundations\n    NMC-NoC + CMF architecture survey        :a1, 2027, 6M\n    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M\n    Initial CMF architectures                :a3, after a1, 6M\n\n    section ZigZag: DSE & Estimator\n    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y\n    Validation vs existing CMF architectures :b2, after a2, 6M\n    Validation vs CMOS2.0 memories           :b3, after a2, 6M\n\n    section Silicon\n    DSE CMF Tile Architecture             :crit,c1, after a3, 1y\n    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y\n    DSE CMF Array Architecture                :crit, c4, after c1, 1y\n    Tapeout 2 (CMF Array)                               :c3, after c2, 1y"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#questions",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#questions",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Questions",
+    "text": "Questions\nWhat is the timeline for the proposal?\nWhat’s the approval process for the proposal?\nWhat are my deliverables for this proposal?\nHow much freedom do we have to shape the goals of the project?\nDifference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#problem-dimensions",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#problem-dimensions",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Problem Dimensions",
+    "text": "Problem Dimensions\n\nCMOS 2.0. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?\nTowards DSE. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.\nThermal Problem of 3D stacks. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.\nHeterogenous Computational Memory. 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.\nSpecial Memory Management. Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.1\n\nDonghyuk ’16 ACM TACO “Simultaneous multi-layer access”"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#potential-dse-framework",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#potential-dse-framework",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Potential DSE Framework",
+    "text": "Potential DSE Framework\nRequirements:\n\nAccount for NoC-style dataflow topologies (mesh, to)"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#building-on-zigzag",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#building-on-zigzag",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Building on ZigZag",
+    "text": "Building on ZigZag\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics.\nRelevant extensions:\n\nZigZag-LLM - we target LLM acceleration and GNNs1\nMARP + Stream - multicore compute-memory fabric efficiency\nZigZag-IMC - account for special dataflows available in IMC\n\n\nI’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.\n\nThere is no particular extension for GNNs yet. Treat as usual OR extend ourselves."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#potential-dsemodelling-framework",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#potential-dsemodelling-framework",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Potential DSE/Modelling Framework",
+    "text": "Potential DSE/Modelling Framework\n\n\nRequirements:\n\nNoC-style dataflow topologies (mesh, torus, etc.)\nFlexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)\nModelling of heterogenous regular or computational memory types\nThermal modelling\n\n\nInsights:\n\nLoop ordering doesn’t feel as powerful if memory is no longer hierarchical\nGraph techniques can work\n\nMARP + coloring - adjacent operations cannot be on the same tile"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#self-contained-training-and-inference",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#self-contained-training-and-inference",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Self-contained Training and Inference",
+    "text": "Self-contained Training and Inference\nGoal: Avoid off-chip data movement completely\n\n\n\n\n\nLLM\nINT8\nINT4\n\n\n\n\nDeepseek v3\n156G\n78G\n\n\nLlama-2\n17.5G\n8.75G\n\n\nMistral 7\n1.825G\n0.9G\n\n\n\nWould be nice to be able to demonstrate the SLMs in a fully self-contained demonstration1 2 on CMOS 2.0\n\nPractical enablers:\n\nMARP - increases spatial utilization\n5PP3 - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?\n\n\n\nCerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.Barriers to Monolithic LLM inferenceDazzi, Martino, et al. “5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.” arXiv preprint arXiv:1906.03474 (2019)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#ideas-for-the-proposal",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#ideas-for-the-proposal",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Ideas for the proposal",
+    "text": "Ideas for the proposal\nMy dream: AI should be entirely self-contained in its hardware\n\nOnly training and inference inputs/outputs should be coming in and out of the chip.\nLLMs live in the chip.\n\nBarriers:\n\nLimitations of 2D memory capacity (like Cerebras WSE)\n\nThis is solved by 3D integration like CMOS 2.0."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#path-to-self-contained-training-and-inference",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#path-to-self-contained-training-and-inference",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Path to self-contained Training and Inference",
+    "text": "Path to self-contained Training and Inference\nGoal: Avoid off-chip data movement completely\n\n\n\n\n\nLLM\nINT8\nINT4\n\n\n\n\nDeepseek v3\n156G\n78G\n\n\nLlama-2\n17.5G\n8.75G\n\n\nMistral 7\n1.825G\n0.9G\n\n\n\nWould be nice to be able to demonstrate the SLMs in a fully self-contained demonstration1 2 on CMOS 2.0\n\nPractical enablers:\n\nMARP - increases spatial utilization\n5PP3 - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?\n\n\n\nCerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.Barriers to Monolithic LLM inferenceDazzi, Martino, et al. “5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.” arXiv preprint arXiv:1906.03474 (2019)."
   }
 ]

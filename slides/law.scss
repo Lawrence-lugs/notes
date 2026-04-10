@@ -243,3 +243,17 @@ div.callout.definition .callout-body {
   width: 100% !important;
   height: auto !important;
 }
+
+/* In reveal slides, make mermaid diagrams contain-fit in r-stretch regions */
+.reveal .slides .r-stretch .cell-output-display,
+.reveal .slides .r-stretch .mermaid {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.reveal .slides .r-stretch .mermaid svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}

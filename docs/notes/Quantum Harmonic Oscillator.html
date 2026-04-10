@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2025-12-12">
 
-<title>Lawrence Roman A. Quizon - Minority Carrier Diffusion Equations with explicit FEM in C</title>
+<title>Lawrence Roman A. Quizon - The Quantum Harmonic Oscillator has Energy Quanta (Shocking, I know)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -135,7 +101,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -167,13 +133,24 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#there-must-be-a-number-operator-right" id="toc-there-must-be-a-number-operator-right" class="nav-link active" data-scroll-target="#there-must-be-a-number-operator-right">There must be a number operator, right?!</a></li>
+  <li><a href="#annihilation-and-creation-by-coincidence" id="toc-annihilation-and-creation-by-coincidence" class="nav-link" data-scroll-target="#annihilation-and-creation-by-coincidence">Annihilation and Creation by Coincidence</a></li>
+  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization">normalization</a></li>
+  <li><a href="#phonons" id="toc-phonons" class="nav-link" data-scroll-target="#phonons">Phonons</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Minority Carrier Diffusion Equations with explicit FEM in C</h1>
+<h1 class="title">The Quantum Harmonic Oscillator has Energy Quanta (Shocking, I know)</h1>
 </div>
 
 
@@ -184,7 +161,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 12, 2026</p>
+      <p class="date">December 12, 2025</p>
     </div>
   </div>
   
@@ -196,134 +173,65 @@ window.Quarto = {
 </header>
 
 
-<div class="callout-question">
-<ul>
-<li>How do we deal with PDEs in the current RK4 setup?</li>
-<li>What do we need to do to implement FEM in C?</li>
-</ul>
-</div>
-<section id="finite-difference" class="level1">
-<h1>Finite Difference</h1>
-<p>Let’s start with an easy formulation: minority carrier diffusion with RG</p>
-<p><span class="math display">\[\frac{dn}{dt}=D_n\frac{d^2n}{dx^2}-\frac{n}{\tau_n}\]</span> <span class="math display">\[n\Big\vert_{x=0}=n_0;n\Big\vert_{t=0}=0\]</span> <span class="math display">\[n\Big\vert_{x=L}=n_0\]</span> where <span class="math inline">\(n\)</span> is the minority carrier concentration.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Aside">
+<section id="there-must-be-a-number-operator-right" class="level1">
+<h1>There must be a number operator, right?!</h1>
+<p>The hamiltonian/energy operator for the quantum harmonic oscillator is <span class="math display">\[\hat{H} =-\frac{\hat{p}^2}{2m}+\frac{m\omega\hat{x}^2}{2}\]</span> <span class="math display">\[\hat{H} =\frac{m\omega^2}{2}(\hat{x}^2-\frac{\hat{p}^2}{m^2\omega^2})\]</span> We know from the quantum revolution that the energy is a multiple of some quantum ground state <span class="math inline">\(\frac{\hbar\omega}{2}\)</span> (zero-point energy of the heisenberg uncertainty principle). Hence, we introduce the number operator that hopefully gives that specific “number”. This form can do that for us: <span class="math display">\[\hat{H}=\hbar\omega(\hat{n}+\frac{1}{2})\]</span> Because things in the quantum realm are positive-definite and the number operator is hermitian (why?), the number operator must be Cholesky decomposable: <span class="math display">\[\hat{n}=\hat{a}^\dagger\hat{a}\]</span> In the first place we were tempted to factor the Hamiltonian, so this is good. Then, we can try to see how we can transform the Hamiltonian into these factors. <span class="math display">\[\hat{n}=\frac{m\omega}{2\hbar}(\hat{x}^2-\frac{\hat{p}^2}{m^2\omega^2})-\frac{1}{2}\]</span> We observe that there must be “gunk” left over as <span class="math inline">\(1/2\)</span>. This maybe comes from the commutator junk. Let’s see. Anyway, we can then define: <span class="math display">\[\hat{a}^\dagger=\sqrt{\frac{m\omega}{2\hbar}}(\hat{x}-\frac{i\hat{p}}{m\omega})\]</span> <span class="math display">\[\hat{a}=\sqrt{\frac{m\omega}{2\hbar}}(\hat{x}+\frac{i\hat{p}}{m\omega})\]</span> Let’s confirm the commutator junk: <span class="math display">\[\hat{a}^\dagger\hat{a}=\frac{m\omega}{2\hbar}(\hat{x}^2+\frac{\hat{p}^2}{m^2\omega^2}+i\frac{\hat{x}\hat{p}-\hat{p}\hat{x}}{m\omega})\]</span> and since <span class="math inline">\([\hat{x},\hat{p}]=i\hbar\)</span>, <span class="math display">\[\hat{a}^\dagger\hat{a}=\frac{m\omega}{2\hbar}(\hat{x}^2+\frac{\hat{p}^2}{m\omega})-\frac{1}{2}\]</span> which we can plug into the original and see that it’s correct.</p>
+</section>
+<section id="annihilation-and-creation-by-coincidence" class="level1">
+<h1>Annihilation and Creation by Coincidence</h1>
+<p>By coincidence, the Cholesky decomposition of the number operator somehow are the annihilation and creation operators. We find this out by smashing the operators into the eigenvector <span class="math inline">\(\ket{n}\)</span>.</p>
+<p>We define <span class="math inline">\(\ket{n}\)</span> as the wavefunction at level <span class="math inline">\(n\)</span>.</p>
+<p>So then, <span class="math inline">\(\hat{n}\ket{n}=n\ket{n}\)</span></p>
+<p>As an aside, we tried smashing the annihilation and destruction operators together and found that: <span class="math display">\[[\hat{a},a^\dagger]=\hat{a}\hat{a}^\dagger-\hat{a}^\dagger\hat{a}=1\]</span> <span class="math display">\[\hat{n}=\hat{a}\hat{a}^\dagger-1\]</span> Now let’s see what happens to the wavefunction number if we apply just part of the number operator: <span class="math display">\[\hat{n}\hat{a}\ket{n}=(\hat{a}\hat{a}^\dagger-1)\hat{a}\ket{n}=(\hat{a}\hat{n}-\hat{a})\ket{n}=(n-1)\hat{a}\ket{n}\]</span> and wow, it turns out that the <span class="math inline">\(\hat{a}\ket{n}\)</span> has a number of <span class="math inline">\(n-1\)</span>! <span class="math display">\[\hat{n}\hat{a}^\dagger\ket{n}=\hat{a}^\dagger\hat{a}\hat{a}^\dagger\ket{n}=\hat{a}^\dagger(\hat{n}+1)\ket{n}=(n+1)\hat{a}^\dagger\ket{n}\]</span> and wow, it turns out that <span class="math inline">\(\hat{a}^\dagger\ket{n}\)</span> has a number of <span class="math inline">\(n+1\)</span>!</p>
+</section>
+<section id="normalization" class="level1">
+<h1>normalization</h1>
+<p>But wait! We never said the annihilation and creation operators would end up with normalized eigenvectors!</p>
+<p>By choice, <span class="math inline">\(\ket{n}\)</span> is already normalized, and so would <span class="math inline">\(\ket{n-1}\)</span> or <span class="math inline">\(\ket{n+1}\)</span> and any other specially named “state at this level <span class="math inline">\(n\)</span>”.</p>
+<p>So then, we need to reconcile the creation operators by finding the multiplier that makes sure the result is actually the normalized <span class="math inline">\(\ket{n-1}\)</span>.</p>
+<p><span class="math display">\[\hat{a}\ket{n}=k\ket{n-1}\]</span> <span class="math display">\[\bra{n}\hat{a}^\dagger\hat{a}\ket{n}=n=k^2\braket{n-1|n-1}=k^2\]</span> <span class="math display">\[k=\sqrt{n}\]</span> <span class="math display">\[\hat{a}\ket{n}=\sqrt{n}\ket{n-1}\]</span></p>
+<p>Next, for the creation operator, the result has to be a normalized <span class="math inline">\(\ket{n+1}\)</span>: <span class="math display">\[\hat{a}^\dagger\ket{n}=k\ket{n+1}\]</span> <span class="math display">\[\bra{n}\hat{a}\hat{a}^\dagger\ket{n}=\underbrace{n+1}_{\hat{n}+1=\hat{a}\hat{a}^\dagger}=k^2\braket{n+1|n+1}\]</span> <span class="math display">\[k=\sqrt{n+1}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{n}=\sqrt{n+1}\ket{n+1}\]</span> So stuff like these are true: <span class="math display">\[\hat{a}\ket{1}=1\ket{0}=\ket{0}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{0}=\ket{1}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{1}=\sqrt{2}\ket{2}\]</span> <span class="math display">\[\hat{a}\ket{0}=0\ket{-1}=0\]</span> This is why it’s called the annihilation operator.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Building from the ground state">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Aside
+Building from the ground state
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Why is diffusion second-order here? If it’s diffusion, it should just depend on the concentration gradient, which is first-order.</p>
-<p>Intuitively, if the rate of flow of <span class="math inline">\(n\)</span> into a spot <span class="math inline">\(x\)</span> is <span class="math inline">\(dn/dt\)</span>. If that’s constant over <span class="math inline">\(x\)</span>, the should be no change in concentration over time (inflow = outflow). However, if there is a difference in inflow and outflow (divergence) then there will be a <span class="math inline">\(dn/dt\)</span>. By this logic:</p>
-<p><span class="math display">\[\frac{dn}{dt}=\vec\nabla\cdot\nabla n\]</span></p>
-<p>i.e.&nbsp;second derivative in one dimension</p>
+<p>This means that <span class="math display">\[\ket{n}=\frac{\hat{n}^{\dagger n}}{\sqrt{n!}}\ket{0}\]</span></p>
 </div>
 </div>
-<p>So we have a slope function of</p>
-<p><span class="math display">\[\frac{dn}{dt}=D_n \frac{2n-n_{x+1}-n_{x-1}}{\Delta x^2}-\frac{n}{\tau_n}\]</span></p>
-<p>As we introduce separate state vectors for every point <span class="math inline">\(n_x\)</span>.</p>
-<p>Now, we have a grid of <span class="math inline">\(n_0,n_1,...,n_N\)</span> separated by a <span class="math inline">\(dx\)</span>.</p>
-<section id="constants" class="level2">
-<h2 class="anchored" data-anchor-id="constants">Constants</h2>
-<p><span class="math display">\[\frac{D_n}{\mu_n} = 0.026V\]</span> <span class="math display">\[D_n=0.026V*1350\frac{cm^2}{Vs}=35 cm^2/s\]</span></p>
-</section>
-<section id="a-tensor-library-isnt-that-necessary-for-physics" class="level2">
-<h2 class="anchored" data-anchor-id="a-tensor-library-isnt-that-necessary-for-physics">A tensor library isn’t THAT necessary for Physics</h2>
-<p>I’m starting to regret coupling so closely to my tensor library.</p>
-<ol type="1">
-<li>State structs should just be per-application, now that I realize. It’s a waste to use vectors for this.</li>
-<li>Matrix multiplication was trivially coded. It’s not even useful beyond the easy eigen-able formulations. As soon as quadratic drag was introduced, it was ggs. (<span class="math inline">\(\propto v^2\)</span>).</li>
-</ol>
-<p>Anyway, we still need tensors to keep track of complicated grids. However, we’ll just be using the canonical main tensor definition.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> Tensor <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="dt">size_t</span> length<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="dt">size_t</span> ndims<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="dt">size_t</span><span class="op">*</span> shape<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="dt">float</span><span class="op">*</span> elements<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="op">}</span> Tensor<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>See <a href="https://github.com/Lawrence-lugs/diff_eq_solvers/blob/6c024e235c1a7bc91b499b3df740ba0da1ad151c/tensors.c#L1">the current library here</a>.</p>
-<p>This ended up mainly useful for the global objects.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>    <span class="dt">size_t</span> tensorShape<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> NUM_GRID_POINTS<span class="op">,</span> NUM_STEPS<span class="op">};</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    Tensor<span class="op">*</span> results <span class="op">=</span> tensor_create<span class="op">(</span><span class="dv">3</span><span class="op">,</span> tensorShape<span class="op">);</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">size_t</span> gridShape<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="dv">2</span><span class="op">,</span> NUM_GRID_POINTS<span class="op">};</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    Tensor<span class="op">*</span> grid <span class="op">=</span> tensor_create<span class="op">(</span><span class="dv">2</span><span class="op">,</span>gridShape<span class="op">);</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    tensor_set_zero<span class="op">(</span>grid<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="prev-current-next-point-iteration" class="level2">
-<h2 class="anchored" data-anchor-id="prev-current-next-point-iteration">Prev, Current, Next Point Iteration</h2>
-<p>We take the current, previous and next points from the grid and compute the slope from that. Let’s use forward euler for now.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled" title="Hmm...">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Hmm…
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Notice how we’ve stopped using vectors for state. This is us decoupling physics from the tensor library. We just use a function to transform the global tensor into state.</p>
+<p>So then we can “lose” a wavefunction by annihilating it too much. <span class="math display">\[\hat{a}\ket{0}=0\]</span> and <span class="math display">\[\hat{a}^\dagger0=0\]</span> you can’t create back what’s been annihilated (oof).</p>
+<p>In linear algebra terms, <span class="math inline">\(\hat{a}\)</span> has a nontrivial kernel (some subspace of the vector space is turning into the null vector i.e.&nbsp;<em>a null space exists</em>). <span class="math inline">\(\hat{a}^\dagger\)</span> has a trivial kernel, because its null space is just the null vector i.e.&nbsp;there is no input to <span class="math inline">\(\hat{a}^\dagger\)</span> that equals <span class="math inline">\(0\)</span> other than <span class="math inline">\(0\)</span> itself.</p>
+<p>The commutator being nonzero is related to the existence of this nullspace for <span class="math inline">\(\hat{a}\)</span>.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>    State currPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>    State prevPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">-</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    State nextPointState <span class="op">=</span> get_point_from_grid<span class="op">(</span>grid_old<span class="op">,</span> point<span class="op">+</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    State slope <span class="op">=</span> get_slope<span class="op">(</span>currPointState<span class="op">,</span> prevPointState<span class="op">,</span> nextPointState<span class="op">);</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    </span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="dt">char</span> name<span class="op">[</span><span class="dv">32</span><span class="op">];</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="dt">char</span> slope_name<span class="op">[</span><span class="dv">32</span><span class="op">];</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    sprintf<span class="op">(</span>name<span class="op">,</span> <span class="st">"Point </span><span class="sc">%zu</span><span class="st">"</span><span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>    sprintf<span class="op">(</span>slope_name<span class="op">,</span> <span class="st">"Slope </span><span class="sc">%zu</span><span class="st">"</span><span class="op">,</span> point<span class="op">);</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a>    printf<span class="op">(</span><span class="st">"State </span><span class="sc">%zu</span><span class="st"> : (</span><span class="sc">%f</span><span class="st">,</span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span>point<span class="op">,</span>currPointState<span class="op">.</span>n<span class="op">,</span>currPointState<span class="op">.</span>dn<span class="op">);</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    printf<span class="op">(</span><span class="st">"Slope </span><span class="sc">%zu</span><span class="st"> : (</span><span class="sc">%f</span><span class="st">,</span><span class="sc">%f</span><span class="st">)</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span>point<span class="op">,</span>slope<span class="op">.</span>n<span class="op">,</span>slope<span class="op">.</span>dn<span class="op">);</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a></span>
-<span id="cb3-15"><a href="#cb3-15"></a>    currPointState<span class="op">.</span>n <span class="op">=</span> currPointState<span class="op">.</span>n <span class="op">+</span> DT<span class="op">*</span>slope<span class="op">.</span>n<span class="op">;</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a>    currPointState<span class="op">.</span>dn <span class="op">=</span> currPointState<span class="op">.</span>dn <span class="op">+</span> DT<span class="op">*</span>slope<span class="op">.</span>dn<span class="op">;</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a>    insert_state_on_grid<span class="op">(</span>grid<span class="op">,</span> point<span class="op">,</span> currPointState<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The PDE is encoded in the get_slope function as usual.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a>State get_slope<span class="op">(</span><span class="dt">const</span> State point<span class="op">,</span> <span class="dt">const</span> State leftPoint<span class="op">,</span> <span class="dt">const</span> State rightPoint<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    State slope<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="dt">float</span> diffusion    <span class="op">=</span> <span class="op">-</span>DIFFN<span class="op">*(</span><span class="dv">2</span><span class="op">*</span>point<span class="op">.</span>n<span class="op">-</span>leftPoint<span class="op">.</span>n<span class="op">-</span>rightPoint<span class="op">.</span>n<span class="op">)/(</span>DX<span class="op">*</span>DX<span class="op">);</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="dt">float</span> rg           <span class="op">=</span> <span class="op">-</span> point<span class="op">.</span>n<span class="op">/</span>TAU<span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    slope<span class="op">.</span>n <span class="op">=</span> point<span class="op">.</span>dn<span class="op">;</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>    slope<span class="op">.</span>dn <span class="op">=</span> rg<span class="op">;</span> </span>
-<span id="cb4-8"><a href="#cb4-8"></a>    <span class="cf">return</span> slope<span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Debug">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Debug
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Trying to copy 3200b into a 400b location. - something wrong with <code>tensor_length</code></li>
-<li>Trying to copy 400b into an 8b location. - <code>tensor_sliceto</code> wasn’t calculating an offset</li>
-<li>Tensor copy shape mismatch (some large number != 2) - probs initializing shape?</li>
-</ul>
-</div>
-</div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource log number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>Tensor copy shape 0 mismatch (tsr1 1203982336 != tsr2 2)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>[1203982336,2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
-<section id="weak-form-of-minority-carrier-diffusion" class="level1">
-<h1>Weak Form of Minority Carrier Diffusion</h1>
-</section>
-<section id="finite-element" class="level1">
-<h1>Finite Element</h1>
+<section id="phonons" class="level1">
+<h1>Phonons</h1>
+<p>Take an example of a set of point masses connected by springs with constant <span class="math inline">\(K\)</span>. Then, the hamiltonian would be:</p>
+<p><span class="math display">\[\hat{H}=\sum_{j=0}^N\frac{\hat{p_j}^2}{2m}+\frac{K(\hat{x_{j+1}}-\hat{x}_j)^2}{2}\]</span></p>
+<p>Then, we can take the fourier transforms of the position and momentum operators:</p>
+<p><span class="math display">\[x_j=
+\frac{1}{\sqrt{N}}
+\sum_k\tilde{x_k}e^{ikja}
+\]</span> <span class="math display">\[p_j=
+\frac{1}{\sqrt{N}}
+\sum_k \tilde{p_k}e^{ikja}\]</span> If we impose periodic boundary conditions <span class="math inline">\(e^{ikja}=e^{ik(j+N)a}\)</span> (that is, this must be periodic with period <span class="math inline">\(j_N\)</span> or as in looping through all the points will bring you back to the first one) then</p>
+<p><span class="math display">\[\sum_j e^{ikja}=N\delta_{k,0}\]</span></p>
 
 
 </section>
