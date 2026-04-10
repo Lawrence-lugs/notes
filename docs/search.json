@@ -1390,14 +1390,14 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#building-on-zigzag",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Building on ZigZag",
-    "text": "Building on ZigZag\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics.\nRelevant extensions:\n\nZigZag-LLM - we target LLM acceleration and GNNs1\nMARP + Stream - multicore compute-memory fabric efficiency\nZigZag-IMC - account for special dataflows available in IMC\n\n\nI’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.\n\nThere is no particular extension for GNNs yet. Treat as usual OR extend ourselves."
+    "text": "Building on ZigZag\nPlan: Extend ZigZag to account for NoC-style compute-memory fabrics.\nRelevant extensions:\n\nZigZag-LLM - we target LLM acceleration and GNNs1\nMARP + Stream - multicore compute-memory fabric efficiency\nZigZag-IMC - account for special dataflows available in IMC for ZigZag2\n\n\nI’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.\n\nThere is no particular extension for GNNs yet. Treat as usual OR extend ourselves.CiMLoop’s model seems more complete to me."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#potential-dsemodelling-framework",
     "href": "slides/inPrep/DSE with CMOS2p0.html#potential-dsemodelling-framework",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Potential DSE/Modelling Framework",
-    "text": "Potential DSE/Modelling Framework\n\n\nRequirements:\n\nNoC-style dataflow topologies (mesh, torus, etc.)\nFlexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)\nModelling of heterogenous regular or computational memory types\nThermal modelling\n\n\nInsights:\n\nLoop ordering doesn’t feel as powerful if memory is no longer hierarchical\nGraph techniques can work\n\nMARP + coloring - adjacent operations cannot be on the same tile"
+    "text": "Potential DSE/Modelling Framework\n\n\nRequirements:\n\nNoC-style dataflow topologies (mesh, torus, etc.)\nFlexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)\nModelling of heterogenous regular or computational memory types\nThermal modelling\n\n\nInsights:\n\nLoop ordering doesn’t feel as powerful if memory is no longer hierarchical\nGraph techniques can work\n\nMARP + coloring - adjacent operations cannot be on the same tile\n\n\n\n\n\nIdea: Build on both ZigZag and CIMLoop"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#self-contained-training-and-inference",
@@ -1419,5 +1419,19 @@
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Path to self-contained Training and Inference",
     "text": "Path to self-contained Training and Inference\nGoal: Avoid off-chip data movement completely\n\n\n\n\n\nLLM\nINT8\nINT4\n\n\n\n\nDeepseek v3\n156G\n78G\n\n\nLlama-2\n17.5G\n8.75G\n\n\nMistral 7\n1.825G\n0.9G\n\n\n\nWould be nice to be able to demonstrate the SLMs in a fully self-contained demonstration1 2 on CMOS 2.0\n\nPractical enablers:\n\nMARP - increases spatial utilization\n5PP3 - Practically, weight movement between “cores” (tiles) was only needed in 5 neighboring tiles for CNNs. How about nowadays?\n\n\n\nCerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.Barriers to Monolithic LLM inferenceDazzi, Martino, et al. “5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.” arXiv preprint arXiv:1906.03474 (2019)."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#building-on",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#building-on",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Building on",
+    "text": "Building on"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#building-on-cimloop",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#building-on-cimloop",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Building on CIMLoop",
+    "text": "Building on CIMLoop\nCiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for quick modelling estimates."
   }
 ]

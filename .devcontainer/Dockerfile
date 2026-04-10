@@ -33,7 +33,10 @@ RUN apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt update && apt install -y \
-    git
+    git \
+    libnss3 \
+    libgbm1 \
+    libasound2
 
 # 3. Install Quarto
 ARG QUARTO_VER="1.4.555"
@@ -47,6 +50,10 @@ RUN set -eux; \
     curl -LO "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VER}/${DEB_FILE}"; \
     dpkg -i "${DEB_FILE}"; \
     rm "${DEB_FILE}"
+
+
+# Install quarto chromium 
+RUN quarto install chromium
 
 # 4. Install Micromamba
 # We use a "multi-stage copy" to grab the binary from the official image.

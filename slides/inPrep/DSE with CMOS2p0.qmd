@@ -102,6 +102,9 @@ Insights:
 :::
 
 ::::
+
+> *Idea: Build on both ZigZag and CIMLoop*
+
 ## Building on ZigZag
 
 Plan: Extend ZigZag to account for [NoC-style compute-memory fabrics]{.color-emph}.  
@@ -110,9 +113,17 @@ Relevant extensions:
 
 - **ZigZag-LLM** - we target LLM acceleration and GNNs^[There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.]
 - **MARP + Stream** - multicore compute-memory fabric efficiency 
-- **ZigZag-IMC** - account for special dataflows available in IMC
+- **ZigZag-IMC** - account for special dataflows available in IMC for ZigZag^[CiMLoop's model seems more complete to me.]
 
 > *I've found that it might be better to treat ZigZag as "core" for latter extensions, like MICAS is doing now.* 
+
+## Building on CIMLoop
+
+CiMLoop
+- Built off Timeloop + Accelergy
+- Uses statistical distributions for quick modelling estimates.
+
+
 
 ## ZigZag - Current State
 

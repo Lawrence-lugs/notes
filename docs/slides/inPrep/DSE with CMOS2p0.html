@@ -498,6 +498,9 @@ Lawrence Quizon
 </ul>
 </div>
 </div>
+<blockquote>
+<p><em>Idea: Build on both ZigZag and CIMLoop</em></p>
+</blockquote>
 </section>
 <section id="building-on-zigzag" class="slide level2">
 <h2>Building on ZigZag</h2>
@@ -506,12 +509,16 @@ Lawrence Quizon
 <ul>
 <li><strong>ZigZag-LLM</strong> - we target LLM acceleration and GNNs<sup>1</sup></li>
 <li><strong>MARP + Stream</strong> - multicore compute-memory fabric efficiency</li>
-<li><strong>ZigZag-IMC</strong> - account for special dataflows available in IMC</li>
+<li><strong>ZigZag-IMC</strong> - account for special dataflows available in IMC for ZigZag<sup>2</sup></li>
 </ul>
 <blockquote>
 <p><em>I’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li><li id="fn3"><p>CiMLoop’s model seems more complete to me.</p></li></ol></aside></section>
+<section id="building-on-cimloop" class="slide level2">
+<h2>Building on CIMLoop</h2>
+<p>CiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for quick modelling estimates.</p>
+</section>
 <section id="zigzag---current-state" class="slide level2">
 <h2>ZigZag - Current State</h2>
 <p>Looking into ZigZag, the project’s direction seems to be:</p>
@@ -521,7 +528,7 @@ Lawrence Quizon
 <li>Symons - Main repo maintainer, Stream</li>
 <li>Geens - LLM-specific DSE (ZigZag-LLM)</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>Graduated</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>Graduated</p></li></ol></aside></section></section>
 <section>
 <section id="project-visions" class="title-slide slide level1 center">
 <h1>Project Visions</h1>
@@ -567,7 +574,7 @@ Lawrence Quizon
 </ul>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.</p></li><li id="fn5"><p><a href="../../../03_Concepts/Barriers to Monolithic LLM inference.md">Barriers to Monolithic LLM inference</a></p></li><li id="fn6"><p>Dazzi, Martino, et al.&nbsp;“5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.”&nbsp;<em>arXiv preprint arXiv:1906.03474</em>&nbsp;(2019).</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.</p></li><li id="fn6"><p><a href="../../../03_Concepts/Barriers to Monolithic LLM inference.md">Barriers to Monolithic LLM inference</a></p></li><li id="fn7"><p>Dazzi, Martino, et al.&nbsp;“5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.”&nbsp;<em>arXiv preprint arXiv:1906.03474</em>&nbsp;(2019).</p></li></ol></aside></section></section>
 <section>
 <section id="specifics-details" class="title-slide slide level1 center">
 <h1>Specifics, Details</h1>
@@ -595,7 +602,7 @@ Lawrence Quizon
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn7"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn8"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn9"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
 <section id="dram-explicit-refresh" class="slide level2">
 <h2>DRAM: Explicit Refresh</h2>
 <p>With explicitly managed memory, we explicitly know when we’re not using the DRAM.</p>
@@ -613,7 +620,7 @@ Lawrence Quizon
 <blockquote>
 <p><em>Challenge: Account for temperature in workload scheduling</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn9"><p>May require probabilistic modelling later on.</p></li><li id="fn10"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn10"><p>May require probabilistic modelling later on.</p></li><li id="fn11"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
 <section id="electrothermal-hardware-algo-co-design" class="slide level2">
 <h2>Electrothermal-Hardware-Algo Co-design</h2>
 <div class="columns">
@@ -751,7 +758,7 @@ Lawrence Quizon
 <li>Focuses on accelerating <code>memset</code> and <code>memcpy</code><sup>1</sup></li>
 <li>General workload acceleration (not DNN targeted)</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn11"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn12"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
 <section>
 <section id="appendix" class="title-slide slide level1 unlisted center">
 <h1>Appendix</h1>
@@ -772,7 +779,7 @@ Lawrence Quizon
 </ul>
 <p><img data-src="attachments/cerebrassinglecore.png"><sup>3</sup></p>
 <p><img data-src="attachments/3dcimlet.png"><sup>4</sup></p>
-<aside><ol class="aside-footnotes"><li id="fn12"><p>Srivastava, Satyam, et al.&nbsp;“Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).</p></li><li id="fn13"><p>Du, Shuting, et al.&nbsp;“3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.</p></li><li id="fn14"><p>Cerebras WSE3 White Paper</p></li><li id="fn15"><p>3D-CiMLET, Purdue</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn13"><p>Srivastava, Satyam, et al.&nbsp;“Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).</p></li><li id="fn14"><p>Du, Shuting, et al.&nbsp;“3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.</p></li><li id="fn15"><p>Cerebras WSE3 White Paper</p></li><li id="fn16"><p>3D-CiMLET, Purdue</p></li></ol></aside></section>
 <section id="demonstrations-of-integrated-cim-inference-2" class="slide level2 unlisted">
 <h2>Demonstrations of Integrated CIM-inference (2)</h2>
 <p>Things to look out for 1. Data Routing Techniques 2. Core Arrangement 3. Thermal Considerations 4. 3D integration style/level</p>
