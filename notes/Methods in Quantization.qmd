@@ -298,8 +298,7 @@ We can observe there’s a constant `-step*0.5`  portion to the y, which shows i
 
 
 <!-- Column 2 -->
-![Jacob ‘18 CVPR “Quantization & Training of NN for Efficient INT-only Arithmetic” synced block](../08_Literature_Reference/Papers/Jacob%20‘18%20CVPR%20“Quantization%20&%20Training%20of%20NN%20for%20Efficient%20INT-only%20Arithmetic”%20synced%20block.md)
-
+[Jacob ‘18 CVPR “Quantization & Training of NN for Efficient INT-only Arithmetic”](../../08_Literature_Reference/Papers/Jacob%20‘18%20CVPR%20“Quantization%20&%20Training%20of%20NN%20for%20Efficient%20INT-only%20Arithmetic”.md)
 
 ## Subsection on Shifting
 
