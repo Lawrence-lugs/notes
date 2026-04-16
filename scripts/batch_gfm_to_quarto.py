@@ -1,6 +1,7 @@
 import os
 import re
 import argparse
+import shutil
 from pathlib import Path
 
 # Configuration: Files with these extensions will be processed
@@ -176,6 +177,40 @@ def process_file(source_path, dest_path):
     except Exception as e:
         print(f"[ERROR] Failed to process {source_path}: {e}")
 
+def prune_stale_qmd_files(output_path, expected_files):
+    """
+    Remove generated qmd files that no longer have a source counterpart.
+    """
+    removed_count = 0
+
+    for file_path in output_path.rglob("*.qmd"):
+        if file_path not in expected_files:
+            file_path.unlink()
+            removed_count += 1
+            print(f"Removed stale file: {file_path.relative_to(output_path)}")
+
+    for dir_path in sorted(output_path.rglob("*"), reverse=True):
+        if dir_path.is_dir() and dir_path != output_path:
+            try:
+                dir_path.rmdir()
+            except OSError:
+                pass
+
+    return removed_count
+
+def sync_attachments(input_path, output_path):
+    """
+    Keep generated attachments in sync with the source attachments folder.
+    """
+    source_attachments = input_path / "attachments"
+    dest_attachments = output_path / "attachments"
+
+    if dest_attachments.exists():
+        shutil.rmtree(dest_attachments)
+
+    if source_attachments.exists():
+        shutil.copytree(source_attachments, dest_attachments)
+
 def main():
     parser = argparse.ArgumentParser(description="Convert GFM notes to Quarto notes.")
     parser.add_argument("input_dir", help="Source folder")
@@ -193,6 +228,7 @@ def main():
     print(f"Starting conversion: {input_path} -> {output_path}")
 
     file_count = 0
+    expected_files = set()
     
     # Walk through the input directory
     for root, _, files in os.walk(input_path):
@@ -208,20 +244,15 @@ def main():
                 
                 # Turn all files into qmd
                 dest_file_path = dest_file_path.with_suffix('.qmd')
+                expected_files.add(dest_file_path)
                 
                 process_file(file_path, dest_file_path)
                 file_count += 1
 
-    # Copy attachments folder over
-    import shutil
-    source_attachments = f"{input_path}/attachments"
-    dest_attachments = f"{output_path}/attachments"
-    if os.path.exists(source_attachments):
-        shutil.copytree(source_attachments, 
-                        dest_attachments, 
-                        dirs_exist_ok=True)
+    removed_count = prune_stale_qmd_files(output_path, expected_files)
+    sync_attachments(input_path, output_path)
 
-    print(f"--- Completed. Processed {file_count} files. ---")
+    print(f"--- Completed. Processed {file_count} files. Removed {removed_count} stale files. ---")
 
 if __name__ == "__main__":
     main()

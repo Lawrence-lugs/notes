@@ -6,11 +6,9 @@ project:
     - "slides/inPrep/imec_recent.html"
   pre-render: 
     - scripts/batch_gfm_to_quarto.py _notes notes
-  
 
 # Pre-render script transforms obsidian-compatible GFM notes
 # into quarto-style div-based markdown
-
 
 format:
   html:

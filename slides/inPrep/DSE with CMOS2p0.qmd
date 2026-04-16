@@ -2,6 +2,7 @@
 title: DSE for CMOS 2.0 Compute-Memory Fabrics
 subtitle: Proposal Planning
 author: Lawrence Quizon
+draft: true
 date: 2026-04-06
 version: "0.0"
 title-slide-attributes:

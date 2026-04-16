@@ -57,7 +57,7 @@ jobs:
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
             "${{ env.IMAGE }}" \
-            quarto render
+            sh -lc 'rm -rf .quarto && python3 scripts/batch_gfm_to_quarto.py _notes notes && quarto render'
 
       - name: Set up Pages
         uses: actions/configure-pages@v5

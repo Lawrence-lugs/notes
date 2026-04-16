@@ -1,0 +1,266 @@
+---
+modified: 2026-03-16
+date: 2026-02-22
+---
+
+# Proper Time
+Proper time is the time a moving particle experiences, because it's defined as 
+$$d\tau^2=-ds^2=-d\vec{x}\cdot d\vec{x}$$
+which has a consequence such that 
+$$\frac{d\vec{x}}{d\tau}=(\vec{e_0})_{MCRF}$$
+Which is the time-basis of the "tangent reference frame" to the particle.
+
+# What is acceleration?
+
+From the twins paradox, we know that both the stationary twin and the moving twin will observe that each other has a slower clock. However, when the moving twin "turns back" to travel towards the stationary twin, the stationary twin's clock will have seemed like it ticked a lot instantly.
+
+This means that the act of accelerating makes every other clock seem instantly faster.
+
+Is this explainable by pure special relativity without curvature?
+
+The twins paradox is not simply answered in "First Course in General Relativity Ch. 1.11"
+
+# Tensors
+
+The one form:
+$$f_\alpha:=\mathbf{f}(\vec{e_\alpha})$$
+The two-form:
+$$f_{\alpha\beta}:=\mathbf{f}(\vec{e_\alpha},\vec{e_\beta})$$
+$$
+\begin{aligned}
+\mathbf{f}(\vec{A},\vec{B})=\mathbf{f}(A^\alpha\vec{e_\alpha},B^\beta\vec{e_\beta})\\
+=A^\alpha B^\beta \mathbf{f} ( \vec{e_\alpha},\vec{e_\beta} ) \\
+=A^\alpha B^\beta f_{\alpha\beta}
+\end{aligned}$$
+That is, all forms are just functions of increasing numbers of basis sets because they work on N vectors (for the N-form).
+
+Just like a matrix, the two-form tensor is a sum over simple outer-products.
+
+# The Energy-Momentum 4-vector
+
+This is called so because the definition of 4-momentum
+$$\vec{p}=m\vec{U}$$
+and since the 4-velocity $\vec{U}$ is just
+$$\vec{U}=\{1,v_x,v_y,v_z\}$$
+this immediately leads to the discovery that its components
+$$p_\alpha=\{E,p_x,p_y,p_z\}$$
+are energy and the 3 spatial momenta.
+
+In non-relativistic units, the first time would be $E/c$.
+
+This is because the time-component of $\vec U$ is $c$ in special relativity- which is further because $ct$ is the unit of the time axis that we use. 
+
+# Stress-Energy Tensor
+
+$$T_{\alpha\beta}$$
+Its $00$ is energy, 
+$0i$ and $i0$ are symmetric and describe momentum and energy flux, which is just momentum.
+$ij$ are momentum flux.
+
+In fluids without heat transfer or viscosity (ideal space dust),
+the stress-energy tensor receives a $0$ in momentum flux unless $i=j$ where we are describing energy transfer via momentum through a surface.
+
+Then, in such ideal fluids, stress-energy becomes:
+
+$$T_{\alpha \beta}=(\rho+p)U^\mu U^\nu + pg^{\mu\nu}$$
+
+The form above is for a ideal fluid. Which, technically at large scale, anything in the universe is. (Except, we have to account for viscosity sometime.)
+
+# Metric
+
+The metric can usually be written as the formula for an arbitrary curve's arclength.
+For example, in 2D polar coordinates:
+$$ds^2=r^2d\theta^2+dr^2$$
+We find the following insights:
+
+- The basis are not necessarily unit bases
+- The bases are not constant everywhere.
+
+# Christoffel Symbols
+
+When we tried to differentiate a vector, we
+
+We define the regular derivative (the derivative of each component of a vector):
+$$V^\alpha_{,\beta}=\frac{dV^\alpha}{dx^\beta}\vec{e^\alpha}$$
+This is the vector derivative in Cartesian Coordinates.
+
+We can differentiate an arbitrary vector in arbitrary coordinates, but we found that some sort of product rule applies:
+$$\frac{d\vec{V}}{dx^\beta}=\frac{dV^\alpha}{dx^\beta}\vec{e^\alpha}+V^\alpha \frac{d\vec{e^\alpha}}{dx^\beta}$$
+We call this the **covariant derivative.**
+
+In this equation, we use christoffel symbols instead to describe the change in basis against a change in the coordinates.
+$$V{^\alpha_{;\beta}} =V^\alpha_{,\beta}+\Gamma^\alpha_{\mu \beta} V^\mu$$
+Where, if the coordinates are not Cartesian, the Christoffel symbols $\Gamma$ pop out to describe the shifting of the basis with respect to the origin.
+
+They are a tensor describing how the basis changes with respect to coordinate change.
+$$\Gamma^\mu_{\alpha \beta}\vec{e_\mu}=\frac{d}{dx^\beta}\vec{e^\alpha}$$
+
+Usefully, the Christoffel symbols can be calculated from the metric via:
+
+$$\Gamma^\mu_{\alpha \beta}=\frac{1}{2}g^{\mu\nu}(g_{\nu \beta,\alpha}+g_{\alpha \nu,\beta}-g_{\alpha \beta,\nu})$$
+
+# Divergence in a locally flat euclidean space (g of signature +2)
+
+The covariant derivative
+$$V{^\alpha_{;\beta}} =V^\alpha_{,\beta}+\Gamma^\alpha_{\mu \beta} V^\mu$$
+Simplifies to 
+
+$$V^\alpha_{;\alpha}=\frac{1}{\sqrt{-g}}(\sqrt{-g}V^\alpha)_{,\alpha}$$
+
+If:
+
+- $g_{\alpha \beta}$ is symmetric (which it is...)
+- ???
+
+# Metric Volume/Length Element
+
+It would make sense that the volume element in a manifold after coordinate transform would be:
+$$dx^{4'}=\det(g_{\alpha \beta})dx^4$$
+We typically refer to this determinant as $g$
+
+The length of a curve is measured via:
+
+$$\int_{\lambda_0}^{\lambda_1}|\vec{V}\cdot\vec{V}|d\lambda$$
+if $\lambda$ is the parameter of the curve and $\vec{V}$ is the vector tangent to the curve.
+
+When we say $\lambda$ is the parameter of the curve, the curve is defined as:
+
+$$:\{\xi=f(\lambda),\eta=g(\lambda),\lambda_0\leq\lambda\leq\lambda_1\}$$
+
+In differential geometry, we find a unique not-necessarily-unit tangent vector to any curve via:
+$$\frac{d\phi}{d\lambda}=<\tilde{d\phi},\vec{V}>$$
+and hence
+
+$$\vec{V}=\left\{ \frac{d\xi}{d\lambda},\frac{d\eta}{d\lambda} \right\} $$
+
+# Geodesics
+
+In a differentiable manifold that may be curved, the definition of a "line that always stays in the same direction" is in doubt.
+
+As a proxy, the concept of enforcing **parallel transport of the tangent vector** is introduced. That is,
+
+$$\nabla_{\vec{U}}\vec{V}=0$$
+where this notation means we take the derivative along the world line
+$$U^\beta V^\alpha_{;\beta}$$
+Iff $\vec{U}$ is tangent to a geodesic
+$$\nabla_{\vec U}\vec{U}=0$$
+Then if $U^\alpha=dx^\alpha/d\lambda$ and $U^\beta \partial/\partial x^\beta=d/d\lambda$ then this condition leads to something that looks like the euler-lagrange equation only this time with a Christoffel symbol.
+
+$$\frac{d}{d\lambda}\left( \frac{dx^\alpha}{d\lambda} \right) + \Gamma^\alpha_{\mu \beta}\frac{dx^\mu}{d\lambda}\frac{dx^\beta}{d\lambda}=0$$
+
+# Riemann Tensor
+
+We can "measure" the curvature of a manifold by measuring how much the direction of the parallel transport changes over a closed loop.
+
+This would give us a change in $V^\alpha$ due to transport around the loop.
+$$\delta V^\alpha=\delta a \delta b \left[ {
+\Gamma^\alpha_{\mu\sigma,\lambda} -
+\Gamma^\alpha_{\mu\lambda,\sigma} - 
+\Gamma^\alpha_{\nu\lambda} \Gamma^\nu_{\mu\sigma} -
+\Gamma^\alpha_{\nu\sigma} \Gamma^\nu_{\mu\lambda}
+} \right]
+V^\mu
+$$
+Since $V^\mu$ is a vector, we can think that the entire left side is the basis one-form that gives $\delta V^\alpha$ from the vector $\delta \vec{V}$. 
+
+$$R^\alpha_{\beta\mu\nu}=\text{set of christoffel terms}$$
+$$R^\alpha_{\mu \lambda \sigma} = {
+\Gamma^\alpha_{\mu\sigma,\lambda} -
+\Gamma^\alpha_{\mu\lambda,\sigma} - 
+\Gamma^\alpha_{\nu\lambda} \Gamma^\nu_{\mu\sigma} -
+\Gamma^\alpha_{\nu\sigma} \Gamma^\nu_{\mu\lambda}
+}$$
+We call this the Riemann tensor.
+
+With the form of the Riemann tensor, we can see the following:
+
+- It has 3 lower (one-form) indices and 1 upper index.
+
+3 lower indices means that if we give it 3 vectors, it becomes a vector.
+
+The 3 vectors are $V^\mu$, $\delta a \vec{e_\mu}$, $\delta b \vec{e_\nu}$.
+
+In the end, we see that the Riemann curvature takes the infinitesimal area and a vector (any) as argument and gives a vector pointing out the curvature.
+
+In a locally inertial frame $P$:
+$$R^\alpha_{\beta \mu \nu} = \frac{1}{2}g^{\sigma \sigma}(g_{\sigma \nu, \beta \mu}-g_{\sigma \nu, \beta \nu} + g_{\beta \mu, \sigma \nu} - g_{\beta \nu, \sigma \mu})$$
+
+# Ricci Tensor
+
+This identity is verifiable 
+
+$$R_{\alpha \beta \mu \nu}=-R_{\beta \alpha \mu \nu}$$
+and so if two of the indices are the same, then $A=-A=0$
+$$R_{\alpha\alpha\mu\nu}=0$$
+It's also verifiable that all other index repetitions would result in the Riemann tensor disappearing to 0. EXCEPT THE RICCI TENSOR.
+
+The Ricci tensor is ONLY nonzero contraction of the curvature tensor on the first upstairs and second downstairs index:
+
+$$R_{\alpha \beta} = R^\mu_{\sigma \mu \beta}$$
+Applying the Ricci contraction,
+
+$$R_{\mu\nu}=g^{\alpha\beta}R_{\alpha \mu \beta \nu}$$
+
+and then further contracting gives the Ricci scalar:
+
+$$R=g^{\mu\nu}R_{\mu\nu}$$
+
+The Ricci scalar is the double trace of the Ricci tensor.
+
+# Einstein Tensor and Field Equation
+
+Contracting the Bianchi Identities twice with the Ricci contraction turns the bianchi identities into:
+
+$$R_{;\lambda}-R^\mu_{\lambda;\mu}-R^\mu_{\lambda;\mu}=0$$
+(Turning the Ricci scalar contravariant derivative into an identity matrix reduction...)
+$$(2R^\mu_\lambda-\delta^\mu_\lambda R)_{;\mu}=0$$
+(divide this by 2 and we get...)
+and the Einstein Tensor can be defined to be
+
+$$G^{\alpha\beta} \equiv R^{\alpha \beta}-\frac{1}{2}g^{\alpha \beta}R=G^{\beta\alpha}$$
+because the metric tensor in (1 1) form is the identity, so if we raise everything we can get the metric tensor back.
+
+The last one gives us $$G^{\alpha \beta}_{;\beta}=0$$
+Einsten would later show that this final tensor which is derived from the more pure Riemann curvature is the one that mathematically causes gravity:
+$$G^{\alpha \beta}=8\pi T^{\alpha \beta}$$
+because it is related to the stress-energy tensor- which itself encodes the total energy-mass content in space.
+
+How do we get back useful computations from the einstein tensor? 
+
+- Compute metric from einstein tensors
+- Compute geodesics from metric
+- done.
+
+# Computing the Apparent Horizon
+
+The apparent horizon is the outermost marginally outer trapped surface. Here, $\Theta$ (expansion of a congruence of outgoing null geodesics) $=0$.
+
+> That is, at this timeslice, the photons never point outward.
+
+We can express the apparent horizon as a parametric surface $r(\theta,\phi)$.
+
+By spectral composition using spherical harmonics, 
+$$r(\theta,\phi)=\sum_{l=0}^L \sum_{m=-l}^{l} a_{lm}Y_{lm}(\theta,\phi)$$
+> In spherical harmonics, $m$ can only range from $-l$ to $l$
+
+Then, the problem becomes finding $a_{lm}$ coefficients. 
+
+So then, we need to find that $a_{lm}$ provides a surface where $\Theta=0$.
+
+$$\Theta=s^i_{;i}+K_{ij}s^is^j-K=0$$
+We use iterative solvers to enforce that this is 0.
+
+$$a_{lm}^{(new)}=a_{lm}^{(old)}-\delta a_{lm}$$
+
+# Computing the event horizon
+
+Unlike the apparent horizon, the event horizon is defined globally.
+It is the boundary of the *causal past of future null infinity*.
+
+> The difference is that in the apparent horizon, 
+
+# Readings
+
+- [ ] MASSIVE: 3+1 Formulation
+- [ ] Misner Ch. 12 "Variational Principle and Initial-Value Data"
+- [ ] Smarr "sources of gravitational radiation"
