@@ -1,0 +1,83 @@
+---
+modified: 2026-04-06
+date: 2026-03-31
+---
+## On DRAM Failure
+
+DRAM failure rates (and most other semiconductor failure rates) follow an Arrhenius law (looking like the Neel-Brown Relaxation for magnetics)
+$$\underbrace{\lambda(T)}_{\text{failure rate}}=\lambda_0e^{-\frac{E_a}{k_BT}}$$
+$E_a$ captures all the relevant failure parameters.
+
+If failures are poisson-like, the survival rate is
+$$P(t)=e^{-\lambda t}$$
+from which we can get a mean retention time.
+$$\tau(T)=\frac{1}{\lambda(T)}=\tau_0e^{\frac{E_a}{k_BT}}$$
+So then if we want the probability of failure before refresh $\leq \epsilon$ then we integrate the above to get $\epsilon$ OR:
+
+Based of the probability of NOT surviving before refresh time $t_r$:
+$$P_{fail}(t_r)=1-e^{-\lambda t_r}\leq \epsilon$$
+$$t_r \leq -\frac{1}{\lambda}\ln(1-\epsilon)$$
+then replace $\lambda$ we get
+$$t_r(T)\leq \tau_0e^{-\frac{E_a}{k_BT}}\ln(\frac{1}{1-\epsilon})$$
+if $\epsilon \ll 1$ then via linear approx
+
+$$t_r(T)\lt \tau(T)\cdot \epsilon$$
+
+When it's field assisted with a field $E$:
+
+$$\lambda(T,E)\approx e^{-\frac{E_a-\alpha\sqrt E}{k_BT}}$$
+Practical form:
+
+$$t_{ret}(T)=t_{ret}(T_0)\cdot e^{\frac{E_a}{k_B}(1/T-1/T_0)}$$
+This model is filled by:
+1. Measure retention rate at some base temperature $t_{ret}(T_0)$
+2. Characterize $E_a/k_B$ experimentally by how the retention rate scales away from the $T_0$ point, fitting against the Arrhenius model.
+
+However, $E_a$ is a probabilistic statistical variation (weaker cells exist, and cell strengths vary over time non-monotonically). So, we account for this by integrating the probabilities:
+
+$$\lambda(T)=\int p(E_a) \lambda_0 e^{-E_a/k_BT}dE_a$$
+to find the probability distribution of the retention time.
+
+This retention time is a parameter of the Poisson process.
+Observing failures gives a posterior over $E_a$ but we start with an assumed $E_a$.
+
+The survival probability of cell $i$ over refresh $t_r$ is
+
+$$P^{(i)}_{survival}=(t_r | E_{a,i})=e^{-t_r/\tau(E_{a,i},T)}$$
+based on the posterior $E_a$ distribution.
+
+Then, number of failures in a refresh interval is **bernoulli with**
+
+$$p_i=e^{-t_r/\tau(E_{a,i},T)}$$
+
+and the probability that ECC cannot correct this is the probability of losing more than $k$ bernoulli trials:
+
+$$Pr(X>k)$$
+Then for large $N$ (trials = ncells) and small $p_i$ (probability of failure) then
+
+$$X~\text{ Poisson}(\lambda_{eff}),\lambda_{eff}=N\cdot(\bar p)$$
+
+if $\bar p$ is the average retention probability over the bernoulli distribution
+
+$$\bar p=\mathbb{E}[1-e^{-t_r/\tau(E_a,T)}]$$
+Then so 
+
+$$P_{fail}(t_r,T)\approx1-\sum_j^K\frac{\lambda_{eff}^j e^{-\lambda_{eff}}}{j!}=1-\sum_j^K\frac{N\bar p e^{-N\bar p}}{j!}$$
+Then the probability that the data is at least recoverable,
+$$\sum_j^K\frac{N\bar p e^{-N\bar p}}{j!}\ge 1-\epsilon $$
+and we solve this over K bernoulli trials analytically or numerically versus retention time (which decides $\bar p$).
+
+As a designer, we can infer behavior with first order approximations when $\bar p \ll 1$ :
+$$\bar p \approx \frac{1}{N} (k+1)\epsilon$$
+then so
+
+$$t_r(T)=\text{ solve: } \int p(E_a)[1-e^{-t_r/\tau(E_a,T)}]dE_a=\frac{(k+1)\epsilon}{N}$$
+
+## DRAM Refresh Troubles
+
+DRAM refresh typically every $64ms$
+This occupies the DRAM row about $500us$.
+A refresh command is given to a rank (like a word, 64b or 32b).
+A new refresh command is issued about every $7.8us$ per rank (set of banks).
+
+With precise compute control over the DRAM, we can manually control the refresh cycles that take about ($~400n*\underbrace{8192}_{depth}=3.2ms$) everytime (if done one after the other).
