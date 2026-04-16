@@ -382,7 +382,7 @@
     "href": "index.html",
     "title": "Lawrence Quizon",
     "section": "",
-    "text": "Github\n  \n  \n    \n     LinkedIn\n  \n  \n     Google Scholar\n  \n\n      \nResearcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.\nMy primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (low power computation on the edge, brain-computer interfaces) and sciences (device physics, emergent dynamics).\n\n    \n    \n  \n\n\n\n\nSecondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel as a representative of the missing region between microarchitecture and user level.\nThe very very secret GPU architectures\nPractical Applications of Abstract Math\nTrying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.\nDifferential equations and numerical methods have and always will be the most exciting application of computing.\nLearning an NVIM workflow, primarily because I’m tired of using VNC.\n\n\n\nRecent Pages\nNotes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nRetrieval over Reading\n\n\nJan 21, 2026\n\n\n\n\nSolving Ballistics Equation with RK4 in C\n\n\nJan 12, 2026\n\n\n\n\nThe Generalized Stokes’ Theorem\n\n\nJan 11, 2026\n\n\n\n\nDifferential Equations to FEM\n\n\nJan 10, 2026\n\n\n\n\nRings and Fields\n\n\nJan 3, 2026\n\n\n\n\nMetrics and Manifolds\n\n\nDec 26, 2025\n\n\n\n\nObserver falls into the black hole, becomes Nostradamus\n\n\nDec 18, 2025\n\n\n\n\nSetting up an OS PDK\n\n\nDec 17, 2025\n\n\n\n\nDerivation of the Lorentz Transformation\n\n\nDec 5, 2025\n\n\n\n\nWavefunctions, Bras, Kets\n\n\nDec 4, 2025\n\n\n\n\nRunning TinyGPU by Adam Maj\n\n\nNov 28, 2025\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nNov 28, 2025\n\n\n\n\nThe Linux Page Fault Handler\n\n\nNov 24, 2025\n\n\n\n\nTransistor Capacitances\n\n\nNov 19, 2025\n\n\n\n\nAI for Learning and Feeling stupid organically\n\n\nOct 20, 2025\n\n\n\n\nLLMs can be central nervous systems?\n\n\nOct 3, 2025\n\n\n\n\nAdding an LLM to AlphaStar’s Brain\n\n\nOct 2, 2025\n\n\n\n\nLagrangians, Hamiltonians\n\n\nOct 1, 2025\n\n\n\n\nInformation theory says humans reduce information, but that’s ok\n\n\nSep 23, 2025\n\n\n\n\nGeneralized Eigenvalues in FEM Formulations\n\n\nSep 18, 2025\n\n\n\n\nHyperCoreX Code Structure\n\n\nMar 18, 2025\n\n\n\n\nMethods in Quantization for TinyML Frameworks\n\n\nMar 11, 2025\n\n\n\n\nInteresting Quantization Observations\n\n\nJan 17, 2025\n\n\n\n\n\nNo matching items"
+    "text": "Github\n  \n  \n    \n     LinkedIn\n  \n  \n     Google Scholar\n  \n\n      \nResearcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master’s degree in August 2025.\nMy primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (low power computation on the edge, brain-computer interfaces) and sciences (device physics, emergent dynamics).\n\n    \n    \n  \n\n\n\n\nSecondary Interests\n\nOpen source hardware everything. Why can’t we have massive Github portfolios of random hardware? (We can)\nThe Linux Kernel as a representative of the missing region between microarchitecture and user level.\nThe very very secret GPU architectures\nPractical Applications of Abstract Math\nTrying to understand AdS/CFT by Maldacena. Currently still in GR and QFT.\nDifferential equations and numerical methods have and always will be the most exciting application of computing.\nLearning an NVIM workflow, primarily because I’m tired of using VNC.\n\n\n\nRecent Pages\nNotes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nDSE for CMOS 2.0 Compute-Memory Fabrics\n\n\nApr 6, 2026\n\n\n\n\nRetrieval over Reading\n\n\nJan 21, 2026\n\n\n\n\nSolving Ballistics Equation with RK4 in C\n\n\nJan 12, 2026\n\n\n\n\nThe Generalized Stokes’ Theorem\n\n\nJan 11, 2026\n\n\n\n\nDifferential Equations to FEM\n\n\nJan 10, 2026\n\n\n\n\nRings and Fields\n\n\nJan 3, 2026\n\n\n\n\nMetrics and Manifolds\n\n\nDec 26, 2025\n\n\n\n\nObserver falls into the black hole, becomes Nostradamus\n\n\nDec 18, 2025\n\n\n\n\nSetting up an OS PDK\n\n\nDec 17, 2025\n\n\n\n\nThe Quantum Harmonic Oscillator has Energy Quanta (Shocking, I know)\n\n\nDec 12, 2025\n\n\n\n\nDerivation of the Lorentz Transformation\n\n\nDec 5, 2025\n\n\n\n\nWavefunctions, Bras, Kets\n\n\nDec 4, 2025\n\n\n\n\nRunning TinyGPU by Adam Maj\n\n\nNov 28, 2025\n\n\n\n\nFrequency Response of CE Amplifier\n\n\nNov 28, 2025\n\n\n\n\nThe Linux Page Fault Handler\n\n\nNov 24, 2025\n\n\n\n\nTransistor Capacitances\n\n\nNov 19, 2025\n\n\n\n\nAI for Learning and Feeling stupid organically\n\n\nOct 20, 2025\n\n\n\n\nLLMs can be central nervous systems?\n\n\nOct 3, 2025\n\n\n\n\nAdding an LLM to AlphaStar’s Brain\n\n\nOct 2, 2025\n\n\n\n\nLagrangians, Hamiltonians\n\n\nOct 1, 2025\n\n\n\n\nInformation theory says humans reduce information, but that’s ok\n\n\nSep 23, 2025\n\n\n\n\nGeneralized Eigenvalues in FEM Formulations\n\n\nSep 18, 2025\n\n\n\n\nHyperCoreX Code Structure\n\n\nMar 18, 2025\n\n\n\n\nMethods in Quantization for TinyML Frameworks\n\n\nMar 11, 2025\n\n\n\n\nInteresting Quantization Observations\n\n\nJan 17, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/Adding an LLM to AlphaStar's Brain.html",
@@ -1285,7 +1285,7 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#timeline",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Timeline",
-    "text": "Timeline\n%%| mermaid-format: svg\n%%| font-size: 24pt\n%%{init: {  \n'theme': 'dark',  \n'timeline': {  \n'fontSize': '24pt'  \n}  \n}}%%\ntimeline\n    Y1: NMC-NoC (CMF) Architectures Modelling, Survey.\n      : ZigZag Cost-Model work with CMOS2.0 memory stacks characterization.\n    Y2: Complete CMF cost-model extensions to ZigZag.\n      : CMF tile scalable RTL\n    Y3: CMF tile tapeout.\n      : Validate - Cost-Model, Workloads, Thermal Characteristics\n    Y4: CMF tile-based NoC accelerator tapeout.  \n      : Validate - Cost-Model, Workloads, Thermal Characteristics"
+    "text": "Timeline"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#timeline-2",
@@ -1320,7 +1320,7 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Demonstrations of Integrated CIM-inference",
-    "text": "Demonstrations of Integrated CIM-inference\n\nCerebras WSE3 - Full-wafer divided into reticle-limit chips.\nCorsair1 - d-Matrix (company) in IEEE Micro Magazine\n3D-CiMLet2 - Design-space exploration work by Purdue on 3D integration CiM with different memory types.\n\n3\n4\nSrivastava, Satyam, et al. “Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).Du, Shuting, et al. “3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.Cerebras WSE3 White Paper3D-CiMLET, Purdue"
+    "text": "Demonstrations of Integrated CIM-inference\n\nCerebras WSE3 - Full-wafer divided into reticle-limit chips.\nCorsair1 - d-Matrix (company) in IEEE Micro Magazine\n3D-CiMLet2 - Design-space exploration work by Purdue on 3D integration CiM with different memory types.\n\n\n\n3\n\n4\n\n\nSrivastava, Satyam, et al. “Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).Du, Shuting, et al. “3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.Cerebras WSE3 White Paper3D-CiMLET, Purdue"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#demonstrations-of-integrated-cim-inference-2",
@@ -1369,14 +1369,14 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#questions",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Questions",
-    "text": "Questions\nWhat is the timeline for the proposal?\nWhat’s the approval process for the proposal?\nWhat are my deliverables for this proposal?\nHow much freedom do we have to shape the goals of the project?\nDifference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?"
+    "text": "Questions\nOn Proposal\n\nWhat’s the scope of the proposal? (A new project or just one PhD?)\nWhat is the timeline for the proposal?\nWhat’s the approval process for the proposal?\nWhat are my deliverables for this proposal?\nHow much freedom do we have to shape the goals of the project?\n\nOn Environment\n\nDifference between a MICAS PhD and an IMEC PhD?\nWill I be working with other PhD students/IMEC teams doing specific parts of the stack?\nDo I have to pass the standard application process under IMEC?\nLikely co-supervisor? Daily supervisor? Advising hierarchy?\nMaster’s students? TA-ship?"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#problem-dimensions",
     "href": "slides/inPrep/DSE with CMOS2p0.html#problem-dimensions",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Problem Dimensions",
-    "text": "Problem Dimensions\n\nCMOS 2.0. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?\nTowards DSE. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.\nThermal Problem of 3D stacks. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.\nHeterogenous Computational Memory. 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.\nSpecial Memory Management. Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.1\n\nDonghyuk ’16 ACM TACO “Simultaneous multi-layer access”"
+    "text": "Problem Dimensions\n\n\nCMOS 2.0. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?\nTowards DSE. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.\nThermal Problem of 3D stacks. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.\nHeterogenous Computational Memory. 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.\nSpecial Memory Management. Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.1\n\n\nDonghyuk ’16 ACM TACO “Simultaneous multi-layer access”"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#potential-dse-framework",
@@ -1397,7 +1397,7 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#potential-dsemodelling-framework",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Potential DSE/Modelling Framework",
-    "text": "Potential DSE/Modelling Framework\n\n\nRequirements:\n\nNoC-style dataflow topologies (mesh, torus, etc.)\nFlexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)\nModelling of heterogenous regular or computational memory types\nThermal modelling\n\n\nInsights:\n\nLoop ordering doesn’t feel as powerful if memory is no longer hierarchical\nGraph techniques can work\n\nMARP + coloring - adjacent operations cannot be on the same tile\n\n\n\n\n\nIdea: Build on both ZigZag and CIMLoop"
+    "text": "Potential DSE/Modelling Framework\nIdea: borrow the best from ZigZag and CiMLoop. Then extend frameworks for 3D integration and NoC-style accelerators:\n\n\nRequirements:\n\nNoC-style dataflow topologies (mesh, torus, etc.)\nFlexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)\nModelling of heterogenous regular or computational memory types\nThermal modelling\n\n\nInsights:\n\nLoop ordering is most powerful for hierarchical memory (i.e. inside the CMF Tile).\nBorrow ZigZag-IMC or CiMLoop’s IMC dataflow models + with fast statistical estimation to help with the larger mapspace.1\nGraph techniques2 likely effective when considering entire models.\nStream already accounts for multicore mesh topologies.\n\n\n\nPreliminary: It feels like CiMLoop accounts for more than ZigZag-IMC.Shah 2023 Irregular Dataflow Graphs, AIHwKitLightning, MARP"
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#self-contained-training-and-inference",
@@ -1411,7 +1411,7 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#ideas-for-the-proposal",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Ideas for the proposal",
-    "text": "Ideas for the proposal\nMy dream: AI should be entirely self-contained in its hardware\n\nOnly training and inference inputs/outputs should be coming in and out of the chip.\nLLMs live in the chip.\n\nBarriers:\n\nLimitations of 2D memory capacity (like Cerebras WSE)\n\nThis is solved by 3D integration like CMOS 2.0."
+    "text": "Ideas for the proposal\n\n\nMy dreams:\n\n\nAI should be entirely self-contained in its hardware\n\n\n\nOnly training and inference inputs/outputs should be coming in and out of the chip.\nAI can be trained entirely in-place- “AI lives in this chip”\nAlgorithm should be co-designed for the specific special memory type, not work around it.\n\n\n\nCircuits Journals, Design Automation Journals, + A Nature paper - demonstrating impact not just on metrics but on fundamental methodology and full-stack insights."
   },
   {
     "objectID": "slides/inPrep/DSE with CMOS2p0.html#path-to-self-contained-training-and-inference",
@@ -1432,6 +1432,48 @@
     "href": "slides/inPrep/DSE with CMOS2p0.html#building-on-cimloop",
     "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
     "section": "Building on CIMLoop",
-    "text": "Building on CIMLoop\nCiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for quick modelling estimates."
+    "text": "Building on CIMLoop\nCiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for workload modelling estimates. - Rich YAML-based representation of IMC data flows.\n\nNeed to do a comprehensive comparison of ZigZag-IMC vs CIMLoop in the code level."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-c",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-c",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "ZigZag vs C",
+    "text": "ZigZag vs C"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-cimloop",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-cimloop",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "ZigZag vs CiMLoop",
+    "text": "ZigZag vs CiMLoop\n\nZigZag beats TimeLoop + Accelergy by accounting for uneven loop blocking.\n\nThis is important to account for in a scheme where memory isn’t hierarchical.\n\nCimLoop has cell-level granularity for mapping and seems . ZigZag-IMC has a matrix-level granularity, treats the IMC as a special PE-array that can map multiple spatial loops."
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#possible-timeline",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#possible-timeline",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Possible Timeline",
+    "text": "Possible Timeline"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#questions-on-proposal",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#questions-on-proposal",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Questions: On Proposal",
+    "text": "Questions: On Proposal\n\n\nWhat’s the scope of the proposal? (A new project or just one PhD?)\nWhat is the timeline for the proposal?\nWhat’s the approval process for the proposal?\nWhat are my deliverables for this proposal?\nHow much freedom do we have to shape the goals of the project?"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#questions-on-environment",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#questions-on-environment",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "Questions: On Environment",
+    "text": "Questions: On Environment\n\n\nDifference between a MICAS PhD and an IMEC PhD?\nDo I have to pass the standard application process under IMEC?\nHow would IP & NDAs work against the publishing goals?\nLikely co-supervisor? Daily supervisor? Advising hierarchy?\nWill I be working with other PhD students/IMEC teams doing specific parts of the stack?\nMaster’s students? TA-ship?"
+  },
+  {
+    "objectID": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-cimloop-",
+    "href": "slides/inPrep/DSE with CMOS2p0.html#zigzag-vs-cimloop-",
+    "title": "DSE for CMOS 2.0 Compute-Memory Fabrics",
+    "section": "ZigZag vs CiMLoop-",
+    "text": "ZigZag vs CiMLoop-\n\nZigZag beats TimeLoop + Accelergy by accounting for uneven loop blocking.\n\nThis is important to account for in a scheme where memory isn’t hierarchical.\n\nCimLoop has cell-level granularity for mapping and seems to have . ZigZag-IMC has a matrix-level granularity, treats the IMC as a special PE-array that can map multiple spatial loops."
   }
 ]

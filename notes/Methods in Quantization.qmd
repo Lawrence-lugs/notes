@@ -299,3 +299,65 @@ We can observe there’s a constant `-step*0.5`  portion to the y, which shows i
 
 <!-- Column 2 -->
 ![Jacob ‘18 CVPR “Quantization & Training of NN for Efficient INT-only Arithmetic” synced block](../08_Literature_Reference/Papers/Jacob%20‘18%20CVPR%20“Quantization%20&%20Training%20of%20NN%20for%20Efficient%20INT-only%20Arithmetic”%20synced%20block.md)
+
+
+## Subsection on Shifting
+
+# Weird negative shifting behavior
+
+-8327 is
+
+1101 1111 0111 1001 (-8327)
+
+>>> 6 is
+
+1111 1111 0111 1101 (-131)
+
+but python gives -130… why?
+
+### Because of rounding? Maybe.
+
+let’s see with fixed point
+
+1111 1111 0111 1101.1110 01
+
+with rounding rules, this is a roundup
+
+1111 1111 0111 1110
+
+> However, all negative numbers are off by 1 but not the positives. That’s not a rounding problem.
+
+### Shifting the positive version
+
+0010 0000 1000 0111 (8327)
+
+0000 0000 1000 0010 . 0001 11
+
+if just drop
+
+0000 0000 1000 0010 (130)
+
+if rounded
+
+0000 0000 1000 0011 (131)
+
+> Now we get 131 with rounding but 130 without.
+
+### New rules for shifting negatives? 
+
+1101 1111 01<u>11 1001</u> (-8327)
+
+1111 1111 0111 1101 (-131 = -8327 >> 6)
+
+0010 0000 10<u>00 0111</u> (8327)
+
+0000 0000 1000 0010 (130 = 8327 >> 6)
+
+1101 1111 0111 1000 (-8327 in 1c)
+
+1111 1111 0111 1101 (-130 in 1c)
+
+- The discrepancy exists because you shift out all the parts that are affected by the +1 from 2s complement, effectively leaving you with just a 1s complement.
+- If you convert the shifted 2c (which has lost its +1) back to a positive number, you’ll be off by 1 for that reason.
+- Shifting right by *n* bits on a [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) *signed* binary number has the effect of dividing it by 2*n*, but it always rounds down (towards negative infinity). [Link](/17aab8b450a980418543d84278584e0e)
+- Also see [Arithmetic shift](https://en.wikipedia.org/wiki/Arithmetic_shift#:~:text=needed%5D.-,Non%2Dequivalence%20of%20arithmetic%20right%20shift%20and%20division,-%5Bedit%5D)

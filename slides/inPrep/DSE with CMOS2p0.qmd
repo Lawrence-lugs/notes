@@ -1,6 +1,6 @@
 ---
 title: DSE for CMOS 2.0 Compute-Memory Fabrics
-subtitle: Preplanning
+subtitle: Proposal Planning
 author: Lawrence Quizon
 date: 2026-04-06
 version: "0.0"
@@ -23,6 +23,7 @@ format:
       - ../../scripts/gfm_to_quarto_filter.lua
     toc: true
     toc-depth: 1
+    chalkboard: true
 mainfont: Trebuchet MS
 sansfont: Trebuchet MS
 modified: 2026-04-08
@@ -30,30 +31,40 @@ modified: 2026-04-08
 
 # For the meeting/ ideas for the proposal.
 
-## Questions
+## Questions: On Proposal
 
-What is the timeline for the proposal?
+::: {.incremental .fade-in-then-semi-out}
+- What's the scope of the proposal? (A new project or just one PhD?)
+- What is the timeline for the proposal?
+- What's the approval process for the proposal?
+- What are my deliverables for this proposal?
+- How much freedom do we have to shape the goals of the project?
+:::
+ 
+## Questions: On Environment 
 
-What's the approval process for the proposal?
+::: {.incremental .fade-in-then-semi-out}
+- Difference between a MICAS PhD and an IMEC PhD?
+- Do I have to pass the standard application process under IMEC?
+- How would IP & NDAs work against the publishing goals?
 
-What are my deliverables for this proposal?
+- Likely co-supervisor? Daily supervisor? Advising hierarchy?
+- Will I be working with other PhD students/IMEC teams doing specific parts of the stack?
+- Master's students? TA-ship?
+:::
 
-How much freedom do we have to shape the goals of the project?
 
-Difference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?
+## Ideas for the proposal {.auto-fragment-slide}
 
-## Ideas for the proposal
+My dreams: 
 
-My dream: [AI should be entirely self-contained in its hardware]{.bigger .color-emph}
+[AI should be entirely self-contained in its hardware]{.bigger .color-emph}
 
 - Only training and inference inputs/outputs should be coming in and out of the chip.
-- LLMs live in the chip.
-
-Barriers:
-
-- Limitations of 2D memory capacity (like Cerebras WSE)
-
-This is solved by 3D integration like CMOS 2.0.
+- AI can be trained entirely in-place- "AI lives in this chip"
+- *Algorithm should be co-designed for the specific special memory type, not work around it.*
+ 
+Circuits Journals, Design Automation Journals, + [A Nature paper]{.color-emph} - demonstrating impact not just on metrics but on fundamental methodology and full-stack insights.
 
 ## From ZigZag-style Accelerators to CMF
 
@@ -68,42 +79,57 @@ This is solved by 3D integration like CMOS 2.0.
 
 ## Problem Dimensions {style="font-size: 20pt;"}
 
+::: {.incremental .fade-in-then-semi-out} 
+
 - **CMOS 2.0**. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature? 
 - **Towards DSE**. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.
 - **Thermal Problem of 3D stacks**. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation. 
 - **Heterogenous Computational Memory.** 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.
 - **Special Memory Management.** Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.^[Donghyuk '16 ACM TACO "Simultaneous multi-layer access"]
+:::
+
+---  
+
+![](attachments/proposaltimeline-1.png)
 
 # Specifics and Implementation
 
-## Potential DSE/Modelling Framework
+## Potential DSE/Modelling Framework {.smaller}
+
+Idea: borrow the best from [ZigZag and CiMLoop]{.color-emph style="font-size=30pt;"}. Then extend frameworks for 3D integration and NoC-style accelerators:
 
 :::: {.columns}
 
-::: {.column}
+::: {.column width=0.47}
  
 Requirements:
 
- - NoC-style dataflow topologies (mesh, torus, etc.)
- - Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)
- - Modelling of heterogenous regular or computational memory types 
- - Thermal modelling
+ - [ ] NoC-style dataflow topologies (mesh, torus, etc.)
+ - [ ] Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)
+ - [ ] Modelling of heterogenous regular or computational memory types 
+ - [ ] Thermal modelling
 
 :::
 
-::: {.column}
+::: {.column width=0.47}
 
 Insights: 
 
-- Loop ordering doesn't feel as powerful if memory is no longer hierarchical
-- Graph techniques can work
-	- MARP + coloring - adjacent operations cannot be on the same tile
+- Loop ordering is most powerful for hierarchical memory (i.e. inside the CMF Tile).
+- Borrow ZigZag-IMC or CiMLoop's IMC dataflow models + with fast statistical estimation to help with the larger mapspace.^[Preliminary: It feels like CiMLoop accounts for more than ZigZag-IMC.]
+- Graph techniques^[Shah 2023 Irregular Dataflow Graphs, AIHwKitLightning, MARP] likely effective when considering entire models.
+- Stream already accounts for multicore mesh topologies.
 
 :::
 
 ::::
 
-> *Idea: Build on both ZigZag and CIMLoop*
+
+## ZigZag vs CiMLoop-
+
+- ZigZag beats TimeLoop + Accelergy by accounting for **uneven loop blocking**.
+	- This is important to account for in a scheme where memory isn't hierarchical.
+- CimLoop has cell-level granularity for mapping and seems to have . ZigZag-IMC has a matrix-level granularity, treats the IMC as a special PE-array that can map multiple spatial loops.
 
 ## Building on ZigZag
 
@@ -121,9 +147,10 @@ Relevant extensions:
 
 CiMLoop
 - Built off Timeloop + Accelergy
-- Uses statistical distributions for quick modelling estimates.
+- Uses statistical distributions for workload modelling estimates.
+- Rich YAML-based representation of IMC data flows.
 
-
+> *Need to do a comprehensive comparison of ZigZag-IMC vs CIMLoop in the code level.*
 
 ## ZigZag - Current State
 
@@ -133,9 +160,6 @@ Looking into ZigZag, the project's direction seems to be:
 - Sun - IMC extensions (ZigZag-IMC)
 - Symons - Main repo maintainer, Stream
 - Geens - LLM-specific DSE (ZigZag-LLM)
-
-# Project Visions
-Scope depends on how large the project's proposal actually is
 
 ## Path to self-contained Training and Inference
 
@@ -166,11 +190,6 @@ Practical enablers:
 :::
 
 ::::
-
-
-
-
-# Specifics, Details
 
 ## Near-Memory Compute with Buffer Memory Above
 
@@ -265,26 +284,7 @@ Each block has a specific thermal characteristic (from PrimeTime power estimates
 
 ## Timeline  
 
-
-```mermaid
-%%| mermaid-format: svg
-%%| font-size: 24pt
-%%{init: {  
-'theme': 'dark',  
-'timeline': {  
-'fontSize': '24pt'  
-}  
-}}%%
-timeline
-	Y1: NMC-NoC (CMF) Architectures Modelling, Survey.
-	  : ZigZag Cost-Model work with CMOS2.0 memory stacks characterization.
-	Y2: Complete CMF cost-model extensions to ZigZag.
-	  : CMF tile scalable RTL
-	Y3: CMF tile tapeout.
-	  : Validate - Cost-Model, Workloads, Thermal Characteristics
-	Y4: CMF tile-based NoC accelerator tapeout.  
-	  : Validate - Cost-Model, Workloads, Thermal Characteristics
-```
+![](attachments/proposaltimeline.png)
 
 ## Timeline (2) 
 
@@ -369,10 +369,21 @@ I doubt this can be the case _across tiles_.
 - Corsair^[Srivastava, Satyam, et al. "Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration." IEEE Micro (2025).] - d-Matrix (company) in IEEE Micro Magazine
 - 3D-CiMLet^[Du, Shuting, et al. "3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning." 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.] - Design-space exploration work by Purdue on 3D integration CiM with different memory types.
 
+:::: {.columns}
+
+::: {.column}
+
 ![](attachments/cerebrassinglecore.png)^[Cerebras WSE3 White Paper]
+
+:::
+
+::: {.column}
 
 ![](attachments/3dcimlet.png)^[3D-CiMLET, Purdue]
 
+:::
+
+::::
 
 ## Demonstrations of Integrated CIM-inference (2) {.unlisted}
 

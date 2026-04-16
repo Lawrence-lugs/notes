@@ -100,6 +100,8 @@
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -394,7 +396,7 @@
 
 <section id="title-slide" align="left" class="quarto-title-block center">
   <h1 class="title">DSE for CMOS 2.0 Compute-Memory Fabrics</h1>
-  <p class="subtitle">Preplanning</p>
+  <p class="subtitle">Proposal Planning</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -411,8 +413,6 @@ Lawrence Quizon
 <ul>
 <li><a href="#/for-the-meeting-ideas-for-the-proposal." id="/toc-for-the-meeting-ideas-for-the-proposal.">For the meeting/ ideas for the proposal.</a></li>
 <li><a href="#/specifics-and-implementation" id="/toc-specifics-and-implementation">Specifics and Implementation</a></li>
-<li><a href="#/project-visions" id="/toc-project-visions">Project Visions</a></li>
-<li><a href="#/specifics-details" id="/toc-specifics-details">Specifics, Details</a></li>
 </ul>
 </nav>
 </section>
@@ -421,26 +421,51 @@ Lawrence Quizon
 <h1>For the meeting/ ideas for the proposal.</h1>
 
 </section>
-<section id="questions" class="slide level2">
-<h2>Questions</h2>
-<p>What is the timeline for the proposal?</p>
-<p>What’s the approval process for the proposal?</p>
-<p>What are my deliverables for this proposal?</p>
-<p>How much freedom do we have to shape the goals of the project?</p>
-<p>Difference between a MICAS PhD and an IMEC PhD? I have to pass the standard application process under IMEC?</p>
+<section id="questions-on-proposal" class="slide level2">
+<h2>Questions: On Proposal</h2>
+<div class="fade-in-then-semi-out">
+<ul>
+<li class="fragment">What’s the scope of the proposal? (A new project or just one PhD?)</li>
+<li class="fragment">What is the timeline for the proposal?</li>
+<li class="fragment">What’s the approval process for the proposal?</li>
+<li class="fragment">What are my deliverables for this proposal?</li>
+<li class="fragment">How much freedom do we have to shape the goals of the project?</li>
+</ul>
+</div>
 </section>
-<section id="ideas-for-the-proposal" class="slide level2">
+<section id="questions-on-environment" class="slide level2">
+<h2>Questions: On Environment</h2>
+<div class="fade-in-then-semi-out">
+<ul>
+<li class="fragment"><p>Difference between a MICAS PhD and an IMEC PhD?</p></li>
+<li class="fragment"><p>Do I have to pass the standard application process under IMEC?</p></li>
+<li class="fragment"><p>How would IP &amp; NDAs work against the publishing goals?</p></li>
+<li class="fragment"><p>Likely co-supervisor? Daily supervisor? Advising hierarchy?</p></li>
+<li class="fragment"><p>Will I be working with other PhD students/IMEC teams doing specific parts of the stack?</p></li>
+<li class="fragment"><p>Master’s students? TA-ship?</p></li>
+</ul>
+</div>
+</section>
+<section id="ideas-for-the-proposal" class="slide level2 auto-fragment-slide">
 <h2>Ideas for the proposal</h2>
-<p>My dream: <span class="bigger color-emph">AI should be entirely self-contained in its hardware</span></p>
+<div class="auto-fragment-children">
+<div class="fragment fade-in-then-semi-out">
+<p>My dreams:</p>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<p><span class="bigger color-emph">AI should be entirely self-contained in its hardware</span></p>
+</div>
+<div class="fragment fade-in-then-semi-out">
 <ul>
 <li>Only training and inference inputs/outputs should be coming in and out of the chip.</li>
-<li>LLMs live in the chip.</li>
+<li>AI can be trained entirely in-place- “AI lives in this chip”</li>
+<li><em>Algorithm should be co-designed for the specific special memory type, not work around it.</em></li>
 </ul>
-<p>Barriers:</p>
-<ul>
-<li>Limitations of 2D memory capacity (like Cerebras WSE)</li>
-</ul>
-<p>This is solved by 3D integration like CMOS 2.0.</p>
+</div>
+<div class="fragment fade-in-then-semi-out">
+<p>Circuits Journals, Design Automation Journals, + <span class="color-emph">A Nature paper</span> - demonstrating impact not just on metrics but on fundamental methodology and full-stack insights.</p>
+</div>
+</div>
 </section>
 <section id="from-zigzag-style-accelerators-to-cmf" class="slide level2">
 <h2>From ZigZag-style Accelerators to CMF</h2>
@@ -463,44 +488,57 @@ Lawrence Quizon
 </section>
 <section id="problem-dimensions" class="slide level2" style="font-size: 20pt;">
 <h2>Problem Dimensions</h2>
+<div class="fade-in-then-semi-out">
 <ul>
-<li><strong>CMOS 2.0</strong>. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?</li>
-<li><strong>Towards DSE</strong>. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.</li>
-<li><strong>Thermal Problem of 3D stacks</strong>. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.</li>
-<li><strong>Heterogenous Computational Memory.</strong> 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.</li>
-<li><strong>Special Memory Management.</strong> Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.<sup>1</sup></li>
+<li class="fragment"><strong>CMOS 2.0</strong>. Do CMF accelerators in IMEC CMOS 2.0 have different properties than existing literature?</li>
+<li class="fragment"><strong>Towards DSE</strong>. DSE and analytical modelling of needs the recognition of a regular modellable architecture of CMFs.</li>
+<li class="fragment"><strong>Thermal Problem of 3D stacks</strong>. Thermal limits are lowered by 3D integration but approached closer by high memory bandwidth. We also need to add this to the modelling and simulation.</li>
+<li class="fragment"><strong>Heterogenous Computational Memory.</strong> 3D integration allows many types of memory which are not all accounted for by CACTI and ZigZag. We need to develop special constraints to take care of the needs of the different memory types. Additionally, memory and processing can be the same exact thing.</li>
+<li class="fragment"><strong>Special Memory Management.</strong> Special techniques for memory management and bandwidth maximization exist for 3D memories. Existence/absence thereof must be accounted for in the modelling.<sup>1</sup></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Donghyuk ’16 ACM TACO “Simultaneous multi-layer access”</p></li></ol></aside></section></section>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Donghyuk ’16 ACM TACO “Simultaneous multi-layer access”</p></li></ol></aside></section>
+<section class="slide level2">
+
+
+<img data-src="attachments/proposaltimeline-1.png" class="r-stretch"></section></section>
 <section>
 <section id="specifics-and-implementation" class="title-slide slide level1 center">
 <h1>Specifics and Implementation</h1>
 
 </section>
-<section id="potential-dsemodelling-framework" class="slide level2">
+<section id="potential-dsemodelling-framework" class="slide level2 smaller">
 <h2>Potential DSE/Modelling Framework</h2>
+<p>Idea: borrow the best from <span class="color-emph" style="font-size=30pt;">ZigZag and CiMLoop</span>. Then extend frameworks for 3D integration and NoC-style accelerators:</p>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:0.47;">
 <p>Requirements:</p>
-<ul>
-<li>NoC-style dataflow topologies (mesh, torus, etc.)</li>
-<li>Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)</li>
-<li>Modelling of heterogenous regular or computational memory types</li>
-<li>Thermal modelling</li>
+<ul class="task-list">
+<li><label><input type="checkbox">NoC-style dataflow topologies (mesh, torus, etc.)</label></li>
+<li><label><input type="checkbox">Flexibility and generality (on the level of ZigZag or Timeloop, not ad-hoc)</label></li>
+<li><label><input type="checkbox">Modelling of heterogenous regular or computational memory types</label></li>
+<li><label><input type="checkbox">Thermal modelling</label></li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:0.47;">
 <p>Insights:</p>
 <ul>
-<li>Loop ordering doesn’t feel as powerful if memory is no longer hierarchical</li>
-<li>Graph techniques can work
-<ul>
-<li>MARP + coloring - adjacent operations cannot be on the same tile</li>
-</ul></li>
+<li>Loop ordering is most powerful for hierarchical memory (i.e.&nbsp;inside the CMF Tile).</li>
+<li>Borrow ZigZag-IMC or CiMLoop’s IMC dataflow models + with fast statistical estimation to help with the larger mapspace.<sup>1</sup></li>
+<li>Graph techniques<sup>2</sup> likely effective when considering entire models.</li>
+<li>Stream already accounts for multicore mesh topologies.</li>
 </ul>
 </div>
 </div>
-<blockquote>
-<p><em>Idea: Build on both ZigZag and CIMLoop</em></p>
-</blockquote>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Preliminary: It feels like CiMLoop accounts for more than ZigZag-IMC.</p></li><li id="fn3"><p>Shah 2023 Irregular Dataflow Graphs, AIHwKitLightning, MARP</p></li></ol></aside></section>
+<section id="zigzag-vs-cimloop-" class="slide level2">
+<h2>ZigZag vs CiMLoop-</h2>
+<ul>
+<li>ZigZag beats TimeLoop + Accelergy by accounting for <strong>uneven loop blocking</strong>.
+<ul>
+<li>This is important to account for in a scheme where memory isn’t hierarchical.</li>
+</ul></li>
+<li>CimLoop has cell-level granularity for mapping and seems to have . ZigZag-IMC has a matrix-level granularity, treats the IMC as a special PE-array that can map multiple spatial loops.</li>
+</ul>
 </section>
 <section id="building-on-zigzag" class="slide level2">
 <h2>Building on ZigZag</h2>
@@ -514,10 +552,13 @@ Lawrence Quizon
 <blockquote>
 <p><em>I’ve found that it might be better to treat ZigZag as “core” for latter extensions, like MICAS is doing now.</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li><li id="fn3"><p>CiMLoop’s model seems more complete to me.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>There is no particular extension for GNNs yet. Treat as usual OR extend ourselves.</p></li><li id="fn5"><p>CiMLoop’s model seems more complete to me.</p></li></ol></aside></section>
 <section id="building-on-cimloop" class="slide level2">
 <h2>Building on CIMLoop</h2>
-<p>CiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for quick modelling estimates.</p>
+<p>CiMLoop - Built off Timeloop + Accelergy - Uses statistical distributions for workload modelling estimates. - Rich YAML-based representation of IMC data flows.</p>
+<blockquote>
+<p><em>Need to do a comprehensive comparison of ZigZag-IMC vs CIMLoop in the code level.</em></p>
+</blockquote>
 </section>
 <section id="zigzag---current-state" class="slide level2">
 <h2>ZigZag - Current State</h2>
@@ -528,12 +569,7 @@ Lawrence Quizon
 <li>Symons - Main repo maintainer, Stream</li>
 <li>Geens - LLM-specific DSE (ZigZag-LLM)</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>Graduated</p></li></ol></aside></section></section>
-<section>
-<section id="project-visions" class="title-slide slide level1 center">
-<h1>Project Visions</h1>
-<p>Scope depends on how large the project’s proposal actually is</p>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn6"><p>Graduated</p></li></ol></aside></section>
 <section id="path-to-self-contained-training-and-inference" class="slide level2">
 <h2>Path to self-contained Training and Inference</h2>
 <p>Goal: <span class="color-emph">Avoid off-chip data movement completely</span></p>
@@ -574,12 +610,7 @@ Lawrence Quizon
 </ul>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5"><p>Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.</p></li><li id="fn6"><p><a href="../../../03_Concepts/Barriers to Monolithic LLM inference.md">Barriers to Monolithic LLM inference</a></p></li><li id="fn7"><p>Dazzi, Martino, et al.&nbsp;“5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.”&nbsp;<em>arXiv preprint arXiv:1906.03474</em>&nbsp;(2019).</p></li></ol></aside></section></section>
-<section>
-<section id="specifics-details" class="title-slide slide level1 center">
-<h1>Specifics, Details</h1>
-
-</section>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Cerebras WSE-3 already does this, but 2D-stacked leading to a massive chip.</p></li><li id="fn8"><p><a href="../../../03_Concepts/Barriers to Monolithic LLM inference.md">Barriers to Monolithic LLM inference</a></p></li><li id="fn9"><p>Dazzi, Martino, et al.&nbsp;“5 parallel prism: A topology for pipelined implementations of convolutional neural networks using computational memory.”&nbsp;<em>arXiv preprint arXiv:1906.03474</em>&nbsp;(2019).</p></li></ol></aside></section>
 <section id="near-memory-compute-with-buffer-memory-above" class="slide level2">
 <h2>Near-Memory Compute with Buffer Memory Above</h2>
 <div class="columns">
@@ -602,7 +633,7 @@ Lawrence Quizon
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn8"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn9"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn10"><p>e.g.&nbsp;Eyeriss2, NeuRRAM, NeuroSIM </p></li><li id="fn11"><p>Mutlu, Onur, et al.&nbsp;“A modern primer on processing in memory.” Emerging computing: from devices to systems: looking beyond Moore and Von Neumann. Singapore: Springer Nature Singapore, 2022. 171-243.</p></li></ol></aside></section>
 <section id="dram-explicit-refresh" class="slide level2">
 <h2>DRAM: Explicit Refresh</h2>
 <p>With explicitly managed memory, we explicitly know when we’re not using the DRAM.</p>
@@ -620,7 +651,7 @@ Lawrence Quizon
 <blockquote>
 <p><em>Challenge: Account for temperature in workload scheduling</em></p>
 </blockquote>
-<aside><ol class="aside-footnotes"><li id="fn10"><p>May require probabilistic modelling later on.</p></li><li id="fn11"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn12"><p>May require probabilistic modelling later on.</p></li><li id="fn13"><p>in the first place, do DNNs care so much about the errors?</p></li></ol></aside></section>
 <section id="electrothermal-hardware-algo-co-design" class="slide level2">
 <h2>Electrothermal-Hardware-Algo Co-design</h2>
 <div class="columns">
@@ -680,68 +711,52 @@ Lawrence Quizon
 </section>
 <section id="timeline" class="slide level2">
 <h2>Timeline</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>%%| mermaid-format: svg</span>
-<span id="cb1-2"><a></a>%%| font-size: 24pt</span>
-<span id="cb1-3"><a></a>%%{init: {  </span>
-<span id="cb1-4"><a></a>'theme': 'dark',  </span>
-<span id="cb1-5"><a></a>'timeline': {  </span>
-<span id="cb1-6"><a></a>'fontSize': '24pt'  </span>
-<span id="cb1-7"><a></a>}  </span>
-<span id="cb1-8"><a></a>}}%%</span>
-<span id="cb1-9"><a></a>timeline</span>
-<span id="cb1-10"><a></a>    Y1: NMC-NoC (CMF) Architectures Modelling, Survey.</span>
-<span id="cb1-11"><a></a>      : ZigZag Cost-Model work with CMOS2.0 memory stacks characterization.</span>
-<span id="cb1-12"><a></a>    Y2: Complete CMF cost-model extensions to ZigZag.</span>
-<span id="cb1-13"><a></a>      : CMF tile scalable RTL</span>
-<span id="cb1-14"><a></a>    Y3: CMF tile tapeout.</span>
-<span id="cb1-15"><a></a>      : Validate - Cost-Model, Workloads, Thermal Characteristics</span>
-<span id="cb1-16"><a></a>    Y4: CMF tile-based NoC accelerator tapeout.  </span>
-<span id="cb1-17"><a></a>      : Validate - Cost-Model, Workloads, Thermal Characteristics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+
+<img data-src="attachments/proposaltimeline.png" class="r-stretch"></section>
 <section id="timeline-2" class="slide level2">
 <h2>Timeline (2)</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>gantt</span>
-<span id="cb2-2"><a></a>    section Research Foundations</span>
-<span id="cb2-3"><a></a>    NMC-NoC + CMF architecture survey                         :a1, 2027, 6M</span>
-<span id="cb2-4"><a></a>    CMOS2.0 memory characterization for analytical modelling  :a2, after b1, 6M</span>
-<span id="cb2-5"><a></a>    Initial CMF architectures                                 :a3, after a1, 6M</span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>    section ZigZag: DSE &amp; Estimator</span>
-<span id="cb2-8"><a></a>    Validation vs existing CMF architectures                  :b2, after a2, 6M</span>
-<span id="cb2-9"><a></a>    Validation vs CMOS2.0 memories                            :b3, after a2, 6M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>gantt</span>
+<span id="cb1-2"><a></a>    section Research Foundations</span>
+<span id="cb1-3"><a></a>    NMC-NoC + CMF architecture survey                         :a1, 2027, 6M</span>
+<span id="cb1-4"><a></a>    CMOS2.0 memory characterization for analytical modelling  :a2, after b1, 6M</span>
+<span id="cb1-5"><a></a>    Initial CMF architectures                                 :a3, after a1, 6M</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>    section ZigZag: DSE &amp; Estimator</span>
+<span id="cb1-8"><a></a>    Validation vs existing CMF architectures                  :b2, after a2, 6M</span>
+<span id="cb1-9"><a></a>    Validation vs CMOS2.0 memories                            :b3, after a2, 6M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="timeline-3" class="slide level2 unlisted">
 <h2>Timeline (3)</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a></span>
-<span id="cb3-2"><a></a>%%| mermaid-format: svg</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a>%%{init: {  </span>
-<span id="cb3-5"><a></a>'gantt': {</span>
-<span id="cb3-6"><a></a>    'fontSize': '12',</span>
-<span id="cb3-7"><a></a>    'useWidth': '800'</span>
-<span id="cb3-8"><a></a>}  </span>
-<span id="cb3-9"><a></a>}}%%</span>
-<span id="cb3-10"><a></a>gantt</span>
-<span id="cb3-11"><a></a>    title CMF / NMC-NoC Research &amp; Tapeout Roadmap</span>
-<span id="cb3-12"><a></a>    dateFormat  YYYY</span>
-<span id="cb3-13"><a></a>    axisFormat %m-%Y</span>
-<span id="cb3-14"><a></a></span>
-<span id="cb3-15"><a></a>    section Research Foundations</span>
-<span id="cb3-16"><a></a>    NMC-NoC + CMF architecture survey        :a1, 2027, 6M</span>
-<span id="cb3-17"><a></a>    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M</span>
-<span id="cb3-18"><a></a>    Initial CMF architectures                :a3, after a1, 6M</span>
-<span id="cb3-19"><a></a></span>
-<span id="cb3-20"><a></a>    section ZigZag: DSE &amp; Estimator</span>
-<span id="cb3-21"><a></a>    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y</span>
-<span id="cb3-22"><a></a>    Validation vs existing CMF architectures :b2, after a2, 6M</span>
-<span id="cb3-23"><a></a>    Validation vs CMOS2.0 memories           :b3, after a2, 6M</span>
-<span id="cb3-24"><a></a></span>
-<span id="cb3-25"><a></a>    section Silicon</span>
-<span id="cb3-26"><a></a>    DSE CMF Tile Architecture             :crit,c1, after a3, 1y</span>
-<span id="cb3-27"><a></a>    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y</span>
-<span id="cb3-28"><a></a>    DSE CMF Array Architecture                :crit, c4, after c1, 1y</span>
-<span id="cb3-29"><a></a>    Tapeout 2 (CMF Array)                               :c3, after c2, 1y</span>
-<span id="cb3-30"><a></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a></span>
+<span id="cb2-2"><a></a>%%| mermaid-format: svg</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>%%{init: {  </span>
+<span id="cb2-5"><a></a>'gantt': {</span>
+<span id="cb2-6"><a></a>    'fontSize': '12',</span>
+<span id="cb2-7"><a></a>    'useWidth': '800'</span>
+<span id="cb2-8"><a></a>}  </span>
+<span id="cb2-9"><a></a>}}%%</span>
+<span id="cb2-10"><a></a>gantt</span>
+<span id="cb2-11"><a></a>    title CMF / NMC-NoC Research &amp; Tapeout Roadmap</span>
+<span id="cb2-12"><a></a>    dateFormat  YYYY</span>
+<span id="cb2-13"><a></a>    axisFormat %m-%Y</span>
+<span id="cb2-14"><a></a></span>
+<span id="cb2-15"><a></a>    section Research Foundations</span>
+<span id="cb2-16"><a></a>    NMC-NoC + CMF architecture survey        :a1, 2027, 6M</span>
+<span id="cb2-17"><a></a>    CMOS2.0 memory characterization for analytical modelling:a2, after b1, 6M</span>
+<span id="cb2-18"><a></a>    Initial CMF architectures                :a3, after a1, 6M</span>
+<span id="cb2-19"><a></a></span>
+<span id="cb2-20"><a></a>    section ZigZag: DSE &amp; Estimator</span>
+<span id="cb2-21"><a></a>    Extend ZigZag with CMF cost model        :crit, b1, 2027, 1y</span>
+<span id="cb2-22"><a></a>    Validation vs existing CMF architectures :b2, after a2, 6M</span>
+<span id="cb2-23"><a></a>    Validation vs CMOS2.0 memories           :b3, after a2, 6M</span>
+<span id="cb2-24"><a></a></span>
+<span id="cb2-25"><a></a>    section Silicon</span>
+<span id="cb2-26"><a></a>    DSE CMF Tile Architecture             :crit,c1, after a3, 1y</span>
+<span id="cb2-27"><a></a>    Tapeout 1 (CMF Tile)                                :c2, after c1, 1y</span>
+<span id="cb2-28"><a></a>    DSE CMF Array Architecture                :crit, c4, after c1, 1y</span>
+<span id="cb2-29"><a></a>    Tapeout 2 (CMF Array)                               :c3, after c2, 1y</span>
+<span id="cb2-30"><a></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="preliminary-characterization" class="title-slide slide level1 unlisted center">
@@ -758,7 +773,7 @@ Lawrence Quizon
 <li>Focuses on accelerating <code>memset</code> and <code>memcpy</code><sup>1</sup></li>
 <li>General workload acceleration (not DNN targeted)</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn12"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn14"><p>They argue these comprise a lot of the typical workload</p></li></ol></aside></section></section>
 <section>
 <section id="appendix" class="title-slide slide level1 unlisted center">
 <h1>Appendix</h1>
@@ -777,9 +792,14 @@ Lawrence Quizon
 <li>Corsair<sup>1</sup> - d-Matrix (company) in IEEE Micro Magazine</li>
 <li>3D-CiMLet<sup>2</sup> - Design-space exploration work by Purdue on 3D integration CiM with different memory types.</li>
 </ul>
+<div class="columns">
+<div class="column">
 <p><img data-src="attachments/cerebrassinglecore.png"><sup>3</sup></p>
+</div><div class="column">
 <p><img data-src="attachments/3dcimlet.png"><sup>4</sup></p>
-<aside><ol class="aside-footnotes"><li id="fn13"><p>Srivastava, Satyam, et al.&nbsp;“Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).</p></li><li id="fn14"><p>Du, Shuting, et al.&nbsp;“3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.</p></li><li id="fn15"><p>Cerebras WSE3 White Paper</p></li><li id="fn16"><p>3D-CiMLET, Purdue</p></li></ol></aside></section>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn15"><p>Srivastava, Satyam, et al.&nbsp;“Corsair: An In-memory Computing Chiplet Architecture for Inference-time Compute Acceleration.” IEEE Micro (2025).</p></li><li id="fn16"><p>Du, Shuting, et al.&nbsp;“3d-cimlet: A chiplet co-design framework for heterogeneous in-memory acceleration of edge llm inference and continual learning.” 2025 62nd ACM/IEEE Design Automation Conference (DAC). IEEE, 2025.</p></li><li id="fn17"><p>Cerebras WSE3 White Paper</p></li><li id="fn18"><p>3D-CiMLET, Purdue</p></li></ol></aside></section>
 <section id="demonstrations-of-integrated-cim-inference-2" class="slide level2 unlisted">
 <h2>Demonstrations of Integrated CIM-inference (2)</h2>
 <p>Things to look out for 1. Data Routing Techniques 2. Core Arrangement 3. Thermal Considerations 4. 3D integration style/level</p>
@@ -816,6 +836,7 @@ Lawrence Quizon
   <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -836,7 +857,8 @@ Lawrence Quizon
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1007,7 +1029,7 @@ Lawrence Quizon
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

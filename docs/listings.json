@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/slides/inPrep/DSE with CMOS2p0.html",
       "/slides/desirableDifficulties/desirableDifficulties.html",
       "/notes/Solving Ballistics Equation with RK4 in C.html",
       "/notes/The Generalized Stokes' Theorem.html",
@@ -10,6 +11,7 @@
       "/notes/Metrics and Manifolds.html",
       "/notes/Observer falls into the black hole, becomes Nostradamus.html",
       "/slides/settingOsPdk/settingOsPdk.html",
+      "/notes/Quantum Harmonic Oscillator.html",
       "/notes/derivationOfTheLorentzTransformation.html",
       "/notes/wavefunctionsBrasKets.html",
       "/notes/Running TinyGPU by Adam Maj.html",
