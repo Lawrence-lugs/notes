@@ -22,8 +22,6 @@ about:
 
 ::: {#about-section}
 
-Researcher of everything! Formally, an IC design researcher in University of the Philippines Diliman Microlab where I recently obtained my Master's degree in August 2025.
-
 My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering (*low power computation on the edge, brain-computer interfaces*) and sciences (*device physics, emergent dynamics*). 
 
 :::
@@ -32,16 +30,15 @@ My primary research interest is in the creation of efficient computational syste
 <br>
 
 
-
 ### Secondary Interests
 
-- Open source hardware everything. Why can't we have massive Github portfolios of random hardware? (We can)
-- The Linux Kernel as a representative of the missing region between microarchitecture and user level.
-- The very very secret GPU architectures
+- Open source hardware 
+- Hardware CI/CD Workflows
+- Differential Equations, Discrete Optimization
+- Efficient AI (LPCV, DCASE)
+- Physics (GR, QFT)
 - Practical Applications of Abstract Math
-- Trying to understand AdS/CFT by Maldacena. Currently still in GR and QFT. 
-- Differential equations and numerical methods have and always will be the most exciting application of computing.
-- Learning an NVIM workflow, primarily because I'm tired of using VNC.
+- Neuropsychological Theories on Learning
 
 # Recent Pages
 
