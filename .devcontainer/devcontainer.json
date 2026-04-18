@@ -1,7 +1,7 @@
 {
   "name": "Miniforge Python Environment",
   // We now enforce building off of gh workflows and avoid local builds
-  "image": "ghcr.io/lawrence-lugs/quartolatex",  
+  "image": "ghcr.io/lawrence-lugs/quartolatex:latest",  
   "customizations": {
     "vscode": {
       "settings": {

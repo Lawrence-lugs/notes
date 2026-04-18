@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\n        Lawrence Quizon\n      ",
+    "section": "",
+    "text": "Lawrence Quizon\n      \n      \n        Mixed Signal Accelerators · Efficient AI · Researcher @ UP EEEI\n      \n      \n        My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering \n        (low power computation on the edge, neuromorphic hardware) \n        and sciences \n        (device physics, emergent dynamics).\n      \n      \n        \n          \n          GitHub\n        \n        \n          \n          LinkedIn\n        \n        \n          \n          Google Scholar\n        \n      \n    \n  \n\n\n\n\n\n  \n    \n      Primary Research\n      \n        Efficient computational systems in software and hardware—mixed-signal accelerators, in-memory computing, and neural architecture search for edge deployment.\n      \n    \n    \n      Secondary Interests\n      \n        Open Source Hardware\n        Hardware CI/CD\n        Differential Equations\n        Discrete Optimization\n        Efficient AI\n        Physics (GR, QFT)\n        Abstract Math\n        Learning Theory\n      \n    \n  \n\n\n\n\n\n  Recent Pages\n  \n    Notes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.\n  \n\n\n\n\n\n\n\n\n\nOnline Caching of Devcontainer builds with GHCR.io\n\n\n\nApr 2, 2026\n\n\n\n\n\n\n\n\n\n\n\nOn DRAM Failure\n\n\n\nMar 31, 2026\n\n\n\n\n\n\n\n\n\n\n\nGeneral Relativity\n\n\n\nFeb 22, 2026\n\n\n\n\n\n\n\n\n\n\n\nRetrieval over Reading\n\n\n\nJan 21, 2026\n\n\n\n\n\n\n\n\n\n\n\nSolving Ballistics Equation with RK4 in C\n\n\n\nJan 12, 2026\n\n\n\n\n\n\n\n\n\n\n\nThe Generalized Stokes’ Theorem\n\n\n\nJan 11, 2026\n\n\n\n\n\n\n\n\n\n\n\nDifferential Equations to FEM\n\n\n\nJan 10, 2026\n\n\n\n\n\n\n\n\n\n\n\nRings and Fields\n\n\n\nJan 3, 2026\n\n\n\n\n\n\n\n\n\n\n\nMetrics and Manifolds\n\n\n\nDec 26, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#general-frequency-response",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#general-frequency-response",
+    "title": "Transistor Capacitances",
+    "section": "General Frequency Response",
+    "text": "General Frequency Response\nMost amplifiers have a frequency response that looks like the following:"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#everything-is-a-capacitor",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#everything-is-a-capacitor",
+    "title": "Transistor Capacitances",
+    "section": "Everything is a capacitor",
+    "text": "Everything is a capacitor\n\nIf something holds charge, it is a capacitor.\n\\[C = \\frac{dQ}{dV} \\]\n\n\nHence, everywhere in semiconductor devices where there are holes and electrons moving in and out there is capacitance."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-1",
+    "title": "Transistor Capacitances",
+    "section": "BJT Parasitics",
+    "text": "BJT Parasitics\n\n\nThere are two main parasitic capacitances in a BJT:\n\n\nBase-Emitter Capacitance \\(C_{\\pi} = C_b + C_{je}\\) (Base Charging Capacitance + Base-Emitter Junction Capacitance)\nBase-Collector Capacitance \\(C_{\\mu}\\)"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b",
+    "title": "Transistor Capacitances",
+    "section": "The base charging capacitance \\(C_b\\)",
+    "text": "The base charging capacitance \\(C_b\\)\n\nBefore we start using the BJT, there is effectively “no charge” in the base region.\n\n\nHowever, as we turn the BJT on, the emitter starts to inject carriers (charge) into the base."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-base-charging-capacitance-c_b-1",
+    "title": "Transistor Capacitances",
+    "section": "The base charging capacitance \\(C_b\\)",
+    "text": "The base charging capacitance \\(C_b\\)\n\nThe amount of carrier charge entering/exiting the base per second is \\(I_{C}\\)\n\n\nIf the amount of time a carrier spends in the base is \\(\\tau_F\\), then the total charge stored in the base is: \\[ Q_B =  I_C \\tau_F \\]\n\n\nSo then a change in \\(V_{BE}\\) can cause a change in \\(Q_B\\) through \\(I_C\\):\n\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} \\]\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} = \\frac{d(I_C \\tau_F)}{dV_{BE}} \\]\n\n\n\\[ C_b = \\frac{dQ_B}{dV_{BE}} = \\frac{d(I_C \\tau_F)}{dV_{BE}} = \\tau_F \\frac{dI_C}{dV_{BE}} \\]\n\n\n\nHence,\n\\[ C_b = \\tau_F g_m \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\n\nA depletion region is a region with charges.\n\n\n\n\n\n\nAs we discussed before, the width of the depletion region changes with applied voltage. It is known that \\(W_{dep} \\propto \\sqrt{V_{bi} - V_{BE}}\\)."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-1",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\nHence, since \\(Q_{dep} \\propto W_{dep}\\), we have that some constant of proportionality \\(\\alpha\\) exists such that:\n\n\n\\[ Q_{dep} = \\alpha \\sqrt{V_{bi} - V_{BE}} \\]\n\n\n\\[ C_{je} = \\left|\\frac{dQ_{dep}}{dV_{BE}}\\right| = \\left|\\alpha \\frac{d(\\sqrt{V_{bi} - V_{BE}})}{dV_{BE}}\\right| = \\left|-\\frac{\\alpha}{2\\sqrt{V_{bi} - V_{BE}}}\\right|  = \\frac{\\alpha}{2\\sqrt{V_{bi}}\\sqrt{1 - V_{BE}/V_{bi}}}\\]\n\n\nWe can treat \\(\\frac{\\alpha}{2\\sqrt{V_{bi}}}\\) as a constant \\(C_{je0}\\):\n\\[ C_{je} = \\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{bi}}} = \\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}} \\]\n\n\nand we see that \\(C_{je0}\\) is base-emitter junction capacitance measured at \\(V_{BE} = 0\\) V. We also typically refer to \\(V_{bi}\\) for the BE junction as \\(V_{j,BE}\\)."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-be-junction-capacitance-c_je-2",
+    "title": "Transistor Capacitances",
+    "section": "The BE Junction Capacitance \\(C_{je}\\)",
+    "text": "The BE Junction Capacitance \\(C_{je}\\)\n\\[\\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-bc-junction-capacitance-c_mu",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-bc-junction-capacitance-c_mu",
+    "title": "Transistor Capacitances",
+    "section": "The BC Junction Capacitance \\(C_{\\mu}\\)",
+    "text": "The BC Junction Capacitance \\(C_{\\mu}\\)\nLikewise, the BC junction’s depletion region also has a capacitance. We call this \\(C_{\\mu}\\).\nSince it’s usually reverse biased, we replace \\(V_{BE}\\) with \\(V_{CB}\\) and negate the sign in the denominator:\n\\[ C_{\\mu} = \\frac{C_{\\mu0}}{\\sqrt{1 + V_{CB}/V_{j,CB}}} \\]\n\n\n\n\n\n\n\nNote\n\n\nWe call it \\(C_\\mu\\) and not \\(C_{jc}\\) because of its position in the small-signal equivalent. \\(\\mu\\) is traditionally used to represent voltage feedback from output to input in the hybrid-pi model."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-summary",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-parasitics-summary",
+    "title": "Transistor Capacitances",
+    "section": "BJT Parasitics Summary",
+    "text": "BJT Parasitics Summary\n\n\n\n\n\\(C\\mu\\) - Junction capacitance between B and C\n\\(C_\\pi = C_b + C_{je}\\)\n\n\\(C_b\\) - Capacitance from carriers crossing the base\n\\(C_{je}\\) - Junction capacitance between B and E\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\\(C_\\mu\\) and is typically around 5fF-10fF.\n\\(C_{je}\\) is a little higher, about \\(&gt;10fF\\).\n\\(C_b\\) is typically around hundreds of fF."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#bjt-small-signal-model-with-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#bjt-small-signal-model-with-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "BJT Small Signal Model with Capacitances",
+    "text": "BJT Small Signal Model with Capacitances\n\n\n\n\\[C\\pi=C_b+C_{je}\\] \\[C_b=\\tau_Fg_m\\]\n\n\\[\\frac{C_{je0}}{\\sqrt{1 - V_{BE}/V_{j,BE}}}\\]\n\n\\[ C_{\\mu} = \\frac{C_{\\mu0}}{\\sqrt{1 + V_{CB}/V_{j,CB}}} \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-1",
+    "title": "Transistor Capacitances",
+    "section": "MOS Parasitics",
+    "text": "MOS Parasitics\n\n\nThe MOS has three sources of parasitics:\n\nDrain/Source to Bulk Junction Capacitance \\(C_{db}\\),\\(C_{sb}\\)  - Same as earlier.\nGate-bulk capacitance \\(C_{gb}\\) - The MOS Capacitor. Remember this?\nGate-overlap capacitance \\(C_{gs}\\)  - MOS Capacitor but we accidentally do it to S/D."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mos-parasitics-2",
+    "title": "Transistor Capacitances",
+    "section": "MOS Parasitics",
+    "text": "MOS Parasitics"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#overlap-capacitances-c_gs-and-c_gd",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#overlap-capacitances-c_gs-and-c_gd",
+    "title": "Transistor Capacitances",
+    "section": "Overlap Capacitances \\(C_{GS}\\) and \\(C_{GD}\\)",
+    "text": "Overlap Capacitances \\(C_{GS}\\) and \\(C_{GD}\\)\n\n\n\n\n\\(C_{GS}\\) and \\(C_{GD}\\) are overlap capacitances caused by an effective MOS capacitor on the overlap of the G region to the S and D regions.\n\n\n\\[C_{GS} = C_{GD} = \\frac{\\epsilon_{ox} x_d W}{t_{ox}}\\]\n\n\nBut if you may remember…\n\n\n\\[C_{ox}=\\frac{\\epsilon_{ox}}{t_{ox}}\\]\n\n\n\\[C_{GS} = C_{GD} = C_{ox}x_dW\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-gate-bulk-capacitance-c_gb",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-gate-bulk-capacitance-c_gb",
+    "title": "Transistor Capacitances",
+    "section": "The Gate-bulk Capacitance \\(C_{gb}\\)",
+    "text": "The Gate-bulk Capacitance \\(C_{gb}\\)\n\n\n\nAs we discussed before, the main physical device behind the MOSFET is a MOS capacitor.\n\n\n\\[ C_{gb} = \\frac{\\epsilon_{ox}}{t_{ox}}WL \\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-drain-bulk-and-source-bulk-capacitances-c_dbc_sb",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-drain-bulk-and-source-bulk-capacitances-c_dbc_sb",
+    "title": "Transistor Capacitances",
+    "section": "The Drain-bulk and Source-bulk Capacitances \\(C_{db}\\),\\(C_{sb}\\)",
+    "text": "The Drain-bulk and Source-bulk Capacitances \\(C_{db}\\),\\(C_{sb}\\)\n\\(C_{db}\\) and \\(C_{sb}\\) come from junction capacitances of the PN junction formed by the opposite-type semiconductors of the drain/source and the bulk."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#mosfet-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#mosfet-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "MOSFET Capacitances",
+    "text": "MOSFET Capacitances\n\n\nMOS Parallel Plate Capacitances\n\n\\(C_{gs}\\)\n\\(C_{gd}\\)\n\\(C_{gb}\\)\n\nS/D-Bulk Junction Capacitances\n\n\\(C_{sb}\\)\n\\(C_{db}\\)"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#effective-mos-small-signal-with-capacitances",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#effective-mos-small-signal-with-capacitances",
+    "title": "Transistor Capacitances",
+    "section": "Effective MOS Small-signal with Capacitances",
+    "text": "Effective MOS Small-signal with Capacitances\n\n\nThe bulk is typically connected to the source meaning:\n\n\n\n\\(C_{gs}\\) typically also accounts for \\(C_{gb}\\).\n\n\n\n\n\\(C_{sb}\\) is shorted.\n\n\n\nSo, only \\(C_{gs}\\), \\(C_{gd}\\) and \\(C_{db}\\) survive."
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-fundamental-gains",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-fundamental-gains",
+    "title": "Transistor Capacitances",
+    "section": "The fundamental gains",
+    "text": "The fundamental gains\nLet’s see what happens to the fundamental gains due to the capacitances:\n\n\n\nVoltage gain:\n\n\n\\[ \\frac{v_o}{r_o || 1/sC\\mu} + v_i (g_m + sC\\mu) = 0 \\]\n\n\n\\[ \\frac{v_o}{v_i} = - (g_m + sC\\mu)(\\frac{r_o}{1+sC\\mu r_o}) \\]\n\n\n\\[ \\frac{v_o}{v_i} = - g_mr_o \\frac{(1 + sC\\mu/g_m)}{(1+sC\\mu r_o)} \\]\n\n\n\n\n\n\nCurrent gain:\n\n\n\\[ i_o = v_i (g_m - sC\\mu) \\]\n\n\n\\[ i_i = v_i (sC\\pi + sC\\mu + 1/r_{\\pi}) \\]\n\n\n\\[ \\frac{i_o}{i_i} = \\frac{g_m-sC\\mu}{1/r_{\\pi} + sC_\\pi+sC_\\mu}\\]\n\n\n\\[ \\frac{i_o}{i_i} = g_mr_{\\pi} \\frac{1-sC\\mu/g_m}{1+sr_{\\pi}(C_\\pi+C_\\mu)}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\nYou’ll notice that the current gain reaches 1 (0 dB), but the voltage gain doesn’t.\n\n\nHence, people measure the “speed of the transistor” or the transition frequency as \\[ \\left| \\frac{i_o}{i_i} \\right|_{f_T} = 1\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-1",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-1",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\\[ \\frac{i_o}{i_i} = g_mr_\\pi \\frac{1-sC\\mu/g_m}{s(C_\\pi+C_\\mu)}\\]\n\n\n\\[ \\frac{i_o}{i_i} = \\frac{g_m-sC\\mu}{1/r_\\pi + s(C_\\pi+C_\\mu)}\\]\n\n\n\\[ \\left| \\frac{i_o}{i_i} \\right| = \\frac{\\sqrt{g_m^2 + \\omega_T^2C_\\mu^2}}{\\sqrt{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2}} = 1\\]\n\n\n\\[ \\frac{g_m^2 + \\omega_T^2C_\\mu^2}{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2} = 1\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-2",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-2",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\\[ \\frac{g_m^2 + \\omega_T^2C_\\mu^2}{(1/r_\\pi)^2 + \\omega_T^2(C_\\pi+C_\\mu)^2} = 1\\]\n\n\n\\[ \\omega_T^2 = \\frac{g_m^2 - (1/r_\\pi)^2}{(C_\\pi+C_\\mu)^2 - C_\\mu^2}\\]\n\n\nSince \\(g_m^2 \\gg 1/r_\\pi^2\\) and \\((C_\\pi+C_\\mu)^2 \\gg C_\\mu^2\\)\n\n\n\n\n\n\nDefinition\n\n\n\\[\\omega_T \\approx \\frac{g_m}{C_\\pi + C_\\mu}, f_T \\approx \\frac{g_m}{2\\pi(C_\\pi + C_\\mu)}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-3",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-3",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\nFor a MOSFET, everything is the same.\nSet \\(r_\\pi \\rightarrow \\infty\\)\n\n\n\nDefinition\n\n\n\\[\\omega_T \\approx \\frac{g_m}{C_{gd} + C_{gs}}, f_T \\approx \\frac{g_m}{2\\pi(C_{gd} + C_{gs})}\\]"
+  },
+  {
+    "objectID": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-4",
+    "href": "slides/transistorCapacitances/transistorCapacitances.html#the-transition-frequency-f_t-4",
+    "title": "Transistor Capacitances",
+    "section": "The Transition Frequency \\(f_T\\)",
+    "text": "The Transition Frequency \\(f_T\\)\n\n\n\n\nTransistor Capacitances"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#steps-overview",
+    "href": "slides/settingOsPdk/settingOsPdk.html#steps-overview",
+    "title": "Setting up an OS PDK",
+    "section": "Steps Overview",
+    "text": "Steps Overview\nThe following tools require setup for a new PDK:\n\nYosys Synthesis\nOpenROAD (place_opt, global_route, detailed_route, cts)\nMAGIC setup (sets up DRC)\nNETGEN setup (LVS)\nOpenSTA settings\nOpenRCX settings\nXSchem (Symbol creation and spice attachment)\n\nPDK_HOME/libs.tech/xschem"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#resources",
+    "href": "slides/settingOsPdk/settingOsPdk.html#resources",
+    "title": "Setting up an OS PDK",
+    "section": "Resources",
+    "text": "Resources\nOpenLane Discussions Issue on the original repo discussing PDK setup: https://github.com/The-OpenROAD-Project/OpenLane/discussions/2133\nPDK Configuration Official documentation on setting up a configuration: https://openlane.readthedocs.io/en/latest/reference/pdk_configuration.html"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#most-important-requirement-config-files",
+    "href": "slides/settingOsPdk/settingOsPdk.html#most-important-requirement-config-files",
+    "title": "Setting up an OS PDK",
+    "section": "Most important requirement: Config files",
+    "text": "Most important requirement: Config files\nIn fact, little else matters because these config files point to everything that’s needed. If they’re not there, you have to make them.\n\nRequired Files:\n\nPDK Config: {pdk_root}/{pdk}/libs.tech/librelane/config.tcl\n\nSCL Config: {pdk_root}/{pdk}/libs.tech/librelane/{scl}/config.tcl"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#whats-a-tlef",
+    "href": "slides/settingOsPdk/settingOsPdk.html#whats-a-tlef",
+    "title": "Setting up an OS PDK",
+    "section": "What’s a TLEF?",
+    "text": "What’s a TLEF?\nYou don’t actually need it! The configuration file is where you declare the tech lef.\n# Technology LEF\nset ::env(TECH_LEF) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__nom.tlef\"\nset ::env(TECH_LEF_MIN) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__min.tlef\"\nset ::env(TECH_LEF_MAX) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/techlef/$::env(STD_CELL_LIBRARY)__max.tlef\"\nset ::env(CELLS_LEF) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lef/*.lef\"]\nset ::env(GDS_FILES) [glob \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/gds/*.gds\"]\nset ::env(STD_CELL_LIBRARY_CDL) \"$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/cdl/$::env(STD_CELL_LIBRARY).cdl\"\n\nNote: Except for libs.ref (which is standard), everything else is handled by this config file."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#configuration-files-detail",
+    "href": "slides/settingOsPdk/settingOsPdk.html#configuration-files-detail",
+    "title": "Setting up an OS PDK",
+    "section": "Configuration Files Detail",
+    "text": "Configuration Files Detail\nSource: OpenLane Docs\n\nconfig.tcl: Common info for all SCLs under this PDK. Example\ncommon_pdn.tcl: PDN configuration.\n&lt;scl&gt;/config.tcl: SCL specific info (overrides PDK config). Example\n&lt;scl&gt;/tracks.info: Metal layer offsets and pitches (extracted from tech lef). Example\n\nFormat: &lt;layer name&gt; X|Y &lt;offset&gt; &lt;pitch&gt;\n\n&lt;scl&gt;/synth_exclude.cells: Newline-separated cell names to trim during synthesis. Example\nrcx_patterns.rules: Rules for OpenSTA. Example"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#folder-structure",
+    "href": "slides/settingOsPdk/settingOsPdk.html#folder-structure",
+    "title": "Setting up an OS PDK",
+    "section": "Folder Structure",
+    "text": "Folder Structure\n\n\n&lt;pdk_name&gt;\n\nlibs.tech\n\nopenlane\n\nconfig.tcl\ncommon_pdn.tcl (Default PDN script)\n&lt;standard cell library&gt;\n\nconfig.tcl\ntracks.info\nno_synth.cells\ndrc_exclude.cells\n\n\n\nlibs.ref\n\nskyxxx_fd_xx_xx\n\nlef (Can contain techlef declarations)\ntechlef (Doesn’t have to be a folder)\nlib\n…"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-as-the-virtuoso-equivalent",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-as-the-virtuoso-equivalent",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem as the virtuoso equivalent",
+    "text": "XSchem as the virtuoso equivalent\n\nNote: The most basic way to start is skipping XSchem and using ngspice directly.\n\nChecklist:\n\nWrite libs.tech/xschem/xschemrc\nCreate symbols for relevant elements\n\nSuggest starting with nfet and pfet to try a flow.\nInvestigate sky130 symbols (open with XSchem) for reference."
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#xschem-symbols-like-the-cadence-symbol-view",
+    "href": "slides/settingOsPdk/settingOsPdk.html#xschem-symbols-like-the-cadence-symbol-view",
+    "title": "Setting up an OS PDK",
+    "section": "XSchem Symbols (like the Cadence symbol view)",
+    "text": "XSchem Symbols (like the Cadence symbol view)\n\n\nYou must create your own symbols (using XSchem).\nYou need to set global attributes for XSchem symbols for them to be parsed into a spice netlist properly.\nGlobal attribute example () is shown on the right (model name: nfet_1v8)\n\n 1 G {}\n 2 K {type=nmos\n 3 lvs_format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W nf=@nf m=@mult\"\n 4 format=\"@spiceprefix@name @pinlist sky130_fd_pr__@model L=@L W=@W\n 5 + nf=@nf ad=@ad as=@as pd=@pd ps=@ps\n 6 + nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd\n 7 + mult=@mult m=@mult\"\n 8 template=\"name=M1\n 9 W=1\n10 L=0.15\n11 nf=1 \n12 mult=1\n13 ad=\\\\\"expr('int((@nf + 1)/2) * @W / @nf * 0.29')\\\\\"\n14 pd=\\\\\"expr('2*int((@nf + 1)/2) * (@W / @nf + 0.29)')\\\\\"\n15 as=\\\\\"expr('int((@nf + 2)/2) * @W / @nf * 0.29')\\\\\"\n16 ps=\\\\\"expr('2*int((@nf + 2)/2) * (@W / @nf + 0.29)')\\\\\"\n17 nrd=\\\\\"expr('0.29 / @W ')\\\\\" nrs=\\\\\"expr('0.29 / @W ')\\\\\"\n18 sa=0 sb=0 sd=0\n19 model=nfet_01v8\n20 spiceprefix=X\n21 \"\n22 drc=\"fet_drc \\{@name\\\\\\\\\\} \\{@symname\\\\\\\\\\} \\{@model\\\\\\\\\\} \\{@W\\\\\\\\\\} \\{@L\\\\\\\\\\} \\{@nf\\\\\\\\\\}\"}"
+  },
+  {
+    "objectID": "slides/settingOsPdk/settingOsPdk.html#magic-setup-checklist",
+    "href": "slides/settingOsPdk/settingOsPdk.html#magic-setup-checklist",
+    "title": "Setting up an OS PDK",
+    "section": "MAGIC setup checklist",
+    "text": "MAGIC setup checklist\nBasically, all layout and signoff-related things (except maybe logic equivalence) are done by magic TCL scripts. Checklist:\n\nProcess the given stdcell lefs to create maglefs\nWrite sky130A.tcl\nWrite sky130A.tech\nWrite sky130A.magicrc\nWrite all the custom TCL, like fillgen.\n\n\n\n\n\n\n\nNote\n\n\nI strongly recommend just copying then changing the fill and DRC scripts from the existing sky130/libs.tech/magic or ihp-sg13g2/libs.tech/magic\n\n\n\n\n\n\nSetting up an OS PDK"
+  },
+  {
+    "objectID": "notes/On DRAM Failure.html",
+    "href": "notes/On DRAM Failure.html",
+    "title": "Lawrence Roman A. Quizon",
+    "section": "",
+    "text": "DRAM failure rates (and most other semiconductor failure rates) follow an Arrhenius law (looking like the Neel-Brown Relaxation for magnetics) \\[\\underbrace{\\lambda(T)}_{\\text{failure rate}}=\\lambda_0e^{-\\frac{E_a}{k_BT}}\\] \\(E_a\\) captures all the relevant failure parameters.\nIf failures are poisson-like, the survival rate is \\[P(t)=e^{-\\lambda t}\\] from which we can get a mean retention time. \\[\\tau(T)=\\frac{1}{\\lambda(T)}=\\tau_0e^{\\frac{E_a}{k_BT}}\\] So then if we want the probability of failure before refresh \\(\\leq \\epsilon\\) then we integrate the above to get \\(\\epsilon\\) OR:\nBased of the probability of NOT surviving before refresh time \\(t_r\\): \\[P_{fail}(t_r)=1-e^{-\\lambda t_r}\\leq \\epsilon\\] \\[t_r \\leq -\\frac{1}{\\lambda}\\ln(1-\\epsilon)\\] then replace \\(\\lambda\\) we get \\[t_r(T)\\leq \\tau_0e^{-\\frac{E_a}{k_BT}}\\ln(\\frac{1}{1-\\epsilon})\\] if \\(\\epsilon \\ll 1\\) then via linear approx\n\\[t_r(T)\\lt \\tau(T)\\cdot \\epsilon\\]\nWhen it’s field assisted with a field \\(E\\):\n\\[\\lambda(T,E)\\approx e^{-\\frac{E_a-\\alpha\\sqrt E}{k_BT}}\\] Practical form:\n\\[t_{ret}(T)=t_{ret}(T_0)\\cdot e^{\\frac{E_a}{k_B}(1/T-1/T_0)}\\] This model is filled by:\n\nMeasure retention rate at some base temperature \\(t_{ret}(T_0)\\)\nCharacterize \\(E_a/k_B\\) experimentally by how the retention rate scales away from the \\(T_0\\) point, fitting against the Arrhenius model.\n\nHowever, \\(E_a\\) is a probabilistic statistical variation (weaker cells exist, and cell strengths vary over time non-monotonically). So, we account for this by integrating the probabilities:\n\\[\\lambda(T)=\\int p(E_a) \\lambda_0 e^{-E_a/k_BT}dE_a\\] to find the probability distribution of the retention time.\nThis retention time is a parameter of the Poisson process. Observing failures gives a posterior over \\(E_a\\) but we start with an assumed \\(E_a\\).\nThe survival probability of cell \\(i\\) over refresh \\(t_r\\) is\n\\[P^{(i)}_{survival}=(t_r | E_{a,i})=e^{-t_r/\\tau(E_{a,i},T)}\\] based on the posterior \\(E_a\\) distribution.\nThen, number of failures in a refresh interval is bernoulli with\n\\[p_i=e^{-t_r/\\tau(E_{a,i},T)}\\]\nand the probability that ECC cannot correct this is the probability of losing more than \\(k\\) bernoulli trials:\n\\[Pr(X&gt;k)\\] Then for large \\(N\\) (trials = ncells) and small \\(p_i\\) (probability of failure) then\n\\[X~\\text{ Poisson}(\\lambda_{eff}),\\lambda_{eff}=N\\cdot(\\bar p)\\]\nif \\(\\bar p\\) is the average retention probability over the bernoulli distribution\n\\[\\bar p=\\mathbb{E}[1-e^{-t_r/\\tau(E_a,T)}]\\] Then so\n\\[P_{fail}(t_r,T)\\approx1-\\sum_j^K\\frac{\\lambda_{eff}^j e^{-\\lambda_{eff}}}{j!}=1-\\sum_j^K\\frac{N\\bar p e^{-N\\bar p}}{j!}\\] Then the probability that the data is at least recoverable, \\[\\sum_j^K\\frac{N\\bar p e^{-N\\bar p}}{j!}\\ge 1-\\epsilon \\] and we solve this over K bernoulli trials analytically or numerically versus retention time (which decides \\(\\bar p\\)).\nAs a designer, we can infer behavior with first order approximations when \\(\\bar p \\ll 1\\) : \\[\\bar p \\approx \\frac{1}{N} (k+1)\\epsilon\\] then so\n\\[t_r(T)=\\text{ solve: } \\int p(E_a)[1-e^{-t_r/\\tau(E_a,T)}]dE_a=\\frac{(k+1)\\epsilon}{N}\\]"
+  },
+  {
+    "objectID": "notes/On DRAM Failure.html#on-dram-failure",
+    "href": "notes/On DRAM Failure.html#on-dram-failure",
+    "title": "Lawrence Roman A. Quizon",
+    "section": "",
+    "text": "DRAM failure rates (and most other semiconductor failure rates) follow an Arrhenius law (looking like the Neel-Brown Relaxation for magnetics) \\[\\underbrace{\\lambda(T)}_{\\text{failure rate}}=\\lambda_0e^{-\\frac{E_a}{k_BT}}\\] \\(E_a\\) captures all the relevant failure parameters.\nIf failures are poisson-like, the survival rate is \\[P(t)=e^{-\\lambda t}\\] from which we can get a mean retention time. \\[\\tau(T)=\\frac{1}{\\lambda(T)}=\\tau_0e^{\\frac{E_a}{k_BT}}\\] So then if we want the probability of failure before refresh \\(\\leq \\epsilon\\) then we integrate the above to get \\(\\epsilon\\) OR:\nBased of the probability of NOT surviving before refresh time \\(t_r\\): \\[P_{fail}(t_r)=1-e^{-\\lambda t_r}\\leq \\epsilon\\] \\[t_r \\leq -\\frac{1}{\\lambda}\\ln(1-\\epsilon)\\] then replace \\(\\lambda\\) we get \\[t_r(T)\\leq \\tau_0e^{-\\frac{E_a}{k_BT}}\\ln(\\frac{1}{1-\\epsilon})\\] if \\(\\epsilon \\ll 1\\) then via linear approx\n\\[t_r(T)\\lt \\tau(T)\\cdot \\epsilon\\]\nWhen it’s field assisted with a field \\(E\\):\n\\[\\lambda(T,E)\\approx e^{-\\frac{E_a-\\alpha\\sqrt E}{k_BT}}\\] Practical form:\n\\[t_{ret}(T)=t_{ret}(T_0)\\cdot e^{\\frac{E_a}{k_B}(1/T-1/T_0)}\\] This model is filled by:\n\nMeasure retention rate at some base temperature \\(t_{ret}(T_0)\\)\nCharacterize \\(E_a/k_B\\) experimentally by how the retention rate scales away from the \\(T_0\\) point, fitting against the Arrhenius model.\n\nHowever, \\(E_a\\) is a probabilistic statistical variation (weaker cells exist, and cell strengths vary over time non-monotonically). So, we account for this by integrating the probabilities:\n\\[\\lambda(T)=\\int p(E_a) \\lambda_0 e^{-E_a/k_BT}dE_a\\] to find the probability distribution of the retention time.\nThis retention time is a parameter of the Poisson process. Observing failures gives a posterior over \\(E_a\\) but we start with an assumed \\(E_a\\).\nThe survival probability of cell \\(i\\) over refresh \\(t_r\\) is\n\\[P^{(i)}_{survival}=(t_r | E_{a,i})=e^{-t_r/\\tau(E_{a,i},T)}\\] based on the posterior \\(E_a\\) distribution.\nThen, number of failures in a refresh interval is bernoulli with\n\\[p_i=e^{-t_r/\\tau(E_{a,i},T)}\\]\nand the probability that ECC cannot correct this is the probability of losing more than \\(k\\) bernoulli trials:\n\\[Pr(X&gt;k)\\] Then for large \\(N\\) (trials = ncells) and small \\(p_i\\) (probability of failure) then\n\\[X~\\text{ Poisson}(\\lambda_{eff}),\\lambda_{eff}=N\\cdot(\\bar p)\\]\nif \\(\\bar p\\) is the average retention probability over the bernoulli distribution\n\\[\\bar p=\\mathbb{E}[1-e^{-t_r/\\tau(E_a,T)}]\\] Then so\n\\[P_{fail}(t_r,T)\\approx1-\\sum_j^K\\frac{\\lambda_{eff}^j e^{-\\lambda_{eff}}}{j!}=1-\\sum_j^K\\frac{N\\bar p e^{-N\\bar p}}{j!}\\] Then the probability that the data is at least recoverable, \\[\\sum_j^K\\frac{N\\bar p e^{-N\\bar p}}{j!}\\ge 1-\\epsilon \\] and we solve this over K bernoulli trials analytically or numerically versus retention time (which decides \\(\\bar p\\)).\nAs a designer, we can infer behavior with first order approximations when \\(\\bar p \\ll 1\\) : \\[\\bar p \\approx \\frac{1}{N} (k+1)\\epsilon\\] then so\n\\[t_r(T)=\\text{ solve: } \\int p(E_a)[1-e^{-t_r/\\tau(E_a,T)}]dE_a=\\frac{(k+1)\\epsilon}{N}\\]"
+  },
+  {
+    "objectID": "notes/On DRAM Failure.html#dram-refresh-troubles",
+    "href": "notes/On DRAM Failure.html#dram-refresh-troubles",
+    "title": "Lawrence Roman A. Quizon",
+    "section": "DRAM Refresh Troubles",
+    "text": "DRAM Refresh Troubles\nDRAM refresh typically every \\(64ms\\) This occupies the DRAM row about \\(500us\\). A refresh command is given to a rank (like a word, 64b or 32b). A new refresh command is issued about every \\(7.8us\\) per rank (set of banks).\nWith precise compute control over the DRAM, we can manually control the refresh cycles that take about (\\(~400n*\\underbrace{8192}_{depth}=3.2ms\\)) everytime (if done one after the other)."
+  },
+  {
+    "objectID": "notes/Online Caching of Devcontainer builds with GHCR.io.html",
+    "href": "notes/Online Caching of Devcontainer builds with GHCR.io.html",
+    "title": "Online Caching of Devcontainer builds with GHCR.io",
+    "section": "",
+    "text": "Problem : Building and rebuilding docker images takes centuries. Solution : Cache build in GHCR.io\n\nI wasn’t familiar with this yet when I started heavily using docker containers half a year ago (I think just half a year ago).\nDevcontainers + Dockerfiles create reproducible and containerized development environments for every project.\nHowever, if we’d like to stop working on a project, we want to delete these containers. When we want to open it again, we have to rebuild it locally.\nTo avoid this, we have to use the cachedFrom: option in the devcontainer.json:\n{\n  \"name\": \"My Dev Environment\",\n  \"build\": {\n    \"dockerfile\": \"Dockerfile\",\n    \"cacheFrom\": [\n      \"ghcr.io/YOUR_GITHUB_USER/YOUR_REPO/devcontainer:latest\"\n    ]\n  },\n  \"customizations\": {\n    // ... your vscode extensions, etc.\n  }\n}\nProblem is, how does the build get pushed to the remote repository? In comes CI workflows.\nYou add a CI workflow that builds the image and pushes to the remote repository.\nname: Build & push devcontainer image\n\non:\n  push:\n    branches: [main]\n    paths:\n      - \".devcontainer/Dockerfile\"\n      - \"environment.yml\"\n\nenv:\n  IMAGE: ghcr.io/lawrence-lugs/reponame[/something]\n\njobs:\n  build-and-push:\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      packages: write\n\n    steps:\n      - name: Checkout (GH)\n        uses: actions/checkout@v4\n\n\n      - name: Log in to GHCR\n        uses: docker/login-action@v3\n        with:\n          registry: ghcr.io\n          username: ${{ github.actor }}\n          password: ${{ secrets.GITHUB_TOKEN }}\n\n      - name: Set up Docker Buildx\n        uses: docker/setup-buildx-action@v3\n\n      - name: Build and push\n        uses: docker/build-push-action@v6\n        with:\n          context: .\n          file: .devcontainer/Dockerfile\n          push: true\n          tags: ${{ env.IMAGE }}:latest\n          cache-from: type=registry,ref=${{ env.IMAGE }}:buildcache\n          cache-to: type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max\nIn that case, the actions worker will build the image by itself and push it to the repository. Then, once the image is created, you can just pull it."
+  },
+  {
+    "objectID": "notes/General Relativity.html",
+    "href": "notes/General Relativity.html",
+    "title": "General Relativity",
+    "section": "",
+    "text": "Proper Time\nProper time is the time a moving particle experiences, because it’s defined as \\[d\\tau^2=-ds^2=-d\\vec{x}\\cdot d\\vec{x}\\] which has a consequence such that \\[\\frac{d\\vec{x}}{d\\tau}=(\\vec{e_0})_{MCRF}\\] Which is the time-basis of the “tangent reference frame” to the particle.\n\n\nWhat is acceleration?\nFrom the twins paradox, we know that both the stationary twin and the moving twin will observe that each other has a slower clock. However, when the moving twin “turns back” to travel towards the stationary twin, the stationary twin’s clock will have seemed like it ticked a lot instantly.\nThis means that the act of accelerating makes every other clock seem instantly faster.\nIs this explainable by pure special relativity without curvature?\nThe twins paradox is not simply answered in “First Course in General Relativity Ch. 1.11”\n\n\nTensors\nThe one form: \\[f_\\alpha:=\\mathbf{f}(\\vec{e_\\alpha})\\] The two-form: \\[f_{\\alpha\\beta}:=\\mathbf{f}(\\vec{e_\\alpha},\\vec{e_\\beta})\\] \\[\n\\begin{aligned}\n\\mathbf{f}(\\vec{A},\\vec{B})=\\mathbf{f}(A^\\alpha\\vec{e_\\alpha},B^\\beta\\vec{e_\\beta})\\\\\n=A^\\alpha B^\\beta \\mathbf{f} ( \\vec{e_\\alpha},\\vec{e_\\beta} ) \\\\\n=A^\\alpha B^\\beta f_{\\alpha\\beta}\n\\end{aligned}\\] That is, all forms are just functions of increasing numbers of basis sets because they work on N vectors (for the N-form).\nJust like a matrix, the two-form tensor is a sum over simple outer-products.\n\n\nThe Energy-Momentum 4-vector\nThis is called so because the definition of 4-momentum \\[\\vec{p}=m\\vec{U}\\] and since the 4-velocity \\(\\vec{U}\\) is just \\[\\vec{U}=\\{1,v_x,v_y,v_z\\}\\] this immediately leads to the discovery that its components \\[p_\\alpha=\\{E,p_x,p_y,p_z\\}\\] are energy and the 3 spatial momenta.\nIn non-relativistic units, the first time would be \\(E/c\\).\nThis is because the time-component of \\(\\vec U\\) is \\(c\\) in special relativity- which is further because \\(ct\\) is the unit of the time axis that we use.\n\n\nStress-Energy Tensor\n\\[T_{\\alpha\\beta}\\] Its \\(00\\) is energy, \\(0i\\) and \\(i0\\) are symmetric and describe momentum and energy flux, which is just momentum. \\(ij\\) are momentum flux.\nIn fluids without heat transfer or viscosity (ideal space dust), the stress-energy tensor receives a \\(0\\) in momentum flux unless \\(i=j\\) where we are describing energy transfer via momentum through a surface.\nThen, in such ideal fluids, stress-energy becomes:\n\\[T_{\\alpha \\beta}=(\\rho+p)U^\\mu U^\\nu + pg^{\\mu\\nu}\\]\nThe form above is for a ideal fluid. Which, technically at large scale, anything in the universe is. (Except, we have to account for viscosity sometime.)\n\n\nMetric\nThe metric can usually be written as the formula for an arbitrary curve’s arclength. For example, in 2D polar coordinates: \\[ds^2=r^2d\\theta^2+dr^2\\] We find the following insights:\n\nThe basis are not necessarily unit bases\nThe bases are not constant everywhere.\n\n\n\nChristoffel Symbols\nWhen we tried to differentiate a vector, we\nWe define the regular derivative (the derivative of each component of a vector): \\[V^\\alpha_{,\\beta}=\\frac{dV^\\alpha}{dx^\\beta}\\vec{e^\\alpha}\\] This is the vector derivative in Cartesian Coordinates.\nWe can differentiate an arbitrary vector in arbitrary coordinates, but we found that some sort of product rule applies: \\[\\frac{d\\vec{V}}{dx^\\beta}=\\frac{dV^\\alpha}{dx^\\beta}\\vec{e^\\alpha}+V^\\alpha \\frac{d\\vec{e^\\alpha}}{dx^\\beta}\\] We call this the covariant derivative.\nIn this equation, we use christoffel symbols instead to describe the change in basis against a change in the coordinates. \\[V{^\\alpha_{;\\beta}} =V^\\alpha_{,\\beta}+\\Gamma^\\alpha_{\\mu \\beta} V^\\mu\\] Where, if the coordinates are not Cartesian, the Christoffel symbols \\(\\Gamma\\) pop out to describe the shifting of the basis with respect to the origin.\nThey are a tensor describing how the basis changes with respect to coordinate change. \\[\\Gamma^\\mu_{\\alpha \\beta}\\vec{e_\\mu}=\\frac{d}{dx^\\beta}\\vec{e^\\alpha}\\]\nUsefully, the Christoffel symbols can be calculated from the metric via:\n\\[\\Gamma^\\mu_{\\alpha \\beta}=\\frac{1}{2}g^{\\mu\\nu}(g_{\\nu \\beta,\\alpha}+g_{\\alpha \\nu,\\beta}-g_{\\alpha \\beta,\\nu})\\]\n\n\nDivergence in a locally flat euclidean space (g of signature +2)\nThe covariant derivative \\[V{^\\alpha_{;\\beta}} =V^\\alpha_{,\\beta}+\\Gamma^\\alpha_{\\mu \\beta} V^\\mu\\] Simplifies to\n\\[V^\\alpha_{;\\alpha}=\\frac{1}{\\sqrt{-g}}(\\sqrt{-g}V^\\alpha)_{,\\alpha}\\]\nIf:\n\n\\(g_{\\alpha \\beta}\\) is symmetric (which it is…)\n???\n\n\n\nMetric Volume/Length Element\nIt would make sense that the volume element in a manifold after coordinate transform would be: \\[dx^{4'}=\\det(g_{\\alpha \\beta})dx^4\\] We typically refer to this determinant as \\(g\\)\nThe length of a curve is measured via:\n\\[\\int_{\\lambda_0}^{\\lambda_1}|\\vec{V}\\cdot\\vec{V}|d\\lambda\\] if \\(\\lambda\\) is the parameter of the curve and \\(\\vec{V}\\) is the vector tangent to the curve.\nWhen we say \\(\\lambda\\) is the parameter of the curve, the curve is defined as:\n\\[:\\{\\xi=f(\\lambda),\\eta=g(\\lambda),\\lambda_0\\leq\\lambda\\leq\\lambda_1\\}\\]\nIn differential geometry, we find a unique not-necessarily-unit tangent vector to any curve via: \\[\\frac{d\\phi}{d\\lambda}=&lt;\\tilde{d\\phi},\\vec{V}&gt;\\] and hence\n\\[\\vec{V}=\\left\\{ \\frac{d\\xi}{d\\lambda},\\frac{d\\eta}{d\\lambda} \\right\\} \\]\n\n\nGeodesics\nIn a differentiable manifold that may be curved, the definition of a “line that always stays in the same direction” is in doubt.\nAs a proxy, the concept of enforcing parallel transport of the tangent vector is introduced. That is,\n\\[\\nabla_{\\vec{U}}\\vec{V}=0\\] where this notation means we take the derivative along the world line \\[U^\\beta V^\\alpha_{;\\beta}\\] Iff \\(\\vec{U}\\) is tangent to a geodesic \\[\\nabla_{\\vec U}\\vec{U}=0\\] Then if \\(U^\\alpha=dx^\\alpha/d\\lambda\\) and \\(U^\\beta \\partial/\\partial x^\\beta=d/d\\lambda\\) then this condition leads to something that looks like the euler-lagrange equation only this time with a Christoffel symbol.\n\\[\\frac{d}{d\\lambda}\\left( \\frac{dx^\\alpha}{d\\lambda} \\right) + \\Gamma^\\alpha_{\\mu \\beta}\\frac{dx^\\mu}{d\\lambda}\\frac{dx^\\beta}{d\\lambda}=0\\]\n\n\nRiemann Tensor\nWe can “measure” the curvature of a manifold by measuring how much the direction of the parallel transport changes over a closed loop.\nThis would give us a change in \\(V^\\alpha\\) due to transport around the loop. \\[\\delta V^\\alpha=\\delta a \\delta b \\left[ {\n\\Gamma^\\alpha_{\\mu\\sigma,\\lambda} -\n\\Gamma^\\alpha_{\\mu\\lambda,\\sigma} -\n\\Gamma^\\alpha_{\\nu\\lambda} \\Gamma^\\nu_{\\mu\\sigma} -\n\\Gamma^\\alpha_{\\nu\\sigma} \\Gamma^\\nu_{\\mu\\lambda}\n} \\right]\nV^\\mu\n\\] Since \\(V^\\mu\\) is a vector, we can think that the entire left side is the basis one-form that gives \\(\\delta V^\\alpha\\) from the vector \\(\\delta \\vec{V}\\).\n\\[R^\\alpha_{\\beta\\mu\\nu}=\\text{set of christoffel terms}\\] \\[R^\\alpha_{\\mu \\lambda \\sigma} = {\n\\Gamma^\\alpha_{\\mu\\sigma,\\lambda} -\n\\Gamma^\\alpha_{\\mu\\lambda,\\sigma} -\n\\Gamma^\\alpha_{\\nu\\lambda} \\Gamma^\\nu_{\\mu\\sigma} -\n\\Gamma^\\alpha_{\\nu\\sigma} \\Gamma^\\nu_{\\mu\\lambda}\n}\\] We call this the Riemann tensor.\nWith the form of the Riemann tensor, we can see the following:\n\nIt has 3 lower (one-form) indices and 1 upper index.\n\n3 lower indices means that if we give it 3 vectors, it becomes a vector.\nThe 3 vectors are \\(V^\\mu\\), \\(\\delta a \\vec{e_\\mu}\\), \\(\\delta b \\vec{e_\\nu}\\).\nIn the end, we see that the Riemann curvature takes the infinitesimal area and a vector (any) as argument and gives a vector pointing out the curvature.\nIn a locally inertial frame \\(P\\): \\[R^\\alpha_{\\beta \\mu \\nu} = \\frac{1}{2}g^{\\sigma \\sigma}(g_{\\sigma \\nu, \\beta \\mu}-g_{\\sigma \\nu, \\beta \\nu} + g_{\\beta \\mu, \\sigma \\nu} - g_{\\beta \\nu, \\sigma \\mu})\\]\n\n\nRicci Tensor\nThis identity is verifiable\n\\[R_{\\alpha \\beta \\mu \\nu}=-R_{\\beta \\alpha \\mu \\nu}\\] and so if two of the indices are the same, then \\(A=-A=0\\) \\[R_{\\alpha\\alpha\\mu\\nu}=0\\] It’s also verifiable that all other index repetitions would result in the Riemann tensor disappearing to 0. EXCEPT THE RICCI TENSOR.\nThe Ricci tensor is ONLY nonzero contraction of the curvature tensor on the first upstairs and second downstairs index:\n\\[R_{\\alpha \\beta} = R^\\mu_{\\sigma \\mu \\beta}\\] Applying the Ricci contraction,\n\\[R_{\\mu\\nu}=g^{\\alpha\\beta}R_{\\alpha \\mu \\beta \\nu}\\]\nand then further contracting gives the Ricci scalar:\n\\[R=g^{\\mu\\nu}R_{\\mu\\nu}\\]\nThe Ricci scalar is the double trace of the Ricci tensor.\n\n\nEinstein Tensor and Field Equation\nContracting the Bianchi Identities twice with the Ricci contraction turns the bianchi identities into:\n\\[R_{;\\lambda}-R^\\mu_{\\lambda;\\mu}-R^\\mu_{\\lambda;\\mu}=0\\] (Turning the Ricci scalar contravariant derivative into an identity matrix reduction…) \\[(2R^\\mu_\\lambda-\\delta^\\mu_\\lambda R)_{;\\mu}=0\\] (divide this by 2 and we get…) and the Einstein Tensor can be defined to be\n\\[G^{\\alpha\\beta} \\equiv R^{\\alpha \\beta}-\\frac{1}{2}g^{\\alpha \\beta}R=G^{\\beta\\alpha}\\] because the metric tensor in (1 1) form is the identity, so if we raise everything we can get the metric tensor back.\nThe last one gives us \\[G^{\\alpha \\beta}_{;\\beta}=0\\] Einsten would later show that this final tensor which is derived from the more pure Riemann curvature is the one that mathematically causes gravity: \\[G^{\\alpha \\beta}=8\\pi T^{\\alpha \\beta}\\] because it is related to the stress-energy tensor- which itself encodes the total energy-mass content in space.\nHow do we get back useful computations from the einstein tensor?\n\nCompute metric from einstein tensors\nCompute geodesics from metric\ndone.\n\n\n\nComputing the Apparent Horizon\nThe apparent horizon is the outermost marginally outer trapped surface. Here, \\(\\Theta\\) (expansion of a congruence of outgoing null geodesics) \\(=0\\).\n\nThat is, at this timeslice, the photons never point outward.\n\nWe can express the apparent horizon as a parametric surface \\(r(\\theta,\\phi)\\).\nBy spectral composition using spherical harmonics, \\[r(\\theta,\\phi)=\\sum_{l=0}^L \\sum_{m=-l}^{l} a_{lm}Y_{lm}(\\theta,\\phi)\\] &gt; In spherical harmonics, \\(m\\) can only range from \\(-l\\) to \\(l\\)\nThen, the problem becomes finding \\(a_{lm}\\) coefficients.\nSo then, we need to find that \\(a_{lm}\\) provides a surface where \\(\\Theta=0\\).\n\\[\\Theta=s^i_{;i}+K_{ij}s^is^j-K=0\\] We use iterative solvers to enforce that this is 0.\n\\[a_{lm}^{(new)}=a_{lm}^{(old)}-\\delta a_{lm}\\]\n\n\nComputing the event horizon\nUnlike the apparent horizon, the event horizon is defined globally. It is the boundary of the causal past of future null infinity.\n\nThe difference is that in the apparent horizon,\n\n\n\nReadings\n\nMASSIVE: 3+1 Formulation\nMisner Ch. 12 “Variational Principle and Initial-Value Data”\nSmarr “sources of gravitational radiation”"
+  }
+]

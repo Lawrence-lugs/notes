@@ -1,4 +1,5 @@
 ---
+title: General Relativity
 modified: 2026-03-16
 date: 2026-02-22
 ---

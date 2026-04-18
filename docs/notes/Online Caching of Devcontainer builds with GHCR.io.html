@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-04-02">
 
-<title>Lawrence Quizon</title>
+<title>Lawrence Roman A. Quizon - Online Caching of Devcontainer builds with GHCR.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,345 +101,137 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-recent-notes .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 18,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-recent-notes'] = new List('listing-recent-notes', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<script>
-  tailwind.config = {
-    corePlugins: { preflight: false },
-    important: '#tw-root',
-  }
-</script>
-<style>
-  #tw-root { font-family: 'Inter', sans-serif; }
-  #tw-root a { text-decoration: none; }
-  #tw-root .quarto-listing { margin-top: 0; }
-  #tw-root .list.grid { gap: 1.5rem; }
-  #tw-root .quarto-grid-item {
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease;
-  }
-  #tw-root .quarto-grid-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-  #tw-root .quarto-grid-item .card-body { padding: 1.25rem; }
-  #tw-root .quarto-grid-item .card-title {
-    font-weight: 600; font-size: 0.95rem; color: #2D2A26;
-  }
-  #tw-root .quarto-grid-item .card-title a { color: #2D2A26; }
-  #tw-root .quarto-grid-item .card-title a:hover { color: #C67E6A; }
-  #tw-root .quarto-grid-item .listing-date {
-    font-size: 0.75rem; color: #9ca3af; font-weight: 500;
-  }
-  #quarto-content { padding: 0 !important; }
-  .quarto-title-block, #title-block-header { display: none !important; }
-</style>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Lawrence Roman A. Quizon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Online Caching of Devcontainer builds with GHCR.io</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div id="tw-root">
-<div class="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-16 pb-16">
-<!-- Hero Section -->
-<div>
-<div class="mb-16">
-  <div class="flex flex-col md:flex-row items-start gap-10">
-    <div class="flex-shrink-0">
-      <img src="image.svg" alt="Lawrence Quizon" class="w-32 h-32 rounded-2xl border-2 border-gray-100 shadow-sm">
-    </div>
+    
     <div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#2D2A26] mb-3">
-        Lawrence <span class="text-[#C67E6A]">Quizon</span>
-      </h1>
-      <p class="text-lg text-gray-500 font-medium mb-5">
-        Mixed Signal Accelerators · Efficient AI · Researcher @ UP EEEI
-      </p>
-      <p class="text-base text-gray-600 leading-relaxed max-w-2xl mb-6">
-        My primary research interest is in the creation of efficient computational systems in software and hardware for the advancement of both engineering 
-        <em class="text-[#C67E6A]">(low power computation on the edge, neuromorphic hardware)</em> 
-        and sciences 
-        <em class="text-[#7B8C7C]">(device physics, emergent dynamics)</em>.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="https://github.com/Lawrence-lugs" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-[#C67E6A] hover:text-[#C67E6A] transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/lawrence-roman-quizon-399172158/" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-[#C67E6A] hover:text-[#C67E6A] transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path></svg>
-          LinkedIn
-        </a>
-        <a href="https://scholar.google.com/citations?user=8LJ9X_gAAAAJ&amp;hl=en" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:border-[#C67E6A] hover:text-[#C67E6A] transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg>
-          Google Scholar
-        </a>
-      </div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 2, 2026</p>
     </div>
   </div>
-</div>
-</div>
-<!-- Research Interests Section -->
-<div>
-<div class="mb-16">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 border-l-4 border-l-[#C67E6A]">
-      <h3 class="font-semibold text-lg mb-3 text-[#2D2A26] anchored">Primary Research</h3>
-      <p class="text-gray-600 text-sm leading-relaxed">
-        Efficient computational systems in software and hardware—mixed-signal accelerators, in-memory computing, and neural architecture search for edge deployment.
-      </p>
-    </div>
-    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 border-l-4 border-l-[#7B8C7C]">
-      <h3 class="font-semibold text-lg mb-3 text-[#2D2A26] anchored">Secondary Interests</h3>
-      <div class="flex flex-wrap gap-2">
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Open Source Hardware</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Hardware CI/CD</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Differential Equations</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Discrete Optimization</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Efficient AI</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Physics (GR, QFT)</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Abstract Math</span>
-        <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200">Learning Theory</span>
-      </div>
-    </div>
+  
+    
   </div>
-</div>
-</div>
-<!-- Recent Pages Heading -->
-<div>
-<div class="mb-8">
-  <h2 class="text-3xl font-bold text-[#2D2A26] mb-3 anchored">Recent Pages</h2>
-  <p class="text-gray-500 max-w-2xl">
-    Notes below are sometimes attempts on active recall, sometimes just literal pastebins while working on something.
-  </p>
-</div>
-</div>
-<div id="listing-recent-notes" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1775088000000" data-listing-file-modified-sort="1776491440356" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="452">
-<a href="./notes/Online Caching of Devcontainer builds with GHCR.io.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Online Caching of Devcontainer builds with GHCR.io
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 2, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1774915200000" data-listing-file-modified-sort="1776347062525" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="387">
-<a href="./notes/On DRAM Failure.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-On DRAM Failure
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 31, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1776491440287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1241">
-<a href="./notes/General Relativity.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-General Relativity
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Feb 22, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-date-sort="1768953600000" data-listing-file-modified-sort="1769014019661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="863">
-<a href="./slides/desirableDifficulties/desirableDifficulties.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Retrieval over Reading
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 21, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-date-sort="1768176000000" data-listing-file-modified-sort="1768479271770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2380">
-<a href="./notes/Solving Ballistics Equation with RK4 in C.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Solving Ballistics Equation with RK4 in C
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 12, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-date-sort="1768089600000" data-listing-file-modified-sort="1768479271778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165">
-<a href="./notes/The Generalized Stokes' Theorem.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-The Generalized Stokes’ Theorem
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 11, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-date-sort="1768003200000" data-listing-file-modified-sort="1768479271615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1229">
-<a href="./notes/Differential Equations to FEM.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Differential Equations to FEM
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 10, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-date-sort="1767398400000" data-listing-file-modified-sort="1768479271748" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1110">
-<a href="./notes/RingsAndFields.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Rings and Fields
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 3, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-date-sort="1766707200000" data-listing-file-modified-sort="1768479271710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="772">
-<a href="./notes/Metrics and Manifolds.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Metrics and Manifolds
-</h5>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Dec 26, 2025
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</div>
-</div>
+  
 
+
+</header>
+
+
+<div class="callout-summary">
+<p>Problem : Building and rebuilding docker images takes centuries. Solution : Cache build in GHCR.io</p>
+</div>
+<p>I wasn’t familiar with this yet when I started heavily using docker containers half a year ago (I think just half a year ago).</p>
+<p>Devcontainers + Dockerfiles create reproducible and containerized development environments for every project.</p>
+<p>However, if we’d like to stop working on a project, we want to delete these containers. When we want to open it again, we have to rebuild it locally.</p>
+<p>To avoid this, we have to use the <code>cachedFrom:</code> option in the <code>devcontainer.json</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"My Dev Environment"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="dt">"build"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="dt">"dockerfile"</span><span class="fu">:</span> <span class="st">"Dockerfile"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="dt">"cacheFrom"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>      <span class="st">"ghcr.io/YOUR_GITHUB_USER/YOUR_REPO/devcontainer:latest"</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="ot">]</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">},</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="dt">"customizations"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="er">//</span> <span class="er">...</span> <span class="er">your</span> <span class="er">vscode</span> <span class="er">extensions</span><span class="fu">,</span> <span class="er">etc.</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">}</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Problem is, how does the build get pushed to the remote repository? In comes CI workflows.</p>
+<p>You add a CI workflow that builds the image and pushes to the remote repository.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Build &amp; push devcontainer image</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">    </span><span class="fu">paths</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">".devcontainer/Dockerfile"</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"environment.yml"</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="at">  </span><span class="fu">IMAGE</span><span class="kw">:</span><span class="at"> ghcr.io/lawrence-lugs/reponame[/something]</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="at">  </span><span class="fu">build-and-push</span><span class="kw">:</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="at">    </span><span class="fu">permissions</span><span class="kw">:</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="at">      </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> read</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="at">      </span><span class="fu">packages</span><span class="kw">:</span><span class="at"> write</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout (GH)</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Log in to GHCR</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> docker/login-action@v3</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="at">          </span><span class="fu">registry</span><span class="kw">:</span><span class="at"> ghcr.io</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="at">          </span><span class="fu">username</span><span class="kw">:</span><span class="at"> ${{ github.actor }}</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="at">          </span><span class="fu">password</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Docker Buildx</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> docker/setup-buildx-action@v3</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build and push</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> docker/build-push-action@v6</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="at">          </span><span class="fu">context</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a><span class="at">          </span><span class="fu">file</span><span class="kw">:</span><span class="at"> .devcontainer/Dockerfile</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a><span class="at">          </span><span class="fu">push</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="at">          </span><span class="fu">tags</span><span class="kw">:</span><span class="at"> ${{ env.IMAGE }}:latest</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="at">          </span><span class="fu">cache-from</span><span class="kw">:</span><span class="at"> type=registry,ref=${{ env.IMAGE }}:buildcache</span></span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="at">          </span><span class="fu">cache-to</span><span class="kw">:</span><span class="at"> type=registry,ref=${{ env.IMAGE }}:buildcache,mode=max</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In that case, the actions worker will build the image by itself and push it to the repository. Then, once the image is created, you can just pull it.</p>
 
 
 
