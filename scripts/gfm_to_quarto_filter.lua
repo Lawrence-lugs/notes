@@ -152,6 +152,32 @@ local function blocks_have_todo(blocks)
   return false
 end
 
+local function filter_todo_blocks(blocks)
+  local result = {}
+  for _, block in ipairs(blocks) do
+    if (block.t == "Para" or block.t == "Plain") and inlines_have_todo(block.content) then
+      -- drop #todo paragraphs
+    elseif block.t == "BulletList" or block.t == "OrderedList" then
+      local kept = {}
+      for _, item in ipairs(block.content) do
+        if not blocks_have_todo(item) then
+          kept[#kept + 1] = item
+        end
+      end
+      if #kept > 0 then
+        if block.t == "BulletList" then
+          result[#result + 1] = pandoc.BulletList(kept)
+        else
+          result[#result + 1] = pandoc.OrderedList(kept)
+        end
+      end
+    else
+      result[#result + 1] = block
+    end
+  end
+  return result
+end
+
 function BulletList(el)
   local filtered = {}
   for _, item in ipairs(el.content) do
@@ -205,6 +231,8 @@ function BlockQuote(el)
   if title_text:lower():find("todo") then
     return {}
   end
+
+  blocks = filter_todo_blocks(blocks)
 
   local callout_header = pandoc.Div(
     {
