@@ -127,6 +127,47 @@ local function extract_callout_marker(inlines)
   }
 end
 
+local function inlines_have_todo(inlines)
+  for _, el in ipairs(inlines) do
+    if el.t == "Str" and el.text == "#todo" then
+      return true
+    end
+  end
+  return false
+end
+
+local function blocks_have_todo(blocks)
+  for _, block in ipairs(blocks) do
+    if (block.t == "Para" or block.t == "Plain") and inlines_have_todo(block.content) then
+      return true
+    end
+    if block.t == "BulletList" or block.t == "OrderedList" then
+      for _, item in ipairs(block.content) do
+        if blocks_have_todo(item) then
+          return true
+        end
+      end
+    end
+  end
+  return false
+end
+
+function BulletList(el)
+  local filtered = {}
+  for _, item in ipairs(el.content) do
+    if not blocks_have_todo(item) then
+      filtered[#filtered + 1] = item
+    end
+  end
+  if #filtered == 0 then
+    return {}
+  end
+  if #filtered == #el.content then
+    return nil
+  end
+  return pandoc.BulletList(filtered)
+end
+
 function BlockQuote(el)
   if #el.content == 0 then
     return nil
@@ -159,6 +200,10 @@ function BlockQuote(el)
   local title_text = marker.title
   if title_text == "" then
     title_text = DEFAULT_TITLES[marker.callout_type] or "Note"
+  end
+
+  if title_text:lower():find("todo") then
+    return {}
   end
 
   local callout_header = pandoc.Div(
