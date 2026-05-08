@@ -2,6 +2,7 @@
 title: The Generalized Stokes' Theorem
 modified: 2026-01-15
 date: 2026-01-11
+public: true
 ---
 The generalized Strokes' Theorem relates the 3D divergence theorem, the 2D Stokes' theorem and the second fundamental theorem of calculus to all dimensions in a single statement:
 $$\int_{d\Omega}\omega=\int_\Omega d\omega$$

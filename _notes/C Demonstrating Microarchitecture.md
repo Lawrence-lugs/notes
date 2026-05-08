@@ -3,6 +3,7 @@ title: C Demonstrating Microarchitecure
 draft: true
 modified: 2026-01-12T01:37:11+08:00
 date: 2026-01-12T01:34:13+08:00
+public: true
 ---
 
 

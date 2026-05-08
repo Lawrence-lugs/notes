@@ -2,6 +2,7 @@
 title: Online Caching of Devcontainer builds with GHCR.io
 modified: 2026-04-16
 date: 2026-04-02
+public: true
 ---
 
 > [!summary]

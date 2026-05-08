@@ -1,6 +1,7 @@
 ---
 title: "Running TinyGPU by Adam Maj"
 date: "2025-11-28"
+public: true
 ---
 
 Let's try to run the [basic GPU example by Adam Maj](https://github.com/adam-maj/tiny-gpu)!

@@ -143,12 +143,8 @@ window.Quarto = {
   <li><a href="#dragged-ballistics" id="toc-dragged-ballistics" class="nav-link" data-scroll-target="#dragged-ballistics">Dragged Ballistics</a></li>
   <li><a href="#the-cheat-everything-is-first-order-in-phase-space" id="toc-the-cheat-everything-is-first-order-in-phase-space" class="nav-link" data-scroll-target="#the-cheat-everything-is-first-order-in-phase-space">The Cheat: Everything is First-Order In Phase Space</a></li>
   <li><a href="#correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode" id="toc-correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode" class="nav-link" data-scroll-target="#correction-every-n-order-ode-is-a-higher-dimension-1st-order-ode">Correction: Every N-order ODE is a higher dimension 1st-order ODE</a></li>
-  <li><a href="#towards-finite-elements-the-integral-form" id="toc-towards-finite-elements-the-integral-form" class="nav-link" data-scroll-target="#towards-finite-elements-the-integral-form">Towards finite elements: the integral form</a></li>
   </ul></li>
-  <li><a href="#finite-elements" id="toc-finite-elements" class="nav-link" data-scroll-target="#finite-elements">Finite elements</a>
-  <ul class="collapse">
-  <li><a href="#solving-pde-with-finite-elements-in-general" id="toc-solving-pde-with-finite-elements-in-general" class="nav-link" data-scroll-target="#solving-pde-with-finite-elements-in-general">Solving PDE with Finite Elements in General</a></li>
-  </ul></li>
+  <li><a href="#finite-elements" id="toc-finite-elements" class="nav-link" data-scroll-target="#finite-elements">Finite elements</a></li>
   </ul>
 </nav>
     </div>
@@ -180,13 +176,13 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+<strong>Important</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -203,13 +199,13 @@ Important
 <section id="first-solutions-runge-kutta" class="level1">
 <h1>First solutions: Runge-Kutta</h1>
 <p>Actually, instead of just coming up with hard-to-solve differential equations, they also came up with pain-in-the-ass-to-compute algorithms to solve them (Runge-Kutta, Euler) earlier than computers.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="[Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a>
+<strong>Runge-Kutta</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -227,13 +223,13 @@ Important
 <p>So then, we merge the entire state space into one four-dimensional variable: <span class="math display">\[S = \begin{bmatrix}
 x \\ y \\ v_x \\ v_x
 \end{bmatrix}\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Trivia">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Trivia
+<strong>Trivia</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -261,20 +257,17 @@ v_x \\ v_y \\ -\frac{k}{m}\sqrt{v_x^2+v_y^2}v_x \\ -g-\frac{k}{m}\sqrt{v_x^2+v_y
 <ul>
 <li>This blew the problem to as many dimensions as there are <span class="math inline">\(\text{grid cells} \cdot \text{ODE order}\)</span><br>
 </li>
-<li>Trying to get the EXACT solution for each point is difficult when each point doesn’t even know if it’s in the correct position yet. This caused a soft of overfitting in this approach where it’s hard to converge in situations where the gradient changes quickly. You can fix this by making <span class="math inline">\(dx\)</span> small enough that the change is still “gradual”, but this gets expensive quick.</li>
+<li>Trying to get the EXACT solution for each point is difficult when each point doesn’t even know if it’s in the correct position yet. This caused a soft of overfitting in this approach where it’s hard to converge in situations where the gradient changes quickly. You can fix this by making <span class="math inline">\(dx\)</span> small enough that the change is still “gradual”, but this gets expensive quick. ### Towards finite elements: the integral form</li>
 </ul>
-</section>
-<section id="towards-finite-elements-the-integral-form" class="level3">
-<h3 class="anchored" data-anchor-id="towards-finite-elements-the-integral-form">Towards finite elements: the integral form</h3>
 <p>The form of the finite difference equation <span class="math display">\[\frac{d u_i}{dt} - \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} = f_i\]</span> is extremely rigid. We have to enforce <span class="math inline">\(f_i\)</span> (heat source), but then it’s almost never correct either.</p>
 <p>Instead, we can rearrange to accept a finite error over the entire domain: <span class="math display">\[R(x)=\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i\]</span> and “kindly ask” this residual to approach zero, instead of forcing it all to zero every time step. In other words, we’re able to relax the condition so that a grid point <span class="math inline">\(i\)</span> doesn’t reduce its error to 0 at the cost of other points being unable to converge or getting a big relative error. <span class="math display">\[\int_\Omega{R(x)\cdot v(x)dx=0}\]</span></p>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+<strong>Warning</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -286,13 +279,13 @@ Warning
 <p>With <span class="math inline">\(v(x)\)</span> we can apply integration by parts: <span class="math display">\[\int_\Omega{(\frac{d u}{dt} - \frac{d^2u}{dx^2}-f_i)\cdot v(x)dx=0}\]</span> We focus on the difficult term first: <span class="math display">\[\int_\Omega{\frac{d^2u}{dx^2}\cdot v(x)dx=0}\]</span> Chain rule: <span class="math display">\[\frac{d}{dx}(v\frac{du}{dx})=v\frac{d^2u}{dx^2}+\frac{du}{dx}\frac{dv}{dx}\]</span> <span class="math display">\[\int_\Omega dx v\frac{d^2u}{dx^2}=\int_\Omega dx\frac{d}{dx}(v\frac{du}{dx})+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}\]</span> <span class="math display">\[=v\frac{du}{dx}\Big\vert_\Omega+\int_\Omega dx\frac{du}{dx}\frac{dv}{dx}\]</span> We kick away the weird-looking boundary evaluation term <span class="math inline">\(v\frac{du}{dx}\)</span> by always choosing the test function to be zero at the boundary <span class="math inline">\(v\big\vert_\Omega = 0\)</span>.</p>
 <p>In the end, we’ve found an integral form of the problem which minimizes the error of the problem over the entire domain instead of in every point “independently”:</p>
 <p>The other terms are all already first-order terms we can apply the RK4 method to, so we don’t need to think too hard about them: <span class="math display">\[\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv\]</span> So the final form is <span class="math display">\[\int_\Omega dx \frac{du}{dt}v-\int_\Omega dx f_iv+\int_\Omega dx \frac{du}{dx}\frac{dv}{dx}=0\]</span> <span class="math display">\[\int_\Omega dx (\frac{du}{dt}v- f_iv+ \frac{du}{dx}\frac{dv}{dx})=0\]</span> This one is specific to the heat equation example, though.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="In 3D:">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-In 3D:
+<strong>In 3D:</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -304,13 +297,13 @@ In 3D:
 <section id="finite-elements" class="level1">
 <h1>Finite elements</h1>
 <p>The essence (and namesake) of finite elements is in assuming the entire solution over the domain is a sum of simple shapes: <span class="math display">\[u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)\]</span> Then we *choose the test function <span class="math inline">\(v\)</span> to be the same as the <span class="math inline">\(\phi_i\)</span>. There is one <span class="math inline">\(\phi_i\)</span> per finite element.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="[FEM Hat Functions](https://hplgit.github.io/INF5620/doc/pub/sphinx-fem/._main_fem003.html#calculating-a-general-row-in-the-matrix))">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="https://hplgit.github.io/INF5620/doc/pub/sphinx-fem/._main_fem003.html#calculating-a-general-row-in-the-matrix">FEM Hat Functions</a>)
+<strong>FEM Hat Functions)</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -319,20 +312,12 @@ In 3D:
 </div>
 <p>We simplify the equation as we subsitute:</p>
 <p><span class="math display">\[\int_\Omega dx \left( \frac{d}{dt} \left( \sum_{j=1}^{N}u_j(t)\phi_j \right) \phi_i- f_i\phi_i+ \frac{d}{dx}\left( \sum_{j=1}^{N}u_j(t)\phi_j \right)\frac{d\phi_i}{dx} \right)=0\]</span> <span class="math display">\[\int_\Omega dx \left( \sum_{j=1}^{N}\frac{du_j(t)}{dt}\phi_j  \phi_i- f_i\phi_i+  \sum_{j=1}^{N}u_j(t)\frac{d\phi_j}{dx} \frac{d\phi_i}{dx} \right)=0\]</span> and realize that the sum terms are matrix multiplications on vectors:</p>
-<p>Let <span class="math inline">\(M_{ij}=\int_\Omega dx \phi_i\phi_j\)</span>, <span class="math inline">\(K_{ij}=\int_\Omega dx \frac{d\phi_j}{dx}\frac{d\phi_i}{dx}\)</span>, for which the elements are easy-to-calculate hat function integrals (or integrals of their derivatives, so rectangles), then we end up with: <span class="math display">\[\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}u=\mathbf{F}\]</span> which we can plug directly into a first-order ODE solver.</p>
-<section id="solving-pde-with-finite-elements-in-general" class="level2">
-<h2 class="anchored" data-anchor-id="solving-pde-with-finite-elements-in-general">Solving PDE with Finite Elements in General</h2>
+<p>Let <span class="math inline">\(M_{ij}=\int_\Omega dx \phi_i\phi_j\)</span>, <span class="math inline">\(K_{ij}=\int_\Omega dx \frac{d\phi_j}{dx}\frac{d\phi_i}{dx}\)</span>, for which the elements are easy-to-calculate hat function integrals (or integrals of their derivatives, so rectangles), then we end up with: <span class="math display">\[\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}u=\mathbf{F}\]</span> which we can plug directly into a first-order ODE solver. ## Solving PDE with Finite Elements in General</p>
 <p>Let’s say we have a general residual PDE <span class="math inline">\(R\)</span> of order <span class="math inline">\(N\)</span> we have <span class="math display">\[\int_\Omega dx R\cdot v=0\]</span> we are guaranteed to be able to split the order between <span class="math inline">\(R\)</span> and <span class="math inline">\(v\)</span> using IBP getting order <span class="math inline">\(N/2\)</span>. If solving more than a second order PDE (like in the beam equation), we’re supposed to do <strong>mixed finite elements</strong> where we split the original differential equation into coupled differential equations, like in earlier.</p>
 <p>Once we have a first-order weak form, we apply the FEM hat function formulation. This essentially eliminates space as a variable by performing the integrals over the easy-to-work-with hat functions <span class="math inline">\(\phi\)</span> and placing them into the <span class="math inline">\(\mathbf{M}\)</span> and <span class="math inline">\(\mathbf{K}\)</span> matrices.</p>
-<p><span class="math display">\[u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)\]</span> In the end, we get a system of ODEs that also depend on the length of the finite element hat <span class="math inline">\(h\)</span> (characteristic mesh size) <span class="math display">\[\mathbf{M}\frac{\vec{d^nu}}{dt^n}+\mathbf{K}\vec{u}=\mathbf{F}\]</span> ::: {.callout-warning title=“Limitations”} Not all forms look like that. That form is limited to</p>
-<ul>
-<li>Linear PDE</li>
-<li>Time dependence is only via time derivative</li>
-<li>No auxiliary fields or damping (so no wind in the ballistics equations either) :::</li>
-</ul>
+<p><span class="math display">\[u(x,t)=\sum_{j=1}^{N}u_j(t)\phi_j(x)\]</span> In the end, we get a system of ODEs that also depend on the length of the finite element hat <span class="math inline">\(h\)</span> (characteristic mesh size) <span class="math display">\[\mathbf{M}\frac{\vec{d^nu}}{dt^n}+\mathbf{K}\vec{u}=\mathbf{F}\]</span> &gt;[!warning] Limitations &gt;Not all forms look like that. That form is limited to &gt;- Linear PDE &gt;- Time dependence is only via time derivative &gt;- No auxiliary fields or damping (so no wind in the ballistics equations either)</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

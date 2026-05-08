@@ -3,6 +3,7 @@ title: Information theory says humans reduce information, but that's ok
 date: 2025-09-23
 status: WIP
 modified: 2026-01-10T21:34:35+08:00
+public: true
 ---
 
 >[!note] Summary

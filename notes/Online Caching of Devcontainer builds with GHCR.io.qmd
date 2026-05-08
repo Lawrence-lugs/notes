@@ -1,13 +1,14 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: Online Caching of Devcontainer builds with GHCR.io
 modified: 2026-04-16
 date: 2026-04-02
+public: true
 ---
 
-::: {.callout-summary}
-Problem : Building and rebuilding docker images takes centuries.
-Solution : Cache build in GHCR.io
-:::
+> [!summary]
+> Problem : Building and rebuilding docker images takes centuries.
+> Solution : Cache build in GHCR.io
 
 I wasn't familiar with this yet when I started heavily using docker containers half a year ago (I think just half a year ago).
 

@@ -169,34 +169,31 @@ window.Quarto = {
 <p>We can look at the unforced FEM formulation of the heat equation for this: <span class="math display">\[\mathbf{M}\vec{\frac{du}{dt}}+\mathbf{K}\vec{u}=0\]</span> If we can find the eigenvector <span class="math inline">\(\vec{v}\)</span> of <span class="math inline">\(\mathbf{K}\)</span> and <span class="math inline">\(\mathbf{M}\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span>, we can just do: Let <span class="math inline">\(\vec{u}=\vec{v}e^{-\lambda t}\)</span> (decay). Then, <span class="math display">\[-\mathbf{M}\lambda\vec{u}+\mathbf{K}\vec{u}=0\]</span> <span class="math display">\[-\mathbf{M}\lambda\vec{v}e^{-\lambda t}+\mathbf{K}\vec{v}e^{-\lambda t}=0\]</span> <span class="math display">\[-\mathbf{M}\lambda\vec{v}+\mathbf{K}\vec{v}=0\]</span> and we get that the <span class="math inline">\(\lambda\)</span> are the eigenvalues in a <a href="https://en.wikipedia.org/wiki/Eigendecomposition_of_a_matrix#Generalized_eigenvalue_problem">generalized eigenvalue problem</a>.</p>
 <p>Then, we can use this in some Fourier or Laplace magic (in this case, laplace magic because the time-varying forms called <span class="math inline">\(\xi(t)=e^{-\lambda t}\)</span> are decay forms)</p>
 <p>We can project the solution into a basis of a bunch of discrete <span class="math inline">\(\lambda\)</span> time constants and add up the solutions for each of those.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="The Spectral Theorem">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The Spectral Theorem
+<strong>The Spectral Theorem</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>In fact, the spectral theorem gives us that if <span class="math inline">\(K\)</span> and <span class="math inline">\(M\)</span> are symmetric positive-definite matrices, we can always get real <span class="math inline">\(\lambda\)</span> and that the eigenvectors <span class="math inline">\(v_1,v_2,...,v_3\)</span> form a basis. This means we can project the true solution into the basis.</p>
 </div>
 </div>
-<p>So then, the exact solution becomes a linear combination of eigenvectors: <span class="math display">\[u(t)=\sum^{N}_{i=1} c_iv_ie^{-\lambda_it}\]</span></p>
-</section>
-<section id="generalized-eigenvalues-with-a-force-term" class="level1">
-<h1>Generalized eigenvalues with a force term</h1>
+<p>So then, the exact solution becomes a linear combination of eigenvectors: <span class="math display">\[u(t)=\sum^{N}_{i=1} c_iv_ie^{-\lambda_it}\]</span> # Generalized eigenvalues with a force term</p>
 <p>With a force term, we get something like <span class="math display">\[-\mathbf{M}\lambda\vec{v}e^{-\lambda t}+\mathbf{K}\vec{v}e^{-\lambda t}=\mathbf{F}\]</span> In this case, the time term is incorrect (the forcing term prevents it from just being a decay, making the “guess” incorrect)</p>
 <p>So then, we just avoid guessing a time term completely.</p>
 <p>Let <span class="math inline">\(\vec{u}=\vec{v_i}\xi_i(t)\)</span></p>
 <p>Then we can use this in the FEM formulation <span class="math display">\[\mathbf{M} \left( \sum_{i=1}^N \dot{\xi}_i(t) \vec{v}_i \right) + \mathbf{K} \left( \sum_{i=1}^N \xi_i(t) \vec{v}_i \right) = \mathbf{F}(t)\]</span> To isolate the solution for a specific mode, <span class="math inline">\(v_i\)</span>, we multiply with the ket form <span class="math inline">\(v_j^T\)</span> to “precipitate out” the important terms. <span class="math display">\[\vec{v}_j^T \mathbf{M} \left( \sum \dot{\xi}_i \vec{v}_i \right) + \vec{v}_j^T \mathbf{K} \left( \sum \xi_i \vec{v}_i \right) = \vec{v}_j^T \mathbf{F}(t)\]</span> That is, important terms being <strong>only the ones with <span class="math inline">\(i=j\)</span></strong>. For the other terms, <span class="math display">\[v_j^T \mathbf{M} v_i=0 \text{ if }i \neq j \text{ (orthogonal basis)}\]</span> <span class="math display">\[v_j^T \mathbf{K} v_i=0 \text{ if }i \neq j \text{ (orthogonal basis)}\]</span> We’re left with the <span class="math inline">\(\xi_i(t)\)</span> terms mixed with a simple scalar form. <span class="math display">\[\vec{v}_j^T \mathbf{M} \vec{v}_j\dot{\xi}_j(t) + \vec{v}_j^T \mathbf{K} \vec{v}_j\xi_j(t)=\vec{v}_j^T\mathbf{F}(t)\]</span> We call these terms “modal mass, modal stiffness, and modal force”: <span class="math display">\[m_j \dot{\xi}_j(t) + k_j \xi_j(t) = f_j(t)\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<strong>Tip</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -206,13 +203,13 @@ Tip
 <p>Now we have a simply solvable calculus problem: <span class="math display">\[\frac{d\xi_j}{dt}+\lambda_j\xi_j=\frac{f_j(t)}{m_j}\]</span> whose solution is <span class="math display">\[\xi_j(t)=\xi_j(0)e^{-\lambda_j t}+\int_0^td\tau e^{-\lambda_j (t-\tau)} \frac{f_j(\tau)}{m_j}\]</span></p>
 <p>The thing is, we have to do that for <em>every single modality we’re accounting for</em>.</p>
 <p>Maybe the good news is that solving for the <span class="math inline">\(\xi_j\)</span> form once probably makes it trivial to get all the others (<span class="math inline">\(f_j\)</span> will likely rarely change in form per <span class="math inline">\(j\)</span>, more like only scaling)</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="For second-order FEM formulas">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-For second-order FEM formulas
+<strong>For second-order FEM formulas</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -224,13 +221,13 @@ For second-order FEM formulas
 <h1>How to solve a generalized eigenvalue problem?</h1>
 <p>Starting from <span class="math display">\[-\mathbf{M}\lambda\vec{v}+\mathbf{K}\vec{v}=0\]</span> we still need to solve for the <span class="math inline">\(\lambda_j\)</span>s and the <span class="math inline">\(\vec{v_j}\)</span>s.</p>
 <p>We use the Lanczos algorithm for this (kind of like Givens rotations etc. algorithms for QR decomposition.)</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<strong>Note</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -255,39 +252,39 @@ Note
 </section>
 <section id="notes" class="level1">
 <h1>Notes</h1>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<strong>Note</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>The eigenvalues <span class="math inline">\(\lambda_i\)</span> are not like harmonics- they can be randomly spaced in between each other. <span class="math inline">\(\lambda_2\)</span> might be <span class="math inline">\(1.43 \times \lambda_1\)</span>. <span class="math inline">\(\lambda_3\)</span> might be <span class="math inline">\(2.11 \times \lambda_1\)</span>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<strong>Note</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>In practice, we choose some “Nyquist maximum” frequency at which to stop caring about the solution. So then we solve for all <span class="math inline">\(\lambda_n &lt; 1Grads\)</span> or <span class="math inline">\(\omega_n &lt; 1Grads\)</span> if we expect the forcing function <span class="math inline">\(f\)</span>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Cool thing:">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Cool thing:
+<strong>Cool thing:</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -297,13 +294,13 @@ Cool thing:
 </section>
 <section id="test-coverage-and-using-eigenvalue-based-fem-correctly" class="level1">
 <h1>“Test coverage” and using eigenvalue-based FEM correctly:</h1>
-<div class="callout callout-style-default callout-note callout-titled" title="Effective Modal Inertia">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Effective Modal Inertia
+<strong>Effective Modal Inertia</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">

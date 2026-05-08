@@ -3,6 +3,7 @@ title: Minority Carrier Diffusion Equations with explicit FEM in C
 modified: 2026-01-17
 date: 2026-01-12T14:48:24+08:00
 draft: true
+public: true
 ---
 
 >[!question] 

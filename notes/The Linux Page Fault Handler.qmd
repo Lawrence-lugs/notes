@@ -1,7 +1,9 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: "The Linux Page Fault Handler"
 date: "2025-11-24"
 status: "WIP"
+public: true
 ---
 
 # How to get there
@@ -9,14 +11,13 @@ status: "WIP"
 A TLB miss generates an exception.
 The Linux kernel hooks this into the exception vectors on boot (as functions.
 
-::: {.callout-important title="Hooking Exception Vectors in ARM"}
-There's a file named `linux/arch/arm/kernel/entry-armv.S` which contains unconditional branches to different vector handlers
-These ASM instructions sit "harmlessly" in the kernel somewhere like `0xC0008000` on boot.
-They're copied into the exception vector table using `memcpy` calls in `arch/arm/kernel/traps.c::early_trap_init` 
-:::
+>[!important] Hooking Exception Vectors in ARM
+>There's a file named `linux/arch/arm/kernel/entry-armv.S` which contains unconditional branches to different vector handlers
+>These ASM instructions sit "harmlessly" in the kernel somewhere like `0xC0008000` on boot.
+>They're copied into the exception vector table using `memcpy` calls in `arch/arm/kernel/traps.c::early_trap_init` 
 
 
-```{mermaid}
+```mermaid
 mindmap
 	exceptions_init
 		hook_fault_code(do_translation_fault)
@@ -26,7 +27,7 @@ mindmap
 
 # The Fault Handler in RISCV
 
-```{mermaid}
+```mermaid
 mindmap
 	handle_page_fault
 		kprobe_page_fault
@@ -35,9 +36,7 @@ mindmap
 		
 ```
 ::: {.callout-note}
-
 ## Glossary
-
 - handle_page_fault - *called to handle page faults*
  - kprobe_page_fault - *returns yes if fault has been handled by kprobe*
  - user_mode(regs) - *macro that refers to the CPU register context saved on stack by the exception service routine*

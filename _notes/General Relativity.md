@@ -2,6 +2,7 @@
 title: General Relativity
 modified: 2026-03-16
 date: 2026-02-22
+public: true
 ---
 # Proper Time
 Proper time is the time a moving particle experiences, because it's defined as 

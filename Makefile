@@ -4,7 +4,7 @@ site: generate
 	quarto render
 
 generate:
-	python3 scripts/batch_gfm_to_quarto.py _notes notes
+	python3 scripts/collect_public_notes.py
 
 clean:
 	rm -rf notes/*

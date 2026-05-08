@@ -3,6 +3,7 @@ title: Differential Equations to FEM
 date: 2026-01-10
 modified: 2026-01-15
 toc: true
+public: true
 ---
 
 >[!important]

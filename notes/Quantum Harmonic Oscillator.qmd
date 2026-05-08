@@ -1,8 +1,10 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: The Quantum Harmonic Oscillator has Energy Quanta (Shocking, I know)
 toc: true
 modified: 2026-01-18
 date: 2025-12-12
+public: true
 ---
 
 # There must be a number operator, right?!
@@ -66,22 +68,20 @@ $$\hat{a}^\dagger\ket{1}=\sqrt{2}\ket{2}$$
 $$\hat{a}\ket{0}=0\ket{-1}=0$$
 This is why it's called the annihilation operator.
 
-::: {.callout-tip title="Building from the ground state"}
-This means that
-$$\ket{n}=\frac{\hat{n}^{\dagger n}}{\sqrt{n!}}\ket{0}$$
-:::
+>[!tip] Building from the ground state
+>This means that
+>$$\ket{n}=\frac{\hat{n}^{\dagger n}}{\sqrt{n!}}\ket{0}$$
 
-::: {.callout-warning title="Hmm..."}
-So then we can "lose" a wavefunction by annihilating it too much.
-$$\hat{a}\ket{0}=0$$
-and
-$$\hat{a}^\dagger0=0$$
-you can't create back what's been annihilated (oof).
-
-In linear algebra terms, $\hat{a}$ has a nontrivial kernel (some subspace of the vector space is turning into the null vector i.e. *a null space exists*). $\hat{a}^\dagger$ has a trivial kernel, because its null space is just the null vector i.e. there is no input to $\hat{a}^\dagger$ that equals $0$ other than $0$ itself.
-
-The commutator being nonzero is related to the existence of this nullspace for $\hat{a}$.
-:::
+> [!warning] Hmm...
+> So then we can "lose" a wavefunction by annihilating it too much.
+> $$\hat{a}\ket{0}=0$$
+> and
+> $$\hat{a}^\dagger0=0$$
+> you can't create back what's been annihilated (oof).
+> 
+> In linear algebra terms, $\hat{a}$ has a nontrivial kernel (some subspace of the vector space is turning into the null vector i.e. *a null space exists*). $\hat{a}^\dagger$ has a trivial kernel, because its null space is just the null vector i.e. there is no input to $\hat{a}^\dagger$ that equals $0$ other than $0$ itself.
+> 
+> The commutator being nonzero is related to the existence of this nullspace for $\hat{a}$.
 
 # Phonons
 

@@ -445,12 +445,32 @@ SME Evidence - Patent-first policies can drain resources (filing costs, maintena
 <section id="block-callout-testing" class="slide level2">
 <h2>Block Callout Testing</h2>
 <p>Theory: you don’t need quarto callouts to generate callouts.</p>
-<blockquote>
-<p>[!NOTE] This is a NOTE callout</p>
-</blockquote>
-<blockquote>
-<p>[!NOTE] Test Note 1 This is a NOTE callout with a custom name</p>
-</blockquote>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Note</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a NOTE callout</p>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Test Note 1</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a NOTE callout with a custom name</p>
+</div>
+</div>
 <p>These are called github-flavored markdown (GFM). They don’t work in Quarto anymore, apparently. They callouts are made as divs and then translated under the hood, since they’re pandoc-style.</p>
 
 <div class="quarto-auto-generated-content">
@@ -845,7 +865,7 @@ SME Evidence - Patent-first policies can drain resources (filing costs, maintena
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

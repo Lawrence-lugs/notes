@@ -4,11 +4,16 @@ project:
   resources:
     - "googleba81d2991a90411e.html"
     - "slides/inPrep/imec_recent.html"
-  pre-render: 
-    - scripts/batch_gfm_to_quarto.py _notes notes
+  pre-render:
+    - scripts/collect_public_notes.py
 
-# Pre-render script transforms obsidian-compatible GFM notes
-# into quarto-style div-based markdown
+# Pre-render script collects notes marked `public: true` from anywhere in
+# the Obsidian vault into notes/, injecting path-based tags and rewriting
+# inter-note links.  GFM→Quarto text transforms (callouts, mermaid) are
+# applied globally by the Lua filter below at render time.
+
+filters:
+  - scripts/gfm_to_quarto_filter.lua
 
 format:
   html:

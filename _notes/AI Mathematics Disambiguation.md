@@ -4,6 +4,7 @@ subtite: Those that appear in NeurIPS and such
 modified: 2026-01-17
 date: 2026-01-17
 draft: true
+public: true
 ---
 
 > [!tip] How we got there

@@ -1,6 +1,7 @@
 ---
 title: "Observer falls into the black hole, becomes Nostradamus"
 date: "2025-12-18"
+public: true
 ---
 
 - Someone on the inside of a black hole can observe the outside of the black hole

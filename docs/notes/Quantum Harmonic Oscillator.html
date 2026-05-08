@@ -191,26 +191,26 @@ window.Quarto = {
 <p>So then, we need to reconcile the creation operators by finding the multiplier that makes sure the result is actually the normalized <span class="math inline">\(\ket{n-1}\)</span>.</p>
 <p><span class="math display">\[\hat{a}\ket{n}=k\ket{n-1}\]</span> <span class="math display">\[\bra{n}\hat{a}^\dagger\hat{a}\ket{n}=n=k^2\braket{n-1|n-1}=k^2\]</span> <span class="math display">\[k=\sqrt{n}\]</span> <span class="math display">\[\hat{a}\ket{n}=\sqrt{n}\ket{n-1}\]</span></p>
 <p>Next, for the creation operator, the result has to be a normalized <span class="math inline">\(\ket{n+1}\)</span>: <span class="math display">\[\hat{a}^\dagger\ket{n}=k\ket{n+1}\]</span> <span class="math display">\[\bra{n}\hat{a}\hat{a}^\dagger\ket{n}=\underbrace{n+1}_{\hat{n}+1=\hat{a}\hat{a}^\dagger}=k^2\braket{n+1|n+1}\]</span> <span class="math display">\[k=\sqrt{n+1}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{n}=\sqrt{n+1}\ket{n+1}\]</span> So stuff like these are true: <span class="math display">\[\hat{a}\ket{1}=1\ket{0}=\ket{0}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{0}=\ket{1}\]</span> <span class="math display">\[\hat{a}^\dagger\ket{1}=\sqrt{2}\ket{2}\]</span> <span class="math display">\[\hat{a}\ket{0}=0\ket{-1}=0\]</span> This is why it’s called the annihilation operator.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Building from the ground state">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Building from the ground state
+<strong>Building from the ground state</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>This means that <span class="math display">\[\ket{n}=\frac{\hat{n}^{\dagger n}}{\sqrt{n!}}\ket{0}\]</span></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Hmm...">
+<div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hmm…
+<strong>Hmm…</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">

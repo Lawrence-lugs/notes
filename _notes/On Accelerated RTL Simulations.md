@@ -1,0 +1,57 @@
+---
+modified: 2026-04-20
+date: 2026-04-20
+public: true
+---
+Existing RTL simulations are prohibitively slow.
+For example what do you do when the verilator simulation just doesn't cut it anymore.
+
+There seems to be a few ways that the industry does this.
+
+## Analytical Cost Models
+
+The one that we're familiar with is using an analytical cost model (ZigZag, Timeloop).
+This requires you to already have an initial characterization of the circuit so that you're going to be able to estimate latency and energy costs.
+
+The problem with cost models is that it assumes that your your RTL is already correct to begin with and we just need to estimate the differences between the results of specific workloads- it is not a functional verification step.
+
+## Multimillion-cost FPGA Arrays
+
+Prior to this, I'd always known that there were papers that actually studied holding RTL simulations into cycle accurate FPGA mappings.
+
+In terms of that there's also the multimillion dollar FPGA array setups controlled by internal software that large companies apparently have. For example: Cadence Palladium.
+
+## Firesim
+
+Looking into it it seems that UC Berkeley also has a open source version of accelerated FPGA setups that is connected by default to AWS.
+This is called [Firesim](https://docs.fires.im/en/latest/Getting-Started-Guides/AWS-EC2-F2-Getting-Started/Building-a-FireSim-AFI.html#amazon-s3-setup).
+You can also set it up for your in-house FPGA setups but I think it's actually easier to use it through AWS.
+
+> [!note]
+> One interesting thing is that it seems the Gemini hardware generator paper was actually  almost entirely verified in Firesim.
+> This is interesting because Gemini is a hardware generator which prohibits the use of chip measurements.
+> To actually evaluate the generated hardware, they used the cycle accurate FPGA array simulator to obtain the results.
+
+To use it it seems that you have to set up a config file.
+[This config file](https://github.com/ucb-bar/chipyard/blob/main/sims/firesim-staging/sample_config_build_recipes.yaml#L3C1-L18C1) targets a specific `build.mk` if your project is in Scala which most of the examples are in Scala because Firesim was built in UC Berkeley.
+
+```yml
+# Quad-core, Rocket-based recipes
+# REQUIRED FOR TUTORIALS
+firesim_rocket_quadcore_nic_l2_llc4mb_ddr3:
+    PLATFORM: f1
+    TARGET_PROJECT: firesim
+    TARGET_PROJECT_MAKEFRAG: ../../generators/firechip/chip/src/main/makefrag/firesim
+    DESIGN: FireSim
+    TARGET_CONFIG: WithNIC_WithDefaultFireSimBridges_WithFireSimHighPerfConfigTweaks_chipyard.QuadRocketConfig
+    PLATFORM_CONFIG: WithAutoILA_FRFCFS16GBQuadRankLLC4MB_BaseF1Config
+    deploy_quintuplet: null
+    platform_config_args:
+        fpga_frequency: 90
+        build_strategy: TIMING
+    post_build_hook: null
+    metasim_customruntimeconfig: null
+    bit_builder_recipe: bit-builder-recipes/f1.yaml
+```
+
+

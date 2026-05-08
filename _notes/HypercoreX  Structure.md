@@ -2,6 +2,7 @@
 title: "HyperCoreX Code Structure"
 date: "2025-03-18"
 toc: true
+public: true
 ---
 - [ ] TODO: Add more commentary, since this is now a public note.
 ![asd](attachments/wipguy_small.png)

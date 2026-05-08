@@ -2,6 +2,7 @@
 title: "Derivation of the Lorentz Transformation"
 date: "2025-12-05"
 toc: true
+public: true
 ---
 
 The observation goes as follows:

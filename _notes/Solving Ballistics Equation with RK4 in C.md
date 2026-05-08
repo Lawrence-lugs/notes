@@ -3,6 +3,7 @@ title: Solving Ballistics Equation with RK4 in C
 modified: 2026-01-15
 date: 2026-01-12
 toc: true
+public: true
 ---
 >[!note] Questions
 > - How do we encode the ballistics equation in C?

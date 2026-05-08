@@ -2,6 +2,7 @@
 title: "Interesting Quantization Observations"
 date: "2025-01-17"
 toc: true
+public: true
 ---
 # Spreads, RMSE and SNR vs Bits
 

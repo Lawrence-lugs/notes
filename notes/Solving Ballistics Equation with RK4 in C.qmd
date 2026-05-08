@@ -1,13 +1,14 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: Solving Ballistics Equation with RK4 in C
 modified: 2026-01-15
 date: 2026-01-12
 toc: true
+public: true
 ---
-::: {.callout-note title="Questions"}
 
-- How do we encode the ballistics equation in C?
-:::
+>[!note] Questions
+> - How do we encode the ballistics equation in C?
 
 So the most basal ballistics equation is
 $$\mathbf{F}=m\vec{a}$$
@@ -16,7 +17,6 @@ Then the vectors are $\mathbf{F},x,y,\frac{dx}{dt},\frac{dy}{dt}$. The state vec
 $$\vec{S}=\begin{bmatrix}
 x\\y\\dx/dt\\dy/dt
 \end{bmatrix}$$ 
-
 # Forward Euler
 ![](attachments/Pasted%20image%2020260115115215.png)
 $$\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}$$
@@ -202,11 +202,10 @@ int main(void) {
 };
 ```
 
-::: {.callout-tip title="Results"}
-Forward Euler always seems to overshoot the analytical solution. This is likely because we *reduce the velocity over time, but we calculate the change in position with the previous velocity.*
-
-So then, $x_{n+1}=x_n+\Delta t v_n$.
-:::
+>[!tip] Results
+>Forward Euler always seems to overshoot the analytical solution. This is likely because we *reduce the velocity over time, but we calculate the change in position with the previous velocity.*
+>
+>So then, $x_{n+1}=x_n+\Delta t v_n$.
 
 # Plotting
 
@@ -366,18 +365,17 @@ void sim_step (Vector* state,const Vector* force, const float dt, const float dr
 
 Forward euler is technically RK1. The 4 means we approximate the correct average slope over the time step with 4 different estimates.
 
-::: {.callout-tip title="[Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)"}
-Given a problem in the following form: 
-$$\frac{dy}{dt}=f(t,y), y(t_0)=y_0$$
-RK4 gives an estimate of $\frac{dy}{dt}$ using a weighted average of four slopes $f(t,y)$ $k_1$ to $k_4$ in the "future" of the current point in time
-Choosing a time step $\Delta t>0$
-$$y_{n+1}=y_n+\frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)$$
-$$t_{n+1}=t_n+\Delta t$$
-$$k_1=f(t_n,y_n),$$
-$$k_2=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_1}{2})$$
-$$k_3=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_2}{2})$$
-$$k_4=f(t_n+\Delta t,y_n+\Delta tk_3)$$
-:::
+>[!tip] [Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
+>Given a problem in the following form: 
+>$$\frac{dy}{dt}=f(t,y), y(t_0)=y_0$$
+>RK4 gives an estimate of $\frac{dy}{dt}$ using a weighted average of four slopes $f(t,y)$ $k_1$ to $k_4$ in the "future" of the current point in time
+>Choosing a time step $\Delta t>0$
+>$$y_{n+1}=y_n+\frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)$$
+>$$t_{n+1}=t_n+\Delta t$$
+>$$k_1=f(t_n,y_n),$$
+>$$k_2=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_1}{2})$$
+>$$k_3=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_2}{2})$$
+>$$k_4=f(t_n+\Delta t,y_n+\Delta tk_3)$$
 
 If the forward euler equation for $v_y$ is
 $$v_{y,t+1}=f(t_n,v_y)=v_{y,t} -g\Delta t-k|\vec{v}|v_{y,t}$$
@@ -386,7 +384,6 @@ $$k_1=v_{y,t} (1-k|\vec{v}|) -g\Delta t$$
 $$k_2=(v_{y,t}+\frac{\Delta tk_1}{2}) (1-k|\vec{v}(\frac{\Delta tk_1}{2})|) -g\frac{3\Delta t}{2}$$
 $$k_3=(v_{y,t}+\frac{\Delta tk_2}{2}) (1-k|\vec{v}(\frac{\Delta tk_2}{2})|) -g\frac{3\Delta t}{2}$$
 $$k_4=(v_{y,t}+\Delta tk_3) (1-k|\vec{v}(\Delta tk_3)|) -g2\Delta t$$
-
 # RK4 implementation
 
 The most important part of the RK4 implementation has to be the `get_slope` function refactor
@@ -452,11 +449,10 @@ with this, it's easy to add RK4 by just chaining the calls to `get_slope` in ord
 
 Here's the comparison of RK4 with a refactored and better version of the forwardEuler.
 
-::: {.callout-note}
-More specifically, in the new forwardEuler the drag constant doesn't include `dt` in it by accident, and it's easier to track its effect.
-
-This had to be done so that we can see how the sims behave with the same drag coefficient.
-:::
+>[!note]
+>More specifically, in the new forwardEuler the drag constant doesn't include `dt` in it by accident, and it's easier to track its effect.
+>
+>This had to be done so that we can see how the sims behave with the same drag coefficient.
 
 ![](attachments/trajectories.gif)
 

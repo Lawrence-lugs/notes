@@ -1,3 +1,11 @@
+# =============================================================================
+# DEPRECATED — do not use in new work.
+#
+# Single-file CLI predecessor to batch_gfm_to_quarto.py, which is itself
+# now superseded by collect_public_notes.py + gfm_to_quarto_filter.lua.
+# Kept for reference only.
+# =============================================================================
+
 import re
 import sys
 import argparse

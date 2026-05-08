@@ -3,6 +3,7 @@ title: "Rings and Fields"
 category: note
 date: "01-03-2026"
 toc: true
+public: true
 ---
 
 Abstract algebra is apparently the study of rings and fields plus groups...

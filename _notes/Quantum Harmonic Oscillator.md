@@ -3,6 +3,7 @@ title: The Quantum Harmonic Oscillator has Energy Quanta (Shocking, I know)
 toc: true
 modified: 2026-01-18
 date: 2025-12-12
+public: true
 ---
 # There must be a number operator, right?!
 The hamiltonian/energy operator for the quantum harmonic oscillator is 

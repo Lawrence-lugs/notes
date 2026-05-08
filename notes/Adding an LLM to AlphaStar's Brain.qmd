@@ -1,10 +1,11 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: "Adding an LLM to AlphaStar's Brain"
 date: "2025-10-02"
+public: true
 ---
 
 Apparently AI is shifting towards trying to use LLMs in different manners like
-
 - RL + LLM
 - Vision + LLM (Recall, or something)
 - LLMs for controlling robots

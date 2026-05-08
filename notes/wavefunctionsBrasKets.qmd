@@ -1,19 +1,18 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: "Wavefunctions, Bras, Kets"
 date: "2025-12-4"
 toc: true
+public: true
 ---
 
 ::: {.callout-note title="References"}
-
 - Allan Adams MIT 8.04
 - Lancaster, Tom, and Stephen J. Blundell. _Quantum field theory for the gifted amateur_. OUP Oxford, 2014.
 :::
-
 # Hermitian Operators, Traces, Quantum Mechanics
 
 ::: {.callout-note title="Questions"}
-
 - The trace function is a softmax?
 - Instead of using $\ket{n}$, why not just have $\psi_n \in C$ in the complex numbers and say that $\hat{x}\psi_n$ gives back measurements of the position in the reals? i.e. $\braket{x|n}=\hat{x}\psi_n$
 - So then, when we apply the state to the operator $\bra{n}\hat{A}$ we get the trace which measures the probability of measuring specific values of the observable $\hat{A}$ .
@@ -63,7 +62,6 @@ Observe that $\int_\Bbb{R}x|\psi|^2dx$ is just a first moment integral. We're ta
 A **ket** is a vector in a complex vector space.
 
 A **bra** is a linear form $f:V\rightarrow \Bbb{C}$. It maps a vector to a complex number.
-
 * So then it can also be thought of as a row vector.
 
 ::: {.callout-note}

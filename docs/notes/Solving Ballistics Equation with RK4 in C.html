@@ -175,11 +175,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#forward-euler" id="toc-forward-euler" class="nav-link active" data-scroll-target="#forward-euler">Forward Euler</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting">Plotting</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link active" data-scroll-target="#plotting">Plotting</a></li>
   <li><a href="#forward-euler-with-quadratic-drag" id="toc-forward-euler-with-quadratic-drag" class="nav-link" data-scroll-target="#forward-euler-with-quadratic-drag">Forward Euler with Quadratic Drag</a></li>
   <li><a href="#runge-kutta-4" id="toc-runge-kutta-4" class="nav-link" data-scroll-target="#runge-kutta-4">Runge-Kutta 4</a></li>
-  <li><a href="#rk4-implementation" id="toc-rk4-implementation" class="nav-link" data-scroll-target="#rk4-implementation">RK4 implementation</a></li>
   </ul>
 </nav>
     </div>
@@ -211,13 +209,13 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled" title="Questions">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions
+<strong>Questions</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -229,10 +227,7 @@ Questions
 <p>So the most basal ballistics equation is <span class="math display">\[\mathbf{F}=m\vec{a}\]</span></p>
 <p>Then the vectors are <span class="math inline">\(\mathbf{F},x,y,\frac{dx}{dt},\frac{dy}{dt}\)</span>. The state vector <span class="math display">\[\vec{S}=\begin{bmatrix}
 x\\y\\dx/dt\\dy/dt
-\end{bmatrix}\]</span></p>
-<section id="forward-euler" class="level1">
-<h1>Forward Euler</h1>
-<p><img src="attachments/Pasted image 20260115115215.png" class="img-fluid"> <span class="math display">\[\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}\]</span> and since <span class="math inline">\(x_{n+1}=\Delta t \frac{dx}{dt}+x_n,y_{n+1}=\Delta t \frac{dy}{dt}+y_n,\)</span></p>
+\end{bmatrix}\]</span> # Forward Euler <img src="attachments/Pasted image 20260115115215.png" class="img-fluid"> <span class="math display">\[\vec{S}_{n+1}=\mathbf{U}\vec{S_n}+\vec{F}\]</span> and since <span class="math inline">\(x_{n+1}=\Delta t \frac{dx}{dt}+x_n,y_{n+1}=\Delta t \frac{dy}{dt}+y_n,\)</span></p>
 <p>The update matrix is <span class="math display">\[\mathbf{U}=\begin{bmatrix}
 1 &amp; 0 &amp; dt &amp; 0 \\
 0 &amp; 1 &amp; 0 &amp; dt \\
@@ -407,13 +402,13 @@ x\\y\\dx/dt\\dy/dt
 <span id="cb1-163"><a href="#cb1-163"></a>    matrix_print<span class="op">(&amp;</span>result_matrix<span class="op">,</span><span class="st">"Results"</span><span class="op">);</span></span>
 <span id="cb1-164"><a href="#cb1-164"></a></span>
 <span id="cb1-165"><a href="#cb1-165"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Results">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Results
+<strong>Results</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -421,7 +416,6 @@ Results
 <p>So then, <span class="math inline">\(x_{n+1}=x_n+\Delta t v_n\)</span>.</p>
 </div>
 </div>
-</section>
 <section id="plotting" class="level1">
 <h1>Plotting</h1>
 <p>Plan: let’s just pass the matrix to matplotlib. An interactive plotting framework is nice to implement, but that’s not what we’re doing right now.</p>
@@ -495,7 +489,7 @@ Results
 <span id="cb4-28"><a href="#cb4-28"></a>    ani.save(<span class="ss">f'</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.gif'</span>,fps<span class="op">=</span><span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="attachments/forwardEuler.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Trajectory without drag"><img src="attachments/forwardEuler.gif" class="img-fluid figure-img" alt="Trajectory without drag"></a></p>
+<p><a href="attachments/forwardEuler.gif" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Trajectory without drag"><img src="attachments/forwardEuler.gif" class="img-fluid figure-img" alt="Trajectory without drag"></a></p>
 <figcaption>Trajectory without drag</figcaption>
 </figure>
 </div>
@@ -534,7 +528,7 @@ Results
 <span id="cb5-20"><a href="#cb5-20"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="attachments/forwardEuler 2.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Forward Euler with Drag"><img src="attachments/forwardEuler 2.gif" class="img-fluid figure-img" alt="Forward Euler with Drag"></a></p>
+<p><a href="attachments/forwardEuler 2.gif" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Forward Euler with Drag"><img src="attachments/forwardEuler 2.gif" class="img-fluid figure-img" alt="Forward Euler with Drag"></a></p>
 <figcaption>Forward Euler with Drag</figcaption>
 </figure>
 </div>
@@ -563,23 +557,20 @@ Results
 <section id="runge-kutta-4" class="level1">
 <h1>Runge-Kutta 4</h1>
 <p>Forward euler is technically RK1. The 4 means we approximate the correct average slope over the time step with 4 different estimates.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="[Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods">Runge-Kutta</a>
+<strong>Runge-Kutta</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Given a problem in the following form: <span class="math display">\[\frac{dy}{dt}=f(t,y), y(t_0)=y_0\]</span> RK4 gives an estimate of <span class="math inline">\(\frac{dy}{dt}\)</span> using a weighted average of four slopes <span class="math inline">\(f(t,y)\)</span> <span class="math inline">\(k_1\)</span> to <span class="math inline">\(k_4\)</span> in the “future” of the current point in time Choosing a time step <span class="math inline">\(\Delta t&gt;0\)</span> <span class="math display">\[y_{n+1}=y_n+\frac{\Delta t}{6}(k_1+2k_2+2k_3+k_4)\]</span> <span class="math display">\[t_{n+1}=t_n+\Delta t\]</span> <span class="math display">\[k_1=f(t_n,y_n),\]</span> <span class="math display">\[k_2=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_1}{2})\]</span> <span class="math display">\[k_3=f(t_n+\frac{\Delta t}{2},y_n+\Delta t\frac{k_2}{2})\]</span> <span class="math display">\[k_4=f(t_n+\Delta t,y_n+\Delta tk_3)\]</span></p>
 </div>
 </div>
-<p>If the forward euler equation for <span class="math inline">\(v_y\)</span> is <span class="math display">\[v_{y,t+1}=f(t_n,v_y)=v_{y,t} -g\Delta t-k|\vec{v}|v_{y,t}\]</span> Then the RK4 estimates would be <span class="math display">\[k_1=v_{y,t} (1-k|\vec{v}|) -g\Delta t\]</span> <span class="math display">\[k_2=(v_{y,t}+\frac{\Delta tk_1}{2}) (1-k|\vec{v}(\frac{\Delta tk_1}{2})|) -g\frac{3\Delta t}{2}\]</span> <span class="math display">\[k_3=(v_{y,t}+\frac{\Delta tk_2}{2}) (1-k|\vec{v}(\frac{\Delta tk_2}{2})|) -g\frac{3\Delta t}{2}\]</span> <span class="math display">\[k_4=(v_{y,t}+\Delta tk_3) (1-k|\vec{v}(\Delta tk_3)|) -g2\Delta t\]</span></p>
-</section>
-<section id="rk4-implementation" class="level1">
-<h1>RK4 implementation</h1>
+<p>If the forward euler equation for <span class="math inline">\(v_y\)</span> is <span class="math display">\[v_{y,t+1}=f(t_n,v_y)=v_{y,t} -g\Delta t-k|\vec{v}|v_{y,t}\]</span> Then the RK4 estimates would be <span class="math display">\[k_1=v_{y,t} (1-k|\vec{v}|) -g\Delta t\]</span> <span class="math display">\[k_2=(v_{y,t}+\frac{\Delta tk_1}{2}) (1-k|\vec{v}(\frac{\Delta tk_1}{2})|) -g\frac{3\Delta t}{2}\]</span> <span class="math display">\[k_3=(v_{y,t}+\frac{\Delta tk_2}{2}) (1-k|\vec{v}(\frac{\Delta tk_2}{2})|) -g\frac{3\Delta t}{2}\]</span> <span class="math display">\[k_4=(v_{y,t}+\Delta tk_3) (1-k|\vec{v}(\Delta tk_3)|) -g2\Delta t\]</span> # RK4 implementation</p>
 <p>The most important part of the RK4 implementation has to be the <code>get_slope</code> function refactor</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">void</span> get_slope<span class="op">(</span><span class="dt">const</span> Vector<span class="op">*</span> slope<span class="op">,</span>Vector<span class="op">*</span> state<span class="op">,</span><span class="dt">const</span> Vector<span class="op">*</span> force<span class="op">,</span> <span class="dt">const</span> <span class="dt">float</span> drag_per_mass<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
@@ -629,13 +620,13 @@ Results
 <span id="cb9-21"><a href="#cb9-21"></a>    vector_scalar_multiply<span class="op">(</span>dt<span class="op">/</span><span class="dv">6</span><span class="op">,</span> <span class="op">&amp;</span>slope<span class="op">);</span></span>
 <span id="cb9-22"><a href="#cb9-22"></a>    vector_add<span class="op">(</span>state<span class="op">,</span> state<span class="op">,</span> <span class="op">&amp;</span>slope<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here’s the comparison of RK4 with a refactored and better version of the forwardEuler.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<strong>Note</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1065,7 +1056,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

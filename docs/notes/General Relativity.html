@@ -202,11 +202,8 @@ window.Quarto = {
 <p>The metric can usually be written as the formula for an arbitrary curve’s arclength. For example, in 2D polar coordinates: <span class="math display">\[ds^2=r^2d\theta^2+dr^2\]</span> We find the following insights:</p>
 <ul>
 <li>The basis are not necessarily unit bases</li>
-<li>The bases are not constant everywhere.</li>
+<li>The bases are not constant everywhere. # Christoffel Symbols</li>
 </ul>
-</section>
-<section id="christoffel-symbols" class="level1">
-<h1>Christoffel Symbols</h1>
 <p>When we tried to differentiate a vector, we</p>
 <p>We define the regular derivative (the derivative of each component of a vector): <span class="math display">\[V^\alpha_{,\beta}=\frac{dV^\alpha}{dx^\beta}\vec{e^\alpha}\]</span> This is the vector derivative in Cartesian Coordinates.</p>
 <p>We can differentiate an arbitrary vector in arbitrary coordinates, but we found that some sort of product rule applies: <span class="math display">\[\frac{d\vec{V}}{dx^\beta}=\frac{dV^\alpha}{dx^\beta}\vec{e^\alpha}+V^\alpha \frac{d\vec{e^\alpha}}{dx^\beta}\]</span> We call this the <strong>covariant derivative.</strong></p>
@@ -277,10 +274,7 @@ V^\mu
 <p><span class="math display">\[R_{\mu\nu}=g^{\alpha\beta}R_{\alpha \mu \beta \nu}\]</span></p>
 <p>and then further contracting gives the Ricci scalar:</p>
 <p><span class="math display">\[R=g^{\mu\nu}R_{\mu\nu}\]</span></p>
-<p>The Ricci scalar is the double trace of the Ricci tensor.</p>
-</section>
-<section id="einstein-tensor-and-field-equation" class="level1">
-<h1>Einstein Tensor and Field Equation</h1>
+<p>The Ricci scalar is the double trace of the Ricci tensor. # Einstein Tensor and Field Equation</p>
 <p>Contracting the Bianchi Identities twice with the Ricci contraction turns the bianchi identities into:</p>
 <p><span class="math display">\[R_{;\lambda}-R^\mu_{\lambda;\mu}-R^\mu_{\lambda;\mu}=0\]</span> (Turning the Ricci scalar contravariant derivative into an identity matrix reduction…) <span class="math display">\[(2R^\mu_\lambda-\delta^\mu_\lambda R)_{;\mu}=0\]</span> (divide this by 2 and we get…) and the Einstein Tensor can be defined to be</p>
 <p><span class="math display">\[G^{\alpha\beta} \equiv R^{\alpha \beta}-\frac{1}{2}g^{\alpha \beta}R=G^{\beta\alpha}\]</span> because the metric tensor in (1 1) form is the identity, so if we raise everything we can get the metric tensor back.</p>
@@ -289,11 +283,8 @@ V^\mu
 <ul>
 <li>Compute metric from einstein tensors</li>
 <li>Compute geodesics from metric</li>
-<li>done.</li>
+<li>done. # Computing the Apparent Horizon</li>
 </ul>
-</section>
-<section id="computing-the-apparent-horizon" class="level1">
-<h1>Computing the Apparent Horizon</h1>
 <p>The apparent horizon is the outermost marginally outer trapped surface. Here, <span class="math inline">\(\Theta\)</span> (expansion of a congruence of outgoing null geodesics) <span class="math inline">\(=0\)</span>.</p>
 <blockquote class="blockquote">
 <p>That is, at this timeslice, the photons never point outward.</p>
@@ -303,17 +294,11 @@ V^\mu
 <p>Then, the problem becomes finding <span class="math inline">\(a_{lm}\)</span> coefficients.</p>
 <p>So then, we need to find that <span class="math inline">\(a_{lm}\)</span> provides a surface where <span class="math inline">\(\Theta=0\)</span>.</p>
 <p><span class="math display">\[\Theta=s^i_{;i}+K_{ij}s^is^j-K=0\]</span> We use iterative solvers to enforce that this is 0.</p>
-<p><span class="math display">\[a_{lm}^{(new)}=a_{lm}^{(old)}-\delta a_{lm}\]</span></p>
-</section>
-<section id="computing-the-event-horizon" class="level1">
-<h1>Computing the event horizon</h1>
+<p><span class="math display">\[a_{lm}^{(new)}=a_{lm}^{(old)}-\delta a_{lm}\]</span> # Computing the event horizon</p>
 <p>Unlike the apparent horizon, the event horizon is defined globally. It is the boundary of the <em>causal past of future null infinity</em>.</p>
 <blockquote class="blockquote">
-<p>The difference is that in the apparent horizon,</p>
+<p>The difference is that in the apparent horizon, # Readings</p>
 </blockquote>
-</section>
-<section id="readings" class="level1">
-<h1>Readings</h1>
 <ul class="task-list">
 <li><label><input type="checkbox">MASSIVE: 3+1 Formulation</label></li>
 <li><label><input type="checkbox">Misner Ch. 12 “Variational Principle and Initial-Value Data”</label></li>

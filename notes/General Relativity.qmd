@@ -1,7 +1,9 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: General Relativity
 modified: 2026-03-16
 date: 2026-02-22
+public: true
 ---
 
 # Proper Time
@@ -73,10 +75,8 @@ The metric can usually be written as the formula for an arbitrary curve's arclen
 For example, in 2D polar coordinates:
 $$ds^2=r^2d\theta^2+dr^2$$
 We find the following insights:
-
 - The basis are not necessarily unit bases
 - The bases are not constant everywhere.
-
 # Christoffel Symbols
 
 When we tried to differentiate a vector, we
@@ -174,7 +174,6 @@ $$R^\alpha_{\mu \lambda \sigma} = {
 We call this the Riemann tensor.
 
 With the form of the Riemann tensor, we can see the following:
-
 - It has 3 lower (one-form) indices and 1 upper index.
 
 3 lower indices means that if we give it 3 vectors, it becomes a vector.
@@ -207,7 +206,6 @@ and then further contracting gives the Ricci scalar:
 $$R=g^{\mu\nu}R_{\mu\nu}$$
 
 The Ricci scalar is the double trace of the Ricci tensor.
-
 # Einstein Tensor and Field Equation
 
 Contracting the Bianchi Identities twice with the Ricci contraction turns the bianchi identities into:
@@ -227,11 +225,9 @@ $$G^{\alpha \beta}=8\pi T^{\alpha \beta}$$
 because it is related to the stress-energy tensor- which itself encodes the total energy-mass content in space.
 
 How do we get back useful computations from the einstein tensor? 
-
 - Compute metric from einstein tensors
 - Compute geodesics from metric
 - done.
-
 # Computing the Apparent Horizon
 
 The apparent horizon is the outermost marginally outer trapped surface. Here, $\Theta$ (expansion of a congruence of outgoing null geodesics) $=0$.
@@ -252,14 +248,12 @@ $$\Theta=s^i_{;i}+K_{ij}s^is^j-K=0$$
 We use iterative solvers to enforce that this is 0.
 
 $$a_{lm}^{(new)}=a_{lm}^{(old)}-\delta a_{lm}$$
-
 # Computing the event horizon
 
 Unlike the apparent horizon, the event horizon is defined globally.
 It is the boundary of the *causal past of future null infinity*.
 
 > The difference is that in the apparent horizon, 
-
 # Readings
 
 - [ ] MASSIVE: 3+1 Formulation

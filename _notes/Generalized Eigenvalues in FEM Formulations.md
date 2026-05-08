@@ -2,6 +2,7 @@
 title: Generalized Eigenvalues in FEM Formulations
 modified: 2026-01-12T14:50:03+08:00
 date: 2025-9-18
+public: true
 ---
 # Generalized Eigenvalue Problem
 

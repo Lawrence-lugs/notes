@@ -2,6 +2,7 @@
 title: "The Linux Page Fault Handler"
 date: "2025-11-24"
 status: "WIP"
+public: true
 ---
 
 # How to get there

@@ -1,6 +1,7 @@
 ---
 modified: 2026-04-06
 date: 2026-03-31
+public: true
 ---
 ## On DRAM Failure
 

@@ -1,6 +1,8 @@
 ---
+from: markdown+lists_without_preceding_blankline
 title: "Lagrangians, Hamiltonians"
 date: "2025-10"
+public: true
 ---
 
 The Lagrangian

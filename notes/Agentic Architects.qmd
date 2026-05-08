@@ -1,0 +1,45 @@
+---
+from: markdown+lists_without_preceding_blankline
+title: "Agentic Architects"
+modified: 2026-05-08
+date: 2026-05-04
+public: true
+tags:
+  - Concepts
+  - Study
+  - Ai
+---
+
+>[!summary] Todo List
+> 
+> - [x] #todo #reading #tier1 Read [Agentic Architects](https://arxiv.org/html/2604.25083). (Carnegie Mellon Apr 2026) 🆔 t00tzp ✅ 2026-05-06
+> - [ ] #todo #reading #tier1 Read [ArchAgent](https://arxiv.org/pdf/2602.22425) (Google Feb 2026) 🆔 ek9qli ⛔ t00tzp
+> - [ ] #todo #reading #tier1 Read [ChatArch](https://dl.acm.org/doi/epdf/10.1145/3774888) (Fudan U, China, Dec 2025) 🆔 9bojyc ⛔ ek9qli
+> - [ ] #todo #reading #tier1  Read [Computer Architecture's AlphaZero Moment](Computer Architecture's AlphaZero Moment.qmd)
+> - [ ] #todo #reading #tier1 Read LLM-guided bottleneck analysis (LUMINA) ⛔ 9bojyc
+> - [ ] #todo #reading #tier1 Read AdaEvolve (evolutionary LLM swarms framework)
+
+Karpathy introduced LLM swarms that optimize NN architectures. 
+This was then explored by [this blog post for cacheless pipelined RISCV beating VexRISCV](https://github.com/FeSens/auto-arch-tournament).
+
+Carnegie Mellon followed up immediately with [Agentic Architects](https://arxiv.org/html/2604.25083).
+
+> The accepted wins are qualitatively interesting: not hyperparameter changes but structural interventions like the cold multi-cycle DIV/REM isolation (which the agent didn't know would halve LUT count; it found out by doing it) and the registered lookahead I-fetch replay predictor — a non-obvious combination of replay mechanics and fetch-side lookahead that sits outside what a typical architect would enumerate as a hypothesis class.
+> --- Claude on `auto-arch-tournament`
+
+Typical DSE is limited by the "hypothesis class".
+There is a set of possible hardware, and we create DSE to find the optimal hardware within those possibilities.
+
+On 2026-03-31, [Nvidia published a position paper](Computer%20Architecture's%20AlphaZero%20Moment) on the onset of LLMs in the exploration of the architecture design space. 
+
+## Potentials
+
+>[!check] Gap: ZigZag with Agentic Exploration?
+> It may be a good idea to check how agent exploration can interact with the ZigZag cost models. ZigZag can serve as the "verifier", the agent can explore within the available YAMLs.
+> - [ ] #todo #project #tier1 Agentic architects with ZigZag as verifier
+
+
+>[!check] Gap: MiniQwen Agentic?
+> Locking the features to high-cost models is bad. If the only risk for smaller models is that they typically don't come up with verification-passing architectures, the testing must be tiered and fast. 
+> - [ ] #todo #project #tier1 Many little Agentic Architects
+

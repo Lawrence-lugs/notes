@@ -161,27 +161,26 @@ function BlockQuote(el)
     title_text = DEFAULT_TITLES[marker.callout_type] or "Note"
   end
 
-  local title_para = pandoc.Para({pandoc.Strong({pandoc.Str(title_text)})})
-
-  local callout_title = pandoc.Div(
+  local callout_header = pandoc.Div(
     {
-      pandoc.Div({pandoc.RawBlock("html", "<i class=\"callout-icon\"></i>")}, pandoc.Attr("", {"callout-icon-container"})),
-      title_para,
+      pandoc.Div(
+        {pandoc.RawBlock("html", "<i class=\"callout-icon\"></i>")},
+        pandoc.Attr("", {"callout-icon-container"})
+      ),
+      pandoc.Div(
+        {pandoc.Plain({pandoc.Strong({pandoc.Str(title_text)})})},
+        pandoc.Attr("", {"callout-title-container", "flex-fill"})
+      ),
     },
-    pandoc.Attr("", {"callout-title"})
+    pandoc.Attr("", {"callout-header", "d-flex", "align-content-center"})
   )
 
-  local callout_content = pandoc.Div(blocks, pandoc.Attr("", {"callout-content"}))
-  local callout_body = pandoc.Div({callout_title, callout_content}, pandoc.Attr("", {"callout-body"}))
+  local callout_body = pandoc.Div(blocks, pandoc.Attr("", {"callout-body-container", "callout-body"}))
 
   local callout = pandoc.Div(
-    {callout_body},
+    {callout_header, callout_body},
     pandoc.Attr("", {"callout", "callout-" .. marker.callout_type, "callout-titled", "callout-style-default"})
   )
-
-  if marker.title ~= "" then
-    return pandoc.Div({callout}, pandoc.Attr("", {}, {title = marker.title}))
-  end
 
   return callout
 end

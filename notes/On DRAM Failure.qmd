@@ -1,6 +1,9 @@
 ---
+from: markdown+lists_without_preceding_blankline
+title: "On DRAM Failure"
 modified: 2026-04-06
 date: 2026-03-31
+public: true
 ---
 
 ## On DRAM Failure
@@ -31,7 +34,6 @@ Practical form:
 
 $$t_{ret}(T)=t_{ret}(T_0)\cdot e^{\frac{E_a}{k_B}(1/T-1/T_0)}$$
 This model is filled by:
-
 1. Measure retention rate at some base temperature $t_{ret}(T_0)$
 2. Characterize $E_a/k_B$ experimentally by how the retention rate scales away from the $T_0$ point, fitting against the Arrhenius model.
 

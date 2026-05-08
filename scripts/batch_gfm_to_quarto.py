@@ -1,3 +1,15 @@
+# =============================================================================
+# DEPRECATED — do not use in new work.
+#
+# Replaced by scripts/collect_public_notes.py, which:
+#   • scans the whole Obsidian vault (not just _notes/) for public: true notes
+#   • delegates GFM→Quarto text transforms to gfm_to_quarto_filter.lua
+#     (applied globally via _quarto.yml) instead of doing them at copy time
+#
+# This file is kept for reference only and is no longer wired into the
+# Quarto pre-render hook or the Makefile.
+# =============================================================================
+
 import os
 import re
 import argparse

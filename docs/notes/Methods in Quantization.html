@@ -200,10 +200,8 @@ window.Quarto = {
 
 
 <ul class="task-list">
-<li><label><input type="checkbox">TODO: Add commentary, since we’re publicizing this one now. <img src="attachments/wipguy_small.png" class="img-fluid"></label></li>
+<li><label><input type="checkbox">TODO: Add commentary, since we’re publicizing this one now. <img src="attachments/wipguy_small.png" class="img-fluid"> # Quantized Averagepool</label></li>
 </ul>
-<section id="quantized-averagepool" class="level1">
-<h1>Quantized Averagepool</h1>
 <p><span class="math inline">\(\sum_i^n r_i=\sum_i^n s(q_i-z)\)</span></p>
 <p><span class="math inline">\(=\frac{s[(\sum_i^nq_i)-nz]}{n}\)</span></p>
 <p><span class="math inline">\(=\frac{s}{n}\sum q_i-sz\)</span></p>
@@ -214,7 +212,6 @@ window.Quarto = {
 <p><span class="math inline">\(r_y=\frac{s_x}{n}\sum q_{xi}-sz_x\)</span></p>
 <p><span class="math inline">\(s_y(q_y-z_y)=\frac{s_x}{n}\sum q_{xi}-sz_x\)</span></p>
 <p><span class="math inline">\(q_y=\frac{s_x}{s_yn}\sum q_{xi}-\frac{s_x}{s_y}z_x+z_y\)</span></p>
-</section>
 </section>
 <section id="tflite-quantized-matmul" class="level1">
 <h1>TFlite Quantized Matmul</h1>
@@ -433,7 +430,7 @@ window.Quarto = {
 <!-- Column 2 -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="attachments/6fe497340003c358ccc0bd8993638575.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."><img src="attachments/6fe497340003c358ccc0bd8993638575.png" class="img-fluid figure-img" alt="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."></a></p>
+<p><a href="attachments/6fe497340003c358ccc0bd8993638575.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."><img src="attachments/6fe497340003c358ccc0bd8993638575.png" class="img-fluid figure-img" alt="The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available."></a></p>
 <figcaption>The first layer of DS-CNN quantized with a 4-bit Gaussian Quantizer with step=0.336. You can see that 16 levels are available.</figcaption>
 </figure>
 </div>
@@ -479,7 +476,7 @@ window.Quarto = {
 <!-- Column 2 -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block"><embed src="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="img-fluid"></a></p>
+<p><a href="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block"><embed src="../08_Literature_Reference/Papers/Jacob ‘18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block.md" class="img-fluid"></a></p>
 <figcaption>Jacob ’18 CVPR “Quantization &amp; Training of NN for Efficient INT-only Arithmetic” synced block</figcaption>
 </figure>
 </div>
@@ -902,7 +899,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
