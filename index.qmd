@@ -12,7 +12,6 @@ listing:
 include-in-header:
   - text: |
       <script src="https://cdn.tailwindcss.com"></script>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
       <script>
         tailwind.config = {
           corePlugins: { preflight: false },

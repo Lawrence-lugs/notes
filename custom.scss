@@ -1,0 +1,68 @@
+/*-- scss:defaults --*/
+
+// Font stack
+$font-family-sans-serif: "Inter", "Source Sans 3", "Source Sans Pro",
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+  Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-base: $font-family-sans-serif;
+
+// Motif color
+$link-color:       #C67E6A;
+$link-hover-color: #a85f4e;
+
+// Navbar — dark anchor
+$navbar-bg: #2D2A26;
+$navbar-fg: rgba(255, 255, 255, 0.85);
+
+/*-- scss:rules --*/
+
+// --- Navbar ---
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: #C67E6A !important;
+}
+
+.navbar .nav-link.active {
+  color: #C67E6A !important;
+  border-bottom: 2px solid #C67E6A;
+}
+
+.navbar-brand {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-brand:hover {
+  color: #C67E6A !important;
+}
+
+// Search icon contrast on dark navbar
+.quarto-search .aa-SubmitButton,
+.quarto-navbar-tools .quarto-navigation-tool {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.quarto-search .aa-SubmitButton:hover,
+.quarto-navbar-tools .quarto-navigation-tool:hover {
+  color: #C67E6A !important;
+}
+
+// --- Headings ---
+h1 {
+  border-bottom: 2px solid #C67E6A;
+  padding-bottom: 0.25rem;
+}
+
+h2 {
+  border-left: 3px solid #C67E6A;
+  padding-left: 0.6rem;
+}
+
+// --- Blockquotes ---
+blockquote {
+  border-left: 4px solid #C67E6A;
+}
+
+// --- Inline code (not code blocks) ---
+code:not(pre > code) {
+  color: #C67E6A;
+}

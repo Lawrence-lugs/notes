@@ -185,6 +185,20 @@ function BlockQuote(el)
   return callout
 end
 
+function Str(el)
+  if not is_html_output() then
+    return nil
+  end
+  -- Match a standalone hashtag token: #word, #some-tag, #some_tag
+  local tag = el.text:match("^(#[%w][%w_%-]*)$")
+  if not tag then
+    return nil
+  end
+  local html = '<span class="bg-gray-100 text-gray-600 text-xs px-3 py-1.5 rounded-full border border-gray-200" style="white-space:nowrap">'
+    .. tag .. '</span>'
+  return pandoc.RawInline("html", html)
+end
+
 function CodeBlock(el)
   if not has_class(el, "mermaid") then
     return nil

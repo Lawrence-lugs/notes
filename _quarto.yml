@@ -17,23 +17,28 @@ filters:
 
 format:
   html:
-    theme: united
-    mainfont: Trebuchet MS
-    fontsize: 16pt 
+    theme: [sandstone, custom.scss]
+    fontsize: 16pt
     fig-align: center
     lightbox: true
     css: styles.css
     code-line-numbers: true
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
 execute:
   freeze: auto
   cache: true
 
 website:
-  title: Lawrence Roman A. Quizon
+  title: L.Quizon
   navbar:
+    background: "#2D2A26"
     left:
       - href: index.qmd
         text: Home
-      
+
     search: true
