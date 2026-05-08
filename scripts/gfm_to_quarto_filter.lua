@@ -152,24 +152,30 @@ local function blocks_have_todo(blocks)
   return false
 end
 
+local function filter_list_items(items)
+  local kept = {}
+  for _, item in ipairs(items) do
+    if not blocks_have_todo(item) then
+      kept[#kept + 1] = item
+    end
+  end
+  return kept
+end
+
 local function filter_todo_blocks(blocks)
   local result = {}
   for _, block in ipairs(blocks) do
     if (block.t == "Para" or block.t == "Plain") and inlines_have_todo(block.content) then
       -- drop #todo paragraphs
-    elseif block.t == "BulletList" or block.t == "OrderedList" then
-      local kept = {}
-      for _, item in ipairs(block.content) do
-        if not blocks_have_todo(item) then
-          kept[#kept + 1] = item
-        end
-      end
+    elseif block.t == "BulletList" then
+      local kept = filter_list_items(block.content)
       if #kept > 0 then
-        if block.t == "BulletList" then
-          result[#result + 1] = pandoc.BulletList(kept)
-        else
-          result[#result + 1] = pandoc.OrderedList(kept)
-        end
+        result[#result + 1] = pandoc.BulletList(kept)
+      end
+    elseif block.t == "OrderedList" then
+      local kept = filter_list_items(block.content)
+      if #kept > 0 then
+        result[#result + 1] = pandoc.OrderedList(kept, block.listAttributes)
       end
     else
       result[#result + 1] = block
@@ -179,12 +185,7 @@ local function filter_todo_blocks(blocks)
 end
 
 function BulletList(el)
-  local filtered = {}
-  for _, item in ipairs(el.content) do
-    if not blocks_have_todo(item) then
-      filtered[#filtered + 1] = item
-    end
-  end
+  local filtered = filter_list_items(el.content)
   if #filtered == 0 then
     return {}
   end
