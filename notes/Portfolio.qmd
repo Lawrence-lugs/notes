@@ -1,0 +1,22 @@
+---
+from: markdown+lists_without_preceding_blankline
+title: "Portfolio"
+public: true
+modified: 2026-05-11
+date: 2026-05-11
+draft: true
+---
+
+## Teaching Portfolio  
+
+- Basic Analog IC Design
+	- EEE 131/141
+- Digital IC Design, RTL Verilog
+	- EEE 143/153, [Verilog Crash Course](https://digital.eee.upd.edu.ph/pages/verilogCrashCourse/), [CIDR Trainings](https://github.com/Lawrence-lugs/uLabSynopsysTraining)
+- Physical Design ([Sky130 Chip Template](https://github.com/Lawrence-lugs/sky130-full-chip-template), [My SoC](https://github.com/Lawrence-lugs/Lugs-SoC))
+	- CIDR Trainings, [Certus Consultant for Open-Source Flows](https://github.com/Lawrence-lugs/sky130-full-chip-template/blob/main/doc/Padring.pdf)
+- Lab/Exercise Design ([Logic Labs](https://digital.eee.upd.edu.ph/pages/logicLabs/), [Verilog Exercises/IDE I made](https://digital.eee.upd.edu.ph/exercises))
+
+- Site Design ([digital.eee.upd.edu.ph](https://digital.eee.upd.edu.ph/)) - *not just for training, but for other internal resources*
+- Web-Based Learning Material Typesetting ([Verilog Crash Course](https://digital.eee.upd.edu.ph/pages/verilogCrashCourse/)) - *not just for training, but for other internal resources*
+- Multi-format: PDF, Beamer, Powerpoint, RevealJS ([RevealJS Example: Transistor Parasitics](https://lawrence-lugs.github.io/notes/slides/transistorCapacitances/transistorCapacitances.html#/the-transition-frequency-f_t-4)) - *makes it easier to update the learning materials*

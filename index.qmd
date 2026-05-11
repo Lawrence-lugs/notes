@@ -3,12 +3,17 @@ pagetitle: "Lawrence Quizon"
 page-layout: full
 navbar: false
 listing:
-    id: recent-notes
-    type: grid
-    fields: [title, date]
-    sort: "date desc"
-    max-items: 9
-    grid-columns: 3
+    - id: recent-notes
+      type: grid
+      fields: [title, date]
+      sort: "date desc"
+      max-items: 9
+      grid-columns: 3
+    - id: all-notes
+      type: table
+      fields: [title, date]
+      sort: "date desc"
+      max-items: 999
 include-in-header:
   - text: |
       <script src="https://cdn.tailwindcss.com"></script>
@@ -140,6 +145,20 @@ include-in-header:
 :::
 
 :::{#recent-notes}
+:::
+
+<!-- All Notes Heading -->
+::: {}
+
+```{=html}
+<div class="mb-8">
+  <h2 class="text-3xl font-bold text-[#2D2A26] mb-3">All Notes</h2>
+</div>
+```
+
+:::
+
+:::{#all-notes}
 :::
 
 ::::

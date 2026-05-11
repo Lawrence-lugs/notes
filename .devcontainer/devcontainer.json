@@ -34,6 +34,7 @@
   "mounts": [
     "type=bind,source=/run/desktop/mnt/host/wslg/.X11-unix,target=/tmp/.X11-unix",
     "type=bind,source=/run/desktop/mnt/host/wslg,target=/mnt/wslg",
-    "type=bind,source=/usr/lib/wsl,target=/usr/lib/wsl"
+    "type=bind,source=/usr/lib/wsl,target=/usr/lib/wsl",
+    "type=bind,source=../,target=/workspaces"
   ]
 }

@@ -6,6 +6,7 @@ project:
     - "!_notes/" # This is the pre-preprocessed notes dir
     - "slides/"
     - "notes/"
+    - "index.qmd"
   resources:
     - "googleba81d2991a90411e.html"
     - "slides/inPrep/imec_recent.html"
