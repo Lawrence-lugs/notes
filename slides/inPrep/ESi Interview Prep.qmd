@@ -1,0 +1,44 @@
+---
+modified: 2026-05-11
+date: 2026-05-11
+draft: true
+format:
+  revealjs:
+    slide-number: true
+    preview-links: auto
+    theme:
+      - default
+      - ../law.scss
+    footer: DSE for CMOS 2.0 Compute-Memory Fabrics
+    fontsize: 24pt
+    menu: true
+    width: 1280
+    height: 720
+    filters:
+      - ../scripts/auto-fragment.lua
+      - ../../scripts/gfm_to_quarto_filter.lua
+title: "ESi Interview Prep"
+from: markdown+lists_without_preceding_blankline
+---
+
+## Teaching Portfolio 
+
+- Basic Analog Design
+	- EEE 131/141
+- Digital Design, RTL Verilog
+	- EEE 143/153, [Verilog Crash Course](https://digital.eee.upd.edu.ph/pages/verilogCrashCourse/), [CIDR Trainings](https://github.com/Lawrence-lugs/uLabSynopsysTraining)
+- Physical Design ([Sky130 Chip Template](https://github.com/Lawrence-lugs/sky130-full-chip-template), [My SoC](https://github.com/Lawrence-lugs/Lugs-SoC))
+	- CIDR Trainings, [Certus Consultant for Open-Source Flows](https://github.com/Lawrence-lugs/sky130-full-chip-template/blob/main/doc/Padring.pdf)
+- Lab/Exercise Design ([Logic Labs](https://digital.eee.upd.edu.ph/pages/logicLabs/), [Verilog Exercises/IDE I made](https://digital.eee.upd.edu.ph/exercises))
+
+## Formatting/Resource Management Portfolio
+
+- Site Design ([digital.eee.upd.edu.ph](https://digital.eee.upd.edu.ph/)) - *not just for training, but for other internal resources*
+- Web-Based Learning Material Typesetting ([Verilog Crash Course](https://digital.eee.upd.edu.ph/pages/verilogCrashCourse/)) - *not just for training, but for other internal resources*
+- Multi-format: PDF, Beamer, Powerpoint, RevealJS ([RevealJS Example: Transistor Parasitics](https://lawrence-lugs.github.io/notes/slides/transistorCapacitances/transistorCapacitances.html#/the-transition-frequency-f_t-4)) - *makes it easier to update the learning materials*
+
+## Exact Work Scope and Deliverables
+
+- What type of training materials? 
+- Tool access, NDAs not needed?
+- Lectures, PDFs, training material format that's needed?

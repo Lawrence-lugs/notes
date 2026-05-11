@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "!tests/" # Don't render the tests lol...
+    - "!_notes/" # This is the pre-preprocessed notes dir
+    - "slides/"
+    - "notes/"
   resources:
     - "googleba81d2991a90411e.html"
     - "slides/inPrep/imec_recent.html"
