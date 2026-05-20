@@ -1,0 +1,14 @@
+---
+title: "Slides"
+page-layout: full
+listing:
+  - id: all-slides
+    contents: slides/
+    type: table
+    fields: [title, date, author]
+    sort: "date desc"
+    max-items: 999
+---
+
+:::{#all-slides}
+:::

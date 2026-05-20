@@ -7,9 +7,12 @@ on:
       - ".devcontainer/**"
       - "_quarto.yml"
       - "index.qmd"
+      - "slides.qmd"
       - "notes/**"
       - "_notes/**"
+      - "slides/**"
       - "styles.css"
+      - "custom.scss"
       - "scripts/**"
       - ".github/workflows/test-quarto.yml"
   workflow_dispatch:
@@ -18,7 +21,7 @@ env:
   IMAGE: ghcr.io/lawrence-lugs/quartolatex:latest
 
 permissions:
-  contents: read
+  contents: write
   packages: read
   pages: write
   id-token: write
@@ -51,6 +54,21 @@ jobs:
       - name: Pull prebuilt Quarto image
         run: docker pull "${{ env.IMAGE }}"
 
+      - name: Bust freeze cache on global config change
+        run: |
+          CONFIG_HASH=$(for f in _quarto.yml custom.scss styles.css scripts/gfm_to_quarto_filter.lua; do
+            [ -f "$f" ] && cat "$f"
+          done | sha256sum | awk '{print $1}')
+          STORED_HASH=$(cat _freeze/.config-hash 2>/dev/null || echo "")
+          if [ "$CONFIG_HASH" != "$STORED_HASH" ]; then
+            echo "Global config changed (or no prior cache) — busting _freeze/"
+            rm -rf _freeze/
+            mkdir -p _freeze/
+            echo "$CONFIG_HASH" > _freeze/.config-hash
+          else
+            echo "Global config unchanged — reusing existing _freeze/"
+          fi
+
       - name: Render site in container
         run: |
           docker run --rm \
@@ -58,6 +76,22 @@ jobs:
             -w /workspace \
             "${{ env.IMAGE }}" \
             quarto render
+
+      - name: Update config hash sentinel in freeze
+        run: |
+          CONFIG_HASH=$(for f in _quarto.yml custom.scss styles.css scripts/gfm_to_quarto_filter.lua; do
+            [ -f "$f" ] && cat "$f"
+          done | sha256sum | awk '{print $1}')
+          mkdir -p _freeze/
+          echo "$CONFIG_HASH" > _freeze/.config-hash
+
+      - name: Commit freeze cache to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _freeze/
+          git diff --staged --quiet || git commit -m "ci: update freeze cache [skip ci]"
+          git push origin gh-pages
 
       - name: Set up Pages
         uses: actions/configure-pages@v5

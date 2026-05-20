@@ -4,12 +4,14 @@ page-layout: full
 navbar: false
 listing:
     - id: recent-notes
+      contents: notes/
       type: grid
       fields: [title, date]
       sort: "date desc"
       max-items: 9
       grid-columns: 3
     - id: all-notes
+      contents: notes/
       type: table
       fields: [title, date]
       sort: "date desc"
