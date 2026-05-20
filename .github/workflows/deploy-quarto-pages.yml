@@ -44,6 +44,19 @@ jobs:
         with:
           ref: gh-pages
 
+      - name: Set up actions-artifacts worktree and restore freeze cache
+        run: |
+          if git ls-remote --exit-code --heads origin actions-artifacts; then
+            git fetch origin actions-artifacts:refs/heads/actions-artifacts
+            git worktree add .freeze-cache actions-artifacts
+          else
+            git worktree add --orphan -b actions-artifacts .freeze-cache
+          fi
+          if [ -d .freeze-cache/_freeze ]; then
+            rm -rf _freeze/
+            cp -r .freeze-cache/_freeze .
+          fi
+
       - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
@@ -85,13 +98,15 @@ jobs:
           mkdir -p _freeze/
           echo "$CONFIG_HASH" > _freeze/.config-hash
 
-      - name: Commit freeze cache to gh-pages
+      - name: Commit freeze cache to actions-artifacts
         run: |
+          rsync -a --delete _freeze/ .freeze-cache/_freeze/
+          cd .freeze-cache
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add _freeze/
           git diff --staged --quiet || git commit -m "ci: update freeze cache [skip ci]"
-          git push origin gh-pages
+          git push origin actions-artifacts
 
       - name: Set up Pages
         uses: actions/configure-pages@v5
