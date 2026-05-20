@@ -1,0 +1,7 @@
+format:
+  revealjs:
+    width: 1280
+    height: 720
+    fontsize: 24pt
+    slide-number: true
+    preview-links: auto

@@ -1,5 +1,14 @@
 [
   {
+    "listing": "/slides.html",
+    "items": [
+      "/slides/desirableDifficulties/desirableDifficulties.html",
+      "/slides/settingOsPdk/settingOsPdk.html",
+      "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
+      "/slides/transistorCapacitances/transistorCapacitances.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/notes/Agentic Architects.html",
@@ -7,21 +16,17 @@
       "/notes/Online Caching of Devcontainer builds with GHCR.io.html",
       "/notes/On DRAM Failure.html",
       "/notes/General Relativity.html",
-      "/slides/desirableDifficulties/desirableDifficulties.html",
       "/notes/Solving Ballistics Equation with RK4 in C.html",
       "/notes/The Generalized Stokes' Theorem.html",
       "/notes/Differential Equations to FEM.html",
       "/notes/RingsAndFields.html",
       "/notes/Metrics and Manifolds.html",
       "/notes/Observer falls into the black hole, becomes Nostradamus.html",
-      "/slides/settingOsPdk/settingOsPdk.html",
       "/notes/Quantum Harmonic Oscillator.html",
       "/notes/derivationOfTheLorentzTransformation.html",
       "/notes/wavefunctionsBrasKets.html",
-      "/slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html",
       "/notes/Running TinyGPU by Adam Maj.html",
       "/notes/The Linux Page Fault Handler.html",
-      "/slides/transistorCapacitances/transistorCapacitances.html",
       "/notes/AI for Learning and Feeling stupid organically.html",
       "/notes/LLMs are central nervous systems.html",
       "/notes/Adding an LLM to AlphaStar's Brain.html",

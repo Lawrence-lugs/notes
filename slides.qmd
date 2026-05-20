@@ -1,6 +1,7 @@
 ---
 title: "Slides"
 page-layout: full
+format: html
 listing:
   - id: all-slides
     contents: slides/

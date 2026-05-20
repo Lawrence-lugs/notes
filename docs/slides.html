@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-03">
 
-<title>L.Quizon - LLMs can be central nervous systems?</title>
+<title>L.Quizon - Slides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-all-slides .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-all-slides'] = new List('listing-all-slides', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
@@ -104,17 +131,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">L.Quizon</span>
     </a>
   </div>
@@ -125,7 +152,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -136,29 +163,23 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LLMs can be central nervous systems?</h1>
+<h1 class="title">Slides</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 3, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -168,70 +189,100 @@ window.Quarto = {
 </header>
 
 
-<p>Apparently AI is shifting towards trying to use LLMs in different manners like</p>
-<ul>
-<li>RL + LLM</li>
-<li>Vision + LLM (Recall, or something)</li>
-<li>LLMs for controlling robots</li>
-</ul>
-<section id="ai-is-evolving-like-animals" class="level1">
-<h1>AI is evolving like animals…?</h1>
-<p>This may be reminiscent of biological evolution of nervous systems. Quick reflex-like signalling systems may have evolved into peripheral + central nervous systems.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="listing-all-slides" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-all-slides-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-all-slides'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-author" data-direction="asc">
+          Author
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-<div class="callout-title-container flex-fill">
-<strong>Fact-check!</strong>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+<th>
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Author</a>
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1768953600000" data-listing-file-modified-sort="1769014019661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="863" data-listing-title-sort="Retrieval over Reading" data-listing-filename-sort="desirableDifficulties.qmd">
+<td>
+<a href="./slides/desirableDifficulties/desirableDifficulties.html" class="title listing-title">Retrieval over Reading</a>
+</td>
+<td>
+<span class="listing-date">Jan 21, 2026</span>
+</td>
+<td>
+<span class="listing-author">Lawrence Quizon</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1765929600000" data-listing-file-modified-sort="1767971479071" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="712" data-listing-title-sort="Setting up an OS PDK" data-listing-filename-sort="settingOsPdk.qmd">
+<td>
+<a href="./slides/settingOsPdk/settingOsPdk.html" class="title listing-title">Setting up an OS PDK</a>
+</td>
+<td>
+<span class="listing-date">Dec 17, 2025</span>
+</td>
+<td>
+<span class="listing-author">Lawrence Quizon</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1764288000000" data-listing-file-modified-sort="1767971412009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="639" data-listing-title-sort="Frequency Response of CE Amplifier" data-listing-filename-sort="ceCsFrequencyResponse.qmd">
+<td>
+<a href="./slides/ceCsFrequencyResponse/ceCsFrequencyResponse.html" class="title listing-title">Frequency Response of CE Amplifier</a>
+</td>
+<td>
+<span class="listing-date">Nov 28, 2025</span>
+</td>
+<td>
+<span class="listing-author">Lawrence Quizon</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1763510400000" data-listing-file-modified-sort="1767971437136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1005" data-listing-title-sort="Transistor Capacitances" data-listing-filename-sort="transistorCapacitances.qmd">
+<td>
+<a href="./slides/transistorCapacitances/transistorCapacitances.html" class="title listing-title">Transistor Capacitances</a>
+</td>
+<td>
+<span class="listing-date">Nov 19, 2025</span>
+</td>
+<td>
+<span class="listing-author">Lawrence Quizon</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Northcutt, R. Glenn. “Evolution of centralized nervous systems: two schools of evolutionary thought.” Proceedings of the National Academy of Sciences 109.supplement_1 (2012): 10626-10633. Some early creatures have <em>ganglionated cephalic nervous systems</em>. <em>Diffuse nerve plexus</em> are</p>
-</div>
-</div>
-<p>Creatures with central nervous systems are allowed to have an internal cognition network with latent representations and statefulness that can help perform long term tasks.</p>
-</section>
-<section id="replacing-alphastars-core-module-with-an-llm" class="level1">
-<h1>Replacing AlphaStar’s Core Module with an LLM</h1>
-<p>So then maybe we can make AlphaStar into a true ladder-breaking animal</p>
-<p>What would happen if, say, we replaced AlphaStar’s Deep LSTM core module with an LLM instead now?</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="attachments/Pasted image 20260109221438.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;nature&nbsp;575.7782 (2019): 350-354."><img src="attachments/Pasted image 20260109221438.png" class="img-fluid figure-img" alt="Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;nature&nbsp;575.7782 (2019): 350-354."></a></p>
-<figcaption>Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;<em>nature</em>&nbsp;575.7782 (2019): 350-354.</figcaption>
-</figure>
-</div>
-<p>The problem with this is that LLMs are still <em>stateless</em>. They don’t retain memory like an LSTM does. So we need LLMs with memory.</p>
-<section id="approaches-to-stateful-llm" class="level2">
-<h2 class="anchored" data-anchor-id="approaches-to-stateful-llm">Approaches to Stateful LLM</h2>
-<p>With some effort to arrange “evolutionarily”:</p>
-<ul>
-<li>Neuro-sama (some guy named Vedal) - Probably a text file used with the context window.</li>
-<li>Recurrent Memory Transformers (NeurIPS 2022) - Add special memory tokens to the input sequence and output sequence. Then, eat your own output.
-<ul>
-<li>Kind of like <em>Ghajini/Memento</em> in a way. You don’t remember anything, but you do take notes.</li>
-</ul></li>
-<li>Structured State Space Models (various) - compressed latent space representation memory, but still explicit memory.
-<ul>
-<li>Mamba - They turned SSM parameters <em>dependent</em> on input <span class="math inline">\(P(x)\)</span>.</li>
-</ul></li>
-<li>Titans (Google 2024) - something like a high learning rate module (contextual memory) turning the medium-term context into parameters. Might be the most biological of all of these?</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="attachments/Pasted image 20260109224301.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Titans’ Memory as a Context (MAC)"><img src="attachments/Pasted image 20260109224301.png" class="img-fluid figure-img" alt="Titans’ Memory as a Context (MAC)"></a></p>
-<figcaption>Titans’ Memory as a Context (MAC)</figcaption>
-</figure>
 </div>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Vinyals, Oriol, et al.&nbsp;“Grandmaster level in StarCraft II using multi-agent reinforcement learning.”&nbsp;<em>nature</em>&nbsp;575.7782 (2019): 350-354.</span>
-<span class="glightbox-desc lightbox-desc-2">Titans’ Memory as a Context (MAC)</span>
-</div>
-</section>
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -644,31 +695,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false,"closeEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 
