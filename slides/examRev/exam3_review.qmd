@@ -69,32 +69,41 @@ The negative feedback in an amplifier leads to which one of the following?
 
 ::: {.column width="47%"}
 
+::: {.fragment .fade-in-then-semi-out}
 $$\text{Loop gain: } T = AF$$
 
 $$
 A_{CL} = \frac{A}{1+T}
 $$
+:::
+
+::: {.fragment .fade-in-then-semi-out}
 $$
 \text{With large gain } A:
 \quad
 A_{CL} \approx \frac{1}{F}
 $$
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **Impedance:**
 
 - series connection at a port $\rightarrow R$ **increases** by $(1+T)$
 - shunt connection $\rightarrow R$ **decreases** by $(1+T)$
+:::
 
 :::
 
 ::: {.column width="47%"}
 
+::: {.fragment .fade-in}
 | Property | Change | Scale factor |
 |---|---|---|
 | Gain | ↓ | $\div(1+T)$ |
 | Bandwidth | ↑ | $\times(1+T)$ |
 | GBW product | constant | — |
 | Distortion / Nonlinearity | ↓ | $\div(1+T)$ |
+:::
 
 :::
 
@@ -225,36 +234,47 @@ A transconductance amplifier should have:
 
 <!-- CAPACITY: ✓ ~10 lines -->
 
+::: {.fragment .fade-in-then-semi-out}
 **Series** = feedback subtracts a **voltage** (KVL). &ensp; **Shunt** = subtracts a **current** (KCL).
+:::
 
+::: {.fragment .fade-in}
 | Topology | $R_{in}$ | $R_{out}$ | Amplifier type |
 |---|---|---|---|
 | Series-Series | $\times(1+T)$ | $\times(1+T)$ | Transconductance $G_m$ |
 | Series-Shunt | $\times(1+T)$ | $\div(1+T)$ | Voltage $A_v$ |
 | Shunt-Series | $\div(1+T)$ | $\times(1+T)$ | Current $A_i$ |
 | Shunt-Shunt | $\div(1+T)$ | $\div(1+T)$ | Transresistance $R_m$ |
+:::
 
-
+::: {.fragment .fade-in-then-semi-out}
 **Impedance:**
 
 - series connection at a port $\rightarrow R$ **increases** by $(1+T)$
 - shunt connection $\rightarrow R$ **decreases** by $(1+T)$
+:::
 
 
 ## Review — Amplifier Types {.smaller}
 
 <!-- CAPACITY: ✓ ~11 lines -->
 
+::: {.fragment .fade-in}
 | Type | Ideal $R_{in}$ | Ideal $R_{out}$ | Input | Output |
 |---|---|---|---|---|
 | Voltage $A_v$ | $\infty$ | $0$ | V | V |
 | Current $A_i$ | $0$ | $\infty$ | I | I |
 | Transconductance $G_m$ | $\infty$ | $\infty$ | V | I |
 | Transresistance $R_m$ | $0$ | $0$ | I | V |
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 Feedback pushes toward ideal: series port → $R\uparrow\to\infty$; shunt port → $R\downarrow\to 0$.
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **Hook:** *First word = input connection; second = output.* Shunt-Series = current amp ✓ (Q15).
+:::
 
 
 # Part 3 · Circuit Feedback Analysis {.center}
@@ -448,28 +468,36 @@ Determine the feedback factor F for the circuit.
 
 ::: {.column width="50%"}
 
+::: {.fragment .fade-in-then-semi-out}
 **1. Output port — how does the network *sense* the output?**
 
 - Feedback connected **in parallel with $v_o$** → **Shunt** output — senses voltage
 - Feedback connected **in series** with the output current path → **Series** output — senses current
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **2. Input port — how does the feedback signal *mix*?**
 
 - Feedback appears in **KVL**: $v_{in} = v_s - v_f$ → **Series** input
 - Feedback appears in **KCL**: $i_{in} = i_s - i_f$ → **Shunt** input
+:::
 
 :::
 
 ::: {.column width="50%"}
 
+::: {.fragment .fade-in-then-semi-out}
 *Topology name: first word = input port; second = output port.*
+:::
 
+::: {.fragment .fade-in}
 | Topology | Senses | Mixes | Type |
 |---|---|---|---|
 | Series-Shunt | $v_o$ ∥ | $v_f$ KVL | $A_v$ |
 | Series-Series | $i_o$ series | $v_f$ KVL | $G_m$ |
 | Shunt-Shunt | $v_o$ ∥ | $i_f$ KCL | $R_m$ |
 | Shunt-Series | $i_o$ series | $i_f$ KCL | $A_i$ |
+:::
 
 :::
 
@@ -480,16 +508,27 @@ Determine the feedback factor F for the circuit.
 
 <!-- CAPACITY: ✓ ~10 lines -->
 
+::: {.fragment .fade-in-then-semi-out}
 - Identify the feedback topology and the feedback network.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
 - Obtain the two-port parameters of the feedback network: $R_{i,fb}$, $R_{o,fb}$, $f$.
     - When finding $R_{i,fb}$, if the output port is shunt, **short** the output; if series, **open** the output.
     - When finding $R_{o,fb}$, if the input port is shunt, **short** the input; if series, **open** the input.
     - $f$ is obtained via Thevenin/Norton principles.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
 - Find the open-loop gain $A$ of the forward path (with $f=0$, but including $R_{i,fb}$ and $R_{o,fb}$).
+:::
+
+::: {.fragment .fade-in-then-semi-out}
 - Use the formulas to obtain the overall two-port:
     - $R_{in} = R_{i,fb} \times (1+AF)$ if series input, $R_{i,fb} / (1+AF)$ if shunt input.
     - $R_{out} = R_{o,fb} \times (1+AF)$ if series output, $R_{o,fb} / (1+AF)$ if shunt output.
     - $A_{CL} = A / (1 + AF)$.
+:::
 
 # Part 4 · Shunt-Input Feedback Analysis {.center}
 
@@ -688,7 +727,7 @@ If $R_S = 1000\ \Omega$ and $R_f = 3000\ \Omega$, the output resistance is:
 # Part 5 · Stability Theory & Phase Margin {.center}
 
 
-## Q27 
+## Q27 {.smaller}
 
 :::: {.columns}
 
@@ -847,13 +886,16 @@ Why is phase margin important in feedback amplifiers?
 ```
 
 
-## Review — Phase Margin & Stability Criteria 
+## Review — Phase Margin & Stability Criteria {.smaller}
 
 <!-- CAPACITY: ✓ ~11 lines -->
 
+::: {.fragment .fade-in-then-semi-out}
 $$PM = 180° + \angle\,T(j\omega_u) \qquad \text{where } |T(j\omega_u)| = 1$$
 $$GM = \frac{1}{|T(j\omega_g)|} \qquad \text{where } \angle T(j\omega_g) = -180°$$
+:::
 
+::: {.fragment .fade-in}
 | Phase margin | Stability | Step overshoot |
 |---|---|---|
 | $>75.96°$ | Overdamped | $0$ |
@@ -861,29 +903,36 @@ $$GM = \frac{1}{|T(j\omega_g)|} \qquad \text{where } \angle T(j\omega_g) = -180�
 | $<75.96°$ | Underdamped | $<10%$ |
 | $<60°$ | Underdamped | $>10%$ |
 | $<45°$ | Underdamped, marginally stable | $>25%$ |
+:::
 
-## Review — GBW & Bode Analysis for PM and GM 
+## Review — GBW & Bode Analysis for PM and GM {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 <!-- CAPACITY: ✓ ~7 lines in column -->
 
+::: {.fragment .fade-in-then-semi-out}
 $GBW = A_0 \cdot f_{p1}$ &ensp; (constant, 1-pole response)
 
 $\omega_u \approx A_0 F \cdot \omega_{p1}$ &ensp; (dominant-pole approx.)
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **Phase margin in general:**
 $$\mathrm{PM} = 180^\circ - \sum_k \arctan\!\left(\tfrac{\omega_u}{\omega_{pk}}\right)$$
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **Phase margin if $\omega_{u} \ll \omega_{p2}$:**
 $$\mathrm{PM} \approx 90^\circ - \arctan\!\left(\tfrac{\omega_u}{\omega_{p2}}\right)$$
-
+:::
 
 :::
 
 ::: {.column width="50%"}
 
+::: {.fragment .fade-in}
 ![](figures/image.png)
 
 <div style="background:#e0e0e0; width:100%; aspect-ratio:4/3;
@@ -891,6 +940,7 @@ $$\mathrm{PM} \approx 90^\circ - \arctan\!\left(\tfrac{\omega_u}{\omega_{p2}}\ri
             font-size:0.7em; color:#555; border:1px dashed #aaa;">
   [FIGURE: bode-phase-margin — Bode magnitude and phase with ω_u and PM annotated]
 </div>
+:::
 :::
 
 ::::
@@ -1166,44 +1216,62 @@ Which statement correctly distinguishes narrowbanding from Miller compensation?
 
 ## Review — Narrowband Compensation
 
+::: {.fragment .fade-in-then-semi-out}
 **Goal:** Push $\omega_{p1,C}$ down so that:
 
 - $\omega_u \ll \omega_{p2}$ -- and the dominant pole contributes 90 deg.
 - $90^\circ - \arctan\!\left(\tfrac{\omega_u}{\omega_{p2}}\right) \approx \mathrm{PM} \text{ target}$
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 To do this, **identify the formula for $\omega_{p1}$ and adjust the capacitance in that formula**. e.g.
 
 $$\omega_{p1} = \frac{1}{R_1C_1} \rightarrow \frac{1}{R_1(C_1 + C_C)}$$
+:::
 
 ## Review — Miller Compensation
 
+::: {.fragment .fade-in-then-semi-out}
 When a Miller capacitor $C_C$ is added across a gain stage (gain $\approx -A$, $|A| \gg 1$):
+:::
 
+::: {.fragment .fade-in}
 | | Without $C_C$ | With $C_C$ | Direction |
 |---|---|---|:---:|
 | $\omega_{p1}$ | $\dfrac{1}{R_1 C_1}$ | $\dfrac{1}{R_1(C_1 + A C_C)}$ | $\downarrow$ |
 | $\omega_{p2}$ | $\dfrac{1}{R_2 C_2}$ | $\dfrac{G_m}{C_1 + C_2}$ | $\uparrow$ |
 | $\omega_z$ | — | $\dfrac{G_m}{C_C}$ | (new RHP zero) |
+:::
 
 ## Review — Compensation Techniques Compared
 
+::: {.fragment .fade-in}
 | Property | Narrowband | Miller |
 |---|---|---|
 | Mechanism | Large $C$ at pole node | $C_C$ × Miller gain |
 | Effect on $\omega_{p2}$ | Unchanged | Pushed higher |
 | Bandwidth cost | Severe (pole pushed back) | Moderate (poles split) |
 | Capacitor size | Large — discrete | Small — IC-compatible |
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 **Both aim for** $\omega_u \ll \omega_{p2}$, so that $\mathrm{PM} > 0$.
+:::
 
 ## Review — Miller Zero Compensation
 
+::: {.fragment .fade-in-then-semi-out}
 Adding a series resistor $R_z$ with $C_C$ shifts the RHP zero:
 
 $$\omega_z = \frac{1}{C_C\!\left(\dfrac{1}{G_m} - R_z\right)}$$
+:::
 
+::: {.fragment .fade-in-then-semi-out}
 Setting $R_z = \dfrac{1}{G_m}$ cancels the denominator:
+:::
 
+::: {.fragment .fade-in}
 $$\boxed{\omega_z \to \infty}$$
 
 The RHP zero is eliminated entirely.
+:::

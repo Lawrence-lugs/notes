@@ -3,7 +3,7 @@ services:
     image: quartonotes
     build:
       context: ..
-      dockerfile: Dockerfile
+      dockerfile: .devcontainer/Dockerfile
     container_name: quarttonotes_inst
     stdin_open: true
     tty: true
