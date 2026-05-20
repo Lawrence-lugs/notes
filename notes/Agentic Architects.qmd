@@ -1,7 +1,7 @@
 ---
 from: markdown+lists_without_preceding_blankline
 title: "Agentic Architects"
-modified: 2026-05-08
+modified: 2026-05-15
 date: 2026-05-04
 public: true
 tags:
@@ -18,6 +18,8 @@ tags:
 > - [ ] #todo #reading #tier1  Read [Computer Architecture's AlphaZero Moment](Computer Architecture's AlphaZero Moment.qmd)
 > - [ ] #todo #reading #tier1 Read LLM-guided bottleneck analysis (LUMINA) ⛔ 9bojyc
 > - [ ] #todo #reading #tier1 Read AdaEvolve (evolutionary LLM swarms framework)
+> - [ ] #todo #reading #tier1 Read ArchExplorer
+
 
 Karpathy introduced LLM swarms that optimize NN architectures. 
 This was then explored by [this blog post for cacheless pipelined RISCV beating VexRISCV](https://github.com/FeSens/auto-arch-tournament).
@@ -36,10 +38,10 @@ On 2026-03-31, [Nvidia published a position paper](Computer%20Architecture's%20A
 
 >[!check] Gap: ZigZag with Agentic Exploration?
 > It may be a good idea to check how agent exploration can interact with the ZigZag cost models. ZigZag can serve as the "verifier", the agent can explore within the available YAMLs.
-> - [ ] #todo #project #tier1 Agentic architects with ZigZag as verifier
+> - [ ] #todo #idea Agentic architects with ZigZag as verifier
 
 
 >[!check] Gap: MiniQwen Agentic?
 > Locking the features to high-cost models is bad. If the only risk for smaller models is that they typically don't come up with verification-passing architectures, the testing must be tiered and fast. 
-> - [ ] #todo #project #tier1 Many little Agentic Architects
+> - [ ] #todo #idea Many little Agentic Architects
 

@@ -158,7 +158,7 @@
     "href": "notes/Agentic Architects.html#potentials",
     "title": "Agentic Architects",
     "section": "Potentials",
-    "text": "Potentials\n\n\n\n\n\n\nGap: ZigZag with Agentic Exploration?\n\n\n\nIt may be a good idea to check how agent exploration can interact with the ZigZag cost models. ZigZag can serve as the “verifier”, the agent can explore within the available YAMLs.\n\n#todo #project #tier1 Agentic architects with ZigZag as verifier\n\n\n\n\n\n\n\n\n\nGap: MiniQwen Agentic?\n\n\n\nLocking the features to high-cost models is bad. If the only risk for smaller models is that they typically don’t come up with verification-passing architectures, the testing must be tiered and fast.\n\n#todo #project #tier1 Many little Agentic Architects"
+    "text": "Potentials\n\n\n\n\n\n\nGap: ZigZag with Agentic Exploration?\n\n\n\nIt may be a good idea to check how agent exploration can interact with the ZigZag cost models. ZigZag can serve as the “verifier”, the agent can explore within the available YAMLs.\n\n#todo #idea Agentic architects with ZigZag as verifier\n\n\n\n\n\n\n\n\n\nGap: MiniQwen Agentic?\n\n\n\nLocking the features to high-cost models is bad. If the only risk for smaller models is that they typically don’t come up with verification-passing architectures, the testing must be tiered and fast.\n\n#todo #idea Many little Agentic Architects"
   },
   {
     "objectID": "slides/transistorCapacitances/transistorCapacitances.html#general-frequency-response",

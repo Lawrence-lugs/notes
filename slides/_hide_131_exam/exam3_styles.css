@@ -1,0 +1,35 @@
+/* exam3_styles.css — answer-reveal styling for EEE 141 Exam 3 */
+
+/* ── Answer list ────────────────────────────────────────────── */
+.reveal .answer-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5em;
+  font-size: inherit;
+}
+
+.reveal .answer-list li {
+  padding: 0.15em 0.45em;
+  margin: 0.22em 0;
+  border-radius: 3px;
+}
+
+/* Correct answer: override Reveal.js fragment hiding so it starts visible
+   with the same appearance as other choices. Green is applied on .visible. */
+.reveal .answer-list li.correct-answer.fragment {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .answer-list li.correct-answer.fragment.visible {
+  color: #a8e6a3;
+}
+
+.reveal .answer-list li.correct-answer.fragment.visible strong {
+  color: #6fcf97;
+}
+
+/* Ensure opacity transitions look clean on dark bg */
+.reveal .fragment.semi-fade-out.visible {
+  opacity: 0.25;
+}
