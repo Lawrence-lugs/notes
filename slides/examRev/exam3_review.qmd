@@ -688,7 +688,7 @@ If $R_S = 1000\ \Omega$ and $R_f = 3000\ \Omega$, the output resistance is:
 # Part 5 · Stability Theory & Phase Margin {.center}
 
 
-## Q27 {.smaller}
+## Q27 
 
 :::: {.columns}
 
@@ -847,7 +847,7 @@ Why is phase margin important in feedback amplifiers?
 ```
 
 
-## Review — Phase Margin & Stability Criteria {.smaller}
+## Review — Phase Margin & Stability Criteria 
 
 <!-- CAPACITY: ✓ ~11 lines -->
 
@@ -862,7 +862,7 @@ $$GM = \frac{1}{|T(j\omega_g)|} \qquad \text{where } \angle T(j\omega_g) = -180�
 | $<60°$ | Underdamped | $>10%$ |
 | $<45°$ | Underdamped, marginally stable | $>25%$ |
 
-## Review — GBW & Bode Analysis for PM and GM {.smaller}
+## Review — GBW & Bode Analysis for PM and GM 
 
 :::: {.columns}
 
@@ -1196,7 +1196,7 @@ When a Miller capacitor $C_C$ is added across a gain stage (gain $\approx -A$, $
 
 **Both aim for** $\omega_u \ll \omega_{p2}$, so that $\mathrm{PM} > 0$.
 
-## Review — Miller Zero Compensation {.smaller}
+## Review — Miller Zero Compensation
 
 Adding a series resistor $R_z$ with $C_C$ shifts the RHP zero:
 
