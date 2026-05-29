@@ -24,7 +24,10 @@ Today, Claude can answer it well, but I gave it all the context (all of the abov
 
 ## Hypothesis: Different LLMs?
 
-Since this meme did not migrate to english community, the hypothesis I have is that the answer can only be obtained by the japanese-trained LLM because it was trained on the japanese web data. A mixed prompt will typically give a wrong answer for any prompt because it messes with the token probabilities (very few people write with mixed- only japanese language books and such).
+Since this meme did not migrate to english community, the hypothesis I had is that the answer can only be obtained by the japanese-trained LLM because it was trained on the japanese web data. A mixed prompt will typically give a wrong answer for any prompt because it messes with the token probabilities (very few people write with mixed- only japanese language books and such).
+
+>[!warning]
+>Turns out, this is not the case.
 
 ---
 
@@ -37,6 +40,7 @@ This is because the Japanese phrase occurs in mostly japanese websites. Not only
 > _"Knowledge is not well-aligned across languages. (1) represents knowledge encoded in English that is difficult to retrieve from other languages. (2) is the knowledge that is already well-aligned across languages. (3) is the knowledge encoded in other languages that is difficult to retrieve in English."_
 > [CALM Arxiv 2025](https://arxiv.org/abs/2501.18457)
 
+---
 ### Physical World Models
 
 One reason this could be the case is _physical grounding_. LLMs do not have a concept of a "physical world". They only know the meanings of words based off their statistical relationships. Hence, the fact that 炭酸抜きコーラ and "flat coke" mean the same thing can only be obtained based off **documents where both appear**. Maybe someone had implied that those two are translations of each other somewhere.
@@ -45,7 +49,7 @@ The exact _cultural meme context_ of 炭酸抜きコーラ is not easily obtaine
 
 For humans, the jump isn't so far because 炭酸抜きコーラ and "flat coke" **are grounded with the same physical reference**- a brown liquid that we drink a lot, but it doesn't have the "tinglies".
 
-LLMs do not have this physical reference grounding because they (currently) do not come with *world models* yet. They do not have to interact, experiment, and sense what a "word" is. They only know that 炭酸抜きコーラ and "flat coke" appear with each other in very sparse documents and are likely translations of each other. However, that they really do refer to the same thing is not reinforced as much as it is for humans due to 
+LLMs do not have this physical reference grounding because they (currently) do not come with *world models* yet. They do not have to interact, experiment, and sense what a "word" is. They only know that 炭酸抜きコーラ and "flat coke" appear with each other in very sparse documents and are likely translations of each other. However, that they really do refer to the same thing is not reinforced as much as it is for humans due to humans having the latent representation of the actual object (not just the word).
 
 > _"We advance the central thesis that LLMs lack unmediated access to W and therefore do not solve the symbol grounding problem. Instead, they circumvent it by exploiting pre-grounded human content."_
 > [A Categorical Analysis of Large Language Models and Why LLMs Circumvent the Symbol Grounding Problem](https://arxiv.org/pdf/2512.09117)
