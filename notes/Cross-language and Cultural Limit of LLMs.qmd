@@ -1,0 +1,51 @@
+---
+from: markdown+lists_without_preceding_blankline
+title: "Cross-language and Cultural Limit of LLMs"
+modified: 2026-05-29
+date: 2026-05-29
+public: true
+---
+
+## Baki Experiment
+
+Here's an experiment I once ran on Gemini and Chatgpt about a year ago:
+
+- 炭酸抜きコーラはどこからのミームですか？
+- What is the 炭酸抜きコーラ as a meme and how did it originate?
+- From where does the "flat coke" japanese meme originate?
+
+Asking in purely japanese gives the correct answer. Asking in mixed language (like above) gives the wrong answer. Asking in purely english also gives the wrong answer.
+
+Today, Claude can answer it well, but I gave it all the context (all of the above). Here's the actual answer, as written by Claude:
+
+>**The meme:** 炭酸抜きコーラ originates from the fighting manga _Grappler Baki_, specifically from its first chapter. In Baki's debut scene, he is shown scarfing down bananas and rice porridge, then chugging flat Coke. The bystanders react with "Oi oi oi" and "He's gonna die." But a bespectacled middle-aged man quietly murmurs "ほう炭酸抜きコーラですか… たいしたものですね" ("Oh... flat Coke, is it... impressive"), then proceeds to lecture everyone and silence them with trivia about it. The scene spans two full pages of the bespectacled mob character explaining and praising Baki's nutrition strategy, which became an Internet phenomenon full of meme-worthy moments, spawning countless image macros.
+
+---
+
+## Hypothesis: Different LLMs?
+
+Since this meme did not migrate to english community, the hypothesis I have is that the answer can only be obtained by the japanese-trained LLM because it was trained on the japanese web data. A mixed prompt will typically give a wrong answer for any prompt because it messes with the token probabilities (very few people write with mixed- only japanese language books and such).
+
+---
+
+## Actual: Same LLM, but latent space limitations influence the answer
+
+There is typically one unified model trained in all languages. However, the latent vectors for 炭酸抜きコーラ and "flat coke" occur somewhat far from each other.
+
+This is because the Japanese phrase occurs in mostly japanese websites. Not only that, it's a meme that did not translate to the english community. This cultural grounding puts a context to the phrase that occurs only in the **Japanese phase** and not its English translation "flat coke".
+
+> _"Knowledge is not well-aligned across languages. (1) represents knowledge encoded in English that is difficult to retrieve from other languages. (2) is the knowledge that is already well-aligned across languages. (3) is the knowledge encoded in other languages that is difficult to retrieve in English."_
+> [CALM Arxiv 2025](https://arxiv.org/abs/2501.18457)
+
+### Physical World Models
+
+One reason this could be the case is _physical grounding_. LLMs do not have a concept of a "physical world". They only know the meanings of words based off their statistical relationships. Hence, the fact that 炭酸抜きコーラ and "flat coke" mean the same thing can only be obtained based off **documents where both appear**. Maybe someone had implied that those two are translations of each other somewhere.
+
+The exact _cultural meme context_ of 炭酸抜きコーラ is not easily obtained from "flat coke" because it is not common to translate the meme (the meme does not exist in an english context). The jump is too far for the LLM to reason through.
+
+For humans, the jump isn't so far because 炭酸抜きコーラ and "flat coke" **are grounded with the same physical reference**- a brown liquid that we drink a lot, but it doesn't have the "tinglies".
+
+LLMs do not have this physical reference grounding because they (currently) do not come with *world models* yet. They do not have to interact, experiment, and sense what a "word" is. They only know that 炭酸抜きコーラ and "flat coke" appear with each other in very sparse documents and are likely translations of each other. However, that they really do refer to the same thing is not reinforced as much as it is for humans due to 
+
+> _"We advance the central thesis that LLMs lack unmediated access to W and therefore do not solve the symbol grounding problem. Instead, they circumvent it by exploiting pre-grounded human content."_
+> [A Categorical Analysis of Large Language Models and Why LLMs Circumvent the Symbol Grounding Problem](https://arxiv.org/pdf/2512.09117)
