@@ -36,7 +36,8 @@ RUN apt update && apt install -y \
     git \
     libnss3 \
     libgbm1 \
-    libasound2
+    libasound2 \
+    poppler-utils
 
 # 3. Install Quarto
 ARG QUARTO_VER="1.9.38"
