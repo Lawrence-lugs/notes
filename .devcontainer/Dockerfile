@@ -39,7 +39,7 @@ RUN apt update && apt install -y \
     libasound2
 
 # 3. Install Quarto
-ARG QUARTO_VER="1.4.555"
+ARG QUARTO_VER="1.9.38"
 RUN set -eux; \
     ARCH="$(dpkg --print-architecture)"; \
     case "$ARCH" in \
