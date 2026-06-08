@@ -25,6 +25,8 @@ RUN apt-get install -y \
     # fontconfig \
     # Refresh font cache immediately
     # && fc-cache -f -v \
+    # suddenly we need libuv1-dev now to make R work
+    libuv1-dev \ 
     r-base \
     libmagick++-dev \
     libcurl4-openssl-dev \
