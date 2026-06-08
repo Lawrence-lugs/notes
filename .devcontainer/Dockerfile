@@ -76,5 +76,7 @@ RUN micromamba create -y -n base -f /tmp/env.yml
 # This means typing 'python' runs the mamba python, not the system python.
 ENV PATH="/opt/conda/envs/base/bin:$PATH"
 
+RUN Rscript -e 'install.packages(c("knitr","rmarkdown"), repos="https://cloud.r-project.org")'
+
 WORKDIR /app
 CMD ["/bin/bash"]
